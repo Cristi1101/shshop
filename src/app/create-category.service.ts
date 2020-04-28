@@ -1,18 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { map } from 'rxjs-compat/operator/map';
+
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryService {
+export class CreateCategoryService {
 
   constructor(private db: AngularFireDatabase) { }
 
   getCategories(){
     return this.db.list('/categories').snapshotChanges();
-  }
-
- getAll() { 
-    return this.db.list('/categories', ref => ref.orderByChild('name')).snapshotChanges();
   }
 }
