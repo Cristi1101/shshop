@@ -1,0 +1,18 @@
+<div class="sticky-top">
+    <div class="btn-group">
+        <button [class.active]="!category" routerLink="/" type="button" class="btn btn-success">
+            Categories
+        </button>
+        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+
+        <div class="dropdown-menu">
+            <a *ngFor="let c of categories$ | async" routerLink="/" [queryParams]="{ category: c.key }"
+                class="dropdown-item" [class.active]="category === c.key">
+                {{ c.payload.val().name }}
+            </a>
+        </div>
+    </div>
+</div>

@@ -47,6 +47,14 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
     this.initializeTable(filteredProducts);
   }
 
+  // filter2(query2: string) {
+  //   let filteredProducts = (query2) ?
+  //     this.products.filter(p => p.price.includes(query2.toString())) :
+  //     this.products;
+
+  //   this.initializeTable(filteredProducts);
+  // }
+
   ngOnInit(): void {
   }
 

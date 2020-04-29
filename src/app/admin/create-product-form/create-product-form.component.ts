@@ -24,6 +24,10 @@ export class CreateProductFormComponent implements OnInit {
     this.router.navigate(['/admin/products']);
   }
 
+  cancel(){
+    this.router.navigate(['/admin/products']);
+  }
+
   ngOnInit(): void {
   }
 
