@@ -38,11 +38,13 @@ export class ProductsComponent implements OnInit, OnDestroy{
           this.products.filter((p) => p.category === this.category)
           : this.products;
       });
+      
   } 
 
   async ngOnInit(){
     this.subscription = (await this.shoppingCartService.getCart())
       .valueChanges().subscribe(cart => this.cart = cart);
+      
   }
 
   ngOnDestroy(){

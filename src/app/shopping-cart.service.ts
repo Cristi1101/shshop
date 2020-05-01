@@ -54,12 +54,20 @@ export class ShoppingCartService {
     this.updateItemQuantity(product, -1);
   }
 
+  async clearCart(){
+    let cartId = await this.getOrCreateCartId();
+    this.db.object('/shopping-carts/' + cartId + '/items').remove();
+  }
+
   private async updateItemQuantity(product: Product, change: number){
     let cartId = await this.getOrCreateCartId();
     let item = this.getItem(cartId, product.key);
 
     item.snapshotChanges().pipe(take(1)).subscribe((data) => {
-        item.update({ product: product, quantity: (data.payload.child('/quantity').val() || 0) + change });
+      let quantityAux = (data.payload.child('/quantity').val() || 0) + change;
+      if(quantityAux === 0) item.remove();
+      else
+        item.update({ product: product, quantity: quantityAux });
     });
   }
 }

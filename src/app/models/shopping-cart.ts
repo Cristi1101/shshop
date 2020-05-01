@@ -23,17 +23,19 @@ export class ShoppingCart {
         this.itemsMap = itemsMap || {};
         
         // tslint:disable-next-line:forin prefer-const
-        for (const productId in itemsMap) {
+        for (let productId in itemsMap) {
             // tslint:disable-next-line:prefer-const
             const item = itemsMap[productId];
             this.items.push(new ShoppingCartItem(item.product, item.quantity));
         }
     }
 
+    
+
     get totalItemsCount(): number {
         let count = 0;
         // tslint:disable-next-line:forin prefer-const
-        for ( const productId in this.itemsMap) {          
+        for ( let productId in this.itemsMap) {          
             count += this.itemsMap[productId].quantity;
         }
         return count;
@@ -42,7 +44,7 @@ export class ShoppingCart {
     get totalPrice(): number {
         let sum = 0;
         // tslint:disable-next-line:forin prefer-const
-        for ( const productId in this.items) { 
+        for ( let productId in this.items) { 
             sum += this.items[productId].totalPrice;
         }
         return sum;
