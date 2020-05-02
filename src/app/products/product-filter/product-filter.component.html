@@ -1,4 +1,5 @@
 <div class="sticky-top">
+    
     <div class="btn-group">
         <button [class.active]="!category" routerLink="/" type="button" class="btn btn-success">
             Categories
@@ -14,5 +15,13 @@
                 {{ c.payload.val().name }}
             </a>
         </div>
+    </div>
+
+    <div>
+        <label for="text" >Min. price:</label>
+        <span><input #p type="number" name="price" id="price" ></span>
+        <label for="text">Max. price:</label>
+        <span><input #p1 type="number" name="price" id="price"></span>
+        <button (click)="sendMessage(p.value, p1.value)" style="margin-bottom: 10px; margin-top: 10px;">Filter</button>
     </div>
 </div>
