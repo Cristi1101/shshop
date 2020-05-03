@@ -33,6 +33,8 @@ import { ProductFilterComponent } from './products/product-filter/product-filter
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ShoppingCartService } from './shopping-cart.service';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { ColorsService } from './colors.service';
+import { SubcategoriesService } from './subcategories.service';
 
 @NgModule({
   declarations: [
@@ -84,6 +86,8 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
     AdminAuthGuard,
     UserService,
     CategoryService,
+    ColorsService,
+    SubcategoriesService,
     ProductService,
     ShoppingCartService
   ],

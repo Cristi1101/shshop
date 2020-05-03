@@ -1,5 +1,5 @@
 <div class="sticky-top">
-    
+
     <div class="btn-group">
         <button [class.active]="!category" routerLink="/" type="button" class="btn btn-success">
             Categories
@@ -17,11 +17,34 @@
         </div>
     </div>
 
-    <div>
-        <label for="text" >Min. price:</label>
-        <span><input #p type="number" name="price" id="price" ></span>
-        <label for="text">Max. price:</label>
-        <span><input #p1 type="number" name="price" id="price"></span>
-        <button (click)="sendMessage(p.value, p1.value)" style="margin-bottom: 10px; margin-top: 10px;">Filter</button>
+    <div class="form-group">
+        <label for="price">Min. price:</label>
+        <div class="input-group-prepend resize-inputs">
+            <span class="input-group-text">RON</span>
+            <input #p type="number" name="price" id="price" class="form-control">
+        </div>
     </div>
+    <div class="form-group">
+        <label for="price">Max. price:</label>
+        <div class="input-group-prepend resize-inputs">
+            <span class="input-group-text">RON</span>
+            <input #p1 type="number" name="price" id="price" class="form-control">
+        </div>
+    </div>
+    <button (click)="sendMessage(p.value, p1.value)" style="margin-bottom: 10px; margin-top: 10px;">Filter</button>
+    <!-- 
+    <div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Options</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+    </div> -->
+
 </div>

@@ -21,9 +21,38 @@
             </div>
             <div class="form-group">
                 <label for="category">Category</label>
-                <select #category="ngModel" [(ngModel)]="product.payload.val().category" name="category" id="category" class="form-control" required>
+                <select #cat #category="ngModel" [(ngModel)]="product.payload.val().category" name="category" id="category" class="form-control" required>
                     <option value=""></option>
                     <option *ngFor='let c of categories$ | async' [value]="c.key">
+                         {{ c.payload.val().name }} 
+                    </option>
+                </select>
+                <div class="alert alert-danger" *ngIf="category.touched && category.invalid">Category is required.</div>
+            </div>
+
+            <div  class="form-group">
+                <label for="subcategory">Subcategory</label>
+                <select #subcategory="ngModel" [(ngModel)]="product.payload.val().subcategory" name="subcategory" id="subcategory" class="form-control" required>
+                    <!-- <option value=""></option> -->
+                    <!-- <option *ngFor="let s of subcategories$ | async" [value]="s.key">
+                       <div *ngIf="s.payload.val().parentId === cat.selectedOptions[0].value">
+                        {{ s.payload.val().name }}
+                        </div>
+                    </option> -->
+
+                    <option *ngFor="let s of subcategories$ | async" [value]="s.key">
+                        {{ s.payload.val().name }}
+                     </option>
+
+                </select>
+                <div class="alert alert-danger" *ngIf="category.touched && category.invalid">Subcategory is required.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="color">Colors</label>
+                <select #color="ngModel" [(ngModel)]="product.payload.val().color" name="color" id="color" class="form-control" required>
+                    <option value=""></option>
+                    <option *ngFor='let c of colors$ | async' [value]="c.key">
                          {{ c.payload.val().name }} 
                     </option>
                 </select>
@@ -47,7 +76,7 @@
             <img [src]="product.payload.val().imageUrl" class="card-img-top" *ngIf="product.payload.val().imageUrl">
             <div class="card-body">
               <h5 class="card-title">{{ product.payload.val().title }}</h5>
-              <p class="card-text">{{ product.payload.val().price | currency:'RON ':true}}</p>
+              <p class="card-text">{{ product.payload.val().price | currency:'RON ':'code'}}</p>
             </div>
           </div>
     </div>
