@@ -48,6 +48,8 @@
                 <div class="alert alert-danger" *ngIf="category.touched && category.invalid">Subcategory is required.</div>
             </div>
 
+            
+
             <div class="form-group">
                 <label for="color">Colors</label>
                 <select #color="ngModel" [(ngModel)]="product.payload.val().color" name="color" id="color" class="form-control" required>

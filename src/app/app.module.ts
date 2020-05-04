@@ -35,7 +35,7 @@ import { ShoppingCartService } from './shopping-cart.service';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 import { ColorsService } from './colors.service';
 import { SubcategoriesService } from './subcategories.service';
-
+import { Ng5SliderModule } from 'ng5-slider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +64,7 @@ import { SubcategoriesService } from './subcategories.service';
     AngularFireAuthModule,
     DataTableModule,
     NgbModule,
+    Ng5SliderModule,
     RouterModule.forRoot([
       {path: '', component: ProductsComponent},
       {path: 'products', component: ProductsComponent},

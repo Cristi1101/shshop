@@ -27,7 +27,7 @@
                 <div class="alert alert-danger" *ngIf="category.touched && category.invalid">Category is required.</div>
             </div>
 
-            <div *ngIf="category.touched && category.valid" class="form-group">
+            <div *ngIf="category.valid" class="form-group">
                 <label for="subcategory">Subcategory</label>
                 <select #subcategory="ngModel" ngModel name="subcategory" id="subcategory" class="form-control" required>
                     <!-- <option value=""></option> -->
