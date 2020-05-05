@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+// import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2'
 import * as firebase from 'firebase';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -21,11 +22,23 @@ user$: Observable<firebase.User>;
       let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
       localStorage.setItem('returnUrl', returnUrl);
 
-      this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+      var provider = new firebase.auth.GoogleAuthProvider();
+      provider.setCustomParameters({
+        prompt: 'select_account'
+      });
+
+      return this.afAuth.auth.signInWithPopup(provider);
     }
 
     logout(){
       this.afAuth.auth.signOut();
+    }
+
+    signIn(email, password) {
+      return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+        .catch((error) => {
+          window.alert(error.message)
+        })
     }
   
     get appUser$() : Observable<AppUser>{
