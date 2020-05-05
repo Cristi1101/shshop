@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule } from 'angular7-data-table';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,6 +36,10 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
 import { ColorsService } from './colors.service';
 import { SubcategoriesService } from './subcategories.service';
 import { Ng5SliderModule } from 'ng5-slider';
+import { SignUpComponent } from './sign-up/sign-up.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +56,8 @@ import { Ng5SliderModule } from 'ng5-slider';
     CreateProductFormComponent,
     ProductFilterComponent,
     ProductQuantityComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    SignUpComponent
     
   ],
   imports: [
@@ -64,12 +69,14 @@ import { Ng5SliderModule } from 'ng5-slider';
     AngularFireAuthModule,
     DataTableModule,
     NgbModule,
+    ReactiveFormsModule,
     Ng5SliderModule,
     RouterModule.forRoot([
       {path: '', component: ProductsComponent},
       {path: 'products', component: ProductsComponent},
       {path: 'shopping-cart', component: ShoppingCartComponent},
       {path: 'login', component: LoginComponent},
+      {path: 'signup', component: SignUpComponent},
 
       {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
       {path: 'order-succes', component: OrderSuccesComponent, canActivate: [AuthGuard]},

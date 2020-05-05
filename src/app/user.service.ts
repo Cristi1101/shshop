@@ -16,6 +16,27 @@ export class UserService {
     });
   }
 
+  // create(user: firebase.User){
+  //   this.db.object('/users/' + user.uid).set({
+  //     name: user.displayName,
+  //     email: user.email,
+  //   });
+  // }
+
+  // create(user: any) {
+  //   return new Promise((resolve, reject) => {
+  //     if(user.uid) {
+  //       this.db.list('/users/' + user.uid)
+  //             .update(user.uid, ({ name: user.name }))
+  //             .then(() => resolve())
+  //             .catch((e) => reject(e))
+  //     } else {
+  //       this.db.list('/users/' + user.uid)
+  //               .push({ name: user.name })
+  //               .then(() => resolve())
+  //       }
+  //     })
+  //   }
   get(uid: string): AngularFireObject<AppUser>{
       return this.db.object('/users/' + uid);
   }

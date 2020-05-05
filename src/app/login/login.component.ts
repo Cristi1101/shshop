@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { AppUser } from '../models/app-user';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 
 @Component({

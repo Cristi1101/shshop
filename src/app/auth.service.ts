@@ -8,13 +8,17 @@ import { AppUser } from './models/app-user';
 import { UserService } from './user.service';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
+import { AngularFireDatabase } from 'angularfire2/database';
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-user$: Observable<firebase.User>;
-  constructor(private userService: UserService, private afAuth: AngularFireAuth, private route: ActivatedRoute) {
+  user$: Observable<firebase.User>;
+
+  constructor(private userService: UserService, private afAuth: AngularFireAuth, 
+    private route: ActivatedRoute,
+    private db: AngularFireDatabase) {
     this.user$ = afAuth.authState;
    }
 
@@ -40,7 +44,42 @@ user$: Observable<firebase.User>;
           window.alert(error.message)
         })
     }
+
+    // signUp(email, password, ) {
+    //   return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+    //     .then((result) => {
+    //       window.alert("You have been successfully registered!");
+    //       console.log(result.user)
+    //     }).catch((error) => {
+    //       window.alert(error.message)
+    //     })
+  //   // }
   
+    signUp(email, password, name, lastname) {
+      return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+      .then((result) => {
+          /* Call the SendVerificaitonMail() function when new user sign 
+          up and returns promise */
+          // this.SendVerificationMail();
+          this.writeNewUser(result.user, name, lastname);
+      }).catch((error) => {
+          window.alert(error.message)
+      })
+  }
+
+  private writeNewUser(user, name, lastname) {
+
+    const userRef = this.db.object('/users/' + user.uid);
+    const userData: AppUser = {
+      name: user.displayName,
+      email: user.email,
+      isAdmin: user.isAdmin = false,
+      firstName: name,
+      lastName: lastname
+    }
+    userRef.set(userData);
+  }
+
     get appUser$() : Observable<AppUser>{
       return this.user$
       .switchMap(user => {
