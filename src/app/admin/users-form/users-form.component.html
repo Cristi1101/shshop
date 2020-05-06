@@ -1,0 +1,22 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Id</th>
+            <th>Admin Roles</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ users.firstName }}</td>
+            <td>{{ users.lastName }}</td> 
+            <td>{{ users.email }}</td>
+            <td>{{ users.uid }}</td>
+            <td>{{ users.isAdmin }}</td>
+        </tr>
+    </tbody>
+</table>
+<button type="button" (click)="delete()" class="btn btn-danger" style="margin-right:10px;">Delete</button>
+<button type="button" (click)="cancel()" class="btn btn-secondary" style="margin-right:10px;">Cancel</button>

@@ -18,7 +18,7 @@ export class ProductFormComponent implements OnInit {
   product;
   id;
   subcategories$;
-
+//this is a comment
   constructor(
     private router: Router,
     private route: ActivatedRoute,

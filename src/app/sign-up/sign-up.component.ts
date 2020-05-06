@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+//import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
@@ -33,12 +33,12 @@ export class SignUpComponent implements OnInit {
 //   }
 
 
-  signUpForm: FormGroup = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]],
-    displayName: ['', [Validators.required]],
-    firstName: ['', [Validators.required]],
-     lastName: ['', [Validators.required]]
+  // signUpForm: FormGroup = this.formBuilder.group({
+  //   email: ['', [Validators.required, Validators.email]],
+  //   password: ['', [Validators.required]],
+  //   displayName: ['', [Validators.required]],
+  //   firstName: ['', [Validators.required]],
+  //    lastName: ['', [Validators.required]]
     //addressOne: ['', [Validators.required]]
     // addressTwo: [''],
     // zipCode: ['', [Validators.required]],
@@ -46,7 +46,7 @@ export class SignUpComponent implements OnInit {
     // phoneOne: ['', [Validators.required]],
     // phoneTwo: [''],
     // profilType: ['', [Validators.required]]
-  });
+  // });
 
   // signUpViaEmail() {
   //   this.auth.signUp(this.signUpForm.value);

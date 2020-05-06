@@ -16,7 +16,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   tableResource: DataTableResource<Product>;
   items: Product[] = [];
   itemCount: number;
-
+ // this is a comment
   constructor(private productService: ProductService) {
     this.subscription = this.productService.getAll().subscribe(products => {
       this.products = products;

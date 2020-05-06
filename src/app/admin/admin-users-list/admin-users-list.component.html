@@ -1,0 +1,69 @@
+<!-- <p>
+    <input 
+    #query
+    (keyup)="filter(query.value)"
+    type="text" class="form-control" placeholder="Search...">
+</p>
+
+<data-table
+    [items]="items"
+    [itemCount]="itemCount"
+    (reload)="reloadItems($event)"
+>
+    <data-table-column
+        [property]="'firstName'"
+        [header]="'First Name'"
+        [sortable]="true"
+        [resizable]="true"
+    >
+    <data-table-column
+        [property]="'lastName'"
+        [header]="'Last Name'"
+        [sortable]="true"
+        [resizable]="true"
+    >
+
+
+
+    <data-table-column
+        [property]="'$key'"
+    >
+        <ng-template #dataTableCell let-item="item">
+            <a [routerLink]="['/admin/products/', item.key]">Edit</a>
+        </ng-template>
+    </data-table-column>
+
+</data-table> -->
+
+<data-table
+    [items]="items"
+    [itemCount]="itemCount"
+    (reload)="reloadItems($event)"
+>
+    <data-table-column
+        [property]="'isAdmin'"
+        [header]="'First name'"
+        [sortable]="true"
+        [resizable]="true"
+    >
+
+    </data-table-column>
+
+    <data-table-column
+        [property]="'email'"
+        [header]="'Users Email'"
+        [sortable]="true"
+        [resizable]="true"
+    >
+    </data-table-column>
+
+    
+
+    <data-table-column
+        [property]="'$key'"
+    >
+        <ng-template #dataTableCell let-item="item">
+            <a [routerLink]="['/admin/users/', item.key]">Edit</a>
+        </ng-template>
+    </data-table-column>
+</data-table>

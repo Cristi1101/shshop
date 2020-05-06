@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { DataTableModule } from 'angular7-data-table';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -37,6 +37,8 @@ import { ColorsService } from './colors.service';
 import { SubcategoriesService } from './subcategories.service';
 import { Ng5SliderModule } from 'ng5-slider';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { AdminUsersListComponent } from './admin/admin-users-list/admin-users-list.component';
+import { UsersFormComponent } from './admin/users-form/users-form.component';
 
 
 
@@ -57,7 +59,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     ProductFilterComponent,
     ProductQuantityComponent,
     ProductCardComponent,
-    SignUpComponent
+    SignUpComponent,
+    AdminUsersListComponent
     
   ],
   imports: [
@@ -69,7 +72,6 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     AngularFireAuthModule,
     DataTableModule,
     NgbModule,
-    ReactiveFormsModule,
     Ng5SliderModule,
     RouterModule.forRoot([
       {path: '', component: ProductsComponent},
@@ -85,7 +87,9 @@ import { SignUpComponent } from './sign-up/sign-up.component';
       {path: 'admin/products/new', component: CreateProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/products/:id', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard]},
-      {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard]}
+      {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+      {path: 'admin/users', component: AdminUsersListComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+      {path: 'admin/users/:id', component: UsersFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
     ])
   ],
   providers: [
