@@ -35,6 +35,13 @@
 
 </data-table> -->
 
+<p>
+    <input 
+    #query
+    (keyup)="filter(query.value)"
+    type="text" class="form-control" placeholder="Search by email...">
+</p>
+
 <data-table
     [items]="items"
     [itemCount]="itemCount"

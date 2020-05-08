@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+//import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -12,7 +12,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class SignUpComponent implements OnInit {
 
   constructor(
-    private formBuilder: FormBuilder,
     public auth: AuthService,
     private afAuth: AngularFireAuth) { }
 

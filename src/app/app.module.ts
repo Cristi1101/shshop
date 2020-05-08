@@ -59,8 +59,11 @@ import { UsersFormComponent } from './admin/users-form/users-form.component';
     ProductFilterComponent,
     ProductQuantityComponent,
     ProductCardComponent,
+    LoginComponent,
     SignUpComponent,
-    AdminUsersListComponent
+    AdminUsersListComponent,
+    UsersFormComponent
+    
     
   ],
   imports: [
@@ -89,7 +92,7 @@ import { UsersFormComponent } from './admin/users-form/users-form.component';
       {path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/users', component: AdminUsersListComponent, canActivate: [AuthGuard, AdminAuthGuard]},
-      {path: 'admin/users/:id', component: UsersFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+      {path: 'admin/users/:id', component: UsersFormComponent, canActivate: [AuthGuard, AdminAuthGuard]}
     ])
   ],
   providers: [

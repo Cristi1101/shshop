@@ -40,7 +40,7 @@ export class AdminUsersListComponent implements OnInit, OnDestroy {
 
   filter(query: string) {
     let filteredUsers = (query) ?
-      this.users.filter(p => p.firstName.toLowerCase().includes(query.toLowerCase())) :
+      this.users.filter(p => p.email.toLowerCase().includes(query.toLowerCase())) :
       this.users;
 
     this.initializeTable(filteredUsers);

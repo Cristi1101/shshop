@@ -5,6 +5,8 @@ module.exports = function (config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
+    target: 'node', // in order to ignore built-in modules like path, fs, etc.
+    externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),

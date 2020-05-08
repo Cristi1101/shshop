@@ -1,10 +1,13 @@
 
 export interface AppUser{
     key?: string;
-    name: string;
+    username?: string;
     email: string;
     //password: string;
-    isAdmin: boolean;
+    isAdmin?: boolean;
     firstName: string;
     lastName: string;
+    city: string;
+    address: string;
+    postalCode: number;
 }

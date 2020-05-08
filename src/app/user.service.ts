@@ -3,13 +3,25 @@ import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import * as firebase from 'firebase';
 import { AppUser } from './models/app-user';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+
+// var admin = require('firebase-admin');
+// var serviceAccount = require('./shshop-2dd1a-firebase-adminsdk-fy8rc-3353ba58ef.json');
+
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount)
+// });
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private db: AngularFireDatabase) { }
+  
+  constructor(
+    private db: AngularFireDatabase,
+    private router: Router
+    ) { }
 
   save(user: firebase.User){
     this.db.object('/users/' + user.uid).update({
@@ -33,16 +45,42 @@ export class UserService {
   }
 
   getUser(userId) {
-    return this.db.object('/users/' + userId).valueChanges();
+    return this.db.object('/users/' + userId).snapshotChanges(); 
   }
 
   update(userId, user){
     return this.db.object('/users/' + userId).update(user);
   }
 
-  delete(userId){
-    return this.db.object('/users/' + userId).remove();
+  updateUser(userId, username, email, firstname, lastname, address, city, postalcode){
+    const userRef = this.db.object('/users/' + userId);
+    const userData: AppUser = {
+      username: username,
+      email: email,
+      firstName: firstname,
+      lastName: lastname,
+      city: city,
+      address: address,
+      postalCode: postalcode
+    }
+    userRef.update(userData);
+
+    this.router.navigate(['/admin/users']);
   }
+
+  
+  delete(userId){
+    // return admin.auth().deleteUser(userId).then(function() {
+    this.db.object('/users/' + userId).remove();
+      
+    //   console.log('Successfully deleted user');
+    // })
+    // .catch(function(error) {
+    //   console.log('Error deleting user:', error);
+    // }); 
+    this.router.navigate(['/admin/users']);
+  }
+    
   // create(user: firebase.User){
   //   this.db.object('/users/' + user.uid).set({
   //     name: user.displayName,

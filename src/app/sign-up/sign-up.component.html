@@ -1,40 +1,35 @@
-<form  class="form-group">
+<form class="form-group">
   <div class="form-group">
-     <input type="text" class="form-control" placeholder="First Name" #userFirstName formControlName="firstName" required>
-  </div>
- <div class="form-group">
-    <input type="text" class="form-control" placeholder="Last Name" #userLastName formControlName="lastName" required>
+    <input type="text" class="form-control" placeholder="Username" #username required>
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Name" #displayName formControlName="displayName" required>
-  </div>                        
-  <div class="form-group">
-    <input type="email" class="form-control" placeholder="Email Address" #email formControlName="email" required>
+    <input type="text" class="form-control" placeholder="First Name" #userFirstName>
   </div>
   <div class="form-group">
-    <input type="password" class="form-control" placeholder="Password" #password formControlName="password" required>
-  </div>
-  <!-- <div class="form-group">
-    <input type="text" class="form-control" placeholder="Address" #userAddressOne formControlName="addressOne" required>
-  </div>       -->
-  <div class="form-group">
-    <button type="button" class="btn btn-primary" (click)="auth.signUp(email.value, password.value, userFirstName.value, userLastName.value)">Sign Up</button>
+    <input type="text" class="form-control" placeholder="Last Name" #userLastName>
   </div>
   <div class="form-group">
-    <span class="or"><span class="orInner">Or</span></span>
+    <input type="text" class="form-control" placeholder="Name" #displayName>
   </div>
-<!-- Continue with Google -->
   <div class="form-group">
-    <button type="button" class="btn googleBtn" (click)="auth.login()">
-      <i class="fa fa-google-plus"></i>
-    Continue with Google
-    </button>
+    <input type="email" class="form-control" placeholder="Email Address" #email>
   </div>
-<!-- Continue with Facebook -->
-  <!-- <div class="form-group">
-    <button type="button" class="btn facebookBtn" (click)="authService.FacebookAuth()">
-      <i class="fa fa-facebook"></i>
-    Continue with Facebook
-    </button>
-  </div> -->
+  <div class="form-group">
+    <input type="password" class="form-control" placeholder="Password" #password>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="City" #userCity>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Address" #userAddressOne>
+  </div>
+  <div class="form-group">
+    <input type="number" class="form-control" placeholder="Postal Code" #userPostalCode>
+  </div>
+  <div class="form-group">
+    <button type="button" class="btn btn-primary"
+      (click)="auth.signUp(email.value, password.value, username.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value)">Sign
+      Up</button>
+  </div>
 </form>
+
