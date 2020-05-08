@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { FormsModule } from '@angular/forms';
 import { DataTableModule } from 'angular7-data-table';
 
@@ -39,6 +40,7 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AdminUsersListComponent } from './admin/admin-users-list/admin-users-list.component';
 import { UsersFormComponent } from './admin/users-form/users-form.component';
+import { MyAccountComponent } from './my-account/my-account.component';
 
 
 
@@ -62,7 +64,8 @@ import { UsersFormComponent } from './admin/users-form/users-form.component';
     LoginComponent,
     SignUpComponent,
     AdminUsersListComponent,
-    UsersFormComponent
+    UsersFormComponent,
+    MyAccountComponent
     
     
   ],
@@ -73,6 +76,7 @@ import { UsersFormComponent } from './admin/users-form/users-form.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     DataTableModule,
     NgbModule,
     Ng5SliderModule,
@@ -82,6 +86,7 @@ import { UsersFormComponent } from './admin/users-form/users-form.component';
       {path: 'shopping-cart', component: ShoppingCartComponent},
       {path: 'login', component: LoginComponent},
       {path: 'signup', component: SignUpComponent},
+      {path: 'my-account', component: MyAccountComponent},
 
       {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
       {path: 'order-succes', component: OrderSuccesComponent, canActivate: [AuthGuard]},

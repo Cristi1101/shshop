@@ -71,7 +71,7 @@ export class AuthService {
           window.alert(error.message)
       })
   }
-
+  
   
   private writeNewUser(user, username, name, lastname, city, address, postalcode) {
 
