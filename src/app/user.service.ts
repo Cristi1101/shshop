@@ -52,7 +52,7 @@ export class UserService {
     return this.db.object('/users/' + userId).update(user);
   }
 
-  updateUser(userId, username, email, firstname, lastname, address, city, postalcode){
+  updateUser(userId, username, email, firstname, lastname, address, city, postalcode, image){
     const userRef = this.db.object('/users/' + userId);
     const userData: AppUser = {
       username: username,
@@ -61,7 +61,8 @@ export class UserService {
       lastName: lastname,
       city: city,
       address: address,
-      postalCode: postalcode
+      postalCode: postalcode,
+      img: image
     }
     userRef.update(userData);
 

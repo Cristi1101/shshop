@@ -29,16 +29,12 @@ export class MyAccountComponent implements OnInit {
   
   ngOnInit(): void {}
 
-  swhoPreview(event: any){
-    if(event.target.files && event.target.files[0]){
-      const reader = new FileReader();
-      reader.onload = (e: any) => this.imageSrc = e.target.result;
-      reader.readAsDataURL(event.target.files[0]);
-      this.selectedImage = event.target.files[0];
-    }
-    else{
-      this.imageSrc = '';
-      this.selectedImage = null;
-    }
+ 
+  edit(){
+    this.router.navigate(['/edit-account']);
+  }
+
+  cancel(){
+    this.router.navigate(['/']);
   }
 }

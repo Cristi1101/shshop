@@ -1,3 +1,4 @@
+import { ViewContainerRef, ElementRef } from '@angular/core';
 
 export interface AppUser{
     key?: string;
@@ -10,4 +11,5 @@ export interface AppUser{
     city: string;
     address: string;
     postalCode: number;
+    img: string;
 }

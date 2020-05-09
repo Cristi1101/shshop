@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-//import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-//import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,44 +14,30 @@ export class SignUpComponent implements OnInit {
 
   constructor(
     public auth: AuthService,
-    private afAuth: AngularFireAuth) { }
-
-// signUp(user$) {
-//   return this.afAuth.auth.createUserWithEmailAndPassword(user$.email, user$.password)
-//     .then(() => {
-//         /* Call the SendVerificaitonMail() function when new user sign 
-//         up and returns promise */
-//         // this.SendVerificationMail();
-//         this.writeNewUser(user$);
-//     }).catch((error) => {
-//         window.alert(error.message)
-//     })
-// }
-
-// private writeNewUser(user$) {
-//     this.userService.save(user$);
-//   }
+    private afAuth: AngularFireAuth,
+    private storage: AngularFireStorage) { }
 
 
-  // signUpForm: FormGroup = this.formBuilder.group({
-  //   email: ['', [Validators.required, Validators.email]],
-  //   password: ['', [Validators.required]],
-  //   displayName: ['', [Validators.required]],
-  //   firstName: ['', [Validators.required]],
-  //    lastName: ['', [Validators.required]]
-    //addressOne: ['', [Validators.required]]
-    // addressTwo: [''],
-    // zipCode: ['', [Validators.required]],
-    // city: ['', [Validators.required]],
-    // phoneOne: ['', [Validators.required]],
-    // phoneTwo: [''],
-    // profilType: ['', [Validators.required]]
-  // });
+    uploadPercent: Observable<number>;
+    urlImage: Observable<string>;
 
-  // signUpViaEmail() {
-  //   this.auth.signUp(this.signUpForm.value);
-  // }
   ngOnInit(): void {
   }
 
+  onUpload(e){
+    const id = Math.random().toString(36).substring(2);
+    const file = e.target.files[0];
+    const filePath = 'uploads/' + id;
+    const ref = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+    this.uploadPercent = task.percentageChanges();
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        ref.getDownloadURL().subscribe((url) => {
+          this.urlImage = url;
+          console.log("url:", this.urlImage);
+        })
+      })
+    ).subscribe();
+  }
 }

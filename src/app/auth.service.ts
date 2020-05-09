@@ -15,12 +15,21 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 export class AuthService {
   user$: Observable<firebase.User>;
-
+  user;
   constructor(private userService: UserService, private afAuth: AngularFireAuth, 
     private route: ActivatedRoute,
     private db: AngularFireDatabase,
     private router: Router) {
     this.user$ = afAuth.authState;
+
+    this.afAuth.authState.subscribe(auth => {
+      if (auth !== undefined && auth !== null) {
+        this.user = auth;
+        localStorage.setItem('userUID', this.user.uid);
+        console.log(this.user.uid);// uid is defined here
+      }
+    });
+
    }
 
     login(){
@@ -60,20 +69,21 @@ export class AuthService {
     //     })
   //   // }
   
-    signUp(email, password, username, name, lastname, city, address, postalcode) {
+    signUp(email, password, username, name, lastname, city, address, postalcode, image) {
+      this.router.navigate(['/']);
       return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((result) => {
           /* Call the SendVerificaitonMail() function when new user sign 
           up and returns promise */
           // this.SendVerificationMail();
-          this.writeNewUser(result.user, username, name, lastname, city, address, postalcode);
+          this.writeNewUser(result.user, username, name, lastname, city, address, postalcode, image);
       }).catch((error) => {
           window.alert(error.message)
       })
   }
   
   
-  private writeNewUser(user, username, name, lastname, city, address, postalcode) {
+  private writeNewUser(user, username, name, lastname, city, address, postalcode, image) {
 
     const userRef = this.db.object('/users/' + user.uid);
     const userData: AppUser = {
@@ -84,7 +94,8 @@ export class AuthService {
       lastName: lastname,
       city: city,
       address: address,
-      postalCode: postalcode
+      postalCode: postalcode,
+      img: image
     }
     userRef.set(userData);
   }

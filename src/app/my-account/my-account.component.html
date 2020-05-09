@@ -30,20 +30,14 @@
                 <td>{{ user.postalCode }}</td>
             </tr>
         </table>
-        <form class="md-form">
-            <img [src]="imageSrc">
-            <div class="file-field" (click)="swhoPreview($event)">
-              <div class="btn btn-primary btn-sm float-left" >
-                <input type="file" >
-              </div>
-              
-            </div>
-          </form>
+
+        <button type="button" (click)="edit()" class="btn btn-primary" style="margin-right:10px;">Edit Profile</button>
+        <button type="button" (click)="cancel()" class="btn btn-secondary" style="margin-right:10px;">Back to Homepage</button>
     </div>
 
     <div class="col-md-6">
         <div class="card" style="width: 18rem;">
-            <!-- <img [src]="product.payload.val().imageUrl" class="card-img-top" *ngIf="product.payload.val().imageUrl"> -->
+            <img [src]="user.img" class="card-img-top">
             <div class="card-body">
                 <h3 class="card-title">{{  user.firstName }} {{ user.lastName }}</h3>
                 <h5>{{ user.username }}</h5>

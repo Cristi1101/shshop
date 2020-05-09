@@ -41,6 +41,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { AdminUsersListComponent } from './admin/admin-users-list/admin-users-list.component';
 import { UsersFormComponent } from './admin/users-form/users-form.component';
 import { MyAccountComponent } from './my-account/my-account.component';
+import { EditAccountComponent } from './edit-account/edit-account.component';
 
 
 
@@ -65,7 +66,8 @@ import { MyAccountComponent } from './my-account/my-account.component';
     SignUpComponent,
     AdminUsersListComponent,
     UsersFormComponent,
-    MyAccountComponent
+    MyAccountComponent,
+    EditAccountComponent
     
     
   ],
@@ -87,6 +89,7 @@ import { MyAccountComponent } from './my-account/my-account.component';
       {path: 'login', component: LoginComponent},
       {path: 'signup', component: SignUpComponent},
       {path: 'my-account', component: MyAccountComponent},
+      {path: 'edit-account', component: EditAccountComponent},
 
       {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
       {path: 'order-succes', component: OrderSuccesComponent, canActivate: [AuthGuard]},
