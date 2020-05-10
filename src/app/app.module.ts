@@ -42,6 +42,7 @@ import { AdminUsersListComponent } from './admin/admin-users-list/admin-users-li
 import { UsersFormComponent } from './admin/users-form/users-form.component';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { EditAccountComponent } from './edit-account/edit-account.component';
+import { OrderService } from './order.service';
 
 
 
@@ -112,7 +113,8 @@ import { EditAccountComponent } from './edit-account/edit-account.component';
     ColorsService,
     SubcategoriesService,
     ProductService,
-    ShoppingCartService
+    ShoppingCartService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

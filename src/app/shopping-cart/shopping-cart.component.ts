@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class ShoppingCartComponent implements OnInit {
   cart: ShoppingCart = new ShoppingCart(null);
   shoppingCartItemCount: number;
+  shoppingCartTotalPrice: number;
   cart$;
   shoppingCart: ShoppingCart;
   //@Input('product') product: Product;
@@ -40,6 +41,7 @@ export class ShoppingCartComponent implements OnInit {
       data = temp.items;
       this.cart = new ShoppingCart(data);
       this.shoppingCartItemCount = this.cart.totalItemsCount;
+      this.shoppingCartTotalPrice = this.cart.totalPrice;
      });
   }
   //   async ngOnInit() {

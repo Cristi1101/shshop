@@ -26,7 +26,7 @@ export class AuthService {
       if (auth !== undefined && auth !== null) {
         this.user = auth;
         localStorage.setItem('userUID', this.user.uid);
-        console.log(this.user.uid);// uid is defined here
+        //console.log(this.user.uid);// uid is defined here
       }
     });
 

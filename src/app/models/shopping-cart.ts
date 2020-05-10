@@ -17,7 +17,7 @@ export class ShoppingCart {
     //}
 
 
-    items: ShoppingCartItem[] = [];
+    items?: ShoppingCartItem[] = [];
 
     constructor(public itemsMap: { [productId: string]: ShoppingCartItem}) {
         this.itemsMap = itemsMap || {};
