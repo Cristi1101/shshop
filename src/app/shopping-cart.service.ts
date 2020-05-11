@@ -14,9 +14,13 @@ export class ShoppingCartService {
 
   private create(){
     return this.db.list('/shopping-carts').push({
-      dateCreated: new Date().getTime()
+      dateCreated: new Date().getTime() 
     });
   }
+
+  // createVisitedProducts(visited){
+  //   return this.db.list('/products-visited').push(visited);
+  // }
 
   async getCart()  {
     let cartId = await this.getOrCreateCartId();

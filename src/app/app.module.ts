@@ -93,7 +93,7 @@ import { OrderService } from './order.service';
       {path: 'edit-account', component: EditAccountComponent},
 
       {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
-      {path: 'order-succes', component: OrderSuccesComponent, canActivate: [AuthGuard]},
+      {path: 'order-success/:id', component: OrderSuccesComponent, canActivate: [AuthGuard]},
       {path: 'my-orders', component: MyOrdersComponent, canActivate: [AuthGuard]},
 
       {path: 'admin/products/new', component: CreateProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},

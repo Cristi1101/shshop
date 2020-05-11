@@ -6,4 +6,5 @@ export interface Product {
     subcategory: string;
     color: string;
     imageUrl: string;
+    visits?: number;
   }

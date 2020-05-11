@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { AppUser } from '../models/app-user';
 import { UserService } from '../user.service';
@@ -7,7 +7,7 @@ import { ShoppingCartService } from '../shopping-cart.service';
 import { ShoppingCart } from '../models/shopping-cart';
 import { Subscription } from 'rxjs/Subscription';
 import { OrderService } from '../order.service';
-import 'rxjs/add/operator/map';
+// import 'rxjs/add/operators/map';
 import { Order } from '../models/order';
 
 @Component({
@@ -25,7 +25,6 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
     public authService: AuthService,
     private userService: UserService,
     private shoppingCartService: ShoppingCartService,
@@ -46,14 +45,11 @@ export class CheckOutComponent implements OnInit, OnDestroy {
     console.log("order:", this.cart);
   }
 
-    placeOrder(){
-      //let order = new Order(this.userID, this.users, this.cart);
-      let order = {
-        datePlaced: new Date().getTime(),
-        shipping: this.users,
-        items: this.cart.items
-      };
-      this.orderService.storeOrder(order);
+    async placeOrder(){
+      let order = new Order(this.userID, this.users, this.cart);
+      let result = await this.orderService.placeOrder(order);
+      
+      this.router.navigate(['/order-success/', result.key]); 
     }
 
   // save(users) {
