@@ -43,6 +43,7 @@ import { UsersFormComponent } from './admin/users-form/users-form.component';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { EditAccountComponent } from './edit-account/edit-account.component';
 import { OrderService } from './order.service';
+import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 
 
 
@@ -68,7 +69,8 @@ import { OrderService } from './order.service';
     AdminUsersListComponent,
     UsersFormComponent,
     MyAccountComponent,
-    EditAccountComponent
+    EditAccountComponent,
+    ShoppingCartSummaryComponent
     
     
   ],

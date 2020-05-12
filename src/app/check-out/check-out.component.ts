@@ -59,7 +59,7 @@ export class CheckOutComponent implements OnInit, OnDestroy {
 
 
   cancel(){
-    this.router.navigate(['/']);
+    this.router.navigate(['/shopping-cart']);
   }
 
   ngOnDestroy(){

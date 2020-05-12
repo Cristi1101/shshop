@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
-import { Observable } from 'rx';
+import { AngularFireDatabase } from 'angularfire2/database';
+//import { Observable } from 'rxjs';
 import { Product } from './models/product';
 import { map } from 'rxjs/operators';
 
@@ -8,12 +8,45 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ProductService {
-
-  constructor(private db: AngularFireDatabase) {}
-
+  //caca$: Product;
+  constructor(private db: AngularFireDatabase) { }
+  
+  //books: Observable<any[]>;
   create(product){
     return this.db.list('/products').push(product);
   } 
+
+  // order(){
+  //   let documentToDomainObject$ = this.db.list<Product>('/products')
+  //   .snapshotChanges()
+  //   .pipe(
+  //       map(changes =>
+  //           changes.map(c => {
+  //               const data = c.payload.val() as Product;
+  //               const key = c.payload.key;
+  //               return { key, ...data };
+  //           })
+  //       )
+  //   );
+
+  //   this.caca$ = this.db.list('/products')
+  //     .snapshotChanges()
+  //     .pipe(
+  //       map(actions => 
+  //         actions.map()
+  //           .filter((item: Product) => item.visits > 4)));
+
+
+  //       // .snapshotChanges()
+  //       // .pipe(
+  //       //     map(changes =>
+  //       //         changes.map(c => {
+                    
+  //       //         })
+  //       //     )
+  //       // );
+  //       console.log("aici oare:", this.caca$);
+  // }
 
   getAll() {
     return this.db.list<Product>('/products')
