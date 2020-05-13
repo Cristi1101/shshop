@@ -15,57 +15,23 @@ import { Observable } from 'rxjs';
 export class ProductsComponent implements OnInit, OnDestroy{
   products: Product[] = [];
   filteredProducts: Product[] = [];
-  //filteredProducts2: Product[] = [];
   category: string;
   priceMin: number;
   priceMax: number;
   cart: any;
   subscription: Subscription;
-  mostVisitedProducts = [];
-  lastVisitedProducts = [];
-
-  selectedIndex = 0;
   
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService, 
-    private shoppingCartService: ShoppingCartService)
-  { 
-    //var mostViewedPosts = productService.getAll().orderByChild();
-    //this.mostVisitedProducts();
+    private shoppingCartService: ShoppingCartService){ 
     this.filterProducts();
-
-    this.productService.getMostVisitedProducts().subscribe(data => {
-      let aux;
-      for(let i = 0; i < data.length / 2; i++){
-        aux = data[i];
-        data[i] = data [data.length-i-1];
-        data [data.length-i-1] = aux;
-      }
-
-      this.mostVisitedProducts = data;
-      console.log("ceva:", this.mostVisitedProducts);
-    });
-
-    this.productService.getLastVisitedProducts().subscribe(data => {
-      let aux;
-      for(let i = 0; i < data.length / 2; i++){
-        aux = data[i];
-        data[i] = data [data.length-i-1];
-        data [data.length-i-1] = aux;
-      }
-      this.lastVisitedProducts = data;
-      console.log("timp:", this.lastVisitedProducts);
-    });
-    
   } 
 
   receiveFilter($event){
     this.priceMin = $event[0];
     this.priceMax = $event[1];
     this.filterProducts();
-
-    //console.log("priceMin:", this.priceMin);
   }
 
   filterProducts(){
@@ -78,7 +44,6 @@ export class ProductsComponent implements OnInit, OnDestroy{
     )
     .subscribe((params) =>{
       this.category = params.get('category');
-      //console.log("constructor2:", this.price);
       this.filteredProducts = (this.category) ?
         this.products.filter((p) =>
          (p.category === this.category && p.price >= this.priceMin && p.price <= this.priceMax)
@@ -92,22 +57,9 @@ export class ProductsComponent implements OnInit, OnDestroy{
   async ngOnInit(){
     this.subscription = (await this.shoppingCartService.getCart())
       .valueChanges().subscribe(cart => this.cart = cart);
-      
   }
 
   ngOnDestroy(){
     this.subscription.unsubscribe();
   }
-
-  // next(){
-  //   if(this.selectedIndex < this.mostVisitedProducts.length - 1)
-  //     this.selectedIndex++;
-  //   else this.selectedIndex = 0;
-  // }
-
-  // prev(){
-  //   if(this.selectedIndex > 0)
-  //     this.selectedIndex--;
-  //   else this.selectedIndex = this.mostVisitedProducts.length - 1;
-  // }
 }
