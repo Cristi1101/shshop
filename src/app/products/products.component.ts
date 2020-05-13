@@ -89,40 +89,6 @@ export class ProductsComponent implements OnInit, OnDestroy{
     });
   }
 
-  // mostVisitedProducts(){
-  //   //this.productService.order();
-  // //   this.productService.getAll().subscribe(items => {
-  // //     let n = items.length;
-  // //     items.sort(a => {
-  // //       a.visits > a.visits
-  // //     })
-  // //     for(let item of items){
-  // //       items
-  // //     }
-
-  // //     console.log(items);
-  // //   })
-
-  // this.productService
-  //   .getAll().pipe(
-  //   switchMap((products: Product[]) => {
-  //     this.products = products;
-  //     return this.route.queryParamMap;
-  //   })
-  //   )
-  //   .subscribe((params) =>{
-  //     this.visits = parseInt(params.get('visits'));
-  //     //console.log("constructor2:", this.price);
-  //     this.filteredProducts = (this.visits) ?
-  //       this.products.filter((p) =>
-  //        (p.category === this.category && p.price >= this.priceMin && p.price <= this.priceMax)
-  //       ) : (this.priceMin && this.priceMax ? 
-  //         this.products.filter((p) =>
-  //        (p.price >= this.priceMin && p.price <= this.priceMax)
-  //       ) : this.products);
-  //   });
-  //  }
-  
   async ngOnInit(){
     this.subscription = (await this.shoppingCartService.getCart())
       .valueChanges().subscribe(cart => this.cart = cart);
@@ -132,4 +98,16 @@ export class ProductsComponent implements OnInit, OnDestroy{
   ngOnDestroy(){
     this.subscription.unsubscribe();
   }
+
+  // next(){
+  //   if(this.selectedIndex < this.mostVisitedProducts.length - 1)
+  //     this.selectedIndex++;
+  //   else this.selectedIndex = 0;
+  // }
+
+  // prev(){
+  //   if(this.selectedIndex > 0)
+  //     this.selectedIndex--;
+  //   else this.selectedIndex = this.mostVisitedProducts.length - 1;
+  // }
 }
