@@ -16,6 +16,15 @@ export class ProductService {
     return this.db.list('/products').push(product);
   } 
 
+  getMostVisitedProducts(){
+    return this.db.list('/products', 
+      ref => ref.orderByChild('visits').limitToLast(5)).valueChanges();
+  }
+
+  getLastVisitedProducts(){
+    return this.db.list('/products', 
+      ref => ref.orderByChild('time').limitToLast(5)).valueChanges();
+  }
   // order(){
   //   let documentToDomainObject$ = this.db.list<Product>('/products')
   //   .snapshotChanges()

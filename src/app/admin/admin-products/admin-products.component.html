@@ -24,6 +24,15 @@
     </data-table-column>
 
     <data-table-column
+    [property]="'category'"
+    [header]="'Category'"
+    [sortable]="true"
+    [resizable]="true"
+    >
+
+    </data-table-column>        
+
+    <data-table-column
         [property]="'price'"
         [header]="'Price'"
         [sortable]="true"
@@ -38,7 +47,7 @@
         [property]="'$key'"
     >
         <ng-template #dataTableCell let-item="item">
-            <a [routerLink]="['/admin/products/', item.key]">Edit</a>
+            <a [routerLink]="['/admin/products/', item.key]">View More</a>
         </ng-template>
     </data-table-column>
 </data-table>

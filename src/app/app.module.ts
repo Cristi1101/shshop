@@ -44,6 +44,7 @@ import { MyAccountComponent } from './my-account/my-account.component';
 import { EditAccountComponent } from './edit-account/edit-account.component';
 import { OrderService } from './order.service';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
+import { OrdersFormComponent } from './orders-form/orders-form.component';
 
 
 
@@ -59,6 +60,7 @@ import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-c
     MyOrdersComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
+    OrdersFormComponent,
     ProductFormComponent,
     CreateProductFormComponent,
     ProductFilterComponent,
@@ -102,6 +104,7 @@ import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-c
       {path: 'admin/products/:id', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+      {path: 'admin/orders/:id', component: OrdersFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/users', component: AdminUsersListComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/users/:id', component: UsersFormComponent, canActivate: [AuthGuard, AdminAuthGuard]}
     ])

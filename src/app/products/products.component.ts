@@ -21,8 +21,10 @@ export class ProductsComponent implements OnInit, OnDestroy{
   priceMax: number;
   cart: any;
   subscription: Subscription;
-  //Products2: Product[];
-  //visits: number;
+  mostVisitedProducts = [];
+  lastVisitedProducts = [];
+
+  selectedIndex = 0;
   
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +34,30 @@ export class ProductsComponent implements OnInit, OnDestroy{
     //var mostViewedPosts = productService.getAll().orderByChild();
     //this.mostVisitedProducts();
     this.filterProducts();
+
+    this.productService.getMostVisitedProducts().subscribe(data => {
+      let aux;
+      for(let i = 0; i < data.length / 2; i++){
+        aux = data[i];
+        data[i] = data [data.length-i-1];
+        data [data.length-i-1] = aux;
+      }
+
+      this.mostVisitedProducts = data;
+      console.log("ceva:", this.mostVisitedProducts);
+    });
+
+    this.productService.getLastVisitedProducts().subscribe(data => {
+      let aux;
+      for(let i = 0; i < data.length / 2; i++){
+        aux = data[i];
+        data[i] = data [data.length-i-1];
+        data [data.length-i-1] = aux;
+      }
+      this.lastVisitedProducts = data;
+      console.log("timp:", this.lastVisitedProducts);
+    });
+    
   } 
 
   receiveFilter($event){

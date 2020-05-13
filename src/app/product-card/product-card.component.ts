@@ -22,10 +22,12 @@ export class ProductCardComponent {
   
 
   addToCart(){
-    //update 'visits' field in every product
+    //update 'visits' field in every product 
     //produsVizitat2 = this.product.visits;
     if( this.product.visits == null) this.product.visits = 0;
     this.product.visits++;
+    this.product.time = new Date().getTime();
+    console.log("timp:", this.product.time );
     if( this.product.visits > produsVizitat) produsVizitat = this.product.visits;
     //else produsVizitat2 = this.product.visits;
     console.log("cel mai vizitat produs:", produsVizitat);
