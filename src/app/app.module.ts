@@ -88,8 +88,8 @@ import { OrdersFormComponent } from './orders-form/orders-form.component';
     NgbModule,
     Ng5SliderModule,
     RouterModule.forRoot([
-      {path: '', component: HomeComponent},
-      {path: 'products', component: ProductsComponent},
+      {path: '', component: ProductsComponent},
+      {path: 'homepage', component: HomeComponent},
       {path: 'shopping-cart', component: ShoppingCartComponent},
       {path: 'login', component: LoginComponent},
       {path: 'signup', component: SignUpComponent},
