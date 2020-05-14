@@ -35,13 +35,27 @@ export class OrderService {
       )
   );
   }
-
+ 
   getOrders(){
     return this.db.list('/orders').snapshotChanges();
   }
 
   getAll() {
     return this.db.list<Order>('/orders')
+        .snapshotChanges()
+        .pipe(
+            map(changes =>
+                changes.map(c => {
+                    const data = c.payload.val() as Order;
+                    const key = c.payload.key;
+                    return { key, ...data };
+                })
+            )
+        );
+  }
+
+  getUserOrders(userId: string) {
+    return this.db.list<Order>('/orders', ref => ref.orderByChild('userId').equalTo(userId))
         .snapshotChanges()
         .pipe(
             map(changes =>

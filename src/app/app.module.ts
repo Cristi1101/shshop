@@ -45,6 +45,8 @@ import { EditAccountComponent } from './edit-account/edit-account.component';
 import { OrderService } from './order.service';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 import { OrdersFormComponent } from './orders-form/orders-form.component';
+import { MyOrdersDetailsComponent } from './my-orders-details/my-orders-details.component';
+import { MyOrdersFormComponent } from './my-orders-form/my-orders-form.component';
 
 
 
@@ -72,7 +74,9 @@ import { OrdersFormComponent } from './orders-form/orders-form.component';
     UsersFormComponent,
     MyAccountComponent,
     EditAccountComponent,
-    ShoppingCartSummaryComponent
+    ShoppingCartSummaryComponent,
+    MyOrdersDetailsComponent,
+    MyOrdersFormComponent
     
     
   ],
@@ -99,6 +103,7 @@ import { OrdersFormComponent } from './orders-form/orders-form.component';
       {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
       {path: 'order-success/:id', component: OrderSuccesComponent, canActivate: [AuthGuard]},
       {path: 'my-orders', component: MyOrdersComponent, canActivate: [AuthGuard]},
+      {path: 'my-orders/:id', component: MyOrdersDetailsComponent, canActivate: [AuthGuard]},
 
       {path: 'admin/products/new', component: CreateProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/products/:id', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},

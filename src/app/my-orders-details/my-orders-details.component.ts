@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from '../order.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { OrderService } from '../order.service';
 import { take } from 'rxjs/operators';
 import { Order } from '../models/order';
 
 @Component({
-  selector: 'app-orders-form',
-  templateUrl: './orders-form.component.html',
-  styleUrls: ['./orders-form.component.css']
+  selector: 'app-my-orders-details',
+  templateUrl: './my-orders-details.component.html',
+  styleUrls: ['./my-orders-details.component.css']
 })
-export class OrdersFormComponent implements OnInit {
+export class MyOrdersDetailsComponent implements OnInit {
+ 
   id;
   order;
   order2: Order[];
@@ -29,8 +30,8 @@ export class OrdersFormComponent implements OnInit {
   }
 
   back(){
-    this.router.navigate(['/admin/orders']);
-  }
+    this.router.navigate(['/my-orders']);
+  } 
 
   ngOnInit(): void {
   }

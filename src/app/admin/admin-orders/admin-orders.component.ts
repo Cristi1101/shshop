@@ -24,7 +24,7 @@ export class AdminOrdersComponent {
     private orderService: OrderService,
     private router: Router,
     private route: ActivatedRoute) {
-    this.orders$ = orderService.getAll();
+    this.orders$ = orderService.getAll(); 
 
     // this.subscription = this.orderService.getAll().subscribe(orders => {
     //   this.orders = orders;
