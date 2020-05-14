@@ -1,5 +1,6 @@
 <div class="row">
     <div class="col-6">
+        <h3>Use shipping data from your account</h3><br>
         <form>
             <div class="form-group">
                 <label for="firstName">First Name</label>
@@ -53,11 +54,12 @@
                     Postal Code is required
                 </div>
             </div>
-            
-            <button 
-            (click)="placeOrder()"
-            class="btn btn-primary" style="margin-right:10px;">Place Order</button>
-            <button type="button" (click)="cancel()" class="btn btn-secondary" style="margin-right:10px;">Cancel</button>
+
+            <small>Use shipping information from your account or feel free to change it.</small><br><br>
+
+            <button type="button" (click)="placeOrder()" class="btn btn-primary" style="margin-right:10px;">Cash on delivery</button>or 
+            <button type="button" (click)="placeOrder()" class="btn btn-primary" style="margin-right:10px;">Credit card / Paypal</button><br>
+            <button type="button" (click)="cancel()" class="btn btn-secondary" style="margin-top:10px;">Cancel</button>
         </form>
     </div>
 
