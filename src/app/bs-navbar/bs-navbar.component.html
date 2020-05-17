@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-        <a class="navbar-brand" routerLink="/">
+        <a class="navbar-brand" routerLink="/homepage">
             Second
             <i class="far fa-handshake"></i>
             Hand Shop
@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/homepage">
+                    <a class="nav-link" routerLink="/">
                         <i class="fas fa-store"></i>
                     </a>
                 </li>
@@ -39,7 +39,8 @@
                         {{ appUser.username }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" routerLink="/my-account">My Account <i class="fas fa-user-circle"></i></a>
+                        <a class="dropdown-item" routerLink="/my-account">My Account <i
+                                class="fas fa-user-circle"></i></a>
                         <a class="dropdown-item" routerLink="/my-orders">My Orders</a>
                         <ng-container *ngIf="appUser.isAdmin">
                             <a class="dropdown-item" routerLink="/admin/orders">Manage orders</a>
@@ -52,4 +53,4 @@
             </ul>
         </div>
 
-</nav>
+    </nav>

@@ -1,12 +1,15 @@
-<div class="card shadow h-100" style="width: 20rem;" >
-    <div class="zoom-image">
+<div class="card shadow h-100 text-center" style="width: 20rem;" >
+    <div class="zoom-image h-50" style="margin-top: 5px;">
         <img src="{{ product.imageUrl }}" class="card-img-top">
     </div>
-    <div class="card-body">
+    
+    <div class="card-body h-25">
+        <hr>
         <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-text">{{ product.category }} - {{ product.subcategory }}</p>
         <p class="card-text">{{ product.price | currency:'RON ':true }}</p>
     </div>
-    <div *ngIf="showActions" class="card-footer">
+    <div *ngIf="showActions" class="card-footer h-5">
         <button *ngIf="getQuantity() === 0; else updateQuantity"  (click)="addToCart()"
             class="btn btn-primary btn-block">Add to Cart</button>
         <ng-template #updateQuantity>
