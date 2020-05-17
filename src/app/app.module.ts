@@ -47,6 +47,7 @@ import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-c
 import { OrdersFormComponent } from './orders-form/orders-form.component';
 import { MyOrdersDetailsComponent } from './my-orders-details/my-orders-details.component';
 import { MyOrdersFormComponent } from './my-orders-form/my-orders-form.component';
+import { PlataComponent } from './plata/plata.component';
 
 
 
@@ -76,7 +77,8 @@ import { MyOrdersFormComponent } from './my-orders-form/my-orders-form.component
     EditAccountComponent,
     ShoppingCartSummaryComponent,
     MyOrdersDetailsComponent,
-    MyOrdersFormComponent
+    MyOrdersFormComponent,
+    PlataComponent
     
     
   ],

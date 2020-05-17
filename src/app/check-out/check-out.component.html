@@ -57,9 +57,10 @@
 
             <small>Use shipping information from your account or feel free to change it.</small><br><br>
 
-            <button type="button" (click)="placeOrder()" class="btn btn-primary" style="margin-right:10px;">Cash on delivery</button>or 
-            <button type="button" (click)="placeOrder()" class="btn btn-primary" style="margin-right:10px;">Credit card / Paypal</button><br>
-            <button type="button" (click)="cancel()" class="btn btn-secondary" style="margin-top:10px;">Cancel</button>
+            <button type="button" (click)="placeOrder()" class="btn btn-primary" style="margin-right:10px; width: 100%;">Cash on Delivery</button><br><br>
+            <!-- <button type="button" (click)="placeOrder()" class="btn btn-primary" style="margin-right:10px;">Credit card / Paypal</button><br> -->
+            <div #paypal (click)="placeOrder()"></div>
+            <button type="button" (click)="cancel()" class="btn btn-secondary" style="margin-top:10px;">Back to Shopping Cart</button>
         </form>
     </div>
 
@@ -67,3 +68,9 @@
         <shopping-cart-summary ></shopping-cart-summary>
     </div>
 </div>
+
+
+<!-- 
+<div *ngIf="!paidFor">
+
+</div> -->
