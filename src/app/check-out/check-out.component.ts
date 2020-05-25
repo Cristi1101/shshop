@@ -29,24 +29,23 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   shoppingCartTotalPrice: number;
   shoppingCart: ShoppingCart;
 
-  @ViewChild('paypal', {static: true}) paypalElem: ElementRef;
+  @ViewChild('paypal', { static: true }) paypalElem: ElementRef;
   constructor(
     private router: Router,
     public authService: AuthService,
     private userService: UserService,
     private shoppingCartService: ShoppingCartService,
-    private orderService: OrderService)
-    {
-      this.authService.appUser$.subscribe(user => {
-        if (user) {
-          this.users = user;
-          console.log("USER", user);
-        }
-      });
-    }
-     
-    paidFor = false;
-  
+    private orderService: OrderService) {
+    this.authService.appUser$.subscribe(user => {
+      if (user) {
+        this.users = user;
+        console.log("USER", user);
+      }
+    });
+  }
+
+  paidFor = false;
+
   async ngOnInit() {
     let cart$ = await this.shoppingCartService.getCart();
     this.subscription = cart$.valueChanges().subscribe((cart: ShoppingCart) => this.cart = cart);
@@ -61,17 +60,17 @@ export class CheckOutComponent implements OnInit, OnDestroy {
       this.shoppingCartTotalPrice = this.cart2.totalPrice;
     });
 
-    
+
 
     paypal
       .Buttons({
-        createOrder:(data, actions) => {
+        createOrder: (data, actions) => {
           return actions.order.create({
             purchase_units: [
               {
                 description: this.cart.totalItemsCount,
                 amount: {
-                  value: parseFloat((this.cart2.totalPrice/4.47).toString()).toFixed(2)
+                  value: parseFloat((this.cart2.totalPrice / 4.47).toString()).toFixed(2)
                 }
               }
             ]
@@ -90,12 +89,12 @@ export class CheckOutComponent implements OnInit, OnDestroy {
 
   }
 
-    async placeOrder(){
-      let order = new Order(this.userID, this.users, this.cart);
-      let result = await this.orderService.placeOrder(order);
-      
-      this.router.navigate(['/order-success/', result.key]); 
-    }
+  async placeOrder() {
+    let order = new Order(this.userID, this.users, this.cart);
+    let result = await this.orderService.placeOrder(order);
+
+    this.router.navigate(['/order-success/', result.key]);
+  }
 
   // save(users) {
   //   this.userService.update(this.userID, users);
@@ -103,11 +102,11 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   // }
 
 
-  cancel(){
+  cancel() {
     this.router.navigate(['/shopping-cart']);
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 

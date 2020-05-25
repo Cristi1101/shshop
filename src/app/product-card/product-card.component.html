@@ -1,3 +1,4 @@
+
 <div class="card shadow h-100 text-center" style="width: 20rem;" >
     <div class="zoom-image h-50" style="margin-top: 5px;">
         <img src="{{ product.imageUrl }}" class="card-img-top">
@@ -8,6 +9,13 @@
         <h5 class="card-title">{{ product.title }}</h5>
         <p class="card-text">{{ product.category }} - {{ product.subcategory }}</p>
         <p class="card-text">{{ product.price | currency:'RON ':true }}</p>
+        <!-- <div class="custom-control custom-checkbox custom-control-inline">
+            <input type="checkbox" class="custom-control-input">
+            <label class="custom-control-label" for="defaultInline1" style="font-size: 15px; ">Add to Favorites</label>
+        </div> -->
+        <input type="checkbox" (click)="adaugaFavorit()" [checked]="checked">
+        <label for="vehicle1" style="font-size: 15px;">Add to Favorites</label><br>
+
     </div>
     <div *ngIf="showActions" class="card-footer h-5">
         <button *ngIf="getQuantity() === 0; else updateQuantity"  (click)="addToCart()"
