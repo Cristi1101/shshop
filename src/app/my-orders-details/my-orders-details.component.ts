@@ -15,7 +15,7 @@ export class MyOrdersDetailsComponent implements OnInit {
   id;
   order;
   order2: Order[];
-
+  currentRate = 0;
   constructor(
     private router: Router,
     private route: ActivatedRoute,

@@ -1,6 +1,6 @@
 export interface Recenzii {
     key?: string;
-    stele: string;
+    stele: number;
     continut: string;
     uid: string;
     pid: string;
