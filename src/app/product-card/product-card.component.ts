@@ -44,8 +44,12 @@ export class ProductCardComponent implements OnInit{
     this.cartService.addToCart(this.product);
   } 
 
-  adaugaFavorit(){
-    this.favoritService.add(this.product);
+  toggleFavourite(){
+    if(this.checked == true){
+      this.favoritService.remove(this.product);
+    }else{
+      this.favoritService.add(this.product);
+    }
   }
 
   removeFromCart(){

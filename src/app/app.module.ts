@@ -48,6 +48,7 @@ import { OrdersFormComponent } from './orders-form/orders-form.component';
 import { MyOrdersDetailsComponent } from './my-orders-details/my-orders-details.component';
 import { MyOrdersFormComponent } from './my-orders-form/my-orders-form.component';
 import { PlataComponent } from './plata/plata.component';
+import { RecenziiService } from './recenzii.service';
 
 
 
@@ -126,7 +127,8 @@ import { PlataComponent } from './plata/plata.component';
     SubcategoriesService,
     ProductService,
     ShoppingCartService,
-    OrderService
+    OrderService,
+    RecenziiService
   ],
   bootstrap: [AppComponent]
 })

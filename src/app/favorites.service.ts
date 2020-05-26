@@ -11,19 +11,19 @@ export class FavoritesService {
   userID = localStorage.getItem('userUID');
   constructor(private db: AngularFireDatabase) { }
 
-  private create(){
+  private create() {
     return this.db.list('/favorites').push({
       dateCreated: new Date().getTime(),
       userId: this.userID
     });
   }
 
-  async getCart()  {
+  async getCart() {
     //let cartId = await this.getOrCreateCartId();
     return this.db.object('/favorites/' + this.userID);
   }
 
-  getItem(cartId: string, productId: string){
+  getItem(cartId: string, productId: string) {
     return this.db.object('/favorites/' + cartId + '/items/' + productId);
   }
 
@@ -38,29 +38,34 @@ export class FavoritesService {
   // }
 
   async add(product: Product) {
-    
-    this.updateFavorite(product, 1);
+
+    this.updateFavorite(product, true);
   }
 
-  async remove(product: Product){
-    this.updateFavorite(product, -1);
+  async remove(product: Product) {
+    this.updateFavorite(product, false);
   }
 
- validate(pid: string): Observable<any>{
-    return this.db.object('/favorites/' +  this.userID + '/items/' + pid).valueChanges(); 
+  validate(pid: string): Observable<any> {
+    return this.db.object('/favorites/' + this.userID + '/items/' + pid).valueChanges();
   }
 
-  async clear(){
+  async clear() {
     //let cartId = await this.getOrCreateCartId();
     this.db.object('/favorites/' + this.userID + '/items').remove();
   }
 
-  private async updateFavorite(product: Product, change: number){
+  private async updateFavorite(product: Product, toAdd: boolean) {
     //let cartId = await this.getOrCreateCartId();
-    let item = this.getItem(this.userID, product.key);
+    if (toAdd == true) {
+      let item = this.getItem(this.userID, product.key);
 
-    item.snapshotChanges().pipe(take(1)).subscribe((data) => {
-        item.update({ product: product});
-    });
+      item.snapshotChanges().pipe(take(1)).subscribe((data) => {
+        item.update({ product: product });
+      });
+    }
+    else {
+      this.db.object('/favorites/' + this.userID + '/items/' + product.key).remove();
+    }
   }
 }
