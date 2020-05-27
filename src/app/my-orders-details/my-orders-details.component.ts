@@ -11,7 +11,7 @@ import { RecenziiService } from '../recenzii.service';
   styleUrls: ['./my-orders-details.component.css']
 })
 export class MyOrdersDetailsComponent implements OnInit {
- 
+
   id;
   order;
   order2: Order[];
@@ -23,18 +23,17 @@ export class MyOrdersDetailsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private orderService: OrderService,
-    private recenziiService: RecenziiService){
-    this.id = this.route.snapshot.paramMap.get('id'); 
+    private recenziiService: RecenziiService) {
+    this.id = this.route.snapshot.paramMap.get('id');
 
     if (this.id) {
       this.orderService.get(this.id).pipe(take(1)).subscribe(o => (this.order = o));
       this.orderService.getItems(this.id).pipe(take(1)).subscribe(o => (this.order2 = o));
       console.log("id:", this.order);
     }
-    
   }
 
-  adaugaRecenzie(recenzie: string, product, stele){
+  adaugaRecenzie(recenzie: string, product, stele) {
     console.log("recenzie:", product.key);
     let modelRecenzie = {
       stele: stele,
@@ -44,18 +43,14 @@ export class MyOrdersDetailsComponent implements OnInit {
     this.recenziiService.create(modelRecenzie, product.key);
   }
 
-  afisareRecenzie(product){
-    this.recenzii$ = this.recenziiService.getAll(product.key); 
-    
-  } 
-  
-
-  back(){
-    this.router.navigate(['/my-orders']);
-  } 
-
-  ngOnInit(): void {
-    
+  afisareRecenzie(product) {
+    this.recenzii$ = this.recenziiService.getAll(product.key);
   }
 
+  back() {
+    this.router.navigate(['/my-orders']);
+  }
+
+  ngOnInit(): void {
+  }
 }

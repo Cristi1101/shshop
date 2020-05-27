@@ -1,5 +1,20 @@
 <!-- DE FACUT: ruta specifica care sa ma duca la produsul respectiv -->
-
-<div *ngFor="let recenzie of recenziileMele">
-    continut recenzie: {{ recenzie.recenzie.continut }} - titlu produs: {{ recenzie.produs.title }}
+<h1 class="text-center">My Reviews</h1><br>
+<div *ngFor="let recenzie of recenziileMele" style="margin-left: 390px;">
+    <div class="card shadow h-100" style="width: 20rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{ recenzie.produs.title }}</h5>
+            <div class="zoom-image h-50" style="margin-top: 5px;">
+                <img src="{{ recenzie.produs.imageUrl }}" class="card-img-top">
+            </div>
+            <p class="card-text">{{ recenzie.recenzie.continut }}</p>
+            <hr>
+            <ngb-rating #stea [(rate)]="recenzie.recenzie.stele" [max]="5" readonly=true></ngb-rating>
+            <pre>Rate: <b>{{recenzie.recenzie.stele}}</b></pre>
+            <a [routerLink]="['/recenzii/', recenzie.recenzie.uid]">Edit Review</a>
+            <!-- de lucrat la id- ca sa il definesc -->
+            
+        </div>
+    </div>
+    <br>
 </div>

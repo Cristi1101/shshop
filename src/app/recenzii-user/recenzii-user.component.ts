@@ -14,15 +14,15 @@ export class RecenziiUserComponent implements OnInit {
   constructor(private recenziiService: RecenziiService,
     private productService: ProductService) { }
 
-  ngOnInit(): void {
+  getReviews() {
     this.productService.getAll().subscribe(data => {
       data.forEach(element => {
         this.recenziiService.getAllMyReviews(element.key).subscribe(recenziiData => {
           recenziiData.forEach(element1 => {
             console.log("element: ", element);
-            if(element1.uid == this.userID){
+            if (element1.uid == this.userID) {
               this.recenziileMele.push({
-                recenzie: element1, 
+                recenzie: element1,
                 produs: element
               });
             }
@@ -32,4 +32,7 @@ export class RecenziiUserComponent implements OnInit {
     });
   }
 
+  ngOnInit(): void {
+    this.getReviews();
+  }
 }

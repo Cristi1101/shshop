@@ -1,54 +1,54 @@
 <div>
-    <h3>Shipping Details</h3> <br>
-    <table class="table">
-        <tr>
-            <th>First Name</th>
-            <td>{{ order.shipping.firstName }}</td>
-        </tr>
-        <tr>
-            <th>Last Name</th>
-            <td>{{ order.shipping.lastName }}</td>
-        </tr>
-        <tr>
-            <th>Username</th>
-            <td>{{ order.shipping.username }}</td>
-        </tr>
-        <tr>
-            <th>Email</th>
-            <td>{{ order.shipping.email }}</td>
-        </tr>
-        <tr>
-            <th>City</th>
-            <td>{{ order.shipping.city }}</td>
-        </tr>
-        <tr>
-            <th>Address</th>
-            <td>{{ order.shipping.address }}</td>
-        </tr>
-        <tr>
-            <th>Postal Code</th>
-            <td>{{ order.shipping.postalCode }}</td>
-        </tr>
-    </table>
+  <h3>Shipping Details</h3> <br>
+  <table class="table">
+    <tr>
+      <th>First Name</th>
+      <td>{{ order.shipping.firstName }}</td>
+    </tr>
+    <tr>
+      <th>Last Name</th>
+      <td>{{ order.shipping.lastName }}</td>
+    </tr>
+    <tr>
+      <th>Username</th>
+      <td>{{ order.shipping.username }}</td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td>{{ order.shipping.email }}</td>
+    </tr>
+    <tr>
+      <th>City</th>
+      <td>{{ order.shipping.city }}</td>
+    </tr>
+    <tr>
+      <th>Address</th>
+      <td>{{ order.shipping.address }}</td>
+    </tr>
+    <tr>
+      <th>Postal Code</th>
+      <td>{{ order.shipping.postalCode }}</td>
+    </tr>
+  </table>
 </div>
 <h3>Products Ordered</h3> <br>
 <div class="card-group">
 
-    <div class="card col-md-3 col-lg-3 d-flex align-items-stretch" style="width: 18rem;" *ngFor="let i of order2">
-        <img [src]="i.product.imageUrl" class="card-img-top">
-        <div class="card-body">
-            <h5 class="card-title ">{{ i.quantity }} x {{ i.product.title }}</h5>
-            <p class="card-text">{{ i.product.price | currency:'RON ':'code'}}</p>
-            <p class="card-text font-weight-bold">Total: {{ (i.product.price * i.quantity) | currency:'RON ':'code'}}
-            </p>
-            <textarea #recenzie name="recenzie" cols="20" rows="5"></textarea>
-            <ngb-rating #stea [(rate)]="currentRate" [max]="5"></ngb-rating>
-            <hr>
-            <pre>Rate: <b>{{currentRate}}</b></pre>
-            <button (click)="adaugaRecenzie(recenzie.value, i, currentRate)">Adauga Recenzie</button>
-            <button (click)="afisareRecenzie(i)">Afiseaza Recenzie</button>
-        </div>
-    </div> 
+  <div class="card col-md-3 col-lg-3 d-flex align-items-stretch" style="width: 18rem;" *ngFor="let i of order2">
+    <img [src]="i.product.imageUrl" class="card-img-top">
+    <div class="card-body">
+      <h5 class="card-title ">{{ i.quantity }} x {{ i.product.title }}</h5>
+      <p class="card-text">{{ i.product.price | currency:'RON ':'code'}}</p>
+      <p class="card-text font-weight-bold">Total: {{ (i.product.price * i.quantity) | currency:'RON ':'code'}}
+      </p>
+      <textarea #recenzie name="recenzie" cols="20" rows="5"></textarea>
+      <ngb-rating #stea [(rate)]="currentRate" [max]="5"></ngb-rating>
+      <hr>
+      <pre>Rate: <b>{{currentRate}}</b></pre>
+      <button (click)="adaugaRecenzie(recenzie.value, i, currentRate)">Adauga Recenzie</button>
+      <button (click)="afisareRecenzie(i)">Afiseaza Recenzie</button>
+    </div>
+  </div>
 </div>
 
 <h1>Orders</h1>
@@ -59,7 +59,7 @@
       <th>Continut</th>
       <th></th>
     </tr>
-  </thead> 
+  </thead>
   <tbody>
     <tr *ngFor="let recenzie of recenzii$ | async">
       <td>{{ recenzie.stele }}</td>
@@ -68,7 +68,7 @@
         <a [routerLink]="['/admin/orders/', order.key]">Details</a>
       </td> -->
     </tr>
-  </tbody> 
+  </tbody>
 </table>
 
 <button type="button" (click)="back()" class="btn btn-secondary" style="margin-top:10px;">Back</button>
