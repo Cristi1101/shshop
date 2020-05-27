@@ -46,7 +46,29 @@
             <hr>
             <pre>Rate: <b>{{currentRate}}</b></pre>
             <button (click)="adaugaRecenzie(recenzie.value, i, currentRate)">Adauga Recenzie</button>
+            <button (click)="afisareRecenzie(i)">Afiseaza Recenzie</button>
         </div>
-    </div>
+    </div> 
 </div>
+
+<h1>Orders</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Stele</th>
+      <th>Continut</th>
+      <th></th>
+    </tr>
+  </thead> 
+  <tbody>
+    <tr *ngFor="let recenzie of recenzii$ | async">
+      <td>{{ recenzie.stele }}</td>
+      <td>{{ recenzie.continut}}</td>
+      <!-- <td>
+        <a [routerLink]="['/admin/orders/', order.key]">Details</a>
+      </td> -->
+    </tr>
+  </tbody> 
+</table>
+
 <button type="button" (click)="back()" class="btn btn-secondary" style="margin-top:10px;">Back</button>

@@ -16,6 +16,9 @@ export class MyOrdersDetailsComponent implements OnInit {
   order;
   order2: Order[];
   currentRate = 0;
+  recenzii$;
+  userID = localStorage.getItem('userUID');
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -41,11 +44,18 @@ export class MyOrdersDetailsComponent implements OnInit {
     this.recenziiService.create(modelRecenzie, product.key);
   }
 
+  afisareRecenzie(product){
+    this.recenzii$ = this.recenziiService.getAll(product.key); 
+    
+  } 
+  
+
   back(){
     this.router.navigate(['/my-orders']);
   } 
 
   ngOnInit(): void {
+    
   }
 
 }

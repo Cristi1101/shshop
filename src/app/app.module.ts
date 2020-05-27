@@ -49,6 +49,7 @@ import { MyOrdersDetailsComponent } from './my-orders-details/my-orders-details.
 import { MyOrdersFormComponent } from './my-orders-form/my-orders-form.component';
 import { PlataComponent } from './plata/plata.component';
 import { RecenziiService } from './recenzii.service';
+import { RecenziiUserComponent } from './recenzii-user/recenzii-user.component';
 
 
 
@@ -79,7 +80,8 @@ import { RecenziiService } from './recenzii.service';
     ShoppingCartSummaryComponent,
     MyOrdersDetailsComponent,
     MyOrdersFormComponent,
-    PlataComponent
+    PlataComponent,
+    RecenziiUserComponent
     
     
   ],
@@ -107,6 +109,7 @@ import { RecenziiService } from './recenzii.service';
       {path: 'order-success/:id', component: OrderSuccesComponent, canActivate: [AuthGuard]},
       {path: 'my-orders', component: MyOrdersComponent, canActivate: [AuthGuard]},
       {path: 'my-orders/:id', component: MyOrdersDetailsComponent, canActivate: [AuthGuard]},
+      {path: 'recenzii', component: RecenziiUserComponent, canActivate: [AuthGuard]},
 
       {path: 'admin/products/new', component: CreateProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/products/:id', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},

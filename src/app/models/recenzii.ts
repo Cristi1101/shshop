@@ -3,5 +3,4 @@ export interface Recenzii {
     stele: number;
     continut: string;
     uid: string;
-    pid: string;
   }

@@ -3,6 +3,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Product } from './models/product';
 import { map } from 'rxjs/operators';
 import { ProductService } from './product.service';
+import { Recenzii } from './models/recenzii';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class RecenziiService {
   constructor(private db: AngularFireDatabase) { }
 
   userID = localStorage.getItem('userUID');
+  produse;
 
   create(recenzie, product) {
     return this.db.list('/products/' + product + '/recenzii').push(recenzie);
@@ -26,22 +28,20 @@ export class RecenziiService {
   //     ref => ref.orderByChild('time').limitToLast(5)).valueChanges();
   // }
 
-  getAll() {
-    return this.db.list<Product>('/products')
-      .snapshotChanges()
-      .pipe(
-        map(changes =>
-          changes.map(c => {
-            const data = c.payload.val() as Product;
-            const key = c.payload.key;
-            return { key, ...data };
-          })
-        )
-      );
+  getAll(product) {
+    return this.db.list<Recenzii>('/products/' + product + '/recenzii').valueChanges();
+  }
+
+  getAllMyReviews(product) {
+    return this.db.list<Recenzii>('/products/' + product + '/recenzii').valueChanges();
+  }
+
+  editRecenzie(productId, recenzieId, recenzie){
+    return this.db.object('/products/' + productId + '/recenzii/' + recenzieId).update(recenzie);
   }
 
   get(productId) {
-    return this.db.object('/products/' + productId).snapshotChanges();
+    return this.db.object('/products/' + productId + '/recenzii').snapshotChanges();
   }
 
   update(productId, product) {
