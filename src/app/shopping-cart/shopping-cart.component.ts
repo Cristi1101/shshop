@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.css']
 })
+
 export class ShoppingCartComponent implements OnInit {
   cart: ShoppingCart = new ShoppingCart(null);
   shoppingCartItemCount: number;
@@ -21,20 +22,22 @@ export class ShoppingCartComponent implements OnInit {
     private router: Router,
     private shoppingCartService: ShoppingCartService) { }
 
-  addToCart(product: Product){
+  addToCart(product: Product) {
     this.shoppingCartService.addToCart(product);
   }
 
-  removeFromCart(product: Product){
+  removeFromCart(product: Product) {
     this.shoppingCartService.removeFromCart(product);
   }
 
-  clearCart(){
+  clearCart() {
     this.shoppingCartService.clearCart();
     this.router.navigate(['/']);
   }
 
-  async ngOnInit(){
+  async ngOnInit() {
+
+
     this.cart$ = await this.shoppingCartService.getCart();
     this.cart$.valueChanges().subscribe((temp) => {
       let data: any;
@@ -42,20 +45,11 @@ export class ShoppingCartComponent implements OnInit {
       this.cart = new ShoppingCart(data);
       this.shoppingCartItemCount = this.cart.totalItemsCount;
       this.shoppingCartTotalPrice = this.cart.totalPrice;
-     });
+      // if(this.cart.totalItemsCount == 1){
+      //   location.reload();
+      // }
+      //DE FACUT: IN CAZUL IN CARE SE ADAUGA ITEME INTR-UN NOU COS, LA PRIMUL ITEM SA SE REACTUALIZEZE PAGINA !!!!!!!!!!!!!!!!!!!!
+    });
   }
-  //   async ngOnInit() {
-  //   this.cart$ = await this.shoppingCartService.getCart();
-  //   this.cart$.snaphotChanges().subscribe( temp => {
-  //     // tslint:disable-next-line:prefer-const
-  //     let data: any;    
-  //     data = temp.payload.child('/items').val();
-  //     // data = temp.payload.val();
-  //     this.cart = new ShoppingCart(data);
-  //     this.shoppingCartItemCount = this.cart.totalItemsCount;
-  //     // console.log('data', data);
-      
-  //   });
-  // }
 
 }

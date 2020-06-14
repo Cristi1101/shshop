@@ -13,7 +13,7 @@ export class MyOrdersComponent implements OnInit {
   constructor(
     private orderService: OrderService,
     private router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute) { 
       this.orders$ = this.orderService.getUserOrders(this.userID);
      }
 

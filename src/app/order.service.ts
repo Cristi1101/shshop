@@ -21,7 +21,7 @@ export class OrderService {
   }
 
   get(orderId) {
-    return this.db.object('/orders/' + orderId).valueChanges(); 
+    return this.db.object('/orders/' + orderId).valueChanges();  
   }
 
   getItems(orderId) {

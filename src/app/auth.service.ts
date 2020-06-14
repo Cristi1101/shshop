@@ -16,12 +16,15 @@ import { AngularFireDatabase } from 'angularfire2/database';
 export class AuthService {
   user$: Observable<firebase.User>;
   user;
-  constructor(private userService: UserService, private afAuth: AngularFireAuth, 
+
+  constructor(
+    private userService: UserService,
+    private afAuth: AngularFireAuth, 
     private route: ActivatedRoute,
     private db: AngularFireDatabase,
     private router: Router) {
+      
     this.user$ = afAuth.authState;
-
     this.afAuth.authState.subscribe(auth => {
       if (auth !== undefined && auth !== null) {
         this.user = auth;
@@ -47,6 +50,7 @@ export class AuthService {
     logout(){
       
       this.afAuth.auth.signOut();
+      localStorage.removeItem('userUID');
     }
 
     signIn(email, password) {
@@ -56,7 +60,6 @@ export class AuthService {
         .catch((error) => {
           window.alert(error.message)
         })
-        
     }
 
     // signUp(email, password, ) {
@@ -73,9 +76,6 @@ export class AuthService {
       this.router.navigate(['/']);
       return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((result) => {
-          /* Call the SendVerificaitonMail() function when new user sign 
-          up and returns promise */
-          // this.SendVerificationMail();
           this.writeNewUser(result.user, username, name, lastname, city, address, postalcode, image);
       }).catch((error) => {
           window.alert(error.message)

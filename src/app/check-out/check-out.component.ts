@@ -30,6 +30,7 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   shoppingCart: ShoppingCart;
 
   @ViewChild('paypal', { static: true }) paypalElem: ElementRef;
+
   constructor(
     private router: Router,
     public authService: AuthService,
@@ -70,7 +71,7 @@ export class CheckOutComponent implements OnInit, OnDestroy {
               {
                 description: this.cart.totalItemsCount,
                 amount: {
-                  value: parseFloat((this.cart2.totalPrice / 4.47).toString()).toFixed(2)
+                  value: parseFloat((this.cart2.totalPrice / 4.26).toString()).toFixed(2)
                 }
               }
             ]
@@ -86,7 +87,6 @@ export class CheckOutComponent implements OnInit, OnDestroy {
         }
       })
       .render(this.paypalElem.nativeElement);
-
   }
 
   async placeOrder() {

@@ -11,9 +11,9 @@
             <hr>
             <ngb-rating #stea [(rate)]="recenzie.recenzie.stele" [max]="5" readonly=true></ngb-rating>
             <pre>Rate: <b>{{recenzie.recenzie.stele}}</b></pre>
-            <a [routerLink]="['/recenzii/', recenzie.recenzie.uid]">Edit Review</a>
+            <a [routerLink]="['/recenzii/', recenzie.recenzie.key]" [state]="recenzie">Edit Review</a>
             <!-- de lucrat la id- ca sa il definesc -->
-            
+
         </div>
     </div>
     <br>

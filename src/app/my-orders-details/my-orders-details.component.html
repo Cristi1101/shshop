@@ -34,7 +34,7 @@
 <h3>Products Ordered</h3> <br>
 <div class="card-group">
 
-  <div class="card col-md-3 col-lg-3 d-flex align-items-stretch" style="width: 18rem;" *ngFor="let i of order2">
+  <div class="card col-md-3 col-lg-3 d-flex align-items-stretch" style="width: 18rem;" *ngFor="let i of order2; let j = index">
     <img [src]="i.product.imageUrl" class="card-img-top">
     <div class="card-body">
       <h5 class="card-title ">{{ i.quantity }} x {{ i.product.title }}</h5>
@@ -42,10 +42,10 @@
       <p class="card-text font-weight-bold">Total: {{ (i.product.price * i.quantity) | currency:'RON ':'code'}}
       </p>
       <textarea #recenzie name="recenzie" cols="20" rows="5"></textarea>
-      <ngb-rating #stea [(rate)]="currentRate" [max]="5"></ngb-rating>
+      <ngb-rating [(rate)]="currentRates[j]" [max]="5"></ngb-rating>
       <hr>
-      <pre>Rate: <b>{{currentRate}}</b></pre>
-      <button (click)="adaugaRecenzie(recenzie.value, i, currentRate)">Adauga Recenzie</button>
+      <pre>Rate: <b>{{currentRates[j]}}</b></pre>
+      <button (click)="adaugaRecenzie(recenzie.value, i, currentRates[j])">Adauga Recenzie</button>
       <button (click)="afisareRecenzie(i)">Afiseaza Recenzie</button>
     </div>
   </div>

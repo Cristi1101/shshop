@@ -19,23 +19,16 @@ export class FavoritesService {
   }
 
   async getCart() {
-    //let cartId = await this.getOrCreateCartId();
     return this.db.object('/favorites/' + this.userID);
+  }
+
+ getFavourites() {
+    return this.db.list('/favorites/' + this.userID + "/items").snapshotChanges(); 
   }
 
   getItem(cartId: string, productId: string) {
     return this.db.object('/favorites/' + cartId + '/items/' + productId);
   }
-
-  // private async getOrCreateCartId(): Promise<string> {
-  //   //let cartId = localStorage.getItem('cartId');
-  //   if(this.userID) return this.userID;
-
-  //   // we don't have a shopping cart
-  //   let result = await this.create();
-  //   localStorage.setItem('cartId', result.key);
-  //   return result.key;
-  // }
 
   async add(product: Product) {
 
@@ -43,7 +36,7 @@ export class FavoritesService {
   }
 
   async remove(product: Product) {
-    this.updateFavorite(product, false);
+    this.updateFavorite(product, false); 
   }
 
   validate(pid: string): Observable<any> {
@@ -56,10 +49,8 @@ export class FavoritesService {
   }
 
   private async updateFavorite(product: Product, toAdd: boolean) {
-    //let cartId = await this.getOrCreateCartId();
     if (toAdd == true) {
       let item = this.getItem(this.userID, product.key);
-
       item.snapshotChanges().pipe(take(1)).subscribe((data) => {
         item.update({ product: product });
       });

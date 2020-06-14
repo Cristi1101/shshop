@@ -15,7 +15,7 @@ export class MyOrdersDetailsComponent implements OnInit {
   id;
   order;
   order2: Order[];
-  currentRate = 0;
+  currentRates = [0];
   recenzii$;
   userID = localStorage.getItem('userUID');
 
@@ -28,17 +28,23 @@ export class MyOrdersDetailsComponent implements OnInit {
 
     if (this.id) {
       this.orderService.get(this.id).pipe(take(1)).subscribe(o => (this.order = o));
-      this.orderService.getItems(this.id).pipe(take(1)).subscribe(o => (this.order2 = o));
+      this.orderService.getItems(this.id).pipe(take(1)).subscribe(o => {
+        this.order2 = o;
+        this.currentRates = new Array(this.order2.length);
+        for(let i = 0; i < this.order2.length; i++){
+            this.currentRates[i] = 0;
+        }
+      });
       console.log("id:", this.order);
     }
   }
 
   adaugaRecenzie(recenzie: string, product, stele) {
-    console.log("recenzie:", product.key);
+    //console.log("recenzie:", product.key);
     let modelRecenzie = {
       stele: stele,
       continut: recenzie,
-      uid: localStorage.getItem("userUID"),
+      uid: localStorage.getItem("userUID")
     };
     this.recenziiService.create(modelRecenzie, product.key);
   }

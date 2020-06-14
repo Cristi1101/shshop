@@ -35,7 +35,7 @@ export class ProductFilterComponent implements OnInit {
   };
 
   ngOnInit(): void {
-  }
+  } 
 
   sendMessage(value, value2){
     this.priceEvent.emit([value, value2]);

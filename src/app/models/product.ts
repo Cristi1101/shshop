@@ -1,7 +1,3 @@
-//import { Timestamp } from 'rxjs';
-
-import { Timestamp } from 'rxjs';
-
 export interface Product {
     key?: string;
     title: string;

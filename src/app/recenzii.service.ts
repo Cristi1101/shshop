@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { Product } from './models/product';
-import { map } from 'rxjs/operators';
-import { ProductService } from './product.service';
 import { Recenzii } from './models/recenzii';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +16,7 @@ export class RecenziiService {
     return this.db.list('/products/' + product + '/recenzii').push(recenzie);
   }
 
-  // getMostVisitedProducts(){
+  // getMostVisitedProducts(){ 
   //   return this.db.list('/products', 
   //     ref => ref.orderByChild('visits').limitToLast(5)).valueChanges();
   // }
@@ -33,8 +31,18 @@ export class RecenziiService {
   }
 
   getAllMyReviews(product) {
-    return this.db.list<Recenzii>('/products/' + product + '/recenzii').valueChanges();
+    return this.db.list<Recenzii>('/products/' + product + '/recenzii').snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => {
+          const data = c.payload.val() as Recenzii;
+          const key = c.payload.key;
+          return { key, ...data };
+        })
+      )
+    );
   }
+
+
 
   editRecenzie(productId, recenzieId, recenzie){
     return this.db.object('/products/' + productId + '/recenzii/' + recenzieId).update(recenzie);
@@ -45,7 +53,7 @@ export class RecenziiService {
   }
 
   update(productId, product) {
-    return this.db.object('/products/' + productId).update(product);
+    return this.db.object('/products/' + productId).update(product); 
   }
 
   delete(productId) {

@@ -51,6 +51,7 @@ import { PlataComponent } from './plata/plata.component';
 import { RecenziiService } from './recenzii.service';
 import { RecenziiUserComponent } from './recenzii-user/recenzii-user.component';
 import { EditReviewComponent } from './edit-review/edit-review.component';
+import { MyFavouritesComponent } from './my-favourites/my-favourites.component';
 
 
 
@@ -83,7 +84,8 @@ import { EditReviewComponent } from './edit-review/edit-review.component';
     MyOrdersFormComponent,
     PlataComponent,
     RecenziiUserComponent,
-    EditReviewComponent
+    EditReviewComponent,
+    MyFavouritesComponent
     
     
   ],
@@ -104,15 +106,16 @@ import { EditReviewComponent } from './edit-review/edit-review.component';
       {path: 'shopping-cart', component: ShoppingCartComponent},
       {path: 'login', component: LoginComponent},
       {path: 'signup', component: SignUpComponent},
-      {path: 'my-account', component: MyAccountComponent},
-      {path: 'edit-account', component: EditAccountComponent},
-
+      
+      {path: 'my-account', component: MyAccountComponent, canActivate: [AuthGuard]},
+      {path: 'edit-account', component: EditAccountComponent, canActivate: [AuthGuard]},
       {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
       {path: 'order-success/:id', component: OrderSuccesComponent, canActivate: [AuthGuard]},
       {path: 'my-orders', component: MyOrdersComponent, canActivate: [AuthGuard]},
       {path: 'my-orders/:id', component: MyOrdersDetailsComponent, canActivate: [AuthGuard]},
       {path: 'recenzii', component: RecenziiUserComponent, canActivate: [AuthGuard]},
       {path: 'recenzii/:id', component: EditReviewComponent, canActivate: [AuthGuard]},
+      {path: 'favourites', component: MyFavouritesComponent, canActivate: [AuthGuard]},
 
       {path: 'admin/products/new', component: CreateProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/products/:id', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
