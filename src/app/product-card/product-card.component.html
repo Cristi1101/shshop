@@ -3,14 +3,14 @@
         <img src="{{ product.imageUrl }}" class="card-img-top">
     </div>
 
-    <div class="card-body h-25">
+    <div class="card-body h-30">
         <hr>
         <h5 class="card-title">{{ product.title }}</h5>
         <p class="card-text">{{ product.category }} - {{ product.subcategory }}</p>
         <p class="card-text">{{ product.price | currency:'RON ':true }}</p>
         <input type="checkbox" (click)="toggleFavourite()" [checked]="checked">
         <label for="vehicle1" style="font-size: 15px;">Add to Favorites</label><br>
-
+        <a [routerLink]="['/products/', product.key]" (click)="visited()">View More Details</a>
     </div>
     <div *ngIf="showActions" class="card-footer h-5">
         <button *ngIf="getQuantity() === 0; else updateQuantity" (click)="addToCart()"

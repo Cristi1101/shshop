@@ -25,14 +25,17 @@ export class ProductCardComponent implements OnInit{
     private productService: ProductService,
     private favoritService: FavoritesService) { }
 
-  addToCart(){
+
+  visited(){
     if( this.product.visits == null) this.product.visits = 0;
     this.product.visits++;
     this.product.time = new Date().getTime();
     console.log("timp:", this.product.time );
 
     this.productService.update(this.product.key, this.product);
+  }
 
+  addToCart(){
     this.cartService.addToCart(this.product);
   }  
 

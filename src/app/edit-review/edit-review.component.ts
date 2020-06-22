@@ -11,16 +11,10 @@ import { RecenziiService } from '../recenzii.service';
 })
 export class EditReviewComponent implements OnInit {
   state;
-  //id;
 
   constructor(
     private router: Router,
     public recenziiService: RecenziiService) {
-    //   this.id = this.route.snapshot.paramMap.get('id');
-    //   if (this.id) 
-    //     this.userService.getUser(this.id).pipe(take(1)).subscribe(p => (this.users = p));
-    //     console.log("id-ul userului:", this.id);
-
     this.state = this.router.getCurrentNavigation().extras.state;
   }
 
@@ -30,7 +24,6 @@ export class EditReviewComponent implements OnInit {
       map(() => this.router.getCurrentNavigation().extras.state)
     ).subscribe(object => {
       this.state = object;
-      console.log("recenzie: ", this.state);
     });
 
   }

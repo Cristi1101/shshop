@@ -36,7 +36,8 @@ export class FavoritesService {
   }
 
   async remove(product: Product) {
-    this.updateFavorite(product, false); 
+    this.updateFavorite(product, false);
+    window.location.reload();
   }
 
   validate(pid: string): Observable<any> {

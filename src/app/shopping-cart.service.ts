@@ -56,6 +56,9 @@ export class ShoppingCartService {
       if(quantityAux === 0) item.remove();
       else
         item.update({ product: product, quantity: quantityAux });
+        if(quantityAux == 1){
+          window.location.reload();
+        }
     });
   }
 }

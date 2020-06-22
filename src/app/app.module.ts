@@ -52,6 +52,7 @@ import { RecenziiService } from './recenzii.service';
 import { RecenziiUserComponent } from './recenzii-user/recenzii-user.component';
 import { EditReviewComponent } from './edit-review/edit-review.component';
 import { MyFavouritesComponent } from './my-favourites/my-favourites.component';
+import { ProductsDetailsComponent } from './products-details/products-details.component';
 
 
 
@@ -85,7 +86,8 @@ import { MyFavouritesComponent } from './my-favourites/my-favourites.component';
     PlataComponent,
     RecenziiUserComponent,
     EditReviewComponent,
-    MyFavouritesComponent
+    MyFavouritesComponent,
+    ProductsDetailsComponent
     
     
   ],
@@ -102,6 +104,7 @@ import { MyFavouritesComponent } from './my-favourites/my-favourites.component';
     Ng5SliderModule,
     RouterModule.forRoot([
       {path: '', component: ProductsComponent},
+      {path: 'products/:id', component: ProductsDetailsComponent},
       {path: 'homepage', component: HomeComponent},
       {path: 'shopping-cart', component: ShoppingCartComponent},
       {path: 'login', component: LoginComponent},
