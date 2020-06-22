@@ -1,33 +1,23 @@
-<h3>Shipping Details</h3> <br>
-<div *ngFor="let fav of favourites">
-    <table class="table">
-      <tr>
-        <th>First Name</th>
-        <td>{{ fav.product.title }}</td>
-      </tr>
-      <!-- <tr>
-        <th>Last Name</th>
-        <td>{{ order.shipping.lastName }}</td>
-      </tr>
-      <tr>
-        <th>Username</th>
-        <td>{{ order.shipping.username }}</td>
-      </tr>
-      <tr>
-        <th>Email</th>
-        <td>{{ order.shipping.email }}</td>
-      </tr>
-      <tr>
-        <th>City</th>
-        <td>{{ order.shipping.city }}</td>
-      </tr>
-      <tr>
-        <th>Address</th>
-        <td>{{ order.shipping.address }}</td>
-      </tr>
-      <tr>
-        <th>Postal Code</th>
-        <td>{{ order.shipping.postalCode }}</td>
-      </tr> -->
-    </table>
+<h3 class="text-center">Favourite List</h3> <br>
+
+<div *ngFor="let fav of favourites" style="margin-left: 390px;">
+  <div class="card shadow h-100" style="width: 20rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{ fav.product.title }}</h5>
+      <div class="zoom-image h-50" style="margin-top: 5px;">
+        <img src="{{ fav.product.imageUrl }}" class="card-img-top">
+      </div>
+      <p class="card-text">{{ fav.product.category }} - {{ fav.product.subcategory }}</p>
+      <p class="card-text">{{ fav.product.price | currency:'RON ':true }}</p>
+      <hr>
+      <button class="btn btn-success"  style="margin-right: 80px;"
+        (click)="this.cartService.addToCart(fav.product)"
+        >Add to <i class="fas fa-shopping-cart"></i>
+      </button>
+      <button class="btn btn-danger" (click)="this.favouriteService.remove(fav.product)">
+        <i class="fa fa-trash"></i> Remove
+      </button>
+    </div>
   </div>
+  <br>
+</div>

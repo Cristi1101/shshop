@@ -14,7 +14,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   products: Product[] = [];
   subscription: Subscription;
   tableResource: DataTableResource<Product>;
-  items: Product[] = [];
+  items: Product[] = []; 
   itemCount: number;
 
   constructor(private productService: ProductService) {

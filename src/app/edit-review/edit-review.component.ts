@@ -9,7 +9,7 @@ import { filter, map } from 'rxjs/operators';
   styleUrls: ['./edit-review.component.css']
 })
 export class EditReviewComponent implements OnInit {
-  private state;
+  state;
   //id;
 
   constructor(private router: Router) {
