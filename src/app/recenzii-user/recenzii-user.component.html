@@ -11,9 +11,11 @@
             <hr>
             <ngb-rating #stea [(rate)]="recenzie.recenzie.stele" [max]="5" readonly=true></ngb-rating>
             <pre>Rate: <b>{{recenzie.recenzie.stele}}</b></pre>
-            <a [routerLink]="['/recenzii/', recenzie.recenzie.key]" [state]="recenzie">Edit Review</a>
+            <a [routerLink]="['/recenzii/', recenzie.recenzie.key]" [state]="recenzie" style="margin-right: 100px;">Edit Review</a>
             <!-- de lucrat la id- ca sa il definesc -->
-
+            <button class="btn btn-danger" (click)="this.recenziiService.delete(recenzie.produs.key, recenzie.recenzie.key)">
+                <i class="fa fa-trash"></i> Remove
+            </button>
         </div>
     </div>
     <br>

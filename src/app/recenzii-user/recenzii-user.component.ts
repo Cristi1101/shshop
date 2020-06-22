@@ -11,7 +11,7 @@ export class RecenziiUserComponent implements OnInit {
   userID = localStorage.getItem('userUID');
   recenziileMele = [];
 
-  constructor(private recenziiService: RecenziiService,
+  constructor(public recenziiService: RecenziiService,
     private productService: ProductService) { }
 
   getReviews() {
@@ -33,6 +33,7 @@ export class RecenziiUserComponent implements OnInit {
       })
     });
   }
+
 
   ngOnInit(): void {
     this.getReviews();

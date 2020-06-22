@@ -18,6 +18,11 @@
             <hr>
             <ngb-rating #stea [(rate)]="state?.recenzie.stele" [max]="5"></ngb-rating>
             <pre>Rate: <b>{{ state?.recenzie.stele }}</b></pre>
+            <button class="btn btn-success"
+                (click)="this.recenziiService.updateReview(state.produs.key, state.recenzie.key, state?.recenzie.stele, recenzie.value, state.recenzie.uid)">
+                Confirm
+                <i class="fa fa-angle-right"></i>
+            </button>
         </div>
     </div>
     <br>

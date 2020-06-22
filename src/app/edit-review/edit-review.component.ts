@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
+import { RecenziiService } from '../recenzii.service';
 
 @Component({
   selector: 'app-edit-review',
@@ -12,7 +13,9 @@ export class EditReviewComponent implements OnInit {
   state;
   //id;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    public recenziiService: RecenziiService) {
     //   this.id = this.route.snapshot.paramMap.get('id');
     //   if (this.id) 
     //     this.userService.getUser(this.id).pipe(take(1)).subscribe(p => (this.users = p));

@@ -52,11 +52,22 @@ export class RecenziiService {
     return this.db.object('/products/' + productId + '/recenzii').snapshotChanges();
   }
 
-  update(productId, product) {
-    return this.db.object('/products/' + productId).update(product); 
+  update(productId, product, recenzieId) {
+    return this.db.object('/products/' + productId + '/recenzii/' + recenzieId).update(product); 
   }
 
-  delete(productId) {
-    return this.db.object('/products/' + productId).remove();
+  updateReview(productId, recenzieId, steleRecenzie, continutRecenzie, uid){
+    const recenzieRef = this.db.object('/products/' + productId + '/recenzii/' + recenzieId);
+    const recenzieData: Recenzii = {
+      stele: steleRecenzie,
+      continut: continutRecenzie,
+      uid: uid
+    }
+    recenzieRef.update(recenzieData);
+  }
+
+  delete(productId, recenzieId) {
+    this.db.object('/products/' + productId + '/recenzii/' + recenzieId).remove();
+    window.location.reload();
   }
 }
