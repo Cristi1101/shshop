@@ -53,8 +53,8 @@ import { RecenziiUserComponent } from './recenzii-user/recenzii-user.component';
 import { EditReviewComponent } from './edit-review/edit-review.component';
 import { MyFavouritesComponent } from './my-favourites/my-favourites.component';
 import { ProductsDetailsComponent } from './products-details/products-details.component';
-
-
+import { AdminReviewsListComponent } from './admin-reviews-list/admin-reviews-list.component';
+import { AdminReviewsDetailsComponent } from './admin-reviews-details/admin-reviews-details.component';
 
 @NgModule({
   declarations: [
@@ -87,8 +87,9 @@ import { ProductsDetailsComponent } from './products-details/products-details.co
     RecenziiUserComponent,
     EditReviewComponent,
     MyFavouritesComponent,
-    ProductsDetailsComponent
-    
+    ProductsDetailsComponent,
+    AdminReviewsListComponent,
+    AdminReviewsDetailsComponent
     
   ],
   imports: [
@@ -125,6 +126,8 @@ import { ProductsDetailsComponent } from './products-details/products-details.co
       {path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/orders/:id', component: OrdersFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+      {path: 'admin/reviews', component: AdminReviewsListComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+      {path: 'admin/reviews/:id', component: AdminReviewsDetailsComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/users', component: AdminUsersListComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/users/:id', component: UsersFormComponent, canActivate: [AuthGuard, AdminAuthGuard]}
     ])

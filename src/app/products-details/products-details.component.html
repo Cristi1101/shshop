@@ -1,14 +1,14 @@
-<div class="card shadow h-100 text-center" style="width: 20rem;">
+<div class="card shadow h-100 text-center" style="width: 40rem;">
     <div class="zoom-image h-50" style="margin-top: 5px;">
         <img src="{{ product.payload.val().imageUrl }}" class="card-img-top">
     </div>
 
     <div class="card-body h-30">
         <hr>
-        <h5 class="card-title">{{ product.payload.val().title }}</h5>
-        <p class="card-text">{{ product.payload.val().category }} - {{ product.payload.val().subcategory }}</p>
+        <h3 class="card-title"><b>{{ product.payload.val().title }}</b></h3>
+        <p class="card-text"><b>Category: {{ product.payload.val().category }} - {{ product.payload.val().subcategory }}</b></p>
         <p class="card-text">{{ product.payload.val().color }}</p>
-        <p class="card-text">{{ product.payload.val().price | currency:'RON ':true }}</p>
+        <p class="card-text"><b> Price: {{ product.payload.val().price | currency:'RON ':true }}</b></p>
     </div>
     <div class="card-footer h-5">
         <button (click)="addToCart()" class="btn btn-primary btn-block">Add to

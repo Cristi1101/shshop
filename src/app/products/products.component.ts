@@ -20,7 +20,9 @@ export class ProductsComponent implements OnInit, OnDestroy{
   priceMax: number;
   cart: any;
   subscription: Subscription;
-  
+  search: string;
+  hideSearchDropDown: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService, 
@@ -52,6 +54,11 @@ export class ProductsComponent implements OnInit, OnDestroy{
          (p.price >= this.priceMin && p.price <= this.priceMax)
         ) : this.products);
     });
+  }
+
+  setSearch(title){
+    this.search = title;
+    this.hideSearchDropDown = true;
   }
 
   async ngOnInit(){

@@ -1,5 +1,5 @@
-<h1 class="text-center">My Reviews</h1><br>
-<div *ngFor="let recenzie of recenziileMele" style="margin-left: 390px;">
+<h1 class="text-center">Reviews</h1><br>
+<div *ngFor="let recenzie of reviews" style="margin-left: 390px;">
     <div class="card shadow h-100" style="width: 20rem;">
         <div class="card-body">
             <h5 class="card-title">{{ recenzie.produs.title }}</h5>
@@ -10,7 +10,8 @@
             <hr>
             <ngb-rating #stea [(rate)]="recenzie.recenzie.stele" [max]="5" readonly=true></ngb-rating>
             <pre>Rate: <b>{{recenzie.recenzie.stele}}</b></pre>
-            <a [routerLink]="['/recenzii/', recenzie.recenzie.key]" [state]="recenzie" style="margin-right: 100px;">Edit Review</a>
+            <p>{{ recenzie.user?.username }}</p>
+            <!-- <a [routerLink]="['/recenzii/', recenzie.recenzie.key]" [state]="recenzie" style="margin-right: 100px;">Edit Review</a> -->
             <button class="btn btn-danger" (click)="this.recenziiService.delete(recenzie.produs.key, recenzie.recenzie.key)">
                 <i class="fa fa-trash"></i> Remove
             </button>

@@ -45,9 +45,10 @@
                         <a class="dropdown-item" routerLink="/favourites">Favourites</a>
                         <a class="dropdown-item" routerLink="/recenzii">Recenziile mele</a>
                         <ng-container *ngIf="appUser.isAdmin">
-                            <a class="dropdown-item" routerLink="/admin/orders">Manage orders</a>
-                            <a class="dropdown-item" routerLink="/admin/products">Manage products</a>
                             <a class="dropdown-item" routerLink="/admin/users">Manage users</a>
+                            <a class="dropdown-item" routerLink="/admin/products">Manage products</a>
+                            <a class="dropdown-item" routerLink="/admin/orders">Manage orders</a>
+                            <a class="dropdown-item" routerLink="/admin/reviews">Manage reviews</a>
                         </ng-container>
                         <a class="dropdown-item" (click)="logout()">Log Out <i class="fas fa-sign-out-alt"></i></a>
                     </div>
