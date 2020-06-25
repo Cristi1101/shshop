@@ -23,24 +23,21 @@ export class AdminReviewsListComponent implements OnInit {
       data.forEach(element => {
         this.recenziiService.getAllMyReviews(element.key).subscribe(recenziiData => {
           recenziiData.forEach(element1 => {
-              this.userService.getUser(element1.uid).subscribe(data => {
-                this.reviews.push({
-                  recenzie: element1,
-                  produs: element,
-                  prodId: element.key,
-                  user: data.payload.val()
-                });
+            this.userService.getUser(element1.uid).subscribe(data => {
+              this.reviews.push({
+                recenzie: element1,
+                produs: element,
+                prodId: element.key,
+                user: data.payload.val()
               });
-              console.log("element1: ", this.reviews);
+            });
           })
         });
       })
-      
     });
   }
 
   ngOnInit(): void {
     this.getReviews();
   }
-
 }

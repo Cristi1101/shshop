@@ -1,17 +1,40 @@
-<div class="card shadow h-100 text-center" style="width: 40rem;">
+<div class="card shadow h-100 text-center" style="width: 40rem; margin-left: 220px;">
     <div class="zoom-image h-50" style="margin-top: 5px;">
         <img src="{{ product.payload.val().imageUrl }}" class="card-img-top">
     </div>
-
     <div class="card-body h-30">
         <hr>
         <h3 class="card-title"><b>{{ product.payload.val().title }}</b></h3>
-        <p class="card-text"><b>Category: {{ product.payload.val().category }} - {{ product.payload.val().subcategory }}</b></p>
+        <p class="card-text"><b>Category: {{ product.payload.val().category }} -
+                {{ product.payload.val().subcategory }}</b></p>
         <p class="card-text">{{ product.payload.val().color }}</p>
         <p class="card-text"><b> Price: {{ product.payload.val().price | currency:'RON ':true }}</b></p>
     </div>
     <div class="card-footer h-5">
         <button (click)="addToCart()" class="btn btn-primary btn-block">Add to
             Cart</button>
+    </div>
+</div>
+
+<hr style="margin-top: 30px; margin-bottom: 30px;">
+
+<h1 class="text-center" >Reviews</h1><br>
+<div class="row" *ngFor="let recenzie of reviews" style="margin-bottom: 30px; border-style: inset;">
+    <div class="col-sm-2">
+        <div class="zoom-image h-50" style="margin-top: 20px;">
+            <img src="{{ recenzie.user?.img }}" class="img-thumbnail"
+                style="width: 100px; height: 70px; border-radius: 50%;">
+            <p style="margin-left: 10px; margin-top: 5px;">{{ recenzie.user?.username }}</p>
+        </div>
+    </div>
+    <div class="col-sm-10">
+        <div style="margin-top: 30px;">
+            <span style="font-size:20px">-</span>
+            <span style="margin-left: 20px; font-size:20px">{{ recenzie.recenzie.continut }}</span>
+        </div>
+        <hr>
+        <ngb-rating #stea [(rate)]="recenzie.recenzie.stele" [max]="5" readonly=true style="font-size:20px">
+        </ngb-rating>
+        <pre style="font-size:20px">Rate: <b>{{recenzie.recenzie.stele}}</b></pre>
     </div>
 </div>
