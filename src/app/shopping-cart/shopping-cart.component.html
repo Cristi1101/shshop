@@ -34,14 +34,14 @@
                         </div>
                     </div>
                 </td>
-                <td class="text-left">{{ item.totalPrice | currency:'RON ':true }}</td>
+                <td class="text-left">{{ item.totalPrice | currency:'RON ':'code' }}</td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
                 <td class="text-right"></td>
                 <td></td>
-                <td class="text-center"><b>Total:</b> {{ cart.totalPrice | currency:'RON ':true }}
+                <td class="text-center"><b>Total:</b> {{ cart.totalPrice | currency:'RON ':'code' }}
                 </td>
                 <td>
                     <a *ngIf="cart.items.length" routerLink="/check-out" class="btn btn-success"

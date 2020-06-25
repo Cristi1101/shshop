@@ -8,7 +8,7 @@
         <img src="{{ fav.product.imageUrl }}" class="card-img-top">
       </div>
       <p class="card-text">{{ fav.product.category }} - {{ fav.product.subcategory }}</p>
-      <p class="card-text">{{ fav.product.price | currency:'RON ':true }}</p>
+      <p class="card-text">{{ fav.product.price | currency:'RON ':'code' }}</p>
       <hr>
       <button class="btn btn-success"  style="margin-right: 80px;"
         (click)="this.cartService.addToCart(fav.product)"

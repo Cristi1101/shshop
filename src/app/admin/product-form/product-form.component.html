@@ -3,83 +3,91 @@
         <form #f="ngForm" (ngSubmit)="save(f.value)">
             <div class="form-group">
                 <label for="title">Title</label>
-                <input #title="ngModel" [(ngModel)]="product.payload.val().title" name="title" id="title" type="text" class="form-control" required>
+                <input #title="ngModel" [(ngModel)]="product.payload.val().title" name="title" id="title" type="text"
+                    class="form-control" required>
                 <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
                     Title is required.
                 </div>
             </div>
-            <div class="form-group">   
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea #description="ngModel" [(ngModel)]="product.payload.val().description" name="description"
+                    id="description" cols="20" rows="5" class="form-control" required></textarea>
+                <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+                    Description is required.
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="price">Price</label>
                 <div class="input-group-prepend">
                     <span class="input-group-text">RON</span>
-                    <input #price="ngModel" [(ngModel)]="product.payload.val().price" name="price" id="price" type="number" class="form-control" required>
+                    <input #price="ngModel" [(ngModel)]="product.payload.val().price" name="price" id="price"
+                        type="number" class="form-control" required>
                 </div>
                 <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
                     Price is required
                 </div>
-                
             </div>
             <div class="form-group">
                 <label for="category">Category</label>
-                <select #cat #category="ngModel" [(ngModel)]="product.payload.val().category" name="category" id="category" class="form-control" required>
+                <select #cat #category="ngModel" [(ngModel)]="product.payload.val().category" name="category"
+                    id="category" class="form-control" required>
                     <option value=""></option>
                     <option *ngFor='let c of categories$ | async' [value]="c.key">
-                         {{ c.payload.val().name }} 
+                        {{ c.payload.val().name }}
                     </option>
                 </select>
                 <div class="alert alert-danger" *ngIf="category.touched && category.invalid">Category is required.</div>
             </div>
 
-            <div  class="form-group">
+            <div class="form-group">
                 <label for="subcategory">Subcategory</label>
-                <select #subcategory="ngModel" [(ngModel)]="product.payload.val().subcategory" name="subcategory" id="subcategory" class="form-control" required>
-                    <!-- <option value=""></option> -->
-                    <!-- <option *ngFor="let s of subcategories$ | async" [value]="s.key">
-                       <div *ngIf="s.payload.val().parentId === cat.selectedOptions[0].value">
-                        {{ s.payload.val().name }}
-                        </div>
-                    </option> -->
+                <select #subcategory="ngModel" [(ngModel)]="product.payload.val().subcategory" name="subcategory"
+                    id="subcategory" class="form-control" required>
 
                     <option *ngFor="let s of subcategories$ | async" [value]="s.key">
                         {{ s.payload.val().name }}
-                     </option>
+                    </option>
 
                 </select>
-                <div class="alert alert-danger" *ngIf="category.touched && category.invalid">Subcategory is required.</div>
+                <div class="alert alert-danger" *ngIf="subcategory.touched && subcategory.invalid">Subcategory is required.
+                </div>
             </div>
-
-            
-
             <div class="form-group">
                 <label for="color">Colors</label>
-                <select #color="ngModel" [(ngModel)]="product.payload.val().color" name="color" id="color" class="form-control" required>
+                <select #color="ngModel" [(ngModel)]="product.payload.val().color" name="color" id="color"
+                    class="form-control" required>
                     <option value=""></option>
                     <option *ngFor='let c of colors$ | async' [value]="c.key">
-                         {{ c.payload.val().name }} 
+                        {{ c.payload.val().name }}
                     </option>
                 </select>
-                <div class="alert alert-danger" *ngIf="category.touched && category.invalid">Category is required.</div>
+                <div class="alert alert-danger" *ngIf="color.touched && color.invalid">Category is required.</div>
             </div>
             <div class="form-group">
                 <label for="imageUrl">Image URL</label>
-                <input #imageUrl="ngModel" [(ngModel)]="product.payload.val().imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required>
-                <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">Image URL is required.</div>
+                <input #imageUrl="ngModel" [(ngModel)]="product.payload.val().imageUrl" name="imageUrl" id="imageUrl"
+                    type="text" class="form-control" required>
+                <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">Image URL is required.
+                </div>
             </div>
 
             <button class="btn btn-primary" style="margin-right:10px;">Save</button>
             <button type="button" (click)="delete()" class="btn btn-danger" style="margin-right:10px;">Delete</button>
-            <button type="button" (click)="cancel()" class="btn btn-secondary" style="margin-right:10px;">Cancel</button>
-        
+            <button type="button" (click)="cancel()" class="btn btn-secondary"
+                style="margin-right:10px;">Cancel</button>
         </form>
     </div>
-        
     <div class="col-md-6">
-        <div *ngIf="product.payload.val().title" class="card" style="width: 18rem;">
+        <div *ngIf="product.payload.val().title" class="card text-center" style="width: 18rem;">
             <img [src]="product.payload.val().imageUrl" class="card-img-top" *ngIf="product.payload.val().imageUrl">
             <div class="card-body">
-              <h5 class="card-title">{{ product.payload.val().title }}</h5>
-              <p class="card-text">{{ product.payload.val().price | currency:'RON ':'code'}}</p>
+                <h5 class="card-title">{{ product.payload.val().title }}</h5>
+                <p class="card-text">{{ product.payload.val().description }}</p>
+                <p class="card-text">Category: {{ product.payload.val().category }} - {{ product.payload.val().subcategory }}</p>
+                <p class="card-text">Color: {{ product.payload.val().color }}</p>
+                <p class="card-text">{{ product.payload.val().price | currency:'RON ':'code' }}</p>
             </div>
-          </div>
+        </div>
     </div>
 </div>

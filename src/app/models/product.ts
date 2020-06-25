@@ -8,4 +8,5 @@ export interface Product {
     imageUrl: string;
     visits?: number;
     time?: number;
+    description?: string;
   }

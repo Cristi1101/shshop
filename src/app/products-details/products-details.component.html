@@ -5,20 +5,27 @@
     <div class="card-body h-30">
         <hr>
         <h3 class="card-title"><b>{{ product.payload.val().title }}</b></h3>
-        <p class="card-text"><b>Category: {{ product.payload.val().category }} -
-                {{ product.payload.val().subcategory }}</b></p>
-        <p class="card-text">{{ product.payload.val().color }}</p>
-        <p class="card-text"><b> Price: {{ product.payload.val().price | currency:'RON ':true }}</b></p>
+        <p class="card-text">
+            {{ product.payload.val()?.description }}
+        </p>
+        <hr>
+        <p class="card-text">Category: {{ product.payload.val().category }} -
+                {{ product.payload.val().subcategory }}</p>
+        <hr>
+        <p class="card-text">Color: {{ product.payload.val().color }}</p>
+        <hr>
+        <p class="card-text"><b>{{ product.payload.val().price | currency:'RON ':'code' }}</b></p>
     </div>
     <div class="card-footer h-5">
-        <button (click)="addToCart()" class="btn btn-primary btn-block">Add to
-            Cart</button>
+        <button (click)="addToCart()" class="btn btn-primary btn-block">
+            Add to Cart
+        </button>
     </div>
 </div>
 
 <hr style="margin-top: 30px; margin-bottom: 30px;">
 
-<h1 class="text-center" >Reviews</h1><br>
+<h1 class="text-center">Reviews</h1><br>
 <div class="row" *ngFor="let recenzie of reviews" style="margin-bottom: 30px; border-style: inset;">
     <div class="col-sm-2">
         <div class="zoom-image h-50" style="margin-top: 20px;">

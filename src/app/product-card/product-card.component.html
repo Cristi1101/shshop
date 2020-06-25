@@ -1,18 +1,24 @@
-<div class="card shadow h-100 text-center" style="width: 20rem;">
+<div class="card shadow h-100 text-center" style="width: 20rem; margin-bottom: 20px;">
     <div class="zoom-image h-50" style="margin-top: 5px;">
-        <img src="{{ product.imageUrl }}" class="card-img-top">
+        <img src="{{ product.imageUrl }}" class="card-img-top" [routerLink]="['/products/', product.key]"
+            (click)="visited()">
     </div>
 
-    <div class="card-body h-30">
+    <div class="card-body">
         <hr>
         <h5 class="card-title">{{ product.title }}</h5>
-        <p class="card-text">{{ product.category }} - {{ product.subcategory }}</p>
-        <p class="card-text">{{ product.price | currency:'RON ':true }}</p>
+        <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">
+            {{ product?.description }}
+        </p>
+        <hr>
+        <p class="card-text">Category: {{ product.category }} - {{ product.subcategory }}</p>
+        <hr>
+        <p class="card-text"><b>{{ product.price | currency:'RON ':'code' }}</b></p>
         <input type="checkbox" (click)="toggleFavourite()" [checked]="checked">
-        <label for="vehicle1" style="font-size: 15px;">Add to Favorites</label><br>
-        <a [routerLink]="['/products/', product.key]" (click)="visited()">View More Details</a>
+        <label for="vehicle1" style="font-size: 15px;"><i>&nbsp;Add to Favorites</i></label>
+        <!-- <a  style="margin-bottom: 10px;">  View More Details</a> -->
     </div>
-    <div *ngIf="showActions" class="card-footer h-5">
+    <div *ngIf="showActions" class="card-footer">
         <button *ngIf="getQuantity() === 0; else updateQuantity" (click)="addToCart()"
             class="btn btn-primary btn-block">Add to Cart</button>
         <ng-template #updateQuantity>

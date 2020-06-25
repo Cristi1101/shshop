@@ -6,7 +6,16 @@
                 <input #title="ngModel" ngModel name="title" id="title" type="text" class="form-control" required>
                 <div class="alert alert-danger" *ngIf="title.touched && title.invalid">Title is required.</div>
             </div>
-    
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea #description="ngModel" ngModel name="description" id="description" cols="20" rows="5"
+                    class="form-control" required></textarea>
+                <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+                    Description is required.
+                </div>
+            </div>
+
             <div class="form-group">
                 <label for="price">Price</label>
                 <div class="input-group-prepend">
@@ -15,7 +24,7 @@
                 </div>
                 <div class="alert alert-danger" *ngIf="price.touched && price.invalid">Price is required.</div>
             </div>
-    
+
             <div class="form-group">
                 <label for="category">Category</label>
                 <select #cat #category="ngModel" ngModel name="category" id="category" class="form-control" required>
@@ -29,20 +38,16 @@
 
             <div *ngIf="category.valid" class="form-group">
                 <label for="subcategory">Subcategory</label>
-                <select #subcategory="ngModel" ngModel name="subcategory" id="subcategory" class="form-control" required>
-                    <!-- <option value=""></option> -->
-                    <!-- <option *ngFor="let s of subcategories$ | async" [value]="s.key">
-                       <div *ngIf="s.payload.val().parentId === cat.selectedOptions[0].value">
-                        {{ s.payload.val().name }}
-                        </div>
-                    </option> -->
+                <select #subcategory="ngModel" ngModel name="subcategory" id="subcategory" class="form-control"
+                    required>
 
                     <option *ngFor="let s of filteredSubcategories(cat.selectedOptions[0].value)" [value]="s.key">
                         {{ s.payload.val().name }}
-                     </option>
+                    </option>
 
                 </select>
-                <div class="alert alert-danger" *ngIf="category.touched && category.invalid">Subcategory is required.</div>
+                <div class="alert alert-danger" *ngIf="subcategory.touched && subcategory.invalid">Subcategory is required.
+                </div>
             </div>
 
             <div class="form-group">
@@ -53,29 +58,33 @@
                         {{ c.payload.val().name }}
                     </option>
                 </select>
-                <div class="alert alert-danger" *ngIf="category.touched && category.invalid">Category is required.</div>
+                <div class="alert alert-danger" *ngIf="colors.touched && colors.invalid">Category is required.</div>
             </div>
-    
+
             <div class="form-group">
                 <label for="imageUrl">Image URL</label>
-                <input #imageUrl="ngModel" ngModel name="imageUrl" id="imageUrl" type="text" class="form-control" required>
-                <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">Image URL is required.</div>
+                <input #imageUrl="ngModel" ngModel name="imageUrl" id="imageUrl" type="text" class="form-control"
+                    required>
+                <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">Image URL is required.
+                </div>
             </div>
-    
+
             <button class="btn btn-primary" [disabled]="f.invalid" style="margin-right:10px;">Save</button>
             <button type="button" (click)="cancel()" class="btn btn-secondary">Cancel</button>
         </form>
     </div>
 
     <div class="col-md-6">
-        <div class="card" style="width: 18rem;" *ngIf="title.touched">
+        <div class="card text-center" style="width: 18rem;" *ngIf="f.touched">
             <img [src]="imageUrl.value" class="card-img-top">
-                <div class="card-body">
-                    <h3 class="card-title">Title: {{ title.value }}</h3>
-                    <h6 class="card-text">Category: {{ category.value }}</h6>
-                    <p  class="card-text">Color: {{ colors.value }}</p>
-                    <p  class="card-text">Price: {{ price.value | currency:'RON ':true }}</p>
-                </div>
+            <hr>
+            <div class="card-body">
+                <h3 class="card-title">{{ title.value }}</h3>
+                <p class="card-text">{{ description.value }}</p>
+                <p *ngIf="category.touched" class="card-text">Category: {{ category.value }}</p>
+                <p *ngIf="colors.touched" class="card-text">Color: {{ colors.value }}</p>
+                <p class="card-text">{{ price.value | currency:'RON ':'code' }}</p>
+            </div>
         </div>
     </div>
 </div>
