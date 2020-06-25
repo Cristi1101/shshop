@@ -1,168 +1,37 @@
-<!-- <div class="row">
-    <div class="col-md-6">
-        <table class="table">
-            <tr>
-                <th>First Name</th>
-                <td>{{ users.payload.val().firstName }}</td>
-            </tr>
-            <tr>
-                <th>Last Name</th>
-                <td>{{ users.payload.val().lastName }}</td>
-            </tr>
-            <tr>
-                <th>Username</th>
-                <td>{{ users.payload.val().username }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ users.payload.val().email }}</td>
-            </tr>
-            <tr>
-                <th>City</th>
-                <td>{{ users.payload.val().city }}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>{{ users.payload.val().address }}</td>
-            </tr>
-            <tr>
-                <th>Postal Code</th>
-                <td>{{ users.payload.val().postal }}</td>
-            </tr>
-            <tr>
-                <th>Admin Roles</th>
-                <td>{{ users.payload.val().isAdmin }}</td>
-            </tr>
-        </table>
-    </div>
-    <div class="col-md-6">
-
-        <form class="form-group">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="First Name" #userFirstName
-                    formControlName="firstName" required>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Last Name" #userLastName formControlName="lastName"
-                    required>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Username" #username formControlName="username"
-                    required>
-            </div>
-            <div class="form-group">
-                <input type="email" class="form-control" placeholder="Email Address" #email formControlName="email"
-                    required>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="City" #userCity formControlName="city" required>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Address" #userAddressOne
-                    formControlName="addressOne" required>
-            </div>
-            <div class="form-group">
-                <input type="number" class="form-control" placeholder="Postal Code" #postalCode
-                    formControlName="postalcode" required>
-            </div>
-            <div class="form-group">
-                <button type="button"
-                    (click)="userService.updateUser(this.id, username.value, email.value, userFirstName.value, userLastName.value, userAddressOne.value, userCity.value, postalCode.value)"
-                    class="btn btn-primary" style="margin-right:10px;">SignUp</button>
-                <button type="button" (click)="delete()" class="btn btn-danger"
-                    style="margin-right:10px;">Delete</button>
-                <button type="button" (click)="cancel()" class="btn btn-secondary"
-                    style="margin-right:10px;">Cancel</button>
-            </div>
-        </form>
-    </div>
-</div> -->
-
-
-<!-- <div class="form-group">
-      <span class="or"><span class="orInner">Or</span></span>
-    </div> -->
-<!-- Continue with Google -->
-<!-- <div class="form-group">
-      <button type="button" class="btn googleBtn" (click)="auth.login()">
-        <i class="fa fa-google-plus"></i>
-      Continue with Google
-      </button>
-    </div> -->
-<!-- Continue with Facebook -->
-<!-- <div class="form-group">
-      <button type="button" class="btn facebookBtn" (click)="authService.FacebookAuth()">
-        <i class="fa fa-facebook"></i>
-      Continue with Facebook
-      </button>
-    </div> -->
-
-
+<div class="row">
+    <table class="table">
+        <tr>
+            <th>First Name</th>
+            <td>{{ users.payload.val().firstName }}</td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td>{{ users.payload.val().lastName }}</td>
+        </tr>
+        <tr>
+            <th>Username</th>
+            <td>{{ users.payload.val().username }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ users.payload.val().email }}</td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td>{{ users.payload.val().city }}</td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>{{ users.payload.val().address }}</td>
+        </tr>
+        <tr>
+            <th>Postal Code</th>
+            <td>{{ users.payload.val().postalCode }}</td>
+        </tr>
+    </table>
+</div>
 
 <form #f="ngForm" (ngSubmit)="save(f.value)">
-    <div class="form-group">
-        <label for="firstName">First Name</label>
-        <input #firstName="ngModel" [(ngModel)]="users.payload.val().firstName" name="firstName" id="firstName"
-            type="text" class="form-control" required>
-        <div class="alert alert-danger" *ngIf="firstName.touched && firstName.invalid">
-            First Name is required.
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="lastName">Last name</label>
-        <input #lastName="ngModel" [(ngModel)]="users.payload.val().lastName" name="lastName" id="lastName" type="text"
-            class="form-control" required>
-        <div class="alert alert-danger" *ngIf="lastName.touched && lastName.invalid">
-            Last Name is required
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input #username="ngModel" [(ngModel)]="users.payload.val().username" name="username" id="username" type="text"
-            class="form-control" required>
-        <div class="alert alert-danger" *ngIf="username.touched && username.invalid">
-            Username is required
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input #email="ngModel" [(ngModel)]="users.payload.val().email" name="email" id="email" type="email"
-            class="form-control" required>
-        <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
-            Email is required
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="city">City</label>
-        <input #city="ngModel" [(ngModel)]="users.payload.val().city" name="city" id="city" type="text"
-            class="form-control" required>
-        <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
-            City is required
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="address">Address</label>
-        <input #address="ngModel" [(ngModel)]="users.payload.val().address" name="address" id="address" type="text"
-            class="form-control" required>
-        <div class="alert alert-danger" *ngIf="address.touched && address.invalid">
-            Address is required
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="postalCode">Postal Code</label>
-        <input #postalCode="ngModel" [(ngModel)]="users.payload.val().postalCode" name="postalCode" id="postalCode"
-            type="number" class="form-control" required>
-        <div class="alert alert-danger" *ngIf="postalCode.touched && postalCode.invalid">
-            Postal Code is required
-        </div>
-    </div>
-
     <div class="form-group">
         <label for="isAdmin">Admin power</label>
         <select #isAdmin="ngModel" [(ngModel)]="users.payload.val().isAdmin" name="isAdmin" id="isAdmin" type="number"
