@@ -1,0 +1,13 @@
+a{
+    text-decoration: none;
+}
+
+.suggestion{
+    width: 100%; 
+    background-color: grey; 
+    padding: 5px 10px;
+}
+
+.suggestion:hover{
+    background: rgb(202, 202, 202);
+}
