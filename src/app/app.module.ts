@@ -55,6 +55,7 @@ import { MyFavouritesComponent } from './my-favourites/my-favourites.component';
 import { ProductsDetailsComponent } from './products-details/products-details.component';
 import { AdminReviewsListComponent } from './admin-reviews-list/admin-reviews-list.component';
 import { AdminReviewsDetailsComponent } from './admin-reviews-details/admin-reviews-details.component';
+import { OrderStatusService } from './order-status.service';
 
 @NgModule({
   declarations: [
@@ -143,7 +144,8 @@ import { AdminReviewsDetailsComponent } from './admin-reviews-details/admin-revi
     ProductService,
     ShoppingCartService,
     OrderService,
-    RecenziiService
+    RecenziiService,
+    OrderStatusService
   ],
   bootstrap: [AppComponent]
 })
