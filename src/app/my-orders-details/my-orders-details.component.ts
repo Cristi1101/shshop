@@ -4,6 +4,7 @@ import { OrderService } from '../order.service';
 import { take } from 'rxjs/operators';
 import { Order } from '../models/order';
 import { RecenziiService } from '../recenzii.service';
+import { OrderStatusService } from '../order-status.service';
 
 @Component({
   selector: 'app-my-orders-details',
@@ -18,12 +19,14 @@ export class MyOrdersDetailsComponent implements OnInit {
   currentRates = [0];
   recenzii$;
   userID = localStorage.getItem('userUID');
-
+  orderStatus$;
+  
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private orderService: OrderService,
-    private recenziiService: RecenziiService) {
+    private recenziiService: RecenziiService,
+    private orderStatusService: OrderStatusService) {
     this.id = this.route.snapshot.paramMap.get('id');
 
     if (this.id) {
@@ -37,6 +40,7 @@ export class MyOrdersDetailsComponent implements OnInit {
       });
       console.log("id:", this.order);
     }
+    this.orderStatus$ = orderStatusService.getOrderStatus();
   }
 
   adaugaRecenzie(recenzie: string, product, stele) {

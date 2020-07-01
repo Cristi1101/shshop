@@ -3,35 +3,61 @@
   <table class="table">
     <tr>
       <th>First Name</th>
-      <td>{{ order.shipping.firstName }}</td>
+      <td>{{ order.payload.val().shipping.firstName }}</td>
     </tr>
     <tr>
       <th>Last Name</th>
-      <td>{{ order.shipping.lastName }}</td>
+      <td>{{ order.payload.val().shipping.lastName }}</td>
     </tr>
     <tr>
       <th>Username</th>
-      <td>{{ order.shipping.username }}</td>
+      <td>{{ order.payload.val().shipping.username }}</td>
     </tr>
     <tr>
       <th>Email</th>
-      <td>{{ order.shipping.email }}</td>
+      <td>{{ order.payload.val().shipping.email }}</td>
     </tr>
     <tr>
       <th>City</th>
-      <td>{{ order.shipping.city }}</td>
+      <td>{{ order.payload.val().shipping.city }}</td>
     </tr>
     <tr>
       <th>Address</th>
-      <td>{{ order.shipping.address }}</td>
+      <td>{{ order.payload.val().shipping.address }}</td>
     </tr>
     <tr>
       <th>Postal Code</th>
-      <td>{{ order.shipping.postalCode }}</td>
+      <td>{{ order.payload.val().shipping.postalCode }}</td>
     </tr>
   </table>
 </div>
 <br><br>
+<hr style="background-color: chocolate;">
+
+<div style="margin-top: 50; margin-bottom: 50px;">
+    <h3>Order status</h3> <br>
+    <table class="table">
+        <tr>
+            <th>Status</th>
+            <td>{{ order.payload.val().orderStatus }}</td>
+        </tr>
+    </table>
+    <hr>
+    <!-- <form #f="ngForm" (ngSubmit)="update(f.value)">
+        <div class="form-group">
+            <label for="orderStatus">Order Status</label>
+            <select #orderStatus="ngModel" ngModel name="orderStatus" id="orderStatus" class="form-control" required>
+                <option value=""></option>
+                <option *ngFor="let c of orderStatus$ | async" [value]="c.payload.val().name">
+                    {{ c.payload.val().name }} - {{ c.payload.val().description }}
+                </option>
+            </select>
+            <div class="alert alert-danger" *ngIf="orderStatus.touched && orderStatus.invalid">Order Status is required.</div>
+        </div>
+        <button class="btn btn-primary" [disabled]="f.invalid" style="margin-right:10px;">Update Status</button>
+    </form> -->
+</div>
+
 <hr style="background-color: chocolate;">
 
 <h3>Products Ordered</h3> <br>

@@ -21,7 +21,7 @@ export class OrderService {
   }
 
   get(orderId) {
-    return this.db.object('/orders/' + orderId).valueChanges();  
+    return this.db.object('/orders/' + orderId).snapshotChanges();  
   }
 
   getItems(orderId) {
@@ -66,6 +66,10 @@ export class OrderService {
                 })
             )
         );
+  }
+
+  updateOrder(orderId, order) {
+    return this.db.object('/orders/' + orderId).update(order);
   }
 
   // getOrdersByUser(userId: string) {

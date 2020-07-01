@@ -8,7 +8,11 @@ export class OrderStatusService {
 
   constructor(private db: AngularFireDatabase) { }
 
-  getCategories(){
+  getOrderStatus(){
     return this.db.list('/orderStatus').snapshotChanges();
   }
+
+  // getAll() { 
+  //   return this.db.list('/categories', ref => ref.orderByChild('name')).snapshotChanges();
+  // }
 }
