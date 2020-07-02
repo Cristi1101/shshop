@@ -1,15 +1,15 @@
 <div class="row">
     <table class="table">
         <tr>
-            <th>First Name</th>
+            <th>Prenume</th>
             <td>{{ users.payload.val().firstName }}</td>
         </tr>
         <tr>
-            <th>Last Name</th>
+            <th>Nume</th>
             <td>{{ users.payload.val().lastName }}</td>
         </tr>
         <tr>
-            <th>Username</th>
+            <th>Nume de utilizator</th>
             <td>{{ users.payload.val().username }}</td>
         </tr>
         <tr>
@@ -17,15 +17,15 @@
             <td>{{ users.payload.val().email }}</td>
         </tr>
         <tr>
-            <th>City</th>
+            <th>Oras</th>
             <td>{{ users.payload.val().city }}</td>
         </tr>
         <tr>
-            <th>Address</th>
+            <th>Adresa</th>
             <td>{{ users.payload.val().address }}</td>
         </tr>
         <tr>
-            <th>Postal Code</th>
+            <th>Cod postal</th>
             <td>{{ users.payload.val().postalCode }}</td>
         </tr>
     </table>
@@ -33,19 +33,18 @@
 
 <form #f="ngForm" (ngSubmit)="save(f.value)">
     <div class="form-group">
-        <label for="isAdmin">Admin power</label>
+        <label for="isAdmin">Rol de administrator</label>
         <select #isAdmin="ngModel" [(ngModel)]="users.payload.val().isAdmin" name="isAdmin" id="isAdmin" type="number"
             class="form-control" required>
             <option [ngValue]="true">True</option>
             <option [ngValue]="false">False</option>
         </select>
         <div class="alert alert-danger" *ngIf="isAdmin.touched && isAdmin.invalid">
-            Admin power is required
+            Acest camp este obligatoriu.
         </div>
     </div>
 
-    <button class="btn btn-primary" style="margin-right:10px;">Save</button>
-    <button type="button" (click)="delete()" class="btn btn-danger" style="margin-right:10px;">Delete</button>
-    <button type="button" (click)="cancel()" class="btn btn-secondary" style="margin-right:10px;">Cancel</button>
-
+    <button class="btn btn-primary" style="margin-right:10px;">Salveaza</button>
+    <button type="button" (click)="delete()" class="btn btn-danger" style="margin-right:10px;">Sterge</button>
+    <button type="button" (click)="cancel()" class="btn btn-secondary" style="margin-right:10px;">Anuleaza</button>
 </form>

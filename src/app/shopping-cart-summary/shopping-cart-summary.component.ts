@@ -7,6 +7,7 @@ import { ShoppingCartService } from '../shopping-cart.service';
   templateUrl: './shopping-cart-summary.component.html',
   styleUrls: ['./shopping-cart-summary.component.css']
 })
+
 export class ShoppingCartSummaryComponent {
   shoppingCartItemCount: number;
   cart$;
@@ -14,13 +15,9 @@ export class ShoppingCartSummaryComponent {
   shoppingCartTotalPrice: number;
   shoppingCart: ShoppingCart;
 
-  constructor( private shoppingCartService: ShoppingCartService) { }
+  constructor(private shoppingCartService: ShoppingCartService) { }
 
-  
-  //@Input('cart') product: ShoppingCart;
-
-
-  async ngOnInit(){
+  async ngOnInit() {
     this.cart$ = await this.shoppingCartService.getCart();
     this.cart$.valueChanges().subscribe((temp) => {
       let data: any;
@@ -28,6 +25,6 @@ export class ShoppingCartSummaryComponent {
       this.cart = new ShoppingCart(data);
       this.shoppingCartItemCount = this.cart.totalItemsCount;
       this.shoppingCartTotalPrice = this.cart.totalPrice;
-     });
+    });
   }
 }

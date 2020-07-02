@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -10,21 +10,17 @@ import { Observable } from 'rxjs';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent {
 
   constructor(
     public auth: AuthService,
     private afAuth: AngularFireAuth,
     private storage: AngularFireStorage) { }
 
+  uploadPercent: Observable<number>;
+  urlImage: Observable<string>;
 
-    uploadPercent: Observable<number>;
-    urlImage: Observable<string>;
-
-  ngOnInit(): void {
-  }
-
-  onUpload(e){
+  onUpload(e) {
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
     const filePath = 'uploads/' + id;

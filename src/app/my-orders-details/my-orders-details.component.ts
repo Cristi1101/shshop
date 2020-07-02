@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OrderService } from '../order.service';
 import { take } from 'rxjs/operators';
@@ -11,7 +11,7 @@ import { OrderStatusService } from '../order-status.service';
   templateUrl: './my-orders-details.component.html',
   styleUrls: ['./my-orders-details.component.css']
 })
-export class MyOrdersDetailsComponent implements OnInit {
+export class MyOrdersDetailsComponent {
 
   id;
   order;
@@ -20,7 +20,7 @@ export class MyOrdersDetailsComponent implements OnInit {
   recenzii$;
   userID = localStorage.getItem('userUID');
   orderStatus$;
-  
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -34,17 +34,15 @@ export class MyOrdersDetailsComponent implements OnInit {
       this.orderService.getItems(this.id).pipe(take(1)).subscribe(o => {
         this.order2 = o;
         this.currentRates = new Array(this.order2.length);
-        for(let i = 0; i < this.order2.length; i++){
-            this.currentRates[i] = 0;
+        for (let i = 0; i < this.order2.length; i++) {
+          this.currentRates[i] = 0;
         }
       });
-      console.log("id:", this.order);
     }
     this.orderStatus$ = orderStatusService.getOrderStatus();
   }
 
   adaugaRecenzie(recenzie: string, product, stele) {
-    //console.log("recenzie:", product.key);
     let modelRecenzie = {
       stele: stele,
       continut: recenzie,
@@ -59,8 +57,5 @@ export class MyOrdersDetailsComponent implements OnInit {
 
   back() {
     this.router.navigate(['/my-orders']);
-  }
-
-  ngOnInit(): void {
   }
 }

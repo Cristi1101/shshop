@@ -2,88 +2,96 @@
     <div class="col-md-6">
         <form #f="ngForm" (ngSubmit)="save(f.value)">
             <div class="form-group">
-                <label for="title">Title</label>
+                <label for="title">Numele produsului</label>
                 <input #title="ngModel" ngModel name="title" id="title" type="text" class="form-control" required>
-                <div class="alert alert-danger" *ngIf="title.touched && title.invalid">Title is required.</div>
-            </div>
-
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea #description="ngModel" ngModel name="description" id="description" cols="20" rows="5"
-                    class="form-control" required></textarea>
-                <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
-                    Description is required.
+                <div class="alert alert-danger" *ngIf="title.touched && title.invalid">Acest camp este obligatoriu.
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="price">Price</label>
+                <label for="description">Descrierea</label>
+                <textarea #description="ngModel" ngModel name="description" id="description" cols="20" rows="5"
+                    class="form-control" required></textarea>
+                <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+                    Acest camp este obligatoriu.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Pret</label>
                 <div class="input-group-prepend">
                     <span class="input-group-text">RON</span>
                     <input #price="ngModel" ngModel name="price" id="price" type="number" class="form-control" required>
                 </div>
-                <div class="alert alert-danger" *ngIf="price.touched && price.invalid">Price is required.</div>
+                <div class="alert alert-danger" *ngIf="price.touched && price.invalid">Acest camp este obligatoriu.
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="category">Category</label>
+                <label for="category">Categoria</label>
                 <select #cat #category="ngModel" ngModel name="category" id="category" class="form-control" required>
                     <option value=""></option>
                     <option *ngFor="let c of categories$ | async" [value]="c.key">
                         {{ c.payload.val().name }}
                     </option>
                 </select>
-                <div class="alert alert-danger" *ngIf="category.touched && category.invalid">Category is required.</div>
+                <div class="alert alert-danger" *ngIf="category.touched && category.invalid">Acest camp este
+                    obligatoriu.</div>
             </div>
 
             <div *ngIf="category.valid" class="form-group">
-                <label for="subcategory">Subcategory</label>
+                <label for="subcategory">Subcategoria</label>
                 <select #subcategory="ngModel" ngModel name="subcategory" id="subcategory" class="form-control"
                     required>
-
                     <option *ngFor="let s of filteredSubcategories(cat.selectedOptions[0].value)" [value]="s.key">
                         {{ s.payload.val().name }}
                     </option>
-
                 </select>
-                <div class="alert alert-danger" *ngIf="subcategory.touched && subcategory.invalid">Subcategory is required.
+                <div class="alert alert-danger" *ngIf="subcategory.touched && subcategory.invalid">
+                    Acest camp este obligatoriu.
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="colors">Colors</label>
+                <label for="colors">Culoarea</label>
                 <select #colors="ngModel" ngModel name="color" id="colors" class="form-control" required>
                     <option value=""></option>
                     <option *ngFor="let c of colors$ | async" [value]="c.key">
                         {{ c.payload.val().name }}
                     </option>
                 </select>
-                <div class="alert alert-danger" *ngIf="colors.touched && colors.invalid">Category is required.</div>
-            </div>
-
-            <div class="form-group">
-                <label for="imageUrl">Image URL</label>
-                <input #imageUrl="ngModel" ngModel name="imageUrl" id="imageUrl" type="text" class="form-control"
-                    required>
-                <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">Image URL is required.
+                <div class="alert alert-danger" *ngIf="colors.touched && colors.invalid">Acest camp este obligatoriu.
                 </div>
             </div>
 
-            <button class="btn btn-primary" [disabled]="f.invalid" style="margin-right:10px;">Save</button>
-            <button type="button" (click)="cancel()" class="btn btn-secondary">Cancel</button>
+            <div class="form-group">
+                <label for="imageUrl">Imaginea</label>
+                <input #imageUrl="ngModel" ngModel name="imageUrl" id="imageUrl" type="text" class="form-control"
+                    required>
+                <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+                    Acest camp este obligatoriu.
+                </div>
+            </div>
+
+            <button class="btn btn-primary" [disabled]="f.invalid" style="margin-right:10px;">Salveaza</button>
+            <button type="button" (click)="cancel()" class="btn btn-secondary">Anuleaza</button>
         </form>
     </div>
 
     <div class="col-md-6">
         <div class="card text-center" style="width: 18rem;" *ngIf="f.touched">
             <img [src]="imageUrl.value" class="card-img-top">
-            <hr>
             <div class="card-body">
+                <hr>
                 <h3 class="card-title">{{ title.value }}</h3>
+                <hr>
                 <p class="card-text">{{ description.value }}</p>
-                <p *ngIf="category.touched" class="card-text">Category: {{ category.value }}</p>
-                <p *ngIf="colors.touched" class="card-text">Color: {{ colors.value }}</p>
-                <p class="card-text">{{ price.value | currency:'RON ':'code' }}</p>
+                <hr>
+                <p *ngIf="category.touched" class="card-text"><b>Categoria:</b> {{ category.value }}</p>
+                <hr>
+                <p *ngIf="colors.touched" class="card-text"><b>Culoarea:</b> {{ colors.value }}</p>
+                <hr>
+                <p class="card-text"><b>{{ price.value | currency:'RON ':'code' }}</b></p>
             </div>
         </div>
     </div>

@@ -1,11 +1,12 @@
-<h1 class="text-center">Reviews</h1><br>
+<h1 class="text-center">Recenzii</h1><br>
 <div class="row" *ngFor="let recenzie of reviews" style="margin-bottom: 30px; border-style: inset;">
     <div class="col-sm-2">
         <div class="zoom-image h-50" style="margin-top: 20px;">
-            <img src="{{ recenzie.user?.img }}" class="img-thumbnail" style="width: 100px; height: 70px; border-radius: 50%;">
+            <img src="{{ recenzie.user?.img }}" class="img-thumbnail"
+                style="width: 100px; height: 70px; border-radius: 50%;">
             <p style="margin-left: 10px;">{{ recenzie.user?.username }}</p>
             <ngb-rating #stea [(rate)]="recenzie.recenzie.stele" [max]="5" readonly=true></ngb-rating>
-            <pre>Rate: <b>{{recenzie.recenzie.stele}}</b></pre>
+            <pre>Evaluare: <b>{{recenzie.recenzie.stele}}</b></pre>
         </div>
     </div>
     <div class="col-sm-10">
@@ -22,6 +23,6 @@
     </div>
     <button class="btn btn-danger" (click)="this.recenziiService.delete(recenzie.produs.key, recenzie.recenzie.key)"
         style="margin-top: 5px; margin-bottom: 5px; margin-left: 5px;">
-        <i class="fa fa-trash"></i> Remove
+        <i class="fa fa-trash"></i> Sterge
     </button>
 </div>

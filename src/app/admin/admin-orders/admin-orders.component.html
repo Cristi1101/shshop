@@ -1,50 +1,19 @@
-<!-- <p>
-    <input 
-    #query
-    (keyup)="filter(query.value)"
-    type="text" class="form-control" placeholder="Search by email...">
-</p>
-
-
-
-<data-table
-    [items]="items"
-    [itemCount]="itemCount"
-    (reload)="reloadItems($event)"
->
-    <data-table-column
-        [property]="'shipping[city]'"
-        [header]="'Username'"
-        [sortable]="true"
-        [resizable]="true"
-    >
-    </data-table-column>
-
-    <data-table-column
-        [property]="'$key'"
-    >
-        <ng-template #dataTableCell let-item="item">
-            <a [routerLink]="['/admin/users/', item.key]">View More</a>
-        </ng-template>
-    </data-table-column>
-</data-table> -->
-
-<h1>Orders</h1>
-<table class="table">
+<h1 class="text-center" style="margin-bottom: 50px;">ADMINISTRAREA COMENZILOR</h1>
+<table class="table text-center">
   <thead>
     <tr>
-      <th>Customer</th>
-      <th>Date</th>
+      <th>Numele clientului</th>
+      <th>Data plasarii comenzii</th>
       <th></th>
     </tr>
-  </thead> 
+  </thead>
   <tbody>
     <tr *ngFor="let order of orders$ | async">
       <td>{{ order.shipping.firstName }}</td>
       <td>{{ order.datePlaced | date}}</td>
       <td>
-        <a [routerLink]="['/admin/orders/', order.key]">Details</a>
+        <a [routerLink]="['/admin/orders/', order.key]">Mai multe detalii</a>
       </td>
     </tr>
-  </tbody> 
+  </tbody>
 </table>

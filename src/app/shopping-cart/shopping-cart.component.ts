@@ -16,7 +16,6 @@ export class ShoppingCartComponent implements OnInit {
   shoppingCartTotalPrice: number;
   cart$;
   shoppingCart: ShoppingCart;
-  //@Input('product') product: Product;
 
   constructor(
     private router: Router,
@@ -36,8 +35,6 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   async ngOnInit() {
-
-
     this.cart$ = await this.shoppingCartService.getCart();
     this.cart$.valueChanges().subscribe((temp) => {
       let data: any;
@@ -45,11 +42,6 @@ export class ShoppingCartComponent implements OnInit {
       this.cart = new ShoppingCart(data);
       this.shoppingCartItemCount = this.cart.totalItemsCount;
       this.shoppingCartTotalPrice = this.cart.totalPrice;
-      // if(this.cart.totalItemsCount == 1){
-      //   location.reload();
-      // }
-      //DE FACUT: IN CAZUL IN CARE SE ADAUGA ITEME INTR-UN NOU COS, LA PRIMUL ITEM SA SE REACTUALIZEZE PAGINA !!!!!!!!!!!!!!!!!!!!
     });
   }
-
 }

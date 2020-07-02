@@ -10,7 +10,7 @@
                     First Name is required.
                 </div>
             </div>
-        
+
             <div class="form-group">
                 <label for="lastName">Last name</label>
                 <input #lastName="ngModel" [(ngModel)]="users.lastName" name="lastName" id="lastName" type="text"
@@ -19,24 +19,25 @@
                     Last Name is required
                 </div>
             </div>
-        
+
             <div class="form-group">
                 <label for="email">Email</label>
-                <input #email="ngModel" [(ngModel)]="users.email" name="email" id="email" type="email" class="form-control"
-                    required>
+                <input #email="ngModel" [(ngModel)]="users.email" name="email" id="email" type="email"
+                    class="form-control" required>
                 <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
                     Email is required
                 </div>
             </div>
-        
+
             <div class="form-group">
                 <label for="city">City</label>
-                <input #city="ngModel" [(ngModel)]="users.city" name="city" id="city" type="text" class="form-control" required>
+                <input #city="ngModel" [(ngModel)]="users.city" name="city" id="city" type="text" class="form-control"
+                    required>
                 <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
                     City is required
                 </div>
             </div>
-        
+
             <div class="form-group">
                 <label for="address">Address</label>
                 <input #address="ngModel" [(ngModel)]="users.address" name="address" id="address" type="text"
@@ -45,11 +46,11 @@
                     Address is required
                 </div>
             </div>
-        
+
             <div class="form-group">
                 <label for="postalCode">Postal Code</label>
-                <input #postalCode="ngModel" [(ngModel)]="users.postalCode" name="postalCode" id="postalCode" type="number"
-                    class="form-control" required>
+                <input #postalCode="ngModel" [(ngModel)]="users.postalCode" name="postalCode" id="postalCode"
+                    type="number" class="form-control" required>
                 <div class="alert alert-danger" *ngIf="postalCode.touched && postalCode.invalid">
                     Postal Code is required
                 </div>
@@ -57,20 +58,15 @@
 
             <small>Use shipping information from your account or feel free to change it.</small><br><br>
 
-            <button type="button" (click)="placeOrder()" class="btn btn-primary" style="margin-right:10px; width: 100%;">Cash on Delivery</button><br><br>
-            <!-- <button type="button" (click)="placeOrder()" class="btn btn-primary" style="margin-right:10px;">Credit card / Paypal</button><br> -->
+            <button type="button" (click)="placeOrder()" class="btn btn-primary"
+                style="margin-right:10px; width: 100%;">Cash on Delivery</button><br><br>
             <div #paypal (click)="placeOrder()"></div>
-            <button type="button" (click)="cancel()" class="btn btn-secondary" style="margin-top:10px;">Back to Shopping Cart</button>
+            <button type="button" (click)="cancel()" class="btn btn-secondary" style="margin-top:10px;">Back to Shopping
+                Cart</button>
         </form>
     </div>
 
     <div class="col-6">
-        <shopping-cart-summary ></shopping-cart-summary>
+        <shopping-cart-summary></shopping-cart-summary>
     </div>
 </div>
-
-
-<!-- 
-<div *ngIf="!paidFor">
-
-</div> -->

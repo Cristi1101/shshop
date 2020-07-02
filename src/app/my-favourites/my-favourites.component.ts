@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FavoritesService } from '../favorites.service';
 import { ShoppingCartService } from '../shopping-cart.service';
 
@@ -7,10 +7,8 @@ import { ShoppingCartService } from '../shopping-cart.service';
   templateUrl: './my-favourites.component.html',
   styleUrls: ['./my-favourites.component.css']
 })
-export class MyFavouritesComponent implements OnInit {
-
+export class MyFavouritesComponent {
   favourites = [];
-
 
   constructor(
     public cartService: ShoppingCartService,
@@ -18,12 +16,7 @@ export class MyFavouritesComponent implements OnInit {
     this.favouriteService.getFavourites().subscribe(data => {
       data.forEach(element => {
         this.favourites.push(element.payload.val());
-        console.log("favourites:", element.payload.val()); 
       })
     });
-   }
-
-  ngOnInit(): void {
   }
-
 }

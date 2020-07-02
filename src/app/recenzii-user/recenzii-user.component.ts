@@ -23,15 +23,15 @@ export class RecenziiUserComponent implements OnInit {
         this.recenziiService.getAllMyReviews(element.key).subscribe(recenziiData => {
           recenziiData.forEach(element1 => {
             this.userService.getUser(element1.uid).subscribe(data => {
-            if (element1.uid == this.userID) {
-              this.recenziileMele.push({
-                recenzie: element1,
-                produs: element,
-                prodId: element.key,
-                user: data.payload.val()
-              });
-            }
-          });
+              if (element1.uid == this.userID) {
+                this.recenziileMele.push({
+                  recenzie: element1,
+                  produs: element,
+                  prodId: element.key,
+                  user: data.payload.val()
+                });
+              }
+            });
           })
         });
       })

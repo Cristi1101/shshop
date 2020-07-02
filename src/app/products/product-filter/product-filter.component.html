@@ -1,8 +1,7 @@
 <div class="sticky-top">
-
-    <div class="btn-group">
+    <div class="btn-group" style="margin-bottom: 30px; margin-top: 30px;">
         <button [class.active]="!category" routerLink="/" type="button" class="btn btn-success">
-            Categories
+            Categorii
         </button>
         <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -19,37 +18,22 @@
     <div>
         <!-- Sa iau valorile predefinite min si max din baza de date -->
         <div class="form-group">
-            <label for="price1">Min. price:</label>
+            <label for="price1"><b>Pret min.:</b></label>
             <div class="input-group-prepend resize-inputs">
                 <span class="input-group-text">RON</span>
                 <input #p type="number" name="price1" id="price1" class="form-control" [(value)]="value" [(ngModel)]="value" (ngModelChange)="myFunctionMin($event)">
             </div>
         </div>
-
         <div class="form-group">
-            <label for="price2">Max. price:</label>
+            <label for="price2"><b>Pret max.:</b></label>
             <div class="input-group-prepend resize-inputs">
                 <span class="input-group-text">RON</span>
                 <input #p1 type="number" name="price2" id="price2" class="form-control" [(value)]="highValue" [(ngModel)]="highValue" (ngModelChange)="myFunctionMax($event)">
             </div>
         </div>
-    
-        <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
-        <button (click)="sendMessage(p.value, p1.value)" style="margin-bottom: 10px; margin-top: 10px;">Filter</button>
+        <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"
+            style="margin-bottom: 30px; margin-top: 30px;"></ng5-slider>
+        <button (click)="sendMessage(p.value, p1.value)" class="btn btn-primary"
+            style="margin-bottom: 20px; margin-top: 20px;">Filtrare</button>
     </div>
-    <!-- 
-    <div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">Options</label>
-            </div>
-            <select class="custom-select" id="inputGroupSelect01">
-                <option selected>Choose...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-        </div>
-    </div> -->
-
 </div>

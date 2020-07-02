@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../product.service';
 
@@ -7,7 +7,7 @@ import { ProductService } from '../product.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   mostVisitedProducts = [];
   lastVisitedProducts = [];
 
@@ -19,29 +19,23 @@ export class HomeComponent implements OnInit {
     private productService: ProductService) {
     this.productService.getMostVisitedProducts().subscribe(data => {
       let aux;
-      for(let i = 0; i < data.length / 2; i++){
+      for (let i = 0; i < data.length / 2; i++) {
         aux = data[i];
-        data[i] = data [data.length-i-1];
-        data [data.length-i-1] = aux;
+        data[i] = data[data.length - i - 1];
+        data[data.length - i - 1] = aux;
       }
 
       this.mostVisitedProducts = data;
-      console.log("ceva:", this.mostVisitedProducts);
     });
 
     this.productService.getLastVisitedProducts().subscribe(data => {
       let aux;
-      for(let i = 0; i < data.length / 2; i++){
+      for (let i = 0; i < data.length / 2; i++) {
         aux = data[i];
-        data[i] = data [data.length-i-1];
-        data [data.length-i-1] = aux;
+        data[i] = data[data.length - i - 1];
+        data[data.length - i - 1] = aux;
       }
       this.lastVisitedProducts = data;
-      console.log("timp:", this.lastVisitedProducts);
     });
-   }
-
-  ngOnInit(): void {
   }
-
 }

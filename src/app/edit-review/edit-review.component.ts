@@ -25,7 +25,5 @@ export class EditReviewComponent implements OnInit {
     ).subscribe(object => {
       this.state = object;
     });
-
   }
-
 }

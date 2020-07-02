@@ -19,7 +19,7 @@ export class CreateProductFormComponent implements OnInit {
   constructor(
     private router: Router,
     private categoryService: CategoryService,
-    private subcategoryService: SubcategoriesService, 
+    private subcategoryService: SubcategoriesService,
     private colorsService: ColorsService,
     private createProductService: ProductService) {
 
@@ -32,25 +32,20 @@ export class CreateProductFormComponent implements OnInit {
     });
   }
 
-  save(product){
+  save(product) {
     this.createProductService.create(product);
 
     this.router.navigate(['/admin/products']);
   }
 
-  cancel(){
+  cancel() {
     this.router.navigate(['/admin/products']);
   }
 
   ngOnInit(): void {
   }
 
-  orice(param){
-    console.log("option:", param);
-    
-  }
-
-  filteredSubcategories(param){
+  filteredSubcategories(param) {
     return this.subcategories1.filter(x => x.payload.val().parentId == param);
   }
 }

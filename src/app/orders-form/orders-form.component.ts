@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { OrderService } from '../order.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
@@ -10,7 +10,7 @@ import { OrderStatusService } from '../order-status.service';
   templateUrl: './orders-form.component.html',
   styleUrls: ['./orders-form.component.css']
 })
-export class OrdersFormComponent implements OnInit {
+export class OrdersFormComponent {
   id;
   order;
   order2: Order[];
@@ -28,7 +28,6 @@ export class OrdersFormComponent implements OnInit {
       this.orderService.getItems(this.id).pipe(take(1)).subscribe(o => (this.order2 = o));
       console.log("id:", this.order);
     }
-
     this.orderStatus$ = orderStatusService.getOrderStatus();
   }
 
@@ -38,11 +37,6 @@ export class OrdersFormComponent implements OnInit {
 
   update(order){
     this.orderService.updateOrder(this.id, order);
-
     this.router.navigate(['/admin/orders']);
   }
-
-  ngOnInit(): void {
-  }
-
 }

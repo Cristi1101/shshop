@@ -9,23 +9,24 @@
             {{ product.payload.val()?.description }}
         </p>
         <hr>
-        <p class="card-text">Category: {{ product.payload.val().category }} -
-                {{ product.payload.val().subcategory }}</p>
+        <p class="card-text"><b>Categoria:</b>
+            {{ product.payload.val().category }} - {{ product.payload.val().subcategory }}
+        </p>
         <hr>
-        <p class="card-text">Color: {{ product.payload.val().color }}</p>
+        <p class="card-text"><b>Culoarea:</b> {{ product.payload.val().color }}</p>
         <hr>
         <p class="card-text"><b>{{ product.payload.val().price | currency:'RON ':'code' }}</b></p>
     </div>
     <div class="card-footer h-5">
         <button (click)="addToCart()" class="btn btn-primary btn-block">
-            Add to Cart
+            Adauga in cos
         </button>
     </div>
 </div>
 
 <hr style="margin-top: 30px; margin-bottom: 30px;">
 
-<h1 class="text-center">Reviews</h1><br>
+<h1 class="text-center">Recenzii</h1><br>
 <div class="row" *ngFor="let recenzie of reviews" style="margin-bottom: 30px; border-style: inset;">
     <div class="col-sm-2">
         <div class="zoom-image h-50" style="margin-top: 20px;">
@@ -42,6 +43,6 @@
         <hr>
         <ngb-rating #stea [(rate)]="recenzie.recenzie.stele" [max]="5" readonly=true style="font-size:20px">
         </ngb-rating>
-        <pre style="font-size:20px">Rate: <b>{{recenzie.recenzie.stele}}</b></pre>
+        <pre style="font-size:20px">Evaluare: <b>{{recenzie.recenzie.stele}}</b></pre>
     </div>
 </div>

@@ -1,47 +1,23 @@
 <p>
-    <input 
-    #query
-    (keyup)="filter(query.value)"
-    type="text" class="form-control" placeholder="Search by email...">
+    <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Cautare prin email...">
 </p>
 
 
 
-<data-table
-    [items]="items"
-    [itemCount]="itemCount"
-    (reload)="reloadItems($event)"
->
-    <data-table-column
-        [property]="'username'"
-        [header]="'Username'"
-        [sortable]="true"
-        [resizable]="true"
-    >
+<data-table [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
+    <data-table-column [property]="'username'" [header]="'Nume de utilizator'" [sortable]="true" [resizable]="true">
     </data-table-column>
 
-    <data-table-column
-        [property]="'isAdmin'"
-        [header]="'Admin Power'"
-        [sortable]="true"
-        [resizable]="true"
-    >
+    <data-table-column [property]="'isAdmin'" [header]="'Rol de administrator'" [sortable]="true" [resizable]="true">
 
     </data-table-column>
 
-    <data-table-column
-        [property]="'email'"
-        [header]="'Users Email'"
-        [sortable]="true"
-        [resizable]="true"
-    >
+    <data-table-column [property]="'email'" [header]="'Email'" [sortable]="true" [resizable]="true">
     </data-table-column>
 
-    <data-table-column
-        [property]="'$key'"
-    >
+    <data-table-column [property]="'$key'">
         <ng-template #dataTableCell let-item="item">
-            <a [routerLink]="['/admin/users/', item.key]">View More</a>
+            <a [routerLink]="['/admin/users/', item.key]">Mai multe detalii</a>
         </ng-template>
     </data-table-column>
 </data-table>

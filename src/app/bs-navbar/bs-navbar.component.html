@@ -1,59 +1,57 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-        <a class="navbar-brand" routerLink="/homepage">
-            Second
-            <i class="far fa-handshake"></i>
-            Hand Shop
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <a class="navbar-brand" routerLink="/homepage">
+        Second
+        <i class="far fa-handshake"></i>
+        Hand Shop
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+        aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/">
+                    <i class="fas fa-store"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/shopping-cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge badge-warning badge-pill">
+                        {{ shoppingCartItemCount }}
+                    </span>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav">
+            <ng-template #anonymousUser>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/">
-                        <i class="fas fa-store"></i>
-                    </a>
+                    <a class="nav-link" routerLink="/login">Login <i class="fas fa-sign-in-alt"></i></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/shopping-cart">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="badge badge-warning badge-pill">
-                            {{ shoppingCartItemCount }}
-                        </span>
-                    </a>
-                </li>
-            </ul>
-
-            <ul class="navbar-nav">
-                <ng-template #anonymousUser>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/login">Login <i class="fas fa-sign-in-alt"></i></a>
-                    </li>
-                </ng-template>
-                <li *ngIf="appUser; else anonymousUser" class="nav-item dropleft">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user"></i>
-                        {{ appUser.username }}
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" routerLink="/my-account">My Account <i
-                                class="fas fa-user-circle"></i></a>
-                        <a class="dropdown-item" routerLink="/my-orders">My Orders</a>
-                        <a class="dropdown-item" routerLink="/favourites">Favourites</a>
-                        <a class="dropdown-item" routerLink="/recenzii">Recenziile mele</a>
-                        <ng-container *ngIf="appUser.isAdmin">
-                            <a class="dropdown-item" routerLink="/admin/users">Manage users</a>
-                            <a class="dropdown-item" routerLink="/admin/products">Manage products</a>
-                            <a class="dropdown-item" routerLink="/admin/orders">Manage orders</a>
-                            <a class="dropdown-item" routerLink="/admin/reviews">Manage reviews</a>
-                        </ng-container>
-                        <a class="dropdown-item" (click)="logout()">Log Out <i class="fas fa-sign-out-alt"></i></a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-    </nav>
+            </ng-template>
+            <li *ngIf="appUser; else anonymousUser" class="nav-item dropleft">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                    {{ appUser.username }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" routerLink="/my-account">Contul meu <i class="fas fa-user-circle"></i></a>
+                    <a class="dropdown-item" routerLink="/my-orders">Comenziile mele</a>
+                    <a class="dropdown-item" routerLink="/favourites">Favorite</a>
+                    <a class="dropdown-item" routerLink="/recenzii">Recenziile mele</a>
+                    <ng-container *ngIf="appUser.isAdmin">
+                        <a class="dropdown-item" routerLink="/admin/users">Administrarea utilizatorilor</a>
+                        <a class="dropdown-item" routerLink="/admin/products">Administrarea produselor</a>
+                        <a class="dropdown-item" routerLink="/admin/orders">Administrarea comenzilor</a>
+                        <a class="dropdown-item" routerLink="/admin/reviews">Administrarea recenziilor</a>
+                    </ng-container>
+                    <a class="dropdown-item" (click)="logout()">Log Out <i class="fas fa-sign-out-alt"></i></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -14,11 +14,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AdminOrdersComponent {
   orders$;
-  
+
   constructor(
     private orderService: OrderService,
     private router: Router,
     private route: ActivatedRoute) {
-    this.orders$ = orderService.getAll(); 
-   }
+    this.orders$ = orderService.getAll();
+  }
 }

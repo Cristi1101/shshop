@@ -12,7 +12,6 @@ import { UserService } from '../user.service';
   styleUrls: ['./products-details.component.css']
 })
 export class ProductsDetailsComponent {
-
   checked: boolean;
   product;
   id;
@@ -30,7 +29,7 @@ export class ProductsDetailsComponent {
     this.getReviews();
   }
 
-  getReviews(){
+  getReviews() {
     this.recenziiService.getAllMyReviews(this.id).subscribe(recenziiData => {
       recenziiData.forEach(element1 => {
         this.userService.getUser(element1.uid).subscribe(data => {
@@ -44,7 +43,7 @@ export class ProductsDetailsComponent {
   }
 
   addToCart() {
-    if (window.confirm('Product added to shopping-cart!'))
+    if (window.confirm('Produs adaugat in cosul de cumparaturi!'))
       this.cartService.addToCart(this.product.payload.val());
   }
 }

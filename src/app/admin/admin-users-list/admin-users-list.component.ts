@@ -16,7 +16,7 @@ export class AdminUsersListComponent implements OnInit, OnDestroy {
   items: AppUser[] = [];
   itemCount: number;
 
-  constructor(private userService: UserService) { 
+  constructor(private userService: UserService) {
     this.subscription = this.userService.getAll().subscribe(users => {
       this.users = users;
       this.initializeTable(users);
@@ -42,7 +42,6 @@ export class AdminUsersListComponent implements OnInit, OnDestroy {
     let filteredUsers = (query) ?
       this.users.filter(p => p.email.toLowerCase().includes(query.toLowerCase())) :
       this.users;
-
     this.initializeTable(filteredUsers);
   }
 
@@ -52,5 +51,4 @@ export class AdminUsersListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
 }

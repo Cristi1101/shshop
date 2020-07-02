@@ -1,30 +1,30 @@
 <form class="form-group">
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Username" #username required>
+    <input type="text" class="form-control" placeholder="Nume de utilizator" #username required>
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="First Name" #userFirstName>
+    <input type="text" class="form-control" placeholder="Prenume" #userFirstName>
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Last Name" #userLastName>
+    <input type="text" class="form-control" placeholder="Nume" #userLastName>
   </div>
   <div class="form-group">
-    <input type="email" class="form-control" placeholder="Email Address" #email>
+    <input type="email" class="form-control" placeholder="Adresa de email" #email>
   </div>
   <div class="form-group">
-    <input type="password" class="form-control" placeholder="Password" #password>
+    <input type="password" class="form-control" placeholder="Parola" #password>
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="City" #userCity>
+    <input type="text" class="form-control" placeholder="Oras" #userCity>
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Address" #userAddressOne>
+    <input type="text" class="form-control" placeholder="Adresa" #userAddressOne>
   </div>
   <div class="form-group">
-    <input type="number" class="form-control" placeholder="Postal Code" #userPostalCode>
+    <input type="number" class="form-control" placeholder="Cod postal" #userPostalCode>
   </div>
   <div class="form-group">
-    <h5>Choose an image</h5>
+    <h5>Alege o imagine</h5>
     <input type="file" accept=".png, .jpg" class="form-control" (change)="onUpload($event)">
   </div>
   <div class="progress">
@@ -35,14 +35,13 @@
   <input #imageUser type="hidden" [value]="urlImage | async">
   <img [src]="urlImage" class="img-thumbnail">
   <div class="form-group">
-    <button *ngIf="urlImage; else btnDisabled"
-      type="button" class="btn btn-primary"
+    <button *ngIf="urlImage; else btnDisabled" type="button" class="btn btn-primary"
       (click)="auth.signUp(email.value, password.value, username.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
-      SignUp</button>
+      Inregistrare</button>
     <ng-template #btnDisabled>
       <button type="button" disabled=true class="btn btn-primary"
-      (click)="auth.signUp(email.value, password.value, username.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
-      SignUp</button>
+        (click)="auth.signUp(email.value, password.value, username.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
+        Inregistrare</button>
     </ng-template>
   </div>
 </form>

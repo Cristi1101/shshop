@@ -1,16 +1,16 @@
 <div>
-  <h3>Shipping Details</h3> <br>
+  <h3>Detalii de livrare</h3> <br>
   <table class="table">
     <tr>
-      <th>First Name</th>
+      <th>Prenume</th>
       <td>{{ order.payload.val().shipping.firstName }}</td>
     </tr>
     <tr>
-      <th>Last Name</th>
+      <th>Nume</th>
       <td>{{ order.payload.val().shipping.lastName }}</td>
     </tr>
     <tr>
-      <th>Username</th>
+      <th>Nume de utilizator</th>
       <td>{{ order.payload.val().shipping.username }}</td>
     </tr>
     <tr>
@@ -18,15 +18,15 @@
       <td>{{ order.payload.val().shipping.email }}</td>
     </tr>
     <tr>
-      <th>City</th>
+      <th>Oras</th>
       <td>{{ order.payload.val().shipping.city }}</td>
     </tr>
     <tr>
-      <th>Address</th>
+      <th>Adresa</th>
       <td>{{ order.payload.val().shipping.address }}</td>
     </tr>
     <tr>
-      <th>Postal Code</th>
+      <th>Cod postal</th>
       <td>{{ order.payload.val().shipping.postalCode }}</td>
     </tr>
   </table>
@@ -35,32 +35,19 @@
 <hr style="background-color: chocolate;">
 
 <div style="margin-top: 50; margin-bottom: 50px;">
-    <h3>Order status</h3> <br>
-    <table class="table">
-        <tr>
-            <th>Status</th>
-            <td>{{ order.payload.val().orderStatus }}</td>
-        </tr>
-    </table>
-    <hr>
-    <!-- <form #f="ngForm" (ngSubmit)="update(f.value)">
-        <div class="form-group">
-            <label for="orderStatus">Order Status</label>
-            <select #orderStatus="ngModel" ngModel name="orderStatus" id="orderStatus" class="form-control" required>
-                <option value=""></option>
-                <option *ngFor="let c of orderStatus$ | async" [value]="c.payload.val().name">
-                    {{ c.payload.val().name }} - {{ c.payload.val().description }}
-                </option>
-            </select>
-            <div class="alert alert-danger" *ngIf="orderStatus.touched && orderStatus.invalid">Order Status is required.</div>
-        </div>
-        <button class="btn btn-primary" [disabled]="f.invalid" style="margin-right:10px;">Update Status</button>
-    </form> -->
+  <h3>Starea comenzii</h3> <br>
+  <table class="table">
+    <tr>
+      <th>Starea comenzii</th>
+      <td>{{ order.payload.val().orderStatus }}</td>
+    </tr>
+  </table>
+  <hr>
 </div>
 
 <hr style="background-color: chocolate;">
 
-<h3>Products Ordered</h3> <br>
+<h3>Produse comandate</h3> <br>
 <div class="card-group">
 
   <div class="card col-md-3 col-lg-3 d-flex align-items-stretch" style="width: 18rem; margin-right: 50px;"
@@ -74,10 +61,10 @@
       <textarea #recenzie name="recenzie" cols="20" rows="5"></textarea>
       <ngb-rating [(rate)]="currentRates[j]" [max]="5"></ngb-rating>
       <hr>
-      <pre>Rate: <b>{{currentRates[j]}}</b></pre>
+      <pre>Evaluare: <b>{{currentRates[j]}}</b></pre>
       <button (click)="adaugaRecenzie(recenzie.value, i, currentRates[j])">Adauga Recenzie</button>
     </div>
   </div>
 </div>
 
-<button type="button" (click)="back()" class="btn btn-secondary" style="margin-top:10px;">Back</button>
+<button type="button" (click)="back()" class="btn btn-secondary" style="margin-top:10px;">Inapoi</button>

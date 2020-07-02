@@ -6,7 +6,7 @@
       <th>Date</th>
       <th></th>
     </tr>
-  </thead> 
+  </thead>
   <tbody>
     <tr *ngFor="let order of orders$ | async">
       <td>{{ order.shipping.username }}</td>
@@ -15,6 +15,6 @@
         <a [routerLink]="['/my-orders/', order.key]">Details</a>
       </td>
     </tr>
-  </tbody> 
+  </tbody>
 </table>
 <button type="button" (click)="back()" class="btn btn-secondary" style="margin-top:10px;">Back to Homepage</button>

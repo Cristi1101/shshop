@@ -1,74 +1,27 @@
 <p>
-    <a routerLink="/admin/products/new" class="btn btn-primary">New Product</a>
+    <a routerLink="/admin/products/new" class="btn btn-primary">Creare produs nou</a>
 </p>
 
 <p>
-    <input 
-    #query
-    (keyup)="filter(query.value)"
-    type="text" class="form-control" placeholder="Search...">
+    <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Cautare...">
 </p>
 
-<data-table
-    [items]="items"
-    [itemCount]="itemCount"
-    (reload)="reloadItems($event)"
->
-    <data-table-column
-        [property]="'title'"
-        [header]="'Title'"
-        [sortable]="true"
-        [resizable]="true"
-    >
-
+<data-table [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
+    <data-table-column [property]="'title'" [header]="'Numele produsului'" [sortable]="true" [resizable]="true">
     </data-table-column>
 
-    <data-table-column
-    [property]="'category'"
-    [header]="'Category'"
-    [sortable]="true"
-    [resizable]="true"
-    >
+    <data-table-column [property]="'category'" [header]="'Categoria'" [sortable]="true" [resizable]="true">
+    </data-table-column>
 
-    </data-table-column>        
-
-    <data-table-column
-        [property]="'price'"
-        [header]="'Price'"
-        [sortable]="true"
-        [resizable]="true"
-    >
+    <data-table-column [property]="'price'" [header]="'Pret'" [sortable]="true" [resizable]="true">
         <ng-template #dataTableCell let-item="item">
             {{ item.price | currency:'RON ':'code' }}
         </ng-template>
     </data-table-column>
 
-    <data-table-column
-        [property]="'$key'"
-    >
+    <data-table-column [property]="'$key'">
         <ng-template #dataTableCell let-item="item">
-            <a [routerLink]="['/admin/products/', item.key]">View More</a>
+            <a [routerLink]="['/admin/products/', item.key]">Mai multe detalii</a>
         </ng-template>
     </data-table-column>
 </data-table>
-
-<!-- <table class="table">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Price</th>
-            <th>Product id</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let p of filteredProducts">
-            <td>{{ p.title }}</td>
-            <td>{{ p.price }}</td> 
-            <td>{{ p.id }}</td>
-            <td>
-                <a [routerLink]="['/admin/products/', p.id]">Edit</a>
-            </td>
-        </tr>
-    </tbody>
-</table> -->

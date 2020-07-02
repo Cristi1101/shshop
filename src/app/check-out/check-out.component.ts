@@ -50,8 +50,6 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   async ngOnInit() {
     let cart$ = await this.shoppingCartService.getCart();
     this.subscription = cart$.valueChanges().subscribe((cart: ShoppingCart) => this.cart = cart);
-    console.log("order:", this.cart);
-
     this.cart2$ = await this.shoppingCartService.getCart();
     this.cart2$.valueChanges().subscribe((temp) => {
       let data: any;
@@ -60,8 +58,6 @@ export class CheckOutComponent implements OnInit, OnDestroy {
       this.shoppingCartItemCount = this.cart2.totalItemsCount;
       this.shoppingCartTotalPrice = this.cart2.totalPrice;
     });
-
-
 
     paypal
       .Buttons({
@@ -96,12 +92,6 @@ export class CheckOutComponent implements OnInit, OnDestroy {
     this.router.navigate(['/order-success/', result.key]);
   }
 
-  // save(users) {
-  //   this.userService.update(this.userID, users);
-  //   this.router.navigate(['/my-account']);
-  // }
-
-
   cancel() {
     this.router.navigate(['/shopping-cart']);
   }
@@ -109,5 +99,4 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
 }

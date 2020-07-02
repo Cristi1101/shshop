@@ -6,10 +6,10 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { FormsModule } from '@angular/forms';
 import { DataTableModule } from 'angular7-data-table';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
+
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
@@ -65,7 +65,7 @@ import { OrderStatusService } from './order-status.service';
     ProductsComponent,
     ShoppingCartComponent,
     CheckOutComponent,
-    OrderSuccesComponent,
+    OrderSuccesComponent, //sa nu uit sa fac order succes component !!!!!!
     MyOrdersComponent,
     AdminProductsComponent,
     AdminOrdersComponent,

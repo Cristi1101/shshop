@@ -1,20 +1,20 @@
-<div class="card">
+<div class="card text-center">
     <div class="card-body">
-      <h5 class="card-title">Order summary</h5>
-      <p class="card-text">You have {{ shoppingCartItemCount }} items in your shopping cart.</p>
+        <h3 class="card-title">Rezumatul comenzii</h3>
+        <p class="card-text"><i>Aveti {{ shoppingCartItemCount }} produse in cosul de cumparaturi.</i></p><br>
         <ul class="list-group list-group-flush">
-            <li *ngFor="let item of cart.items" class="list-group-item">
+            <li *ngFor="let item of cart.items" class="list-group-item text-left">
                 {{item.quantity }} x {{ item.product.title }}
                 <div class="float-right">
                     {{ item.totalPrice  | currency:'RON ':'code' }}
                 </div>
             </li>
-            <li class="list-group-item font-weight-bold">
-                Total 
+            <li class="list-group-item font-weight-bold text-left">
+                Total
                 <div class="float-right">
                     {{ cart.totalPrice | currency:'RON ':'code' }}
                 </div>
             </li>
         </ul>
     </div>
-  </div>
+</div>

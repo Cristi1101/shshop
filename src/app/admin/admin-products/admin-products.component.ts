@@ -14,7 +14,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   products: Product[] = [];
   subscription: Subscription;
   tableResource: DataTableResource<Product>;
-  items: Product[] = []; 
+  items: Product[] = [];
   itemCount: number;
 
   constructor(private productService: ProductService) {
@@ -41,9 +41,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
 
   filter(query: string) {
     let filteredProducts = (query) ?
-      this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) :
-      this.products;
-
+      this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) : this.products;
     this.initializeTable(filteredProducts);
   }
 

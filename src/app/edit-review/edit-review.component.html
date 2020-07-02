@@ -1,26 +1,18 @@
-<!-- <div>
-    <p>{{ state.produs.title }}</p>
-    
-    <ngb-rating [(rate)]="state?.recenzie.stele" [max]="5"></ngb-rating>
-    <hr>
-    <pre>Rate: <b>{{state?.recenzie.stele}}</b></pre> 
-</div> -->
-
-<h1 class="text-center">My Review</h1><br>
 <div style="margin-left: 390px;">
     <div class="card shadow h-100 text-center" style="width: 20rem;">
         <div class="card-body">
             <h5 class="card-title">{{ state.produs.title }}</h5>
+            <hr>
             <div class="zoom-image h-50" style="margin-top: 5px;">
                 <img src="{{ state.produs.imageUrl }}" class="card-img-top">
             </div><br>
             <textarea #recenzie cols="32" rows="5">{{ state.recenzie.continut }}</textarea><br>
             <hr>
             <ngb-rating #stea [(rate)]="state?.recenzie.stele" [max]="5"></ngb-rating>
-            <pre>Rate: <b>{{ state?.recenzie.stele }}</b></pre>
+            <pre>Evaluare: <b>{{ state?.recenzie.stele }}</b></pre>
             <button class="btn btn-success"
                 (click)="this.recenziiService.updateReview(state.produs.key, state.recenzie.key, state?.recenzie.stele, recenzie.value, state.recenzie.uid)">
-                Confirm
+                Confirma
                 <i class="fa fa-angle-right"></i>
             </button>
         </div>

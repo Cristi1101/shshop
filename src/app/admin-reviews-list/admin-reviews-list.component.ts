@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { RecenziiService } from '../recenzii.service';
 import { ProductService } from '../product.service';
 import { UserService } from '../user.service';
-import { AppUser } from '../models/app-user';
 
 @Component({
   selector: 'app-admin-reviews-list',

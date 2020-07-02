@@ -1,26 +1,8 @@
-<!-- <button (click) = "login()" class="btn btn-primary">Login with Google</button> -->
-<!-- <div class="authBlock">
-    <h3>Sign In</h3>
-    <div class="formGroup">
-      <input type="text" class="formControl" placeholder="Username" #email required>
-    </div>
-    <div class="formGroup">
-      <input type="password" class="formControl" placeholder="Password" #password required>
-    </div> -->
-    <!-- Calling SignIn Api from AuthenticationService -->
-    <!-- <div class="formGroup">
-      <input type="button" class="btn btnPrimary" value="Log in" (click)="signIn(email.value, password.value)">
-    </div>
-    <a routerLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>
-    <button (click) = "login()" class="btn btn-primary">Login with Google</button>
- </div> -->
-
-
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
 			<div class="card-header">
-				<h3>Sign In</h3>
+				<h3>Autentificare</h3>
 			</div>
 			<div class="card-body">
 				<form>
@@ -28,28 +10,23 @@
 						<input #email type="email" class="form-control" placeholder="email">
 					</div>
 					<div class="input-group form-group">
-						<input #password type="password" class="form-control" placeholder="password">
+						<input #password type="password" class="form-control" placeholder="parola">
 					</div>
 					<div class="form-group">
-                        
-                        <input type="button" value="Login" class="btn float-left login_btn" 
-                            (click)="auth.signIn(email.value, password.value)">
-                    </div>
-                </form>
+						<input type="button" value="Login" class="btn float-left login_btn"
+							(click)="auth.signIn(email.value, password.value)">
+					</div>
+				</form>
 			</div>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center">
-					Don't have an account? 
+					<a routerLink="/signup">Utilizator nou</a>
 				</div>
-				<div class="d-flex justify-content-center">
-					<a routerLink="/signup">Sign Up</a>
-				</div>
-				
+				<!-- 				
 				<div class="d-flex justify-content-center">
 					<a href="#">Forgot your password?</a>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
 </div>
-

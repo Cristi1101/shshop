@@ -3,29 +3,29 @@
     <div class="col-md-6">
         <form #f="ngForm" (ngSubmit)="save(f.value)">
             <div class="form-group">
-                <label for="firstName">First Name</label>
+                <label for="firstName">Prenume</label>
                 <input #firstName="ngModel" [(ngModel)]="users.firstName" name="firstName" id="firstName"
                     type="text" class="form-control" required>
                 <div class="alert alert-danger" *ngIf="firstName.touched && firstName.invalid">
-                    First Name is required.
+                    Acest camp este obligatoriu.
                 </div>
             </div>
         
             <div class="form-group">
-                <label for="lastName">Last name</label>
+                <label for="lastName">Nume</label>
                 <input #lastName="ngModel" [(ngModel)]="users.lastName" name="lastName" id="lastName" type="text"
                     class="form-control" required>
                 <div class="alert alert-danger" *ngIf="lastName.touched && lastName.invalid">
-                    Last Name is required
+                    Acest camp este obligatoriu.
                 </div>
             </div>
         
             <div class="form-group">
-                <label for="username">Username</label>
+                <label for="username">Nume de utilizator</label>
                 <input #username="ngModel" [(ngModel)]="users.username" name="username" id="username" type="text"
                     class="form-control" required>
                 <div class="alert alert-danger" *ngIf="username.touched && username.invalid">
-                    Username is required
+                    Acest camp este obligatoriu.
                 </div>
             </div>
         
@@ -34,103 +34,50 @@
                 <input #email="ngModel" [(ngModel)]="users.email" name="email" id="email" type="email"
                     class="form-control" required>
                 <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
-                    Email is required
+                    Acest camp este obligatoriu.
                 </div>
             </div>
         
             <div class="form-group">
-                <label for="city">City</label>
+                <label for="city">Oras</label>
                 <input #city="ngModel" [(ngModel)]="users.city" name="city" id="city" type="text"
                     class="form-control" required>
                 <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
-                    City is required
+                    Acest camp este obligatoriu.
                 </div>
             </div>
         
             <div class="form-group">
-                <label for="address">Address</label>
+                <label for="address">Adresa</label>
                 <input #address="ngModel" [(ngModel)]="users.address" name="address" id="address" type="text"
                     class="form-control" required>
                 <div class="alert alert-danger" *ngIf="address.touched && address.invalid">
-                    Address is required
+                    Acest camp este obligatoriu.
                 </div>
             </div>
         
             <div class="form-group">
-                <label for="postalCode">Postal Code</label>
+                <label for="postalCode">Cod postal</label>
                 <input #postalCode="ngModel" [(ngModel)]="users.postalCode" name="postalCode" id="postalCode"
                     type="number" class="form-control" required>
                 <div class="alert alert-danger" *ngIf="postalCode.touched && postalCode.invalid">
-                    Postal Code is required
+                    Acest camp este obligatoriu.
                 </div>
             </div>
-        
-            <!-- <div class="form-group">
-                <label for="isAdmin">Postal Code</label>
-                <select #isAdmin="ngModel" [(ngModel)]="users.isAdmin" name="isAdmin" id="isAdmin" type="number"
-                    class="form-control" required>
-                    <option [ngValue]="true">True</option>
-                    <option [ngValue]="false">False</option>
-                </select>
-                <div class="alert alert-danger" *ngIf="isAdmin.touched && isAdmin.invalid">
-                    Admin power is required
-                </div>
-            </div> -->
 
-            <!-- <div class="form-group">
-                <h5>Choose an image</h5>
-                <input #imageUser="ngModel" [(ngModel)]="users.img" type="file" accept=".png, .jpg" class="form-control" (change)="onUpload($event)">
-                <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
-                    [style.width]="(uploadPercent | async) + '%'">
-                    </div>
-                </div>
-                <input #imageUser="ngModel" [(ngModel)]="users.img" type="hidden">
-            </div> -->
-
-<!-- 
-            <div class="form-group">
-                <h5>Choose an image</h5>
-                <input type="file" accept=".png, .jpg" class="form-control" (change)="onUpload($event)">
-              </div>
-              <div class="progress">
-                <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
-                  [style.width]="(uploadPercent | async) + '%'">
-                </div>
-              </div>
-
-
-            <div *ngIf="(urlImage | async)" class="form-group" style="visibility: hidden;">
-                <label for="img">Image</label>
-                <input #img="ngModel" [(ngModel)]="urlImage" name="img" id="img"
-                    type="number" class="form-control" required>
-                <div class="alert alert-danger" *ngIf="img.touched && img.invalid">
-                    Image is required
-                </div>
-            </div> -->
-
-            <!-- <button 
-            type="button" class="btn btn-primary"
-            (click)="auth.signUp(email.value, password.value, username.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
-            SignUp</button>
-          <ng-template #imageChanged>
-            <button type="button" disabled=true class="btn btn-primary"
-            (click)="auth.signUp(email.value, password.value, username.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
-            SignUp</button>
-          </ng-template> -->
-
-
-            <button class="btn btn-primary" style="margin-right:10px;">Save</button>
-            <button type="button" (click)="cancel()" class="btn btn-secondary" style="margin-right:10px;">Cancel</button>
+            <button class="btn btn-primary" style="margin-right:10px;">Salveaza</button>
+            <button type="button" (click)="cancel()" class="btn btn-secondary" style="margin-right:10px;">Anuleaza</button>
         
         </form>
     </div>
 <div class="col-md-6">
-    <div class="card" style="width: 18rem;">
+    <div class="card text-center" style="width: 18rem;">
         <img [src]="users.img" class="card-img-top">
         <div class="card-body">
             <h3 class="card-title">{{  users.firstName }} {{ users.lastName }}</h3>
+            <hr>
             <h5>{{ users.username }}</h5>
+            <hr>
             <p class="card-text">{{ users.city }}</p>
             <p class="card-text">{{ users.email }}</p>
         </div>

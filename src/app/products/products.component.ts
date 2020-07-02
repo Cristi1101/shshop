@@ -5,7 +5,6 @@ import { Product } from '../models/product';
 import { switchMap } from 'rxjs/operators';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -25,7 +24,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   @ViewChild('toggleDrop') toggleDrop: ElementRef;
   @ViewChild('menu') menu: ElementRef;
-
 
   constructor(
     private route: ActivatedRoute,
