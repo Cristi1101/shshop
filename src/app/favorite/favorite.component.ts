@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FavoritesService } from '../favorites.service';
+import { ServiciuFavorite } from '../serviciu-favorite.service';
 import { ServiciuCosDeCumparaturi } from '../serviciu-cos-de-cumparaturi.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class Favorite {
 
   constructor(
     public cartService: ServiciuCosDeCumparaturi,
-    public favouriteService: FavoritesService) {
+    public favouriteService: ServiciuFavorite) {
     this.favouriteService.getFavourites().subscribe(data => {
       data.forEach(element => {
         this.favourites.push(element.payload.val());

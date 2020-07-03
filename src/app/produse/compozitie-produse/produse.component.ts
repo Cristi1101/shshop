@@ -3,7 +3,7 @@ import { Produs } from '../../models/produs';
 import { ServiciuCosDeCumparaturi } from '../../serviciu-cos-de-cumparaturi.service';
 import { CosDeCumparaturi } from '../../models/cos-de-cumparaturi';
 import { ServiciuProduse } from '../../serviciu-produse.service';
-import { FavoritesService } from '../../favorites.service';
+import { ServiciuFavorite } from '../../serviciu-favorite.service';
 
 @Component({
   selector: 'produse',
@@ -21,7 +21,7 @@ export class Produse implements OnInit {
   constructor(
     private cartService: ServiciuCosDeCumparaturi,
     private productService: ServiciuProduse,
-    private favoritService: FavoritesService) { }
+    private favoritService: ServiciuFavorite) { }
 
   visited() {
     if (this.product.visits == null) this.product.visits = 0;

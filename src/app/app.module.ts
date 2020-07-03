@@ -45,6 +45,7 @@ import { AdministrareRecenzii } from './admin/administrare-recenzii/administrare
 
 import { ProtectieLinkUtilizator } from './protectie-link-utilizator.service';
 import { ProtectieLinkAdmin } from './protectie-link-admin.service';
+
 import { ServiciuDeAutentificare } from './serviciu-de-autentificare.service';
 import { ServiciuUtilizatori } from './serviciu-utilizatori.service';
 import { ServiciuCategorii } from './serviciu-categorii.service';
@@ -55,6 +56,7 @@ import { ServiciuSubcategorii } from './serviciu-subcategorii.service';
 import { ServiciuComenzi } from './serviciu-comenzi.service';
 import { ServiciuRecenzii } from './serviciu-recenzii.service';
 import { ServiciuStareaComenzii } from './serviciu-starea-comenzii.service';
+import { ServiciuFavorite } from './serviciu-favorite.service';
 
 @NgModule({
   declarations: [
@@ -140,7 +142,8 @@ import { ServiciuStareaComenzii } from './serviciu-starea-comenzii.service';
     ServiciuCosDeCumparaturi,
     ServiciuComenzi,
     ServiciuRecenzii,
-    ServiciuStareaComenzii
+    ServiciuStareaComenzii,
+    ServiciuFavorite
   ],
   bootstrap: [AppComponent]
 })

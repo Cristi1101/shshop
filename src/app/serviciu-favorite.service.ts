@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class FavoritesService {
+export class ServiciuFavorite {
   userID = localStorage.getItem('userUID');
   constructor(private db: AngularFireDatabase) { }
 
