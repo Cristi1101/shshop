@@ -18,15 +18,15 @@
             <td>{{ order.payload.val().shipping.email }}</td>
         </tr>
         <tr>
-            <th>Oras</th>
+            <th>Oraș</th>
             <td>{{ order.payload.val().shipping.city }}</td>
         </tr>
         <tr>
-            <th>Adresa</th>
+            <th>Adresă</th>
             <td>{{ order.payload.val().shipping.address }}</td>
         </tr>
         <tr>
-            <th>Cod postal</th>
+            <th>Cod poștal</th>
             <td>{{ order.payload.val().shipping.postalCode }}</td>
         </tr>
     </table>
@@ -55,7 +55,7 @@
 <h3 style="margin-top: 50;">Produse comandate</h3> <br>
 <div class="card-group">
     <div class="card col-md-3 col-lg-3 d-flex align-items-stretch" style="width: 18rem;" *ngFor="let i of order2">
-        <img [src]="i.product.imageUrl" class="card-img-top">
+        <img [src]="i.product.imageUrl" class="card-img-top" [routerLink]="['/products/', i.product.key]">
         <div class="card-body">
             <h5 class="card-title ">{{ i.quantity }} x {{ i.product.title }}</h5>
             <p class="card-text">{{ i.product.price | currency:'RON ':'code'}}</p>
@@ -63,3 +63,6 @@
         </div>
     </div>
 </div>
+<button type="button" (click)="back()" class="btn btn-secondary" style="margin-top:10px;">
+    Înapoi   
+</button>

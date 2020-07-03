@@ -9,19 +9,19 @@
     <input type="text" class="form-control" placeholder="Nume" #userLastName>
   </div>
   <div class="form-group">
-    <input type="email" class="form-control" placeholder="Adresa de email" #email>
+    <input type="email" class="form-control" placeholder="Adresă de email" #email>
   </div>
   <div class="form-group">
-    <input type="password" class="form-control" placeholder="Parola" #password>
+    <input type="password" class="form-control" placeholder="Parolă" #password>
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Oras" #userCity>
+    <input type="text" class="form-control" placeholder="Oraș" #userCity>
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Adresa" #userAddressOne>
+    <input type="text" class="form-control" placeholder="Adresă" #userAddressOne>
   </div>
   <div class="form-group">
-    <input type="number" class="form-control" placeholder="Cod postal" #userPostalCode>
+    <input type="number" class="form-control" placeholder="Cod poștal" #userPostalCode>
   </div>
   <div class="form-group">
     <h5>Alege o imagine</h5>
@@ -37,11 +37,11 @@
   <div class="form-group">
     <button *ngIf="urlImage; else btnDisabled" type="button" class="btn btn-primary"
       (click)="auth.signUp(email.value, password.value, username.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
-      Inregistrare</button>
+      Înregistrare</button>
     <ng-template #btnDisabled>
       <button type="button" disabled=true class="btn btn-primary"
         (click)="auth.signUp(email.value, password.value, username.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
-        Inregistrare</button>
+        Înregistrare</button>
     </ng-template>
   </div>
 </form>

@@ -1,5 +1,5 @@
 <div style="width: 100%; margin-bottom: 20px; position: relative;">
-    <input #toggleDrop [(ngModel)]="search" type="text" placeholder="Search..." style="width: 100%;"
+    <input #toggleDrop [(ngModel)]="search" type="text" placeholder="Căutare..." style="width: 100%;"
         (click)="hideSearchDropDown = false">
     <div #menu style="position: absolute; top: 100%; z-index: 10000; width: 100%;">
         <div *ngFor="let p of filteredProducts; let i = index">

@@ -1,22 +1,22 @@
 <div class="row">
     <div class="col-6">
-        <h3>Use shipping data from your account</h3><br>
+        <h3>DATELE LIVRĂRII<small>*</small></h3><br>
         <form>
             <div class="form-group">
-                <label for="firstName">First Name</label>
+                <label for="firstName">Prenume</label>
                 <input #firstName="ngModel" [(ngModel)]="users.firstName" name="firstName" id="firstName" type="text"
                     class="form-control" required>
                 <div class="alert alert-danger" *ngIf="firstName.touched && firstName.invalid">
-                    First Name is required.
+                    Acest câmp este obligatoriu.
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="lastName">Last name</label>
+                <label for="lastName">Nume</label>
                 <input #lastName="ngModel" [(ngModel)]="users.lastName" name="lastName" id="lastName" type="text"
                     class="form-control" required>
                 <div class="alert alert-danger" *ngIf="lastName.touched && lastName.invalid">
-                    Last Name is required
+                    Acest câmp este obligatoriu.
                 </div>
             </div>
 
@@ -25,44 +25,45 @@
                 <input #email="ngModel" [(ngModel)]="users.email" name="email" id="email" type="email"
                     class="form-control" required>
                 <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
-                    Email is required
+                    Acest câmp este obligatoriu.
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="city">City</label>
+                <label for="city">Oraș</label>
                 <input #city="ngModel" [(ngModel)]="users.city" name="city" id="city" type="text" class="form-control"
                     required>
                 <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
-                    City is required
+                    Acest câmp este obligatoriu.
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="address">Address</label>
+                <label for="address">Adresă</label>
                 <input #address="ngModel" [(ngModel)]="users.address" name="address" id="address" type="text"
                     class="form-control" required>
                 <div class="alert alert-danger" *ngIf="address.touched && address.invalid">
-                    Address is required
+                    Acest câmp este obligatoriu.
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="postalCode">Postal Code</label>
+                <label for="postalCode">Cod poștal</label>
                 <input #postalCode="ngModel" [(ngModel)]="users.postalCode" name="postalCode" id="postalCode"
                     type="number" class="form-control" required>
                 <div class="alert alert-danger" *ngIf="postalCode.touched && postalCode.invalid">
-                    Postal Code is required
+                    Acest câmp este obligatoriu.
                 </div>
             </div>
 
-            <small>Use shipping information from your account or feel free to change it.</small><br><br>
+            <small>*Folosiți datele din contul dumneavoastră sau introduceți alte date de livrare.</small><br><br>
 
             <button type="button" (click)="placeOrder()" class="btn btn-primary"
-                style="margin-right:10px; width: 100%;">Cash on Delivery</button><br><br>
+                style="margin-right:10px; width: 100%;">Plată la ramburs</button><br><br>
             <div #paypal (click)="placeOrder()"></div>
-            <button type="button" (click)="cancel()" class="btn btn-secondary" style="margin-top:10px;">Back to Shopping
-                Cart</button>
+            <button type="button" (click)="cancel()" class="btn btn-secondary" style="margin-top:10px;">
+                Înapoi la coșul de cumpărături    
+            </button>
         </form>
     </div>
 

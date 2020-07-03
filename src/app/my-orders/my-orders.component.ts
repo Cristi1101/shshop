@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class MyOrdersComponent {
   orders$;
   userID = localStorage.getItem('userUID');
+  
   constructor(
     private orderService: OrderService,
     private router: Router,

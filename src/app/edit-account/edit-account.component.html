@@ -7,7 +7,7 @@
                 <input #firstName="ngModel" [(ngModel)]="users.firstName" name="firstName" id="firstName"
                     type="text" class="form-control" required>
                 <div class="alert alert-danger" *ngIf="firstName.touched && firstName.invalid">
-                    Acest camp este obligatoriu.
+                    Acest câmp este obligatoriu.
                 </div>
             </div>
         
@@ -16,7 +16,7 @@
                 <input #lastName="ngModel" [(ngModel)]="users.lastName" name="lastName" id="lastName" type="text"
                     class="form-control" required>
                 <div class="alert alert-danger" *ngIf="lastName.touched && lastName.invalid">
-                    Acest camp este obligatoriu.
+                    Acest câmp este obligatoriu.
                 </div>
             </div>
         
@@ -25,7 +25,7 @@
                 <input #username="ngModel" [(ngModel)]="users.username" name="username" id="username" type="text"
                     class="form-control" required>
                 <div class="alert alert-danger" *ngIf="username.touched && username.invalid">
-                    Acest camp este obligatoriu.
+                    Acest câmp este obligatoriu.
                 </div>
             </div>
         
@@ -34,39 +34,39 @@
                 <input #email="ngModel" [(ngModel)]="users.email" name="email" id="email" type="email"
                     class="form-control" required>
                 <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
-                    Acest camp este obligatoriu.
+                    Acest câmp este obligatoriu.
                 </div>
             </div>
         
             <div class="form-group">
-                <label for="city">Oras</label>
+                <label for="city">Oraș</label>
                 <input #city="ngModel" [(ngModel)]="users.city" name="city" id="city" type="text"
                     class="form-control" required>
                 <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
-                    Acest camp este obligatoriu.
+                    Acest câmp este obligatoriu.
                 </div>
             </div>
         
             <div class="form-group">
-                <label for="address">Adresa</label>
+                <label for="address">Adresă</label>
                 <input #address="ngModel" [(ngModel)]="users.address" name="address" id="address" type="text"
                     class="form-control" required>
                 <div class="alert alert-danger" *ngIf="address.touched && address.invalid">
-                    Acest camp este obligatoriu.
+                    Acest câmp este obligatoriu.
                 </div>
             </div>
         
             <div class="form-group">
-                <label for="postalCode">Cod postal</label>
+                <label for="postalCode">Cod poștal</label>
                 <input #postalCode="ngModel" [(ngModel)]="users.postalCode" name="postalCode" id="postalCode"
                     type="number" class="form-control" required>
                 <div class="alert alert-danger" *ngIf="postalCode.touched && postalCode.invalid">
-                    Acest camp este obligatoriu.
+                    Acest câmp este obligatoriu.
                 </div>
             </div>
 
-            <button class="btn btn-primary" style="margin-right:10px;">Salveaza</button>
-            <button type="button" (click)="cancel()" class="btn btn-secondary" style="margin-right:10px;">Anuleaza</button>
+            <button class="btn btn-primary" style="margin-right:10px;">Salvează</button>
+            <button type="button" (click)="cancel()" class="btn btn-secondary" style="margin-right:10px;">Anulează</button>
         
         </form>
     </div>

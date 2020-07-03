@@ -13,7 +13,8 @@
             <h5 style="margin-top: 30px; margin-bottom: 10px;">{{ recenzie.produs.title }}</h5>
             <div style="margin-top: 10px; margin-bottom: 10px;">
                 <img src="{{ recenzie.produs.imageUrl }}" class="img-thumbnail"
-                    style="width: 150px; height: 110px; display: inline-block;">
+                    style="width: 150px; height: 110px; display: inline-block;"
+                    [routerLink]="['/products/', recenzie.produs.key]">
                 <span style="margin-left: 20px;">-</span>
                 <span style="margin-left: 20px;">{{ recenzie.recenzie.continut }}</span>
             </div>
@@ -26,6 +27,6 @@
         <i class="fa fa-trash"></i> Sterge
     </button>
     <a [routerLink]="['/recenzii/', recenzie.recenzie.key]" [state]="recenzie" style="margin-left: 900px;">
-        Modifica recenzia
+        Modifică recenzia
     </a>
 </div>

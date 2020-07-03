@@ -1,9 +1,9 @@
 <p>
-    <a routerLink="/admin/products/new" class="btn btn-primary">Creare produs nou</a>
+    <a routerLink="/admin/products/new" class="btn btn-primary">Adăugare produs nou</a>
 </p>
 
 <p>
-    <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Cautare...">
+    <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Căutare...">
 </p>
 
 <data-table [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
@@ -13,7 +13,7 @@
     <data-table-column [property]="'category'" [header]="'Categoria'" [sortable]="true" [resizable]="true">
     </data-table-column>
 
-    <data-table-column [property]="'price'" [header]="'Pret'" [sortable]="true" [resizable]="true">
+    <data-table-column [property]="'price'" [header]="'Prețul'" [sortable]="true" [resizable]="true">
         <ng-template #dataTableCell let-item="item">
             {{ item.price | currency:'RON ':'code' }}
         </ng-template>

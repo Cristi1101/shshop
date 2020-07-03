@@ -6,7 +6,7 @@
       <h5 class="card-title">{{ fav.product.title }}</h5>
       <hr>
       <div class="zoom-image h-50" style="margin-top: 5px;">
-        <img src="{{ fav.product.imageUrl }}" class="card-img-top">
+        <img src="{{ fav.product.imageUrl }}" class="card-img-top" [routerLink]="['/products/', fav.product.key]">
       </div>
       <hr>
       <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">
@@ -17,11 +17,11 @@
       <p class="card-text"><b>{{ fav.product.price | currency:'RON ':'code' }}</b></p>
       <hr>
       <button class="btn btn-success" style="margin-right: 50px;" (click)="this.cartService.addToCart(fav.product)">
-        Adauga in <i class="fas fa-shopping-cart"></i>
+        Adaugă în <i class="fas fa-shopping-cart"></i>
       </button>
       <button class="btn btn-danger" (click)="this.favouriteService.remove(fav.product)">
         <i class="fa fa-trash"></i>
-        Sterge
+        Şterge
       </button>
     </div>
   </div>

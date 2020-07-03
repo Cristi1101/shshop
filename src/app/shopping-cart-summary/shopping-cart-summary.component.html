@@ -1,7 +1,7 @@
 <div class="card text-center">
     <div class="card-body">
-        <h3 class="card-title">Rezumatul comenzii</h3>
-        <p class="card-text"><i>Aveti {{ shoppingCartItemCount }} produse in cosul de cumparaturi.</i></p><br>
+        <h3 class="card-title">REZUMATUL COMENZII</h3>
+        <p class="card-text"><i>Aveți {{ shoppingCartItemCount }} produse în coșul de cumpărături.</i></p><br>
         <ul class="list-group list-group-flush">
             <li *ngFor="let item of cart.items" class="list-group-item text-left">
                 {{item.quantity }} x {{ item.product.title }}

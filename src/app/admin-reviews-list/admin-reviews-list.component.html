@@ -1,4 +1,4 @@
-<h1 class="text-center">Recenzii</h1><br>
+<h1 class="text-center" style="margin-bottom: 50px;">RECENZII</h1><br>
 <div class="row" *ngFor="let recenzie of reviews" style="margin-bottom: 30px; border-style: inset;">
     <div class="col-sm-2">
         <div class="zoom-image h-50" style="margin-top: 20px;">
@@ -14,7 +14,8 @@
             <h5 style="margin-top: 30px; margin-bottom: 10px;">{{ recenzie.produs.title }}</h5>
             <div style="margin-top: 10px; margin-bottom: 10px;">
                 <img src="{{ recenzie.produs.imageUrl }}" class="img-thumbnail"
-                    style="width: 150px; height: 110px; display: inline-block;">
+                    style="width: 150px; height: 110px; display: inline-block;"
+                    [routerLink]="['/products/', recenzie.produs.key]">
                 <span style="margin-left: 20px;">-</span>
                 <span style="margin-left: 20px;">{{ recenzie.recenzie.continut }}</span>
             </div>
@@ -23,6 +24,6 @@
     </div>
     <button class="btn btn-danger" (click)="this.recenziiService.delete(recenzie.produs.key, recenzie.recenzie.key)"
         style="margin-top: 5px; margin-bottom: 5px; margin-left: 5px;">
-        <i class="fa fa-trash"></i> Sterge
+        <i class="fa fa-trash"></i> Şterge
     </button>
 </div>
