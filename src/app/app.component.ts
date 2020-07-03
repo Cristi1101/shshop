@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthService } from './auth.service';
+import { ServiciuDeAutentificare } from './serviciu-de-autentificare.service';
 import { Router } from '@angular/router';
-import { UserService } from './user.service';
+import { ServiciuUtilizatori } from './serviciu-utilizatori.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { UserService } from './user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private userService: UserService, private auth:AuthService, router: Router){
+  constructor(private userService: ServiciuUtilizatori, private auth:ServiciuDeAutentificare, router: Router){
     auth.user$.subscribe(user => {
       if(!user) return;
       

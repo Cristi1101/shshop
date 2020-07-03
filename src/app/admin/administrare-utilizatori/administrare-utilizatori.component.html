@@ -1,0 +1,21 @@
+<h1 class="text-center" style="margin-bottom: 50px;">ADMINISTRARE UTILIZATORI</h1>
+<p>
+    <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Căutare prin email...">
+</p>
+<data-table [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
+    <data-table-column [property]="'username'" [header]="'Nume de utilizator'" [sortable]="true" [resizable]="true">
+    </data-table-column>
+
+    <data-table-column [property]="'isAdmin'" [header]="'Rol de administrator'" [sortable]="true" [resizable]="true">
+
+    </data-table-column>
+
+    <data-table-column [property]="'email'" [header]="'Email'" [sortable]="true" [resizable]="true">
+    </data-table-column>
+
+    <data-table-column [property]="'$key'">
+        <ng-template #dataTableCell let-item="item">
+            <a [routerLink]="['/admin/users/', item.key]">Mai multe detalii</a>
+        </ng-template>
+    </data-table-column>
+</data-table>

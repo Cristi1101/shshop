@@ -9,88 +9,83 @@ import { DataTableModule } from 'angular7-data-table';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
-
-import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
-import { HomeComponent } from './home/home.component';
-import { ProductsComponent } from './products/products.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { CheckOutComponent } from './check-out/check-out.component';
-import { OrderSuccesComponent } from './order-succes/order-succes.component';
-import { MyOrdersComponent } from './my-orders/my-orders.component';
-import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AuthService } from './auth.service';
-import { AuthGuard } from './auth-guard.service';
-import { UserService } from './user.service';
-import { AdminAuthGuard } from './admin-auth-guard.service';
-import { ProductFormComponent } from './admin/product-form/product-form.component';
-import { CategoryService } from './category.service';
-import { ProductService } from './product.service';
-import { CreateProductFormComponent } from './admin/create-product-form/create-product-form.component';
-import { ProductFilterComponent } from './products/product-filter/product-filter.component';
-import { ProductCardComponent } from './product-card/product-card.component';
-import { ShoppingCartService } from './shopping-cart.service';
-import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
-import { ColorsService } from './colors.service';
-import { SubcategoriesService } from './subcategories.service';
 import { Ng5SliderModule } from 'ng5-slider';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { AdminUsersListComponent } from './admin/admin-users-list/admin-users-list.component';
-import { UsersFormComponent } from './admin/users-form/users-form.component';
-import { MyAccountComponent } from './my-account/my-account.component';
-import { EditAccountComponent } from './edit-account/edit-account.component';
-import { OrderService } from './order.service';
-import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
-import { OrdersFormComponent } from './orders-form/orders-form.component';
-import { MyOrdersDetailsComponent } from './my-orders-details/my-orders-details.component';
-import { MyOrdersFormComponent } from './my-orders-form/my-orders-form.component';
-import { PlataComponent } from './plata/plata.component';
-import { RecenziiService } from './recenzii.service';
-import { RecenziiUserComponent } from './recenzii-user/recenzii-user.component';
-import { EditReviewComponent } from './edit-review/edit-review.component';
-import { MyFavouritesComponent } from './my-favourites/my-favourites.component';
-import { ProductsDetailsComponent } from './products-details/products-details.component';
-import { AdminReviewsListComponent } from './admin-reviews-list/admin-reviews-list.component';
-import { AdminReviewsDetailsComponent } from './admin-reviews-details/admin-reviews-details.component';
-import { OrderStatusService } from './order-status.service';
+
+import { Autentificare } from './autentificare/autentificare.component';
+import { Inregistrare } from './inregistrare/inregistrare.component';
+
+import { BaraDeNavigatie } from './bara-de-navigatie/bara-de-navigatie.component';
+import { PaginaPrincipala } from './pagina-principala/pagina-principala.component';
+import { ContulMeu } from './contul-meu/contul-meu.component';
+import { ContulMeuModificari } from './contul-meu-modificari/contul-meu-modificari.component';
+import { CatalogulProduselor } from './produse/catalogul-produselor.component';
+import { Produse } from './produse/compozitie-produse/produse.component';
+import { FiltruProduse } from './produse/filtru-produse/filtru-produse.component';
+import { DetaliiProduse } from './produse/detalii-produse/detalii-produse.component';
+import { CosulDeCumparaturi } from './cosul-de-cumparaturi/cosul-de-cumparaturi.component';
+import { TrimiteComanda } from './trimite-comanda/trimite-comanda.component';
+import { RezumatCosDeCumparaturi } from './rezumat-cos-de-cumparaturi/rezumat-cos-de-cumparaturi.component';
+import { OrderSuccesComponent } from './trimite-comanda/order-succes/order-succes.component'; //trebuie schimbata
+import { ComenzileMele } from './comenzile-mele/comenzile-mele.component';
+import { ComenzileMeleDetalii } from './comenzile-mele/comenzile-mele-detalii/comenzile-mele-detalii.component';
+import { RecenziileMele } from './recenziile-mele/recenziile-mele.component';
+import { RecenziileMeleModificare } from './recenziile-mele/recenziile-mele-verificare/recenziile-mele-verificare.component';
+import { Favorite } from './favorite/favorite.component';
+
+import { AdministrareProduse } from './admin/administrare-produse/administrare-produse.component';
+import { AdministrareProduseCreare } from './admin/administrare-produse-creare/administrare-produse-creare.component';
+import { AdministrareProduseModificare } from './admin/administrare-produse-modificare/administrare-produse-modificare.component';
+import { AdministrareComenzi } from './admin/administrare-comenzi/administrare-comenzi.component';
+import { AdministrareComenziDetalii } from './admin/administrare-comenzi-detalii/administrare-comenzi-detalii.component';
+import { AdministrareUtilizatori } from './admin/administrare-utilizatori/administrare-utilizatori.component';
+import { AdministrareUtilizatoriDetalii } from './admin/administrare-utilizatori-detalii/administrare-utilizatori-detalii.component';
+import { AdministrareRecenzii } from './admin/administrare-recenzii/administrare-recenzii.component';
+
+import { ProtectieLinkUtilizator } from './protectie-link-utilizator.service';
+import { ProtectieLinkAdmin } from './protectie-link-admin.service';
+import { ServiciuDeAutentificare } from './serviciu-de-autentificare.service';
+import { ServiciuUtilizatori } from './serviciu-utilizatori.service';
+import { ServiciuCategorii } from './serviciu-categorii.service';
+import { ServiciuProduse } from './serviciu-produse.service';
+import { ServiciuCosDeCumparaturi } from './serviciu-cos-de-cumparaturi.service';
+import { ServiciuCulori } from './serviciu-culori.service';
+import { ServiciuSubcategorii } from './serviciu-subcategorii.service';
+import { ServiciuComenzi } from './serviciu-comenzi.service';
+import { ServiciuRecenzii } from './serviciu-recenzii.service';
+import { ServiciuStareaComenzii } from './serviciu-starea-comenzii.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BsNavbarComponent,
-    HomeComponent,
-    ProductsComponent,
-    ShoppingCartComponent,
-    CheckOutComponent,
+    BaraDeNavigatie,
+    PaginaPrincipala,
+    CatalogulProduselor,
+    CosulDeCumparaturi,
+    TrimiteComanda,
     OrderSuccesComponent, //sa nu uit sa fac order succes component !!!!!!
-    MyOrdersComponent,
-    AdminProductsComponent,
-    AdminOrdersComponent,
-    OrdersFormComponent,
-    ProductFormComponent,
-    CreateProductFormComponent,
-    ProductFilterComponent,
-    ProductQuantityComponent,
-    ProductCardComponent,
-    LoginComponent,
-    SignUpComponent,
-    AdminUsersListComponent,
-    UsersFormComponent,
-    MyAccountComponent,
-    EditAccountComponent,
-    ShoppingCartSummaryComponent,
-    MyOrdersDetailsComponent,
-    MyOrdersFormComponent,
-    PlataComponent,
-    RecenziiUserComponent,
-    EditReviewComponent,
-    MyFavouritesComponent,
-    ProductsDetailsComponent,
-    AdminReviewsListComponent,
-    AdminReviewsDetailsComponent
+    ComenzileMele,
+    AdministrareProduse,
+    AdministrareComenzi,
+    AdministrareComenziDetalii,
+    AdministrareProduseModificare,
+    AdministrareProduseCreare,
+    FiltruProduse,
+    Produse,
+    Autentificare,
+    Inregistrare,
+    AdministrareUtilizatori,
+    AdministrareUtilizatoriDetalii,
+    ContulMeu,
+    ContulMeuModificari,
+    RezumatCosDeCumparaturi,
+    ComenzileMeleDetalii,
+    RecenziileMele,
+    RecenziileMeleModificare,
+    Favorite,
+    DetaliiProduse,
+    AdministrareRecenzii
     
   ],
   imports: [
@@ -105,47 +100,47 @@ import { OrderStatusService } from './order-status.service';
     NgbModule,
     Ng5SliderModule,
     RouterModule.forRoot([
-      {path: '', component: ProductsComponent},
-      {path: 'products/:id', component: ProductsDetailsComponent},
-      {path: 'homepage', component: HomeComponent},
-      {path: 'shopping-cart', component: ShoppingCartComponent},
-      {path: 'login', component: LoginComponent},
-      {path: 'signup', component: SignUpComponent},
+      {path: '', component: CatalogulProduselor},
+      {path: 'products/:id', component: DetaliiProduse},
+      {path: 'homepage', component: PaginaPrincipala},
+      {path: 'shopping-cart', component: CosulDeCumparaturi},
+      {path: 'login', component: Autentificare},
+      {path: 'signup', component: Inregistrare},
       
-      {path: 'my-account', component: MyAccountComponent, canActivate: [AuthGuard]},
-      {path: 'edit-account', component: EditAccountComponent, canActivate: [AuthGuard]},
-      {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
-      {path: 'order-success/:id', component: OrderSuccesComponent, canActivate: [AuthGuard]},
-      {path: 'my-orders', component: MyOrdersComponent, canActivate: [AuthGuard]},
-      {path: 'my-orders/:id', component: MyOrdersDetailsComponent, canActivate: [AuthGuard]},
-      {path: 'recenzii', component: RecenziiUserComponent, canActivate: [AuthGuard]},
-      {path: 'recenzii/:id', component: EditReviewComponent, canActivate: [AuthGuard]},
-      {path: 'favourites', component: MyFavouritesComponent, canActivate: [AuthGuard]},
+      {path: 'my-account', component: ContulMeu, canActivate: [ProtectieLinkUtilizator]},
+      {path: 'edit-account', component: ContulMeuModificari, canActivate: [ProtectieLinkUtilizator]},
+      {path: 'check-out', component: TrimiteComanda, canActivate: [ProtectieLinkUtilizator]},
+      {path: 'order-success/:id', component: OrderSuccesComponent, canActivate: [ProtectieLinkUtilizator]},
+      {path: 'my-orders', component: ComenzileMele, canActivate: [ProtectieLinkUtilizator]},
+      {path: 'my-orders/:id', component: ComenzileMeleDetalii, canActivate: [ProtectieLinkUtilizator]},
+      {path: 'recenzii', component: RecenziileMele, canActivate: [ProtectieLinkUtilizator]},
+      {path: 'recenzii/:id', component: RecenziileMeleModificare, canActivate: [ProtectieLinkUtilizator]},
+      {path: 'favourites', component: Favorite, canActivate: [ProtectieLinkUtilizator]},
 
-      {path: 'admin/products/new', component: CreateProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
-      {path: 'admin/products/:id', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
-      {path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard]},
-      {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard]},
-      {path: 'admin/orders/:id', component: OrdersFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
-      {path: 'admin/reviews', component: AdminReviewsListComponent, canActivate: [AuthGuard, AdminAuthGuard]},
-      {path: 'admin/reviews/:id', component: AdminReviewsDetailsComponent, canActivate: [AuthGuard, AdminAuthGuard]},
-      {path: 'admin/users', component: AdminUsersListComponent, canActivate: [AuthGuard, AdminAuthGuard]},
-      {path: 'admin/users/:id', component: UsersFormComponent, canActivate: [AuthGuard, AdminAuthGuard]}
+      {path: 'admin/products/new', component: AdministrareProduseCreare, canActivate: [ProtectieLinkUtilizator, ProtectieLinkAdmin]},
+      {path: 'admin/products/:id', component: AdministrareProduseModificare, canActivate: [ProtectieLinkUtilizator, ProtectieLinkAdmin]},
+      {path: 'admin/products', component: AdministrareProduse, canActivate: [ProtectieLinkUtilizator, ProtectieLinkAdmin]},
+      {path: 'admin/orders', component: AdministrareComenzi, canActivate: [ProtectieLinkUtilizator, ProtectieLinkAdmin]},
+      {path: 'admin/orders/:id', component: AdministrareComenziDetalii, canActivate: [ProtectieLinkUtilizator, ProtectieLinkAdmin]},
+      {path: 'admin/reviews', component: AdministrareRecenzii, canActivate: [ProtectieLinkUtilizator, ProtectieLinkAdmin]},
+      {path: 'admin/users', component: AdministrareUtilizatori, canActivate: [ProtectieLinkUtilizator, ProtectieLinkAdmin]},
+      {path: 'admin/users/:id', component: AdministrareUtilizatoriDetalii, canActivate: [ProtectieLinkUtilizator, ProtectieLinkAdmin]}
     ])
   ],
   providers: [
-    AuthService,
-    AuthGuard,
-    AdminAuthGuard,
-    UserService,
-    CategoryService,
-    ColorsService,
-    SubcategoriesService,
-    ProductService,
-    ShoppingCartService,
-    OrderService,
-    RecenziiService,
-    OrderStatusService
+    ServiciuDeAutentificare,
+    ProtectieLinkUtilizator,
+    ProtectieLinkAdmin,
+
+    ServiciuUtilizatori,
+    ServiciuCategorii,
+    ServiciuCulori,
+    ServiciuSubcategorii,
+    ServiciuProduse,
+    ServiciuCosDeCumparaturi,
+    ServiciuComenzi,
+    ServiciuRecenzii,
+    ServiciuStareaComenzii
   ],
   bootstrap: [AppComponent]
 })

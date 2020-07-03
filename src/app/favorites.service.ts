@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
-import { Product } from './models/product';
+import { Produs } from './models/produs';
 import { take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
@@ -30,12 +30,12 @@ export class FavoritesService {
     return this.db.object('/favorites/' + cartId + '/items/' + productId);
   }
 
-  async add(product: Product) {
+  async add(product: Produs) {
 
     this.updateFavorite(product, true);
   }
 
-  async remove(product: Product) {
+  async remove(product: Produs) {
     this.updateFavorite(product, false);
     window.location.reload();
   }
@@ -49,7 +49,7 @@ export class FavoritesService {
     this.db.object('/favorites/' + this.userID + '/items').remove();
   }
 
-  private async updateFavorite(product: Product, toAdd: boolean) {
+  private async updateFavorite(product: Produs, toAdd: boolean) {
     if (toAdd == true) {
       let item = this.getItem(this.userID, product.key);
       item.snapshotChanges().pipe(take(1)).subscribe((data) => {
