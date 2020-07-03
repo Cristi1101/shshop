@@ -18,7 +18,7 @@ export class ContulMeu {
     private router: Router,
     private route: ActivatedRoute,
     public authService: ServiciuDeAutentificare) {
-    this.authService.appUser$.subscribe(user => {
+    this.authService.utilizator$.subscribe(user => {
       if (user) {
         this.user = user;
       }

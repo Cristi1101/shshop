@@ -12,53 +12,53 @@ import { ServiciuFavorite } from '../../serviciu-favorite.service';
 })
 
 export class Produse implements OnInit {
-  @Input('product') product: Produs;
+  @Input('produs') produs: Produs;
   @Input('show-actions') showActions = true;
-  @Input('shopping-cart') shoppingCart: CosDeCumparaturi;
+  @Input('cosDeCumparaturi') cosDeCumparaturi: CosDeCumparaturi;
 
-  checked: boolean;
+  verificat: boolean;
 
   constructor(
-    private cartService: ServiciuCosDeCumparaturi,
-    private productService: ServiciuProduse,
-    private favoritService: ServiciuFavorite) { }
+    private serviciuCosDeCumparaturi: ServiciuCosDeCumparaturi,
+    private serviciuProduse: ServiciuProduse,
+    private serviciuFavorite: ServiciuFavorite) { }
 
-  visited() {
-    if (this.product.visits == null) this.product.visits = 0;
+  produseVizitate() {
+    if (this.produs.visits == null) this.produs.visits = 0;
 
-    this.product.visits++;
-    this.product.time = new Date().getTime();
-    this.productService.update(this.product.key, this.product);
+    this.produs.visits++;
+    this.produs.time = new Date().getTime();
+    this.serviciuProduse.actualizareProdus(this.produs.key, this.produs);
   }
 
-  addToCart() {
-    this.cartService.addToCart(this.product);
+  adaugaInCosulDeCumparaturi() {
+    this.serviciuCosDeCumparaturi.adaugaInCosulDeCumparaturi(this.produs);
   }
 
-  toggleFavourite() {
-    if (this.checked == true) {
-      this.favoritService.remove(this.product);
+  produseFavorite() {
+    if (this.verificat == true) {
+      this.serviciuFavorite.stergeProdusFavorit(this.produs);
     } else {
-      this.favoritService.add(this.product);
+      this.serviciuFavorite.adaugaProdusFavorit(this.produs);
     }
   }
 
-  removeFromCart() {
-    this.cartService.removeFromCart(this.product);
+  scoateDinCosulDeCumparaturi() {
+    this.serviciuCosDeCumparaturi.stergeDinCosulDeCumparaturi(this.produs);
   }
 
-  getQuantity() {
-    if (!this.shoppingCart) return 0;
+  primesteCantitatea() {
+    if (!this.cosDeCumparaturi) return 0;
 
-    let item = this.shoppingCart.items[this.product.key];
+    let item = this.cosDeCumparaturi.items[this.produs.key];
     return item ? item.quantity : 0;
   }
 
   ngOnInit() {
-    this.checked = false;
-    this.favoritService.validate(this.product.key).subscribe(data => {
+    this.verificat = false;
+    this.serviciuFavorite.validareFavorite(this.produs.key).subscribe(data => {
       if (data) {
-        this.checked = true;
+        this.verificat = true;
       }
     });
   }

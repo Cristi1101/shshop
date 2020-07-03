@@ -36,11 +36,11 @@
   <img [src]="urlImage" class="img-thumbnail">
   <div class="form-group">
     <button *ngIf="urlImage; else btnDisabled" type="button" class="btn btn-primary"
-      (click)="auth.signUp(email.value, password.value, username.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
+      (click)="auth.inregistrareUtilizatorNou(email.value, password.value, username.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
       Înregistrare</button>
     <ng-template #btnDisabled>
       <button type="button" disabled=true class="btn btn-primary"
-        (click)="auth.signUp(email.value, password.value, username.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
+        (click)="auth.inregistrareUtilizatorNou(email.value, password.value, username.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
         Înregistrare</button>
     </ng-template>
   </div>

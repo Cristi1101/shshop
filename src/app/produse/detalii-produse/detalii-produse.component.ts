@@ -25,14 +25,14 @@ export class DetaliiProduse {
     public cartService: ServiciuCosDeCumparaturi) {
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id)
-      this.productService.get(this.id).pipe(take(1)).subscribe(p => (this.product = p));
+      this.productService.toateProdusele2(this.id).pipe(take(1)).subscribe(p => (this.product = p));
     this.getReviews();
   }
 
   getReviews() {
-    this.recenziiService.getAllMyReviews(this.id).subscribe(recenziiData => {
+    this.recenziiService.primesteToateRecenziile(this.id).subscribe(recenziiData => {
       recenziiData.forEach(element1 => {
-        this.userService.getUser(element1.uid).subscribe(data => {
+        this.userService.primesteUtilizator(element1.uid).subscribe(data => {
           this.reviews.push({
             recenzie: element1,
             user: data.payload.val()
@@ -44,6 +44,6 @@ export class DetaliiProduse {
 
   addToCart() {
     if (window.confirm('Produs adaugat in cosul de cumparaturi!'))
-      this.cartService.addToCart(this.product.payload.val());
+      this.cartService.adaugaInCosulDeCumparaturi(this.product.payload.val());
   }
 }

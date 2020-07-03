@@ -24,16 +24,16 @@ export class AdministrareProduseCreare implements OnInit {
     private createProductService: ServiciuProduse) {
 
     this.categories$ = categoryService.getCategories();
-    this.subcategories$ = subcategoryService.getSubcategories();
-    this.colors$ = colorsService.getColors();
+    this.subcategories$ = subcategoryService.primesteSubcategoriile();
+    this.colors$ = colorsService.primesteCulorile();
 
-    subcategoryService.getSubcategories().subscribe(data => {
+    subcategoryService.primesteSubcategoriile().subscribe(data => {
       this.subcategories1 = data;
     });
   }
 
   save(product) {
-    this.createProductService.create(product);
+    this.createProductService.creareProdus(product);
 
     this.router.navigate(['/admin/products']);
   }

@@ -2,30 +2,29 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ServiciuCategorii } from 'src/app/serviciu-categorii.service';
 import { Options } from 'ng5-slider';
 
-// var value: number = 0;
 @Component({
   selector: 'filtru-produse',
   templateUrl: './filtru-produse.component.html',
   styleUrls: ['./filtru-produse.component.css']
 })
 export class FiltruProduse implements OnInit {
-  categories$;
+  categorii$;
 
-  @Input('category') category;
-  @Output() priceEvent = new EventEmitter();
+  @Input('categorie') categorie;
+  @Output() evenimentPret = new EventEmitter();
 
-  constructor(categoryService: ServiciuCategorii) {
-    this.categories$ = categoryService.getAll();
+  constructor(serviciuCategorii: ServiciuCategorii) {
+    this.categorii$ = serviciuCategorii.toateCategoriile();
    }
 
   value: number = 0;
   highValue: number = 999;
 
-  myFunctionMin(value){
+  functieMin(value){
     this.value = value;
   }
 
-  myFunctionMax(value){
+  functieMax(value){
     this.highValue = value;
   }
 
@@ -37,7 +36,7 @@ export class FiltruProduse implements OnInit {
   ngOnInit(): void {
   } 
 
-  sendMessage(value, value2){
-    this.priceEvent.emit([value, value2]);
+  trimiteMesaj(valoare1, valoare2){
+    this.evenimentPret.emit([valoare1, valoare2]);
   }
 }

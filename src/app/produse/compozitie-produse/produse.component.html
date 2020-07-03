@@ -1,38 +1,38 @@
 <div class="card shadow h-100 text-center" style="width: 23rem; margin-bottom: 20px;">
     <div class="zoom-image h-50" style="margin-top: 5px;">
-        <img src="{{ product.imageUrl }}" class="card-img-top" [routerLink]="['/products/', product.key]"
-            (click)="visited()">
+        <img src="{{ produs.imageUrl }}" class="card-img-top" [routerLink]="['/products/', produs.key]"
+            (click)="produseVizitate()">
     </div>
 
     <div class="card-body">
         <hr>
-        <h5 class="card-title">{{ product.title }}</h5>
+        <h5 class="card-title">{{ produs.title }}</h5>
         <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">
-            {{ product?.description }}
+            {{ produs?.description }}
         </p>
         <hr>
-        <p class="card-text"><b>Categoria:</b> {{ product.category }} - {{ product.subcategory }}</p>
+        <p class="card-text"><b>Categoria:</b> {{ produs.category }} - {{ produs.subcategory }}</p>
         <hr>
-        <p class="card-text"><b>{{ product.price | currency:'RON ':'code' }}</b></p>
-        <input type="checkbox" (click)="toggleFavourite()" [checked]="checked">
+        <p class="card-text"><b>{{ produs.price | currency:'RON ':'code' }}</b></p>
+        <input type="checkbox" (click)="produseFavorite()" [checked]="verificat">
         <label for="vehicle1" style="font-size: 15px;"><i>&nbsp;Adaugă la favorite</i></label>
         <!-- <a  style="margin-bottom: 10px;">  View More Details</a> -->
     </div>
     <div *ngIf="showActions" class="card-footer">
-        <button *ngIf="getQuantity() === 0; else updateQuantity" (click)="addToCart()"
+        <button *ngIf="primesteCantitatea() === 0; else actualizeazaCantitatea" (click)="adaugaInCosulDeCumparaturi()"
             class="btn btn-primary btn-block">Adaugă în coș</button>
-        <ng-template #updateQuantity>
+        <ng-template #actualizeazaCantitatea>
             <div class="row no-gutters">
                 <div class="col-2">
-                    <button (click)="removeFromCart()" class="btn btn-primary btn-block">-</button>
+                    <button (click)="scoateDinCosulDeCumparaturi()" class="btn btn-primary btn-block">-</button>
                 </div>
 
                 <div class="col text-center">
-                    {{ getQuantity() }} în coș
+                    {{ primesteCantitatea() }} în coș
                 </div>
 
                 <div class="col-2">
-                    <button (click)="addToCart()" class="btn btn-primary btn-block">+</button>
+                    <button (click)="adaugaInCosulDeCumparaturi()" class="btn btn-primary btn-block">+</button>
                 </div>
             </div>
         </ng-template>

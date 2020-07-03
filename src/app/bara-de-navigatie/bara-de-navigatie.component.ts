@@ -10,26 +10,25 @@ import { CosDeCumparaturi } from '../models/cos-de-cumparaturi';
   styleUrls: ['./bara-de-navigatie.component.css']
 })
 export class BaraDeNavigatie implements OnInit {
-  appUser: Utilizator;
+  utilizator: Utilizator;
   shoppingCartItemCount: number;
-  cart$;
+  cosulDeCumparaturi$;
 
   constructor(
-    private auth: ServiciuDeAutentificare,
+    private serviciuDeAutentificare: ServiciuDeAutentificare,
     private shoppingCartService: ServiciuCosDeCumparaturi) { }
 
   logout() {
-    this.auth.logout();
+    this.serviciuDeAutentificare.logout();
   }
 
   async ngOnInit() {
-    this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
-
-    this.cart$ = await this.shoppingCartService.getCart();
-    this.cart$.valueChanges().subscribe((cart: CosDeCumparaturi) => {
+    this.serviciuDeAutentificare.utilizator$.subscribe(utilizator => this.utilizator = utilizator);
+    this.cosulDeCumparaturi$ = await this.shoppingCartService.primesteCosulDeCumparaturi();
+    this.cosulDeCumparaturi$.valueChanges().subscribe((cosulDeCumparaturi: CosDeCumparaturi) => {
       this.shoppingCartItemCount = 0;
-      for (let productId in cart.items)
-        this.shoppingCartItemCount += cart.items[productId].quantity;
+      for (let idProdus in cosulDeCumparaturi.items)
+        this.shoppingCartItemCount += cosulDeCumparaturi.items[idProdus].quantity;
     });
   }
 }

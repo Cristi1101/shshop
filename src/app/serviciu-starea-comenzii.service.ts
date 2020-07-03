@@ -6,13 +6,9 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class ServiciuStareaComenzii {
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private bazaDeDate: AngularFireDatabase) { }
 
-  getOrderStatus(){
-    return this.db.list('/orderStatus').snapshotChanges();
+  primesteStareaComenzii(){
+    return this.bazaDeDate.list('/orderStatus').snapshotChanges();
   }
-
-  // getAll() { 
-  //   return this.db.list('/categories', ref => ref.orderByChild('name')).snapshotChanges();
-  // }
 }

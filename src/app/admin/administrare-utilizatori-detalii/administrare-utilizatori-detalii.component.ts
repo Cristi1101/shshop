@@ -19,18 +19,18 @@ export class AdministrareUtilizatoriDetalii {
     public userService: ServiciuUtilizatori) {
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id)
-      this.userService.getUser(this.id).pipe(take(1)).subscribe(p => (this.users = p));
+      this.userService.primesteUtilizator(this.id).pipe(take(1)).subscribe(p => (this.users = p));
   }
 
   save(users) {
-    this.userService.update(this.id, users);
+    this.userService.actualizareUtilizator(this.id, users);
     this.router.navigate(['/admin/users']);
   }
 
   delete() {
     if (!confirm('Are you sure you want to delete this user?')) return;
 
-    this.userService.delete(this.id);
+    this.userService.stergeUtilizator(this.id);
     this.router.navigate(['/admin/users']);
   }
 

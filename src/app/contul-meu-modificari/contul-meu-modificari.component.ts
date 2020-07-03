@@ -21,7 +21,7 @@ export class ContulMeuModificari {
     public authService: ServiciuDeAutentificare,
     private userService: ServiciuUtilizatori,
     private storage: AngularFireStorage) {
-    this.authService.appUser$.subscribe(user => {
+    this.authService.utilizator$.subscribe(user => {
       if (user) {
         this.users = user;
       }
@@ -29,7 +29,7 @@ export class ContulMeuModificari {
   }
 
   save(users) {
-    this.userService.update(this.userID, users);
+    this.userService.actualizareUtilizator(this.userID, users);
     this.router.navigate(['/my-account']);
   }
 

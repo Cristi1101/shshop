@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Produs } from './models/produs';
 import { take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -8,56 +8,55 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ServiciuFavorite {
-  userID = localStorage.getItem('userUID');
-  constructor(private db: AngularFireDatabase) { }
+  idUtilizator = localStorage.getItem('userUID');
+  constructor(private bazaDeDate: AngularFireDatabase) { }
 
-  private create() {
-    return this.db.list('/favorites').push({
+  private creazaListaProduseFavorite() {
+    return this.bazaDeDate.list('/favorites').push({
       dateCreated: new Date().getTime(),
-      userId: this.userID
+      userId: this.idUtilizator
     });
   }
 
-  async getCart() {
-    return this.db.object('/favorites/' + this.userID);
+  async primesteListaProduselorFavorite() {
+    return this.bazaDeDate.object('/favorites/' + this.idUtilizator);
   }
 
- getFavourites() {
-    return this.db.list('/favorites/' + this.userID + "/items").snapshotChanges(); 
+  primesteProduseFavorite() {
+    return this.bazaDeDate.list('/favorites/' + this.idUtilizator + "/items").snapshotChanges();
   }
 
-  getItem(cartId: string, productId: string) {
-    return this.db.object('/favorites/' + cartId + '/items/' + productId);
+  primesteProdusFavorit(idListaFavorite: string, idProdus: string) {
+    return this.bazaDeDate.object('/favorites/' + idListaFavorite + '/items/' + idProdus);
   }
 
-  async add(product: Produs) {
+  async adaugaProdusFavorit(produs: Produs) {
 
-    this.updateFavorite(product, true);
+    this.actualizeazaFavorite(produs, true);
   }
 
-  async remove(product: Produs) {
-    this.updateFavorite(product, false);
+  async stergeProdusFavorit(produs: Produs) {
+    this.actualizeazaFavorite(produs, false);
     window.location.reload();
   }
 
-  validate(pid: string): Observable<any> {
-    return this.db.object('/favorites/' + this.userID + '/items/' + pid).valueChanges();
+  validareFavorite(idProdus: string): Observable<any> {
+    return this.bazaDeDate.object('/favorites/' + this.idUtilizator + '/items/' + idProdus).valueChanges();
   }
 
-  async clear() {
-    //let cartId = await this.getOrCreateCartId();
-    this.db.object('/favorites/' + this.userID + '/items').remove();
+  async sterge() {
+    this.bazaDeDate.object('/favorites/' + this.idUtilizator + '/items').remove();
   }
 
-  private async updateFavorite(product: Produs, toAdd: boolean) {
-    if (toAdd == true) {
-      let item = this.getItem(this.userID, product.key);
+  private async actualizeazaFavorite(produs: Produs, deAdaugat: boolean) {
+    if (deAdaugat == true) {
+      let item = this.primesteProdusFavorit(this.idUtilizator, produs.key);
       item.snapshotChanges().pipe(take(1)).subscribe((data) => {
-        item.update({ product: product });
+        item.update({ product: produs });
       });
     }
     else {
-      this.db.object('/favorites/' + this.userID + '/items/' + product.key).remove();
+      this.bazaDeDate.object('/favorites/' + this.idUtilizator + '/items/' + produs.key).remove();
     }
   }
 }

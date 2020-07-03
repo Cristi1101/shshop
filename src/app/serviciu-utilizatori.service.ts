@@ -11,22 +11,22 @@ import { Router } from '@angular/router';
 export class ServiciuUtilizatori {
 
   constructor(
-    private db: AngularFireDatabase,
-    private router: Router) { }
+    private bazaDeDate: AngularFireDatabase,
+    private ruta: Router) { }
 
-  save(user: firebase.User) {
-    this.db.object('/users/' + user.uid).update({
-      name: user.displayName,
-      email: user.email
+  salveazaUtilizator(utilizator: firebase.User) {
+    this.bazaDeDate.object('/users/' + utilizator.uid).update({
+      name: utilizator.displayName,
+      email: utilizator.email
     });
   }
 
-  getAll() {
-    return this.db.list<Utilizator>('/users')
+  primesteTotiUtilizatorii() {
+    return this.bazaDeDate.list<Utilizator>('/users')
       .snapshotChanges()
       .pipe(
-        map(changes =>
-          changes.map(c => {
+        map(schimbari =>
+          schimbari.map(c => {
             const data = c.payload.val() as Utilizator;
             const key = c.payload.key;
             return { key, ...data };
@@ -35,37 +35,37 @@ export class ServiciuUtilizatori {
       );
   }
 
-  getUser(userId) {
-    return this.db.object('/users/' + userId).snapshotChanges();
+  primesteUtilizator(userId) {
+    return this.bazaDeDate.object('/users/' + userId).snapshotChanges();
   }
 
-  update(userId, user) {
-    return this.db.object('/users/' + userId).update(user);
+  actualizareUtilizator(userId, user) {
+    return this.bazaDeDate.object('/users/' + userId).update(user);
   }
 
-  updateUser(userId, username, email, firstname, lastname, address, city, postalcode, image) {
-    const userRef = this.db.object('/users/' + userId);
-    const userData: Utilizator = {
-      username: username,
+  actualizareDateUtilizator(idUtilizator, numeUtilizator, email, prenume, nume, adresa, oras, codPostal, imagine) {
+    const referintaUtilizator = this.bazaDeDate.object('/users/' + idUtilizator);
+    const dateUtilizator: Utilizator = {
+      username: numeUtilizator,
       email: email,
-      firstName: firstname,
-      lastName: lastname,
-      city: city,
-      address: address,
-      postalCode: postalcode,
-      img: image
+      firstName: prenume,
+      lastName: nume,
+      city: oras,
+      address: adresa,
+      postalCode: codPostal,
+      img: imagine
     }
-    userRef.update(userData);
+    referintaUtilizator.update(dateUtilizator);
 
-    this.router.navigate(['/admin/users']);
+    this.ruta.navigate(['/admin/users']);
   }
 
-  delete(userId) {
-    this.db.object('/users/' + userId).remove();
-    this.router.navigate(['/admin/users']);
+  stergeUtilizator(idUtilizator) {
+    this.bazaDeDate.object('/users/' + idUtilizator).remove();
+    this.ruta.navigate(['/admin/users']);
   }
 
-  get(uid: string): AngularFireObject<Utilizator> {
-    return this.db.object('/users/' + uid);
+  primesteUtilizator2(idUtilizator: string): AngularFireObject<Utilizator> {
+    return this.bazaDeDate.object('/users/' + idUtilizator);
   }
 }

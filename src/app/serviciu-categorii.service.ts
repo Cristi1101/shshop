@@ -6,13 +6,13 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class ServiciuCategorii {
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private bazaDeDate: AngularFireDatabase) { }
 
   getCategories(){
-    return this.db.list('/categories').snapshotChanges();
+    return this.bazaDeDate.list('/categories').snapshotChanges();
   }
 
-  getAll() { 
-    return this.db.list('/categories', ref => ref.orderByChild('name')).snapshotChanges();
+  toateCategoriile() { 
+    return this.bazaDeDate.list('/categories', ref => ref.orderByChild('name')).snapshotChanges();
   }
 }

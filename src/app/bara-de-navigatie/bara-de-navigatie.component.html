@@ -32,18 +32,18 @@
                     <a class="nav-link" routerLink="/login">Login <i class="fas fa-sign-in-alt"></i></a>
                 </li>
             </ng-template>
-            <li *ngIf="appUser; else anonymousUser" class="nav-item dropleft">
+            <li *ngIf="utilizator; else anonymousUser" class="nav-item dropleft">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     <i class="fas fa-user"></i>
-                    {{ appUser.username }}
+                    {{ utilizator.username }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                     <a class="dropdown-item" routerLink="/my-account">Contul meu <i class="fas fa-user-circle"></i></a>
                     <a class="dropdown-item" routerLink="/my-orders">Comenziile mele</a>
                     <a class="dropdown-item" routerLink="/favourites">Favorite</a>
                     <a class="dropdown-item" routerLink="/recenzii">Recenziile mele</a>
-                    <ng-container *ngIf="appUser.isAdmin">
+                    <ng-container *ngIf="utilizator.isAdmin">
                         <a class="dropdown-item" routerLink="/admin/users">Administrarea utilizatorilor</a>
                         <a class="dropdown-item" routerLink="/admin/products">Administrarea produselor</a>
                         <a class="dropdown-item" routerLink="/admin/orders">Administrarea comenzilor</a>

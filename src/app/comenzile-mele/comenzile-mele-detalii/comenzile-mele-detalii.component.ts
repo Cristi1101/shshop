@@ -30,8 +30,8 @@ export class ComenzileMeleDetalii {
     this.id = this.route.snapshot.paramMap.get('id');
 
     if (this.id) {
-      this.orderService.get(this.id).pipe(take(1)).subscribe(o => (this.order = o));
-      this.orderService.getItems(this.id).pipe(take(1)).subscribe(o => {
+      this.orderService.primesteComandaSpecifica(this.id).pipe(take(1)).subscribe(o => (this.order = o));
+      this.orderService.primesteElemente(this.id).pipe(take(1)).subscribe(o => {
         this.order2 = o;
         this.currentRates = new Array(this.order2.length);
         for (let i = 0; i < this.order2.length; i++) {
@@ -39,7 +39,7 @@ export class ComenzileMeleDetalii {
         }
       });
     }
-    this.orderStatus$ = orderStatusService.getOrderStatus();
+    this.orderStatus$ = orderStatusService.primesteStareaComenzii();
   }
 
   adaugaRecenzie(recenzie: string, product, stele) {
@@ -48,11 +48,11 @@ export class ComenzileMeleDetalii {
       continut: recenzie,
       uid: localStorage.getItem("userUID")
     };
-    this.recenziiService.create(modelRecenzie, product.key);
+    this.recenziiService.creareRecenzie(modelRecenzie, product.key);
   }
 
   afisareRecenzie(product) {
-    this.recenzii$ = this.recenziiService.getAll(product.key);
+    this.recenzii$ = this.recenziiService.primesteRecenziile(product.key);
   }
 
   back() {

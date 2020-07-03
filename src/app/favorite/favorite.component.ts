@@ -8,14 +8,14 @@ import { ServiciuCosDeCumparaturi } from '../serviciu-cos-de-cumparaturi.service
   styleUrls: ['./favorite.component.css']
 })
 export class Favorite {
-  favourites = [];
+  produseFavorite = [];
 
   constructor(
-    public cartService: ServiciuCosDeCumparaturi,
-    public favouriteService: ServiciuFavorite) {
-    this.favouriteService.getFavourites().subscribe(data => {
+    public serviciuCosDeCumparaturi: ServiciuCosDeCumparaturi,
+    public serviciuFavorite: ServiciuFavorite) {
+    this.serviciuFavorite.primesteProduseFavorite().subscribe(data => {
       data.forEach(element => {
-        this.favourites.push(element.payload.val());
+        this.produseFavorite.push(element.payload.val());
       })
     });
   }

@@ -19,6 +19,6 @@ export class AdministrareComenzi {
     private orderService: ServiciuComenzi,
     private router: Router,
     private route: ActivatedRoute) {
-    this.orders$ = orderService.getAll();
+    this.orders$ = orderService.primesteToateComenzile();
   }
 }

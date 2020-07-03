@@ -22,20 +22,20 @@ export class CosulDeCumparaturi implements OnInit {
     private shoppingCartService: ServiciuCosDeCumparaturi) { }
 
   addToCart(product: Produs) {
-    this.shoppingCartService.addToCart(product);
+    this.shoppingCartService.adaugaInCosulDeCumparaturi(product);
   }
 
   removeFromCart(product: Produs) {
-    this.shoppingCartService.removeFromCart(product);
+    this.shoppingCartService.stergeDinCosulDeCumparaturi(product);
   }
 
   clearCart() {
-    this.shoppingCartService.clearCart();
+    this.shoppingCartService.stergeCosulDeCumparaturi();
     this.router.navigate(['/']);
   }
 
   async ngOnInit() {
-    this.cart$ = await this.shoppingCartService.getCart();
+    this.cart$ = await this.shoppingCartService.primesteCosulDeCumparaturi();
     this.cart$.valueChanges().subscribe((temp) => {
       let data: any;
       data = temp.items;

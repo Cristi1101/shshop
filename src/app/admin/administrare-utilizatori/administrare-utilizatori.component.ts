@@ -10,15 +10,15 @@ import { ServiciuUtilizatori } from 'src/app/serviciu-utilizatori.service';
   styleUrls: ['./administrare-utilizatori.component.css']
 })
 export class AdministrareUtilizatori implements OnInit, OnDestroy {
-  users: Utilizator[] = [];
+  utilizatori: Utilizator[] = [];
   subscription: Subscription;
   tableResource: DataTableResource<Utilizator>;
   items: Utilizator[] = [];
   itemCount: number;
 
-  constructor(private userService: ServiciuUtilizatori) {
-    this.subscription = this.userService.getAll().subscribe(users => {
-      this.users = users;
+  constructor(private serviciuUtilizatori: ServiciuUtilizatori) {
+    this.subscription = this.serviciuUtilizatori.primesteTotiUtilizatorii().subscribe(users => {
+      this.utilizatori = users;
       this.initializeTable(users);
     });
   }
@@ -40,8 +40,8 @@ export class AdministrareUtilizatori implements OnInit, OnDestroy {
 
   filter(query: string) {
     let filteredUsers = (query) ?
-      this.users.filter(p => p.email.toLowerCase().includes(query.toLowerCase())) :
-      this.users;
+      this.utilizatori.filter(p => p.email.toLowerCase().includes(query.toLowerCase())) :
+      this.utilizatori;
     this.initializeTable(filteredUsers);
   }
 

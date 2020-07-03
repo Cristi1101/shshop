@@ -12,67 +12,67 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./catalogul-produselor.component.css']
 })
 export class CatalogulProduselor implements OnInit, OnDestroy {
-  products: Produs[] = [];
-  filteredProducts: Produs[] = [];
-  category: string;
-  priceMin: number;
-  priceMax: number;
-  cart: any;
+  produse: Produs[] = [];
+  produseFiltrate: Produs[] = [];
+  categorie: string;
+  pretMinim: number;
+  pretMaxim: number;
+  cosDeCumparaturi: any;
   subscription: Subscription;
-  search: string;
-  hideSearchDropDown: boolean = false;
+  cautare: string;
+  ascundeSugestii: boolean = false;
 
-  @ViewChild('toggleDrop') toggleDrop: ElementRef;
-  @ViewChild('menu') menu: ElementRef;
+  @ViewChild('cadereMeniu') cadereMeniu: ElementRef;
+  @ViewChild('meniu') meniu: ElementRef;
 
   constructor(
-    private route: ActivatedRoute,
-    private productService: ServiciuProduse,
-    private shoppingCartService: ServiciuCosDeCumparaturi,
-    private renderer: Renderer2) {
+    private ruta: ActivatedRoute,
+    private serviciuProduse: ServiciuProduse,
+    private serviciuCosDeCumparaturi: ServiciuCosDeCumparaturi,
+    private r: Renderer2) {
     this.filterProducts();
 
-    this.renderer.listen('window', 'click', (e: Event) => {
-      if (e.target !== this.toggleDrop.nativeElement && e.target !== this.menu.nativeElement) {
-        this.hideSearchDropDown = true;
+    this.r.listen('window', 'click', (event: Event) => {
+      if (event.target !== this.cadereMeniu.nativeElement && event.target !== this.meniu.nativeElement) {
+        this.ascundeSugestii = true;
       }
     });
   }
 
-  receiveFilter($event) {
-    this.priceMin = $event[0];
-    this.priceMax = $event[1];
+  primesteFiltru($event) {
+    this.pretMinim = $event[0];
+    this.pretMaxim = $event[1];
     this.filterProducts();
   }
 
   filterProducts() {
-    this.productService
-      .getAll().pipe(
-        switchMap((products: Produs[]) => {
-          this.products = products;
-          return this.route.queryParamMap;
+    this.serviciuProduse
+      .toateProdusele().pipe(
+        switchMap((produse: Produs[]) => {
+          this.produse = produse;
+          return this.ruta.queryParamMap;
         })
       )
       .subscribe((params) => {
-        this.category = params.get('category');
-        this.filteredProducts = (this.category) ?
-          this.products.filter((p) =>
-            (p.category === this.category && p.price >= this.priceMin && p.price <= this.priceMax)
-          ) : (this.priceMin && this.priceMax ?
-            this.products.filter((p) =>
-              (p.price >= this.priceMin && p.price <= this.priceMax)
-            ) : this.products);
+        this.categorie = params.get('category');
+        this.produseFiltrate = (this.categorie) ?
+          this.produse.filter((p) =>
+            (p.category === this.categorie && p.price >= this.pretMinim && p.price <= this.pretMaxim)
+          ) : (this.pretMinim && this.pretMaxim ?
+            this.produse.filter((p) =>
+              (p.price >= this.pretMinim && p.price <= this.pretMaxim)
+            ) : this.produse);
       });
   }
 
-  setSearch(title) {
-    this.search = title;
-    this.hideSearchDropDown = true;
+  stabilireCautare(titlu) {
+    this.cautare = titlu;
+    this.ascundeSugestii = true;
   }
 
   async ngOnInit() {
-    this.subscription = (await this.shoppingCartService.getCart())
-      .valueChanges().subscribe(cart => this.cart = cart);
+    this.subscription = (await this.serviciuCosDeCumparaturi.primesteCosulDeCumparaturi())
+      .valueChanges().subscribe(cosDeCumparaturi => this.cosDeCumparaturi = cosDeCumparaturi);
   }
 
   ngOnDestroy() {

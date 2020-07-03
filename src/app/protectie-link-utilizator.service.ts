@@ -8,12 +8,12 @@ import 'rxjs/add/operator/map';
 })
 export class ProtectieLinkUtilizator implements CanActivate{
 
-  constructor(private auth: ServiciuDeAutentificare, private router: Router) { }
+  constructor(private serviciuDeAutentificare: ServiciuDeAutentificare, private ruta: Router) { }
 
-  canActivate(route, state: RouterStateSnapshot){
-    return this.auth.user$.map(user => {
-      if(user) return true;
-      this.router.navigate(['/login'], { queryParams: {returnUrl: state.url}});
+  canActivate(route, stare: RouterStateSnapshot){
+    return this.serviciuDeAutentificare.utilizatorObs$.map(utilizator => {
+      if(utilizator) return true;
+      this.ruta.navigate(['/login'], { queryParams: {returnUrl: stare.url}});
       return false;
     });
   }

@@ -24,11 +24,11 @@ export class AdministrareComenziDetalii {
     this.id = this.route.snapshot.paramMap.get('id'); 
 
     if (this.id) {
-      this.orderService.get(this.id).pipe(take(1)).subscribe(o => (this.order = o));
-      this.orderService.getItems(this.id).pipe(take(1)).subscribe(o => (this.order2 = o));
+      this.orderService.primesteComandaSpecifica(this.id).pipe(take(1)).subscribe(o => (this.order = o));
+      this.orderService.primesteElemente(this.id).pipe(take(1)).subscribe(o => (this.order2 = o));
       console.log("id:", this.order);
     }
-    this.orderStatus$ = orderStatusService.getOrderStatus();
+    this.orderStatus$ = orderStatusService.primesteStareaComenzii();
   }
 
   back(){
@@ -36,7 +36,7 @@ export class AdministrareComenziDetalii {
   }
 
   update(order){
-    this.orderService.updateOrder(this.id, order);
+    this.orderService.actualizareComanda(this.id, order);
     this.router.navigate(['/admin/orders']);
   }
 }

@@ -10,10 +10,10 @@ import { ServiciuUtilizatori } from './serviciu-utilizatori.service';
 })
 export class AppComponent {
   constructor(private userService: ServiciuUtilizatori, private auth:ServiciuDeAutentificare, router: Router){
-    auth.user$.subscribe(user => {
+    auth.utilizatorObs$.subscribe(user => {
       if(!user) return;
       
-      userService.save(user);
+      userService.salveazaUtilizator(user);
 
       let returnUrl = localStorage.getItem('returnUrl');
       if (!returnUrl) return;

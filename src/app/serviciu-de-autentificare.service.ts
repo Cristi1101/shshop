@@ -1,111 +1,85 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-// import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2'
 import * as firebase from 'firebase';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Utilizator } from './models/utilizator';
 import { ServiciuUtilizatori } from './serviciu-utilizatori.service';
+import { AngularFireDatabase } from 'angularfire2/database';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
-import { AngularFireDatabase } from 'angularfire2/database';
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class ServiciuDeAutentificare {
-  user$: Observable<firebase.User>;
-  user;
+  utilizatorObs$: Observable<firebase.User>;
+  utilizator;
 
   constructor(
-    private userService: ServiciuUtilizatori,
-    private afAuth: AngularFireAuth, 
-    private route: ActivatedRoute,
-    private db: AngularFireDatabase,
-    private router: Router) {
-      
-    this.user$ = afAuth.authState;
-    this.afAuth.authState.subscribe(auth => {
-      if (auth !== undefined && auth !== null) {
-        this.user = auth;
-        localStorage.setItem('userUID', this.user.uid);
-        //console.log(this.user.uid);// uid is defined here
+    private serviciuUtilizatori: ServiciuUtilizatori,
+    private angularFireAuth: AngularFireAuth,
+    private rutaActiva: ActivatedRoute,
+    private bazaDeDate: AngularFireDatabase,
+    private ruta: Router) {
+
+    this.utilizatorObs$ = angularFireAuth.authState;
+    this.angularFireAuth.authState.subscribe(utilizator => {
+      if (utilizator !== undefined && utilizator !== null) {
+        this.utilizator = utilizator;
+        localStorage.setItem('userUID', this.utilizator.uid);
       }
     });
+  }
 
-   }
+  logout() {
+    this.angularFireAuth.auth.signOut();
+    localStorage.removeItem('userUID');
+    this.ruta.navigate(['/']);
+  }
 
-    login(){
-      let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
-      localStorage.setItem('returnUrl', returnUrl);
-
-      var provider = new firebase.auth.GoogleAuthProvider();
-      provider.setCustomParameters({
-        prompt: 'select_account'
-      });
-
-      return this.afAuth.auth.signInWithPopup(provider);
-    }
-
-    logout(){
-      
-      this.afAuth.auth.signOut();
-      localStorage.removeItem('userUID');
-    }
-
-    signIn(email, password) {
-      if (email && password)
-        this.router.navigate(['/']);
-      return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-        .catch((error) => {
-          window.alert(error.message)
-        })
-    }
-
-    // signUp(email, password, ) {
-    //   return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-    //     .then((result) => {
-    //       window.alert("You have been successfully registered!");
-    //       console.log(result.user)
-    //     }).catch((error) => {
-    //       window.alert(error.message)
-    //     })
-  //   // }
-  
-    signUp(email, password, username, name, lastname, city, address, postalcode, image) {
-      this.router.navigate(['/']);
-      return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-          this.writeNewUser(result.user, username, name, lastname, city, address, postalcode, image);
-      }).catch((error) => {
-          window.alert(error.message)
+  autentificareUtilizator(email, parola) {
+    if (email && parola)
+      this.ruta.navigate(['/']);
+    return this.angularFireAuth.auth.signInWithEmailAndPassword(email, parola)
+      .catch((error) => {
+        window.alert(error.message)
       })
   }
-  
-  
-  private writeNewUser(user, username, name, lastname, city, address, postalcode, image) {
 
-    const userRef = this.db.object('/users/' + user.uid);
-    const userData: Utilizator = {
-      username: username,
-      email: user.email,
-      isAdmin: user.isAdmin = false,
-      firstName: name,
-      lastName: lastname,
-      city: city,
-      address: address,
-      postalCode: postalcode,
-      img: image
-    }
-    userRef.set(userData);
+  inregistrareUtilizatorNou(email, parola, numeUtilizator, prenume, nume, oras, adresa, codPostal, imagine) {
+    this.ruta.navigate(['/']);
+    return this.angularFireAuth.auth.createUserWithEmailAndPassword(email, parola)
+      .then((rezultat) => {
+        this.dateUtilizatorNou(rezultat.user, numeUtilizator, prenume, nume, oras, adresa, codPostal, imagine);
+      }).catch((error) => {
+        window.alert(error.message)
+      })
   }
 
-    get appUser$() : Observable<Utilizator>{
-      return this.user$
-      .switchMap(user => {
-         if (user) return this.userService.get(user.uid).valueChanges();
+  private dateUtilizatorNou(utilizator, numeUtilizator, prenume, nume, oras, adresa, codPostal, imagine) {
+    const referintaUtilizator = this.bazaDeDate.object('/users/' + utilizator.uid);
+    const dateUtilizator: Utilizator = {
+      username: numeUtilizator,
+      email: utilizator.email,
+      isAdmin: utilizator.isAdmin = false,
+      firstName: prenume,
+      lastName: nume,
+      city: oras,
+      address: adresa,
+      postalCode: codPostal,
+      img: imagine
+    }
+    referintaUtilizator.set(dateUtilizator);
+  }
 
-         return Observable.of(null);
-    });
+  get utilizator$(): Observable<Utilizator> {
+    return this.utilizatorObs$
+      .switchMap(user => {
+        if (user) return this.serviciuUtilizatori.primesteUtilizator2(user.uid).valueChanges();
+
+        return Observable.of(null);
+      });
   }
 }

@@ -2,38 +2,31 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Recenzii } from './models/recenzii';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiciuRecenzii {
-  constructor(private db: AngularFireDatabase) { }
+  constructor(
+    private bazaDeDate: AngularFireDatabase,
+    private ruta: Router) { }
 
-  userID = localStorage.getItem('userUID');
+  idUtilizator = localStorage.getItem('userUID');
   produse;
 
-  create(recenzie, product) {
-    return this.db.list('/products/' + product + '/recenzii').push(recenzie);
+  creareRecenzie(recenzie, produs) {
+    return this.bazaDeDate.list('/products/' + produs + '/recenzii').push(recenzie);
   }
 
-  // getMostVisitedProducts(){ 
-  //   return this.db.list('/products', 
-  //     ref => ref.orderByChild('visits').limitToLast(5)).valueChanges();
-  // }
-
-  // getLastVisitedProducts(){
-  //   return this.db.list('/products', 
-  //     ref => ref.orderByChild('time').limitToLast(5)).valueChanges();
-  // }
-
-  getAll(product) {
-    return this.db.list<Recenzii>('/products/' + product + '/recenzii').valueChanges();
+  primesteRecenziile(produs) {
+    return this.bazaDeDate.list<Recenzii>('/products/' + produs + '/recenzii').valueChanges();
   }
 
-  getAllMyReviews(product) {
-    return this.db.list<Recenzii>('/products/' + product + '/recenzii').snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c => {
+  primesteToateRecenziile(produs) {
+    return this.bazaDeDate.list<Recenzii>('/products/' + produs + '/recenzii').snapshotChanges().pipe(
+      map(schimbari =>
+        schimbari.map(c => {
           const data = c.payload.val() as Recenzii;
           const key = c.payload.key;
           return { key, ...data };
@@ -42,32 +35,31 @@ export class ServiciuRecenzii {
     );
   }
 
-
-
-  editRecenzie(productId, recenzieId, recenzie){
-    return this.db.object('/products/' + productId + '/recenzii/' + recenzieId).update(recenzie);
+  modificareRecenzie(idProdus, idRecenzie, recenzie){
+    return this.bazaDeDate.object('/products/' + idProdus + '/recenzii/' + idRecenzie).update(recenzie);
   }
 
-  get(productId) {
-    return this.db.object('/products/' + productId + '/recenzii').snapshotChanges();
+  primesteRecenziileProdusului(idProdus) {
+    return this.bazaDeDate.object('/products/' + idProdus + '/recenzii').snapshotChanges();
   }
 
-  update(productId, product, recenzieId) {
-    return this.db.object('/products/' + productId + '/recenzii/' + recenzieId).update(product); 
+  actualizareRecenzie(idProdus, produs, idRecenzie) {
+    return this.bazaDeDate.object('/products/' + idProdus + '/recenzii/' + idRecenzie).update(produs); 
   }
 
-  updateReview(productId, recenzieId, steleRecenzie, continutRecenzie, uid){
-    const recenzieRef = this.db.object('/products/' + productId + '/recenzii/' + recenzieId);
-    const recenzieData: Recenzii = {
+  actualizareDateRecenzie(idProdus, idRecenzie, steleRecenzie, continutRecenzie, idUtilizator){
+    const referintaRecenzie = this.bazaDeDate.object('/products/' + idProdus + '/recenzii/' + idRecenzie);
+    const dateRecenzie: Recenzii = {
       stele: steleRecenzie,
       continut: continutRecenzie,
-      uid: uid
+      uid: idUtilizator
     }
-    recenzieRef.update(recenzieData);
+    referintaRecenzie.update(dateRecenzie);
+    this.ruta.navigate(['/recenzii']);
   }
 
-  delete(productId, recenzieId) {
-    this.db.object('/products/' + productId + '/recenzii/' + recenzieId).remove();
+  stergeRecenzia(idProdus, idRecenzie) {
+    this.bazaDeDate.object('/products/' + idProdus + '/recenzii/' + idRecenzie).remove();
     window.location.reload();
   }
 }

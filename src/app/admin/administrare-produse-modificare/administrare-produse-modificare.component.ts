@@ -26,18 +26,18 @@ export class AdministrareProduseModificare {
     private colorService: ServiciuCulori,
     private productService: ServiciuProduse) {
       
-    this.categories$ = categoryService.getAll();
-    this.colors$ = colorService.getColors();
+    this.categories$ = categoryService.toateCategoriile();
+    this.colors$ = colorService.primesteCulorile();
     this.id = this.route.snapshot.paramMap.get('id');
-    this.subcategories$ = subcategoryService.getSubcategories();
+    this.subcategories$ = subcategoryService.primesteSubcategoriile();
 
     if (this.id)
-      this.productService.get(this.id).pipe(take(1)).subscribe(p => (this.product = p));
+      this.productService.toateProdusele2(this.id).pipe(take(1)).subscribe(p => (this.product = p));
   }
 
   save(product) {
     if (this.id)
-      this.productService.update(this.id, product);
+      this.productService.actualizareProdus(this.id, product);
 
     this.router.navigate(['/admin/products']);
   }
@@ -45,7 +45,7 @@ export class AdministrareProduseModificare {
   delete() {
     if (!confirm('Are you sure you want to delete this product?')) return;
 
-    this.productService.delete(this.id);
+    this.productService.stergeProdus(this.id);
     this.router.navigate(['/admin/products']);
   }
 

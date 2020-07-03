@@ -8,55 +8,55 @@ import { take } from 'rxjs/operators';
 })
 export class ServiciuCosDeCumparaturi {
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private bazaDeDate: AngularFireDatabase) { }
 
-  private create(){
-    return this.db.list('/shopping-carts').push({
-      dateCreated: new Date().getTime() 
+  private creareCosDeCumparaturi(){
+    return this.bazaDeDate.list('/shopping-carts').push({
+      dataCrearii: new Date().getTime() 
     });
   }
 
-  async getCart()  {
-    let cartId = await this.getOrCreateCartId();
-    return this.db.object('/shopping-carts/' + cartId);
+  async primesteCosulDeCumparaturi()  {
+    let idCosDeCumparaturi = await this.primesteSauCreeazaIdCosDeCumparaturi();
+    return this.bazaDeDate.object('/shopping-carts/' + idCosDeCumparaturi);
   }
 
-  getItem(cartId: string, productId: string){
-    return this.db.object('/shopping-carts/' + cartId + '/items/' + productId);
+  primesteProdusulDinCos(idCosDeCumparaturi: string, idProdus: string){
+    return this.bazaDeDate.object('/shopping-carts/' + idCosDeCumparaturi + '/items/' + idProdus);
   }
 
-  private async getOrCreateCartId(): Promise<string> {
-    let cartId = localStorage.getItem('cartId');
-    if(cartId) return cartId;
+  private async primesteSauCreeazaIdCosDeCumparaturi(): Promise<string> {
+    let idCosDeCumparaturi = localStorage.getItem('cartId');
+    if(idCosDeCumparaturi) return idCosDeCumparaturi;
 
-    let result = await this.create();
-    localStorage.setItem('cartId', result.key);
-    return result.key;
+    let rezultat = await this.creareCosDeCumparaturi();
+    localStorage.setItem('cartId', rezultat.key);
+    return rezultat.key;
   }
 
-  async addToCart(product: Produs) {
-    this.updateItemQuantity(product, 1);
+  async adaugaInCosulDeCumparaturi(produs: Produs) {
+    this.actualizareCantitateProduse(produs, 1);
   }
 
-  async removeFromCart(product: Produs){
-    this.updateItemQuantity(product, -1);
+  async stergeDinCosulDeCumparaturi(produs: Produs){
+    this.actualizareCantitateProduse(produs, -1);
   }
 
-  async clearCart(){
-    let cartId = await this.getOrCreateCartId();
-    this.db.object('/shopping-carts/' + cartId + '/items').remove();
+  async stergeCosulDeCumparaturi(){
+    let idCosDeCumparaturi = await this.primesteSauCreeazaIdCosDeCumparaturi();
+    this.bazaDeDate.object('/shopping-carts/' + idCosDeCumparaturi + '/items').remove();
   }
 
-  private async updateItemQuantity(product: Produs, change: number){
-    let cartId = await this.getOrCreateCartId();
-    let item = this.getItem(cartId, product.key);
+  private async actualizareCantitateProduse(produs: Produs, schimbareCantitate: number){
+    let idCosDeCumparaturi = await this.primesteSauCreeazaIdCosDeCumparaturi();
+    let element = this.primesteProdusulDinCos(idCosDeCumparaturi, produs.key);
 
-    item.snapshotChanges().pipe(take(1)).subscribe((data) => {
-      let quantityAux = (data.payload.child('/quantity').val() || 0) + change;
-      if(quantityAux === 0) item.remove();
+    element.snapshotChanges().pipe(take(1)).subscribe((data) => {
+      let cantitateAuxiliara = (data.payload.child('/quantity').val() || 0) + schimbareCantitate;
+      if(cantitateAuxiliara === 0) element.remove();
       else
-        item.update({ product: product, quantity: quantityAux });
-        if(quantityAux == 1){
+        element.update({ product: produs, quantity: cantitateAuxiliara });
+        if(cantitateAuxiliara == 1){
           window.location.reload();
         }
     });

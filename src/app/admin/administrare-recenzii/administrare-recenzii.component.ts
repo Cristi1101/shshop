@@ -18,11 +18,11 @@ export class AdministrareRecenzii implements OnInit {
     private userService: ServiciuUtilizatori) { }
 
   getReviews() {
-    this.productService.getAll().subscribe(data => {
+    this.productService.toateProdusele().subscribe(data => {
       data.forEach(element => {
-        this.recenziiService.getAllMyReviews(element.key).subscribe(recenziiData => {
+        this.recenziiService.primesteToateRecenziile(element.key).subscribe(recenziiData => {
           recenziiData.forEach(element1 => {
-            this.userService.getUser(element1.uid).subscribe(data => {
+            this.userService.primesteUtilizator(element1.uid).subscribe(data => {
               this.reviews.push({
                 recenzie: element1,
                 produs: element,

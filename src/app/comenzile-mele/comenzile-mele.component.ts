@@ -15,7 +15,7 @@ export class ComenzileMele {
     private orderService: ServiciuComenzi,
     private router: Router,
     private route: ActivatedRoute) {
-    this.orders$ = this.orderService.getUserOrders(this.userID);
+    this.orders$ = this.orderService.primesteComenzileUtilizatorului(this.userID);
   }
 
   back() {

@@ -11,9 +11,9 @@ import { Observable } from 'rxjs';
 })
 export class ProtectieLinkAdmin implements CanActivate{
 
-  constructor(private auth: ServiciuDeAutentificare, private userService: ServiciuUtilizatori) { }
+  constructor(private serviciuDeAutentificare: ServiciuDeAutentificare) { }
 
   canActivate(): Observable<boolean> {
-    return this.auth.appUser$.map(appUser => appUser.isAdmin);
+    return this.serviciuDeAutentificare.utilizator$.map(utilizator => utilizator.isAdmin);
   }
 }

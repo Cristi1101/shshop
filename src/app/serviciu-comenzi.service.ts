@@ -3,7 +3,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { ServiciuCosDeCumparaturi } from './serviciu-cos-de-cumparaturi.service';
 import { Comanda } from './models/comanda';
 import { map } from 'rxjs/operators';
-//import { AppUser } from './models/app-user';
 
 @Injectable({
   providedIn: 'root'
@@ -11,73 +10,64 @@ import { map } from 'rxjs/operators';
 export class ServiciuComenzi {
 
   constructor(
-    private db: AngularFireDatabase,
-    private shoppingCartService: ServiciuCosDeCumparaturi) { }
+    private bazaDeDate: AngularFireDatabase,
+    private serviciuCosDeCumparaturi: ServiciuCosDeCumparaturi) { }
 
-  async placeOrder(order){
-    let result = await this.db.list('/orders').push(order);
-    this.shoppingCartService.clearCart();
-    return result;
+  async plaseazaComanda(comanda) {
+    let rezultat = await this.bazaDeDate.list('/orders').push(comanda);
+    this.serviciuCosDeCumparaturi.stergeCosulDeCumparaturi();
+    return rezultat;
   }
 
-  get(orderId) {
-    return this.db.object('/orders/' + orderId).snapshotChanges();  
+  primesteComandaSpecifica(idComanda) {
+    return this.bazaDeDate.object('/orders/' + idComanda).snapshotChanges();
   }
 
-  getItems(orderId) {
-    return this.db.list<Comanda>('/orders/' + orderId + '/item/').snapshotChanges().pipe(
-      map(changes =>
-          changes.map(c => {
-              const data = c.payload.val() as Comanda;
-              const key = c.payload.key;
-              return { key, ...data };
-          })
+  primesteElemente(idComanda) {
+    return this.bazaDeDate.list<Comanda>('/orders/' + idComanda + '/item/').snapshotChanges().pipe(
+      map(schimbari =>
+        schimbari.map(c => {
+          const data = c.payload.val() as Comanda;
+          const key = c.payload.key;
+          return { key, ...data };
+        })
       )
-  );
-  }
- 
-  getOrders(){
-    return this.db.list('/orders').snapshotChanges();
+    );
   }
 
-  getAll() {
-    return this.db.list<Comanda>('/orders')
-        .snapshotChanges()
-        .pipe(
-            map(changes =>
-                changes.map(c => {
-                    const data = c.payload.val() as Comanda;
-                    const key = c.payload.key;
-                    return { key, ...data };
-                })
-            )
-        );
+  primesteComenzile() {
+    return this.bazaDeDate.list('/orders').snapshotChanges();
   }
 
-  getUserOrders(userId: string) {
-    return this.db.list<Comanda>('/orders', ref => ref.orderByChild('userId').equalTo(userId))
-        .snapshotChanges()
-        .pipe(
-            map(changes =>
-                changes.map(c => {
-                    const data = c.payload.val() as Comanda;
-                    const key = c.payload.key;
-                    return { key, ...data };
-                })
-            )
-        );
+  primesteToateComenzile() {
+    return this.bazaDeDate.list<Comanda>('/orders')
+      .snapshotChanges()
+      .pipe(
+        map(schimbari =>
+          schimbari.map(c => {
+            const data = c.payload.val() as Comanda;
+            const key = c.payload.key;
+            return { key, ...data };
+          })
+        )
+      );
   }
 
-  updateOrder(orderId, order) {
-    return this.db.object('/orders/' + orderId).update(order);
+  primesteComenzileUtilizatorului(idUtilizator: string) {
+    return this.bazaDeDate.list<Comanda>('/orders', ref => ref.orderByChild('userId').equalTo(idUtilizator))
+      .snapshotChanges()
+      .pipe(
+        map(schimbari =>
+          schimbari.map(c => {
+            const data = c.payload.val() as Comanda;
+            const key = c.payload.key;
+            return { key, ...data };
+          })
+        )
+      );
   }
 
-  // getOrdersByUser(userId: string) {
-  //   return this.db.list('/orders', {
-  //     query: {
-  //       orderByChild: 'userId';
-  //       equalTo: userId;  
-  //     }
-  //   });
-  // }
+  actualizareComanda(idComanda, comanda) {
+    return this.bazaDeDate.object('/orders/' + idComanda).update(comanda);
+  }
 }

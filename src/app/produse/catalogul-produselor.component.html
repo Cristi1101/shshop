@@ -1,11 +1,11 @@
 <div style="width: 100%; margin-bottom: 20px; position: relative;">
-    <input #toggleDrop [(ngModel)]="search" type="text" placeholder="Căutare..." style="width: 100%;"
-        (click)="hideSearchDropDown = false">
-    <div #menu style="position: absolute; top: 100%; z-index: 10000; width: 100%;">
-        <div *ngFor="let p of filteredProducts; let i = index">
-            <div *ngIf="search && hideSearchDropDown == false">
-                <div *ngIf="p.title.toLowerCase().includes(search.toLowerCase())" class="suggestion">
-                    <a href="#" onclick="return false;" (click)="setSearch(p.title)" class="searchDropdown">
+    <input #cadereMeniu [(ngModel)]="cautare" type="text" placeholder="Căutare..." style="width: 100%;"
+        (click)="ascundeSugestii = false">
+    <div #meniu style="position: absolute; top: 100%; z-index: 10000; width: 100%;">
+        <div *ngFor="let p of produseFiltrate; let i = index">
+            <div *ngIf="cautare && ascundeSugestii == false">
+                <div *ngIf="p.title.toLowerCase().includes(cautare.toLowerCase())" class="suggestion">
+                    <a href="#" onclick="return false;" (click)="stabilireCautare(p.title)" class="searchDropdown">
                         {{ p.title }}</a>
                 </div>
             </div>
@@ -15,21 +15,21 @@
 
 <div class="row">
     <div class="col-3">
-        <filtru-produse [category]="category" (priceEvent)="receiveFilter($event)"></filtru-produse>
+        <filtru-produse [categorie]="categorie" (evenimentPret)="primesteFiltru($event)"></filtru-produse>
     </div>
     <div class="col-9">
         <div class="row">
-            <ng-container *ngFor="let p of filteredProducts; let i = index">
-                <div *ngIf="search; else noFilter">
-                    <div *ngIf="p.title.toLowerCase().includes(search.toLowerCase())"
+            <ng-container *ngFor="let p of produseFiltrate; let i = index">
+                <div *ngIf="cautare; else faraFiltru">
+                    <div *ngIf="p.title.toLowerCase().includes(cautare.toLowerCase())"
                         class="col-lg d-flex align-items-stretch">
-                        <produse [product]="p" [shopping-cart]="cart"></produse>
+                        <produse [produs]="p" [cosDeCumparaturi]="cosDeCumparaturi"></produse>
                     </div>
                     <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
                 </div>
-                <ng-template #noFilter>
+                <ng-template #faraFiltru>
                     <div class="col-lg d-flex align-items-stretch">
-                        <produse [product]="p" [shopping-cart]="cart"></produse>
+                        <produse [produs]="p" [cosDeCumparaturi]="cosDeCumparaturi"></produse>
                     </div>
                 </ng-template>
                 <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>

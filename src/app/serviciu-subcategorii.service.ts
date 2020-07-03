@@ -6,9 +6,9 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class ServiciuSubcategorii {
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private bazaDeDate: AngularFireDatabase) { }
 
-  getSubcategories() {
-    return this.db.list('/subcategories').snapshotChanges();
+  primesteSubcategoriile() {
+    return this.bazaDeDate.list('/subcategories').snapshotChanges();
   }
 }

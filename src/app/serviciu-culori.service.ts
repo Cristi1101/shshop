@@ -6,13 +6,13 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class ServiciuCulori {
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private bazaDeDate: AngularFireDatabase) { }
 
-  getColors(){
-    return this.db.list('/colors').snapshotChanges();
+  primesteCulorile(){
+    return this.bazaDeDate.list('/colors').snapshotChanges();
   }
 
-  getAllColors() { 
-    return this.db.list('/colors', ref => ref.orderByChild('name')).snapshotChanges();
+  primesteToateCulorile() { 
+    return this.bazaDeDate.list('/colors', ref => ref.orderByChild('name')).snapshotChanges();
   }
 }

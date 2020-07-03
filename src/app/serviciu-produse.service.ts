@@ -7,24 +7,24 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ServiciuProduse {
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private bazaDeDate: AngularFireDatabase) { }
 
-  create(product) {
-    return this.db.list('/products').push(product);
+  creareProdus(product) {
+    return this.bazaDeDate.list('/products').push(product);
   }
 
-  getMostVisitedProducts() {
-    return this.db.list('/products',
+  celeMaiVizitateProduse() {
+    return this.bazaDeDate.list('/products',
       ref => ref.orderByChild('visits').limitToLast(5)).valueChanges();
   }
 
-  getLastVisitedProducts() {
-    return this.db.list('/products',
+  ultimeleProduseVizitate() {
+    return this.bazaDeDate.list('/products',
       ref => ref.orderByChild('time').limitToLast(5)).valueChanges();
   }
 
-  getAll() {
-    return this.db.list<Produs>('/products')
+  toateProdusele() {
+    return this.bazaDeDate.list<Produs>('/products')
       .snapshotChanges()
       .pipe(
         map(changes =>
@@ -37,15 +37,15 @@ export class ServiciuProduse {
       );
   }
 
-  get(productId) {
-    return this.db.object('/products/' + productId).snapshotChanges();
+  toateProdusele2(productId) {
+    return this.bazaDeDate.object('/products/' + productId).snapshotChanges();
   }
 
-  update(productId, product) {
-    return this.db.object('/products/' + productId).update(product);
+  actualizareProdus(productId, product) {
+    return this.bazaDeDate.object('/products/' + productId).update(product);
   }
 
-  delete(productId) {
-    return this.db.object('/products/' + productId).remove();
+  stergeProdus(productId) {
+    return this.bazaDeDate.object('/products/' + productId).remove();
   }
 }

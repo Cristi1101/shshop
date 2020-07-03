@@ -18,7 +18,7 @@ export class AdministrareProduse implements OnInit, OnDestroy {
   itemCount: number;
 
   constructor(private productService: ServiciuProduse) {
-    this.subscription = this.productService.getAll().subscribe(products => {
+    this.subscription = this.productService.toateProdusele().subscribe(products => {
       this.products = products;
       this.initializeTable(products);
     });

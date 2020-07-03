@@ -1,9 +1,11 @@
 <div class="position-relative overflow-hidden text-center bg-light">
     <div class="col-md-5 p-lg-5 mx-auto my-5">
-        <h1 class="display-2 font-weight">Best S-H in Town</h1>
-        <p class="lead font-weight-normal">The best quality merchandise. From clothes to electronic devices, nothing
-            stops us from bringing the best stuff just for you and at a good price. What ar you waiting for?</p>
-        <a class="btn btn-outline-secondary" routerLink="/">Check it out</a>
+        <h1 class="display-2 font-weight">Cel mai bun magazin S-H din oras</h1>
+        <p class="lead font-weight-normal">
+            Marfa de cea mai buna calitate. De la haine la dispozitive electronice, 
+            nimic nu ne împiedică să aducem cele mai bune lucruri doar pentru tine și la un preț foarte bun. Ce mai aștepți?
+        </p>
+        <a class="btn btn-outline-secondary" routerLink="/">Vezi si tu!</a>
     </div>
     <div class="product-device shadow-sm d-none d-md-block"></div>
     <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
@@ -13,8 +15,7 @@
     <hr class="featurette-divider">
     <div class="row featurette">
         <div class="col-md-7">
-            <h2 class="featurette-heading">Most visited products. <span class="text-muted">It’ll blow your
-                    mind.</span></h2>
+            <h2 class="featurette-heading">Cele mai vizitate produse. <span class="text-muted">Pe placul tuturor.</span></h2>
             <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis
                 euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
                 tellus ac cursus commodo.</p>
@@ -30,8 +31,8 @@
                     <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
                 </ol>
                 <div class="carousel-inner">
-                    <ng-container *ngFor="let product of mostVisitedProducts; let i = index">
-                        <div class="carousel-item" [ngClass]="{active: i == selectedIndex}">
+                    <ng-container *ngFor="let product of celeMaiVizitateProduse; let i = index">
+                        <div class="carousel-item" [ngClass]="{active: i == indexSelectat}">
                             <img class="d-block w-100" src="{{ product.imageUrl }}" alt="First slide"
                                 style="opacity: 0.8;">
                             <div class="carousel-caption d-none d-md-block">
@@ -57,10 +58,10 @@
     <hr class="featurette-divider">
     <div class="row featurette">
         <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">Last Visited Products. <span class="text-muted">See for
-                    yourself.</span></h2>
-            <p class="lead">Searching and having the best products for our clients. Best second hand shop in town,
-                if you don't believe it, check it yourself!</p>
+            <h2 class="featurette-heading">Ultimele produse vizitate. <span class="text-muted">La un click distanta!</span></h2>
+            <p class="lead">
+                Cele mai bune produse pentru clientii nostri. Cel mai bun magazin second-hand din oras, daca nu ne crezi, vezi si tu!
+            </p>
         </div>
         <div class="col-md-5 order-md-1">
             <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel"
@@ -73,8 +74,8 @@
                     <li data-target="#carouselExampleIndicators1" data-slide-to="4"></li>
                 </ol>
                 <div class="carousel-inner">
-                    <ng-container *ngFor="let product of lastVisitedProducts; let i = index">
-                        <div class="carousel-item" [ngClass]="{active: i == selectedIndex1}">
+                    <ng-container *ngFor="let product of ultimeleProduseVizitate; let i = index">
+                        <div class="carousel-item" [ngClass]="{active: i == indexSelectat1}">
                             <img class="d-block w-100" src="{{ product.imageUrl }}" alt="First slide"
                                 style="opacity: 0.8;">
                             <div class="carousel-caption d-none d-md-block">
@@ -108,7 +109,7 @@
     <hr class="featurette-divider">
     <div class="row featurette">
         <div class="col-md-7">
-            <h2 class="featurette-heading">Reviews. <span class="text-muted">Checkmate.</span></h2>
+            <h2 class="featurette-heading">Recenzii.</h2>
             <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis
                 euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
                 tellus ac cursus commodo.</p>

@@ -18,7 +18,7 @@ export class RezumatCosDeCumparaturi {
   constructor(private shoppingCartService: ServiciuCosDeCumparaturi) { }
 
   async ngOnInit() {
-    this.cart$ = await this.shoppingCartService.getCart();
+    this.cart$ = await this.shoppingCartService.primesteCosulDeCumparaturi();
     this.cart$.valueChanges().subscribe((temp) => {
       let data: any;
       data = temp.items;

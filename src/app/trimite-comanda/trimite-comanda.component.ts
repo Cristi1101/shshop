@@ -37,7 +37,7 @@ export class TrimiteComanda implements OnInit, OnDestroy {
     private userService: ServiciuUtilizatori,
     private shoppingCartService: ServiciuCosDeCumparaturi,
     private orderService: ServiciuComenzi) {
-    this.authService.appUser$.subscribe(user => {
+    this.authService.utilizator$.subscribe(user => {
       if (user) {
         this.users = user;
         console.log("USER", user);
@@ -48,9 +48,9 @@ export class TrimiteComanda implements OnInit, OnDestroy {
   paidFor = false;
 
   async ngOnInit() {
-    let cart$ = await this.shoppingCartService.getCart();
+    let cart$ = await this.shoppingCartService.primesteCosulDeCumparaturi();
     this.subscription = cart$.valueChanges().subscribe((cart: CosDeCumparaturi) => this.cart = cart);
-    this.cart2$ = await this.shoppingCartService.getCart();
+    this.cart2$ = await this.shoppingCartService.primesteCosulDeCumparaturi();
     this.cart2$.valueChanges().subscribe((temp) => {
       let data: any;
       data = temp.items;
@@ -87,7 +87,7 @@ export class TrimiteComanda implements OnInit, OnDestroy {
 
   async placeOrder() {
     let order = new Comanda(this.userID, this.users, this.cart);
-    let result = await this.orderService.placeOrder(order);
+    let result = await this.orderService.plaseazaComanda(order);
 
     this.router.navigate(['/order-success/', result.key]);
   }
