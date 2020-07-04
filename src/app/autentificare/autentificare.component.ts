@@ -10,5 +10,5 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./autentificare.component.css']
 })
 export class Autentificare {
-  constructor(public auth: ServiciuDeAutentificare, route: Router, router: ActivatedRoute) { }
+  constructor(public serviciuDeAutentificare: ServiciuDeAutentificare) { }
 }

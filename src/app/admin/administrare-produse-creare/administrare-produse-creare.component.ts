@@ -11,41 +11,41 @@ import { ServiciuSubcategorii } from 'src/app/serviciu-subcategorii.service';
   styleUrls: ['./administrare-produse-creare.component.css']
 })
 export class AdministrareProduseCreare implements OnInit {
-  categories$;
-  subcategories$;
-  colors$;
-  subcategories1;
+  categorii$;
+  subcategorii$;
+  culori$;
+  subcategorii;
 
   constructor(
-    private router: Router,
-    private categoryService: ServiciuCategorii,
-    private subcategoryService: ServiciuSubcategorii,
-    private colorsService: ServiciuCulori,
-    private createProductService: ServiciuProduse) {
+    private ruta: Router,
+    private serviciuCategorii: ServiciuCategorii,
+    private serviciuSubcategorii: ServiciuSubcategorii,
+    private serviciuCulori: ServiciuCulori,
+    private serviciuProduse: ServiciuProduse) {
 
-    this.categories$ = categoryService.getCategories();
-    this.subcategories$ = subcategoryService.primesteSubcategoriile();
-    this.colors$ = colorsService.primesteCulorile();
+    this.categorii$ = serviciuCategorii.getCategories();
+    this.subcategorii$ = serviciuSubcategorii.primesteSubcategoriile();
+    this.culori$ = serviciuCulori.primesteCulorile();
 
-    subcategoryService.primesteSubcategoriile().subscribe(data => {
-      this.subcategories1 = data;
+    serviciuSubcategorii.primesteSubcategoriile().subscribe(date => {
+      this.subcategorii = date;
     });
   }
 
-  save(product) {
-    this.createProductService.creareProdus(product);
+  salveazaProdus(produs) {
+    this.serviciuProduse.creareProdus(produs);
 
-    this.router.navigate(['/admin/products']);
+    this.ruta.navigate(['/admin/products']);
   }
 
-  cancel() {
-    this.router.navigate(['/admin/products']);
+  inapoi() {
+    this.ruta.navigate(['/admin/products']);
   }
 
   ngOnInit(): void {
   }
 
-  filteredSubcategories(param) {
-    return this.subcategories1.filter(x => x.payload.val().parentId == param);
+  subcategoriiFiltrate(parametrii) {
+    return this.subcategorii.filter(subcategorii => subcategorii.payload.val().parentId == parametrii);
   }
 }

@@ -11,7 +11,7 @@
             <ngb-rating #stea [(rate)]="state.recenzie.stele" [max]="5"></ngb-rating>
             <pre>Evaluare: <b>{{ state.recenzie.stele }}</b></pre>
             <button class="btn btn-success"
-                (click)="this.recenziiService.actualizareDateRecenzie(state.produs.key, state.recenzie.key, state.recenzie.stele, recenzie.value, state.recenzie.uid)">
+                (click)="this.serviciuRecenzii.actualizareDateRecenzie(state.produs.key, state.recenzie.key, state.recenzie.stele, recenzie.value, state.recenzie.uid)">
                 Confirmă
                 <i class="fa fa-angle-right"></i>
             </button>

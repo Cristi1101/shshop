@@ -11,38 +11,38 @@ import { DataTableResource } from 'angular7-data-table';
 })
 
 export class AdministrareProduse implements OnInit, OnDestroy {
-  products: Produs[] = [];
+  produse: Produs[] = [];
   subscription: Subscription;
-  tableResource: DataTableResource<Produs>;
-  items: Produs[] = [];
-  itemCount: number;
+  tabel: DataTableResource<Produs>;
+  elemente: Produs[] = [];
+  evidentaElementelor: number;
 
-  constructor(private productService: ServiciuProduse) {
-    this.subscription = this.productService.toateProdusele().subscribe(products => {
-      this.products = products;
-      this.initializeTable(products);
+  constructor(private serviciuProduse: ServiciuProduse) {
+    this.subscription = this.serviciuProduse.toateProdusele().subscribe(produse => {
+      this.produse = produse;
+      this.initializeTable(produse);
     });
   }
 
   private initializeTable(products: Produs[]) {
-    this.tableResource = new DataTableResource(products);
-    this.tableResource.query({ offset: 0 })
-      .then(items => this.items = items);
-    this.tableResource.count()
-      .then(count => this.itemCount = count);
+    this.tabel = new DataTableResource(products);
+    this.tabel.query({ offset: 0 })
+      .then(items => this.elemente = items);
+    this.tabel.count()
+      .then(count => this.evidentaElementelor = count);
   }
 
-  reloadItems(params) {
-    if (!this.tableResource) return;
+  reloadItems(parametrii) {
+    if (!this.tabel) return;
 
-    this.tableResource.query(params)
-      .then(items => this.items = items);
+    this.tabel.query(parametrii)
+      .then(items => this.elemente = items);
   }
 
-  filter(query: string) {
-    let filteredProducts = (query) ?
-      this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) : this.products;
-    this.initializeTable(filteredProducts);
+  filter(text: string) {
+    let produseFiltrate = (text) ?
+      this.produse.filter(produs => produs.title.toLowerCase().includes(text.toLowerCase())) : this.produse;
+    this.initializeTable(produseFiltrate);
   }
 
   ngOnInit(): void {

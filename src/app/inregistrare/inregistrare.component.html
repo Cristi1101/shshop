@@ -25,7 +25,7 @@
   </div>
   <div class="form-group">
     <h5>Alege o imagine</h5>
-    <input type="file" accept=".png, .jpg" class="form-control" (change)="onUpload($event)">
+    <input type="file" accept=".png, .jpg" class="form-control" (change)="incarcareImagine($event)">
   </div>
   <div class="progress">
     <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
@@ -36,12 +36,14 @@
   <img [src]="urlImage" class="img-thumbnail">
   <div class="form-group">
     <button *ngIf="urlImage; else btnDisabled" type="button" class="btn btn-primary"
-      (click)="auth.inregistrareUtilizatorNou(email.value, password.value, username.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
-      Înregistrare</button>
+      (click)="serviciuDeAutentificare.inregistrareUtilizatorNou(email.value, password.value, username.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
+      Înregistrare
+    </button>
     <ng-template #btnDisabled>
       <button type="button" disabled=true class="btn btn-primary"
-        (click)="auth.inregistrareUtilizatorNou(email.value, password.value, username.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
-        Înregistrare</button>
+        (click)="serviciuDeAutentificare.inregistrareUtilizatorNou(email.value, password.value, username.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
+        Înregistrare
+      </button>
     </ng-template>
   </div>
 </form>

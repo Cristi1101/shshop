@@ -1,10 +1,10 @@
 
 <div class="row">
     <div class="col-md-6">
-        <form #f="ngForm" (ngSubmit)="save(f.value)">
+        <form #f="ngForm" (ngSubmit)="salvareModificari(f.value)">
             <div class="form-group">
                 <label for="firstName">Prenume</label>
-                <input #firstName="ngModel" [(ngModel)]="users.firstName" name="firstName" id="firstName"
+                <input #firstName="ngModel" [(ngModel)]="utilizator.firstName" name="firstName" id="firstName"
                     type="text" class="form-control" required>
                 <div class="alert alert-danger" *ngIf="firstName.touched && firstName.invalid">
                     Acest câmp este obligatoriu.
@@ -13,7 +13,7 @@
         
             <div class="form-group">
                 <label for="lastName">Nume</label>
-                <input #lastName="ngModel" [(ngModel)]="users.lastName" name="lastName" id="lastName" type="text"
+                <input #lastName="ngModel" [(ngModel)]="utilizator.lastName" name="lastName" id="lastName" type="text"
                     class="form-control" required>
                 <div class="alert alert-danger" *ngIf="lastName.touched && lastName.invalid">
                     Acest câmp este obligatoriu.
@@ -22,7 +22,7 @@
         
             <div class="form-group">
                 <label for="username">Nume de utilizator</label>
-                <input #username="ngModel" [(ngModel)]="users.username" name="username" id="username" type="text"
+                <input #username="ngModel" [(ngModel)]="utilizator.username" name="username" id="username" type="text"
                     class="form-control" required>
                 <div class="alert alert-danger" *ngIf="username.touched && username.invalid">
                     Acest câmp este obligatoriu.
@@ -31,7 +31,7 @@
         
             <div class="form-group">
                 <label for="email">Email</label>
-                <input #email="ngModel" [(ngModel)]="users.email" name="email" id="email" type="email"
+                <input #email="ngModel" [(ngModel)]="utilizator.email" name="email" id="email" type="email"
                     class="form-control" required>
                 <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
                     Acest câmp este obligatoriu.
@@ -40,7 +40,7 @@
         
             <div class="form-group">
                 <label for="city">Oraș</label>
-                <input #city="ngModel" [(ngModel)]="users.city" name="city" id="city" type="text"
+                <input #city="ngModel" [(ngModel)]="utilizator.city" name="city" id="city" type="text"
                     class="form-control" required>
                 <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
                     Acest câmp este obligatoriu.
@@ -49,7 +49,7 @@
         
             <div class="form-group">
                 <label for="address">Adresă</label>
-                <input #address="ngModel" [(ngModel)]="users.address" name="address" id="address" type="text"
+                <input #address="ngModel" [(ngModel)]="utilizator.address" name="address" id="address" type="text"
                     class="form-control" required>
                 <div class="alert alert-danger" *ngIf="address.touched && address.invalid">
                     Acest câmp este obligatoriu.
@@ -58,7 +58,7 @@
         
             <div class="form-group">
                 <label for="postalCode">Cod poștal</label>
-                <input #postalCode="ngModel" [(ngModel)]="users.postalCode" name="postalCode" id="postalCode"
+                <input #postalCode="ngModel" [(ngModel)]="utilizator.postalCode" name="postalCode" id="postalCode"
                     type="number" class="form-control" required>
                 <div class="alert alert-danger" *ngIf="postalCode.touched && postalCode.invalid">
                     Acest câmp este obligatoriu.
@@ -66,20 +66,20 @@
             </div>
 
             <button class="btn btn-primary" style="margin-right:10px;">Salvează</button>
-            <button type="button" (click)="cancel()" class="btn btn-secondary" style="margin-right:10px;">Anulează</button>
+            <button type="button" (click)="inapoi()" class="btn btn-secondary" style="margin-right:10px;">Anulează</button>
         
         </form>
     </div>
 <div class="col-md-6">
     <div class="card text-center" style="width: 18rem;">
-        <img [src]="users.img" class="card-img-top">
+        <img [src]="utilizator.img" class="card-img-top">
         <div class="card-body">
-            <h3 class="card-title">{{  users.firstName }} {{ users.lastName }}</h3>
+            <h3 class="card-title">{{  utilizator.firstName }} {{ utilizator.lastName }}</h3>
             <hr>
-            <h5>{{ users.username }}</h5>
+            <h5>{{ utilizator.username }}</h5>
             <hr>
-            <p class="card-text">{{ users.city }}</p>
-            <p class="card-text">{{ users.email }}</p>
+            <p class="card-text">{{ utilizator.city }}</p>
+            <p class="card-text">{{ utilizator.email }}</p>
         </div>
     </div>
 </div>

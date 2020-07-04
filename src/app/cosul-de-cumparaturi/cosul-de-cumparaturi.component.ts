@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ServiciuCosDeCumparaturi } from '../serviciu-cos-de-cumparaturi.service';
 import { CosDeCumparaturi } from '../models/cos-de-cumparaturi';
 import { Produs } from '../models/produs';
@@ -11,37 +11,36 @@ import { Router } from '@angular/router';
 })
 
 export class CosulDeCumparaturi implements OnInit {
-  cart: CosDeCumparaturi = new CosDeCumparaturi(null);
-  shoppingCartItemCount: number;
-  shoppingCartTotalPrice: number;
-  cart$;
-  shoppingCart: CosDeCumparaturi;
+  cosDeCumparaturi: CosDeCumparaturi = new CosDeCumparaturi(null);
+  evidentaProduselorDinCos: number;
+  pretulTotal: number;
+  cosDeCumparaturi$;
 
   constructor(
-    private router: Router,
-    private shoppingCartService: ServiciuCosDeCumparaturi) { }
+    private ruta: Router,
+    private serviciuCosDeCumparaturi: ServiciuCosDeCumparaturi) { }
 
-  addToCart(product: Produs) {
-    this.shoppingCartService.adaugaInCosulDeCumparaturi(product);
+  adaugaInCos(produs: Produs) {
+    this.serviciuCosDeCumparaturi.adaugaInCosulDeCumparaturi(produs);
   }
 
-  removeFromCart(product: Produs) {
-    this.shoppingCartService.stergeDinCosulDeCumparaturi(product);
+  stergeDinCos(produs: Produs) {
+    this.serviciuCosDeCumparaturi.stergeDinCosulDeCumparaturi(produs);
   }
 
-  clearCart() {
-    this.shoppingCartService.stergeCosulDeCumparaturi();
-    this.router.navigate(['/']);
+  stergeCosulDeCumparaturi() {
+    this.serviciuCosDeCumparaturi.stergeCosulDeCumparaturi();
+    this.ruta.navigate(['/']);
   }
 
   async ngOnInit() {
-    this.cart$ = await this.shoppingCartService.primesteCosulDeCumparaturi();
-    this.cart$.valueChanges().subscribe((temp) => {
-      let data: any;
-      data = temp.items;
-      this.cart = new CosDeCumparaturi(data);
-      this.shoppingCartItemCount = this.cart.totalItemsCount;
-      this.shoppingCartTotalPrice = this.cart.totalPrice;
+    this.cosDeCumparaturi$ = await this.serviciuCosDeCumparaturi.primesteCosulDeCumparaturi();
+    this.cosDeCumparaturi$.valueChanges().subscribe((cos) => {
+      let date: any;
+      date = cos.items;
+      this.cosDeCumparaturi = new CosDeCumparaturi(date);
+      this.evidentaProduselorDinCos = this.cosDeCumparaturi.totalItemsCount;
+      this.pretulTotal = this.cosDeCumparaturi.totalPrice;
     });
   }
 }

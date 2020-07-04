@@ -9,26 +9,26 @@ import { ServiciuUtilizatori } from '../serviciu-utilizatori.service';
   styleUrls: ['./recenziile-mele.component.css']
 })
 export class RecenziileMele implements OnInit {
-  userID = localStorage.getItem('userUID');
+  idUtilizator = localStorage.getItem('userUID');
   recenziileMele = [];
 
   constructor(
-    public recenziiService: ServiciuRecenzii,
-    private productService: ServiciuProduse,
-    private userService: ServiciuUtilizatori) { }
+    public serviciuRecenzii: ServiciuRecenzii,
+    private serviciuProduse: ServiciuProduse,
+    private serviciuUtilizatori: ServiciuUtilizatori) { }
 
-  getReviews() {
-    this.productService.toateProdusele().subscribe(data => {
-      data.forEach(element => {
-        this.recenziiService.primesteToateRecenziile(element.key).subscribe(recenziiData => {
-          recenziiData.forEach(element1 => {
-            this.userService.primesteUtilizator(element1.uid).subscribe(data => {
-              if (element1.uid == this.userID) {
+  recenzii() {
+    this.serviciuProduse.toateProdusele().subscribe(date => {
+      date.forEach(element => {
+        this.serviciuRecenzii.primesteToateRecenziile(element.key).subscribe(dateRecenzii => {
+          dateRecenzii.forEach(element1 => {
+            this.serviciuUtilizatori.primesteUtilizator(element1.uid).subscribe(date => {
+              if (element1.uid == this.idUtilizator) {
                 this.recenziileMele.push({
                   recenzie: element1,
                   produs: element,
                   prodId: element.key,
-                  user: data.payload.val()
+                  user: date.payload.val()
                 });
               }
             });
@@ -39,6 +39,6 @@ export class RecenziileMele implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getReviews();
+    this.recenzii();
   }
 }

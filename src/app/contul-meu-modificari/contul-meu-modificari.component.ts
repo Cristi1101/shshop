@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { Utilizator } from '../models/utilizator';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { ServiciuDeAutentificare } from '../serviciu-de-autentificare.service';
 import { ServiciuUtilizatori } from '../serviciu-utilizatori.service';
-import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'contul-meu-modificari',
@@ -12,28 +11,26 @@ import { AngularFireStorage } from '@angular/fire/storage';
 })
 
 export class ContulMeuModificari {
-  users: Utilizator;
-  userID = localStorage.getItem('userUID');
+  utilizator: Utilizator;
+  idUtilizator = localStorage.getItem('userUID');
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    public authService: ServiciuDeAutentificare,
-    private userService: ServiciuUtilizatori,
-    private storage: AngularFireStorage) {
-    this.authService.utilizator$.subscribe(user => {
-      if (user) {
-        this.users = user;
+    private ruta: Router,
+    public serviciuDeAutentificare: ServiciuDeAutentificare,
+    private serviciuUtilizatori: ServiciuUtilizatori) {
+    this.serviciuDeAutentificare.utilizator$.subscribe(utilizator => {
+      if (utilizator) {
+        this.utilizator = utilizator;
       }
     });
   }
 
-  save(users) {
-    this.userService.actualizareUtilizator(this.userID, users);
-    this.router.navigate(['/my-account']);
+  salvareModificari(utilizator) {
+    this.serviciuUtilizatori.actualizareUtilizator(this.idUtilizator, utilizator);
+    this.ruta.navigate(['/my-account']);
   }
 
-  cancel() {
-    this.router.navigate(['/my-account']);
+  inapoi() {
+    this.ruta.navigate(['/my-account']);
   }
 }

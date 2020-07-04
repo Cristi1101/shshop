@@ -1,25 +1,25 @@
 <div class="card shadow h-100 text-center" style="width: 40rem; margin-left: 220px;">
     <div class="zoom-image h-50" style="margin-top: 5px;">
-        <img src="{{ product.payload.val().imageUrl }}" class="card-img-top">
+        <img src="{{ produs.payload.val().imageUrl }}" class="card-img-top">
     </div>
     <div class="card-body h-30">
         <hr>
-        <h3 class="card-title"><b>{{ product.payload.val().title }}</b></h3>
+        <h3 class="card-title"><b>{{ produs.payload.val().title }}</b></h3>
         <p class="card-text">
-            {{ product.payload.val()?.description }}
+            {{ produs.payload.val()?.description }}
         </p>
         <hr>
         <p class="card-text"><b>Categoria:</b>
-            {{ product.payload.val().category }} - {{ product.payload.val().subcategory }}
+            {{ produs.payload.val().category }} - {{ produs.payload.val().subcategory }}
         </p>
         <hr>
-        <p class="card-text"><b>Culoarea:</b> {{ product.payload.val().color }}</p>
+        <p class="card-text"><b>Culoarea:</b> {{ produs.payload.val().color }}</p>
         <hr>
-        <p class="card-text"><b>{{ product.payload.val().price | currency:'RON ':'code' }}</b></p>
+        <p class="card-text"><b>{{ produs.payload.val().price | currency:'RON ':'code' }}</b></p>
     </div>
     <div class="card-footer h-5">
-        <button (click)="addToCart()" class="btn btn-primary btn-block">
-            Adauga in cos
+        <button (click)="adaugaInCos()" class="btn btn-primary btn-block">
+            Adaugă în coș
         </button>
     </div>
 </div>
@@ -27,7 +27,7 @@
 <hr style="margin-top: 30px; margin-bottom: 30px;">
 
 <h1 class="text-center">Recenzii</h1><br>
-<div class="row" *ngFor="let recenzie of reviews" style="margin-bottom: 30px; border-style: inset;">
+<div class="row" *ngFor="let recenzie of recenzii" style="margin-bottom: 30px; border-style: inset;">
     <div class="col-sm-2">
         <div class="zoom-image h-50" style="margin-top: 20px;">
             <img src="{{ recenzie.user?.img }}" class="img-thumbnail"

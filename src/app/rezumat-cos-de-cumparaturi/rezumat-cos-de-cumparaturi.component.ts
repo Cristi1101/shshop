@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CosDeCumparaturi } from '../models/cos-de-cumparaturi';
 import { ServiciuCosDeCumparaturi } from '../serviciu-cos-de-cumparaturi.service';
 
@@ -9,22 +9,21 @@ import { ServiciuCosDeCumparaturi } from '../serviciu-cos-de-cumparaturi.service
 })
 
 export class RezumatCosDeCumparaturi {
-  shoppingCartItemCount: number;
-  cart$;
-  cart: CosDeCumparaturi = new CosDeCumparaturi(null);
-  shoppingCartTotalPrice: number;
-  shoppingCart: CosDeCumparaturi;
+  evidentaProduselorDinCos: number;
+  cosDeCumparaturi$;
+  cosDeCumparaturi: CosDeCumparaturi = new CosDeCumparaturi(null);
+  pretulTotal: number;
 
-  constructor(private shoppingCartService: ServiciuCosDeCumparaturi) { }
+  constructor(private serviciuCosDeCumparaturi: ServiciuCosDeCumparaturi) { }
 
   async ngOnInit() {
-    this.cart$ = await this.shoppingCartService.primesteCosulDeCumparaturi();
-    this.cart$.valueChanges().subscribe((temp) => {
-      let data: any;
-      data = temp.items;
-      this.cart = new CosDeCumparaturi(data);
-      this.shoppingCartItemCount = this.cart.totalItemsCount;
-      this.shoppingCartTotalPrice = this.cart.totalPrice;
+    this.cosDeCumparaturi$ = await this.serviciuCosDeCumparaturi.primesteCosulDeCumparaturi();
+    this.cosDeCumparaturi$.valueChanges().subscribe((cos) => {
+      let date: any;
+      date = cos.items;
+      this.cosDeCumparaturi = new CosDeCumparaturi(date);
+      this.evidentaProduselorDinCos = this.cosDeCumparaturi.totalItemsCount;
+      this.pretulTotal = this.cosDeCumparaturi.totalPrice;
     });
   }
 }

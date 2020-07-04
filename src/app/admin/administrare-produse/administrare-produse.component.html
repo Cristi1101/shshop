@@ -5,7 +5,7 @@
 <p>
     <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Căutare...">
 </p>
-<data-table [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
+<data-table [items]="elemente" [itemCount]="evidentaElementelor" (reload)="reloadItems($event)">
     <data-table-column [property]="'title'" [header]="'Numele produsului'" [sortable]="true" [resizable]="true">
     </data-table-column>
 

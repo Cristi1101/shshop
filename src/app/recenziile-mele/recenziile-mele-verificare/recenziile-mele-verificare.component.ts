@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
-import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { ServiciuRecenzii } from '../../serviciu-recenzii.service';
 
@@ -13,15 +12,15 @@ export class RecenziileMeleModificare implements OnInit {
   state;
 
   constructor(
-    private router: Router,
-    public recenziiService: ServiciuRecenzii) {
-    this.state = this.router.getCurrentNavigation().extras.state;
+    private ruta: Router,
+    public serviciuRecenzii: ServiciuRecenzii) {
+    this.state = this.ruta.getCurrentNavigation().extras.state;
   }
 
   ngOnInit(): void {
-    this.router.events.pipe(
-      filter(e => e instanceof NavigationStart),
-      map(() => this.router.getCurrentNavigation().extras.state)
+    this.ruta.events.pipe(
+      filter(eveniment => eveniment instanceof NavigationStart),
+      map(() => this.ruta.getCurrentNavigation().extras.state)
     ).subscribe(object => {
       this.state = object;
     });

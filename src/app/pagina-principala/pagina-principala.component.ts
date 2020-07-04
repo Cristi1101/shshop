@@ -14,9 +14,7 @@ export class PaginaPrincipala {
   indexSelectat = 0;
   indexSelectat1 = 0;
 
-  constructor(
-    private route: ActivatedRoute,
-    private serviciuProduse: ServiciuProduse) {
+  constructor(private serviciuProduse: ServiciuProduse) {
     this.serviciuProduse.celeMaiVizitateProduse().subscribe(data => {
       let aux;
       for (let i = 0; i < data.length / 2; i++) {

@@ -18,45 +18,42 @@ declare var paypal;
   styleUrls: ['./trimite-comanda.component.css']
 })
 export class TrimiteComanda implements OnInit, OnDestroy {
-  users: Utilizator;
-  userID = localStorage.getItem('userUID');
-  cart: CosDeCumparaturi;
+  utilizator: Utilizator;
+  idUtilizator = localStorage.getItem('userUID');
+  cosDeCumparaturi: CosDeCumparaturi;
   subscription: Subscription;
 
-  shoppingCartItemCount: number;
-  cart2$;
-  cart2: CosDeCumparaturi = new CosDeCumparaturi(null);
-  shoppingCartTotalPrice: number;
-  shoppingCart: CosDeCumparaturi;
+  evidentaProduselorDinCos: number;
+  cosDeCumparaturi2$;
+  cosDeCumparaturi2: CosDeCumparaturi = new CosDeCumparaturi(null);
+  pretulTotal: number;
 
-  @ViewChild('paypal', { static: true }) paypalElem: ElementRef;
+  @ViewChild('paypal', { static: true }) elementulPayPal: ElementRef;
 
   constructor(
-    private router: Router,
-    public authService: ServiciuDeAutentificare,
-    private userService: ServiciuUtilizatori,
-    private shoppingCartService: ServiciuCosDeCumparaturi,
-    private orderService: ServiciuComenzi) {
-    this.authService.utilizator$.subscribe(user => {
-      if (user) {
-        this.users = user;
-        console.log("USER", user);
+    private ruta: Router,
+    public serviciuDeAutentificare: ServiciuDeAutentificare,
+    private serviciuCosDeCumparaturi: ServiciuCosDeCumparaturi,
+    private serviciuComenzi: ServiciuComenzi) {
+    this.serviciuDeAutentificare.utilizator$.subscribe(utilizator => {
+      if (utilizator) {
+        this.utilizator = utilizator;
       }
     });
   }
 
-  paidFor = false;
+  platit = false;
 
   async ngOnInit() {
-    let cart$ = await this.shoppingCartService.primesteCosulDeCumparaturi();
-    this.subscription = cart$.valueChanges().subscribe((cart: CosDeCumparaturi) => this.cart = cart);
-    this.cart2$ = await this.shoppingCartService.primesteCosulDeCumparaturi();
-    this.cart2$.valueChanges().subscribe((temp) => {
-      let data: any;
-      data = temp.items;
-      this.cart2 = new CosDeCumparaturi(data);
-      this.shoppingCartItemCount = this.cart2.totalItemsCount;
-      this.shoppingCartTotalPrice = this.cart2.totalPrice;
+    let cosDeCump$ = await this.serviciuCosDeCumparaturi.primesteCosulDeCumparaturi();
+    this.subscription = cosDeCump$.valueChanges().subscribe((cart: CosDeCumparaturi) => this.cosDeCumparaturi = cart);
+    this.cosDeCumparaturi2$ = await this.serviciuCosDeCumparaturi.primesteCosulDeCumparaturi();
+    this.cosDeCumparaturi2$.valueChanges().subscribe((cos) => {
+      let date: any;
+      date = cos.items;
+      this.cosDeCumparaturi2 = new CosDeCumparaturi(date);
+      this.evidentaProduselorDinCos = this.cosDeCumparaturi2.totalItemsCount;
+      this.pretulTotal = this.cosDeCumparaturi2.totalPrice;
     });
 
     paypal
@@ -65,9 +62,9 @@ export class TrimiteComanda implements OnInit, OnDestroy {
           return actions.order.create({
             purchase_units: [
               {
-                description: this.cart.totalItemsCount,
+                description: this.cosDeCumparaturi.totalItemsCount,
                 amount: {
-                  value: parseFloat((this.cart2.totalPrice / 4.26).toString()).toFixed(2)
+                  value: parseFloat((this.cosDeCumparaturi2.totalPrice / 4.26).toString()).toFixed(2)
                 }
               }
             ]
@@ -75,25 +72,25 @@ export class TrimiteComanda implements OnInit, OnDestroy {
         },
         onApprove: async (data, actions) => {
           const ord = await actions.order.capture();
-          this.paidFor = true;
+          this.platit = true;
           console.log(ord);
         },
         onError: err => {
           console.log(err);
         }
       })
-      .render(this.paypalElem.nativeElement);
+      .render(this.elementulPayPal.nativeElement);
   }
 
-  async placeOrder() {
-    let order = new Comanda(this.userID, this.users, this.cart);
-    let result = await this.orderService.plaseazaComanda(order);
+  async plaseazaComanda() {
+    let comanda = new Comanda(this.idUtilizator, this.utilizator, this.cosDeCumparaturi);
+    let rezultat = await this.serviciuComenzi.plaseazaComanda(comanda);
 
-    this.router.navigate(['/order-success/', result.key]);
+    this.ruta.navigate(['/order-success/', rezultat.key]);
   }
 
-  cancel() {
-    this.router.navigate(['/shopping-cart']);
+  inapoi() {
+    this.ruta.navigate(['/shopping-cart']);
   }
 
   ngOnDestroy() {

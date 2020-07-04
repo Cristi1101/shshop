@@ -8,17 +8,16 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./comenzile-mele.component.css']
 })
 export class ComenzileMele {
-  orders$;
-  userID = localStorage.getItem('userUID');
+  comenzi$;
+  idUtilizator = localStorage.getItem('userUID');
   
   constructor(
-    private orderService: ServiciuComenzi,
-    private router: Router,
-    private route: ActivatedRoute) {
-    this.orders$ = this.orderService.primesteComenzileUtilizatorului(this.userID);
+    private serviciuComenzi: ServiciuComenzi,
+    private ruta: Router) {
+    this.comenzi$ = this.serviciuComenzi.primesteComenzileUtilizatorului(this.idUtilizator);
   }
 
-  back() {
-    this.router.navigate(['/']);
+  inapoi() {
+    this.ruta.navigate(['/']);
   }
 }

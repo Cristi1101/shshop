@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ServiciuCategorii } from 'src/app/serviciu-categorii.service';
 import { Options } from 'ng5-slider';
 
@@ -7,7 +7,7 @@ import { Options } from 'ng5-slider';
   templateUrl: './filtru-produse.component.html',
   styleUrls: ['./filtru-produse.component.css']
 })
-export class FiltruProduse implements OnInit {
+export class FiltruProduse {
   categorii$;
 
   @Input('categorie') categorie;
@@ -32,9 +32,6 @@ export class FiltruProduse implements OnInit {
      floor: 0,
      ceil: 3500
   };
-
-  ngOnInit(): void {
-  } 
 
   trimiteMesaj(valoare1, valoare2){
     this.evenimentPret.emit([valoare1, valoare2]);

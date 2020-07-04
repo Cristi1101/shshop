@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ServiciuUtilizatori } from '../serviciu-utilizatori.service';
+import { Router } from '@angular/router';
 import { ServiciuDeAutentificare } from '../serviciu-de-autentificare.service';
 import { Utilizator } from '../models/utilizator';
 
@@ -10,26 +9,23 @@ import { Utilizator } from '../models/utilizator';
   styleUrls: ['./contul-meu.component.css']
 })
 export class ContulMeu {
-  user: Utilizator;
-  imageSrc;
-  selectedImage: any = null;
+  utilizator: Utilizator;
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
+    private ruta: Router,
     public authService: ServiciuDeAutentificare) {
-    this.authService.utilizator$.subscribe(user => {
-      if (user) {
-        this.user = user;
+    this.authService.utilizator$.subscribe(utilizator => {
+      if (utilizator) {
+        this.utilizator = utilizator;
       }
     });
   }
 
-  edit() {
-    this.router.navigate(['/edit-account']);
+  modifica() {
+    this.ruta.navigate(['/edit-account']);
   }
 
-  cancel() {
-    this.router.navigate(['/']);
+  inapoi() {
+    this.ruta.navigate(['/']);
   }
 }

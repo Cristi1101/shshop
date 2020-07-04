@@ -13,8 +13,8 @@ export class Favorite {
   constructor(
     public serviciuCosDeCumparaturi: ServiciuCosDeCumparaturi,
     public serviciuFavorite: ServiciuFavorite) {
-    this.serviciuFavorite.primesteProduseFavorite().subscribe(data => {
-      data.forEach(element => {
+    this.serviciuFavorite.primesteProduseFavorite().subscribe(date => {
+      date.forEach(element => {
         this.produseFavorite.push(element.payload.val());
       })
     });

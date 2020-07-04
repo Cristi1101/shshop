@@ -8,13 +8,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let order of orders$ | async">
-      <td>{{ order.shipping.username }}</td>
-      <td>{{ order.datePlaced | date}}</td>
+    <tr *ngFor="let comanda of comenzi$ | async">
+      <td>{{ comanda.shipping.username }}</td>
+      <td>{{ comanda.datePlaced | date}}</td>
       <td>
-        <a [routerLink]="['/my-orders/', order.key]">Mai multe detalii</a>
+        <a [routerLink]="['/my-orders/', comanda.key]">Mai multe detalii</a>
       </td>
     </tr>
   </tbody>
 </table>
-<button type="button" (click)="back()" class="btn btn-secondary" style="margin-top:10px;">Înapoi la catalogul de produse</button>
+<button type="button" (click)="inapoi()" class="btn btn-secondary" style="margin-top:10px;">Înapoi la catalogul de produse</button>

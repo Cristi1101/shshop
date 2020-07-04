@@ -12,28 +12,27 @@ import { ServiciuUtilizatori } from '../../serviciu-utilizatori.service';
   styleUrls: ['./detalii-produse.component.css']
 })
 export class DetaliiProduse {
-  checked: boolean;
-  product;
-  id;
-  reviews = [];
+  produs;
+  idRuta;
+  recenzii = [];
 
   constructor(
-    private route: ActivatedRoute,
-    private recenziiService: ServiciuRecenzii,
-    private productService: ServiciuProduse,
-    private userService: ServiciuUtilizatori,
-    public cartService: ServiciuCosDeCumparaturi) {
-    this.id = this.route.snapshot.paramMap.get('id');
-    if (this.id)
-      this.productService.toateProdusele2(this.id).pipe(take(1)).subscribe(p => (this.product = p));
-    this.getReviews();
+    private ruta: ActivatedRoute,
+    private serviciuRecenzii: ServiciuRecenzii,
+    private serviciuProduse: ServiciuProduse,
+    private serviciuUtilizatori: ServiciuUtilizatori,
+    public serviciuCosDeCumparaturi: ServiciuCosDeCumparaturi) {
+    this.idRuta = this.ruta.snapshot.paramMap.get('id');
+    if (this.idRuta)
+      this.serviciuProduse.toateProdusele2(this.idRuta).pipe(take(1)).subscribe(p => (this.produs = p));
+    this.recenziiProdus();
   }
 
-  getReviews() {
-    this.recenziiService.primesteToateRecenziile(this.id).subscribe(recenziiData => {
+  recenziiProdus() {
+    this.serviciuRecenzii.primesteToateRecenziile(this.idRuta).subscribe(recenziiData => {
       recenziiData.forEach(element1 => {
-        this.userService.primesteUtilizator(element1.uid).subscribe(data => {
-          this.reviews.push({
+        this.serviciuUtilizatori.primesteUtilizator(element1.uid).subscribe(data => {
+          this.recenzii.push({
             recenzie: element1,
             user: data.payload.val()
           });
@@ -42,8 +41,8 @@ export class DetaliiProduse {
     });
   }
 
-  addToCart() {
-    if (window.confirm('Produs adaugat in cosul de cumparaturi!'))
-      this.cartService.adaugaInCosulDeCumparaturi(this.product.payload.val());
+  adaugaInCos() {
+    if (window.confirm('Produs adăugat în coșul de cumpărături!'))
+      this.serviciuCosDeCumparaturi.adaugaInCosulDeCumparaturi(this.produs.payload.val());
   }
 }

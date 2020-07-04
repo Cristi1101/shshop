@@ -32,8 +32,8 @@ export class CatalogulProduselor implements OnInit, OnDestroy {
     private r: Renderer2) {
     this.filterProducts();
 
-    this.r.listen('window', 'click', (event: Event) => {
-      if (event.target !== this.cadereMeniu.nativeElement && event.target !== this.meniu.nativeElement) {
+    this.r.listen('window', 'click', (eveniment: Event) => {
+      if (eveniment.target !== this.cadereMeniu.nativeElement && eveniment.target !== this.meniu.nativeElement) {
         this.ascundeSugestii = true;
       }
     });

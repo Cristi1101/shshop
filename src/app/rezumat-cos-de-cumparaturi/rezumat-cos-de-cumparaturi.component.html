@@ -1,9 +1,9 @@
 <div class="card text-center">
     <div class="card-body">
         <h3 class="card-title">REZUMATUL COMENZII</h3>
-        <p class="card-text"><i>Aveți {{ shoppingCartItemCount }} produse în coșul de cumpărături.</i></p><br>
+        <p class="card-text"><i>Aveți {{ evidentaProduselorDinCos }} produse în coșul de cumpărături.</i></p><br>
         <ul class="list-group list-group-flush">
-            <li *ngFor="let item of cart.items" class="list-group-item text-left">
+            <li *ngFor="let item of cosDeCumparaturi.items" class="list-group-item text-left">
                 {{item.quantity }} x {{ item.product.title }}
                 <div class="float-right">
                     {{ item.totalPrice  | currency:'RON ':'code' }}
@@ -12,7 +12,7 @@
             <li class="list-group-item font-weight-bold text-left">
                 Total
                 <div class="float-right">
-                    {{ cart.totalPrice | currency:'RON ':'code' }}
+                    {{ cosDeCumparaturi.totalPrice | currency:'RON ':'code' }}
                 </div>
             </li>
         </ul>

@@ -4,50 +4,50 @@
         <table class="table">
             <tr>
                 <th>Prenume</th>
-                <td>{{ user.firstName }}</td>
+                <td>{{ utilizator.firstName }}</td>
             </tr>
             <tr>
                 <th>Nume</th>
-                <td>{{ user.lastName }}</td>
+                <td>{{ utilizator.lastName }}</td>
             </tr>
             <tr>
                 <th>Nume de utilizator</th>
-                <td>{{ user.username }}</td>
+                <td>{{ utilizator.username }}</td>
             </tr>
             <tr>
                 <th>Email</th>
-                <td>{{ user.email }}</td>
+                <td>{{ utilizator.email }}</td>
             </tr>
             <tr>
                 <th>Oraș</th>
-                <td>{{ user.city }}</td>
+                <td>{{ utilizator.city }}</td>
             </tr>
             <tr>
                 <th>Adresă</th>
-                <td>{{ user.address }}</td>
+                <td>{{ utilizator.address }}</td>
             </tr>
             <tr>
                 <th>Cod poștal</th>
-                <td>{{ user.postalCode }}</td>
+                <td>{{ utilizator.postalCode }}</td>
             </tr>
         </table>
         <br>
-        <button type="button" (click)="edit()" class="btn btn-primary" style="margin-right:10px;">
+        <button type="button" (click)="modifica()" class="btn btn-primary" style="margin-right:10px;">
             Modificare informații personale
         </button>
-        <button type="button" (click)="cancel()" class="btn btn-secondary" style="margin-right:10px;">
+        <button type="button" (click)="inapoi()" class="btn btn-secondary" style="margin-right:10px;">
             Înapoi la catalogul de produse
         </button>
     </div>
 
     <div class="col-md-6">
         <div class="card" style="width: 18rem;">
-            <img [src]="user.img" class="card-img-top">
+            <img [src]="utilizator.img" class="card-img-top">
             <div class="card-body">
-                <h3 class="card-title">{{  user.firstName }} {{ user.lastName }}</h3>
-                <h5>{{ user.username }}</h5>
-                <p class="card-text">{{ user.city }}</p>
-                <p class="card-text">{{ user.email }}</p>
+                <h3 class="card-title">{{  utilizator.firstName }} {{ utilizator.lastName }}</h3>
+                <h5>{{ utilizator.username }}</h5>
+                <p class="card-text">{{ utilizator.city }}</p>
+                <p class="card-text">{{ utilizator.email }}</p>
             </div>
         </div>
     </div>
