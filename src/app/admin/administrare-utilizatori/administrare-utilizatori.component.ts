@@ -12,37 +12,37 @@ import { ServiciuUtilizatori } from 'src/app/serviciu-utilizatori.service';
 export class AdministrareUtilizatori implements OnInit, OnDestroy {
   utilizatori: Utilizator[] = [];
   subscription: Subscription;
-  tableResource: DataTableResource<Utilizator>;
-  items: Utilizator[] = [];
-  itemCount: number;
+  tabel: DataTableResource<Utilizator>;
+  elemente: Utilizator[] = [];
+  numarElemente: number;
 
   constructor(private serviciuUtilizatori: ServiciuUtilizatori) {
-    this.subscription = this.serviciuUtilizatori.primesteTotiUtilizatorii().subscribe(users => {
-      this.utilizatori = users;
-      this.initializeTable(users);
+    this.subscription = this.serviciuUtilizatori.primesteTotiUtilizatorii().subscribe(utilizatori => {
+      this.utilizatori = utilizatori;
+      this.initializareTabel(utilizatori);
     });
   }
 
-  private initializeTable(users: Utilizator[]) {
-    this.tableResource = new DataTableResource(users);
-    this.tableResource.query({ offset: 0 })
-      .then(items => this.items = items);
-    this.tableResource.count()
-      .then(count => this.itemCount = count);
+  private initializareTabel(utilizatori: Utilizator[]) {
+    this.tabel = new DataTableResource(utilizatori);
+    this.tabel.query({ offset: 0 })
+      .then(items => this.elemente = items);
+    this.tabel.count()
+      .then(count => this.numarElemente = count);
   }
 
-  reloadItems(params) {
-    if (!this.tableResource) return;
+  actualizareElemente(parametrii) {
+    if (!this.tabel) return;
 
-    this.tableResource.query(params)
-      .then(items => this.items = items);
+    this.tabel.query(parametrii)
+      .then(items => this.elemente = items);
   }
 
-  filter(query: string) {
-    let filteredUsers = (query) ?
-      this.utilizatori.filter(p => p.email.toLowerCase().includes(query.toLowerCase())) :
+  filter(text: string) {
+    let utilizatoriFiltrati = (text) ?
+      this.utilizatori.filter(utilizator => utilizator.email.toLowerCase().includes(text.toLowerCase())) :
       this.utilizatori;
-    this.initializeTable(filteredUsers);
+    this.initializareTabel(utilizatoriFiltrati);
   }
 
   ngOnInit(): void {

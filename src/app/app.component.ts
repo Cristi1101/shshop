@@ -9,17 +9,17 @@ import { ServiciuUtilizatori } from './serviciu-utilizatori.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private userService: ServiciuUtilizatori, private auth:ServiciuDeAutentificare, router: Router){
-    auth.utilizatorObs$.subscribe(user => {
-      if(!user) return;
+  constructor(private serviciuUtilizatori: ServiciuUtilizatori, private serviciuDeAutentificare:ServiciuDeAutentificare, ruta: Router){
+    serviciuDeAutentificare.utilizatorObs$.subscribe(utilizator => {
+      if(!utilizator) return;
       
-      userService.salveazaUtilizator(user);
+      serviciuUtilizatori.salveazaUtilizator(utilizator);
 
       let returnUrl = localStorage.getItem('returnUrl');
       if (!returnUrl) return;
       
       localStorage.removeItem('returnUrl');
-      router.navigateByUrl(returnUrl);
+      ruta.navigateByUrl(returnUrl);
     });
   }
 }

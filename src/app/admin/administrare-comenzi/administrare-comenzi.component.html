@@ -8,11 +8,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let order of orders$ | async">
-      <td>{{ order.shipping.firstName }}</td>
-      <td>{{ order.datePlaced | date}}</td>
+    <tr *ngFor="let comanda of comenzi$ | async">
+      <td>{{ comanda.shipping.firstName }}</td>
+      <td>{{ comanda.datePlaced | date}}</td>
       <td>
-        <a [routerLink]="['/admin/orders/', order.key]">Mai multe detalii</a>
+        <a [routerLink]="['/administrator/comenzi/', comanda.key]">Mai multe detalii</a>
       </td>
     </tr>
   </tbody>

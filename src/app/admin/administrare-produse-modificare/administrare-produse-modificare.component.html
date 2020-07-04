@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-md-6">
-        <form #f="ngForm" (ngSubmit)="save(f.value)">
+        <form #form="ngForm" (ngSubmit)="salvareProdus(form.value)">
             <div class="form-group">
                 <label for="title">Numele produsului</label>
-                <input #title="ngModel" [(ngModel)]="product.payload.val().title" name="title" id="title" type="text"
+                <input #title="ngModel" [(ngModel)]="produs.payload.val().title" name="title" id="title" type="text"
                     class="form-control" required>
                 <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
                     Acest câmp este obligatoriu.
@@ -11,7 +11,7 @@
             </div>
             <div class="form-group">
                 <label for="description">Descrierea</label>
-                <textarea #description="ngModel" [(ngModel)]="product.payload.val().description" name="description"
+                <textarea #description="ngModel" [(ngModel)]="produs.payload.val().description" name="description"
                     id="description" cols="20" rows="5" class="form-control" required></textarea>
                 <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
                     Acest câmp este obligatoriu.
@@ -21,7 +21,7 @@
                 <label for="price">Prețul</label>
                 <div class="input-group-prepend">
                     <span class="input-group-text">RON</span>
-                    <input #price="ngModel" [(ngModel)]="product.payload.val().price" name="price" id="price"
+                    <input #price="ngModel" [(ngModel)]="produs.payload.val().price" name="price" id="price"
                         type="number" class="form-control" required>
                 </div>
                 <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
@@ -30,10 +30,10 @@
             </div>
             <div class="form-group">
                 <label for="category">Categoria</label>
-                <select #cat #category="ngModel" [(ngModel)]="product.payload.val().category" name="category"
+                <select #cat #category="ngModel" [(ngModel)]="produs.payload.val().category" name="category"
                     id="category" class="form-control" required>
                     <option value=""></option>
-                    <option *ngFor='let c of categories$ | async' [value]="c.key">
+                    <option *ngFor='let c of categorii$ | async' [value]="c.key">
                         {{ c.payload.val().name }}
                     </option>
                 </select>
@@ -44,10 +44,10 @@
 
             <div class="form-group">
                 <label for="subcategory">Subcategoria</label>
-                <select #subcategory="ngModel" [(ngModel)]="product.payload.val().subcategory" name="subcategory"
+                <select #subcategory="ngModel" [(ngModel)]="produs.payload.val().subcategory" name="subcategory"
                     id="subcategory" class="form-control" required>
 
-                    <option *ngFor="let s of subcategories$ | async" [value]="s.key">
+                    <option *ngFor="let s of subcategorii$ | async" [value]="s.key">
                         {{ s.payload.val().name }}
                     </option>
 
@@ -58,10 +58,10 @@
             </div>
             <div class="form-group">
                 <label for="color">Culoarea</label>
-                <select #color="ngModel" [(ngModel)]="product.payload.val().color" name="color" id="color"
+                <select #color="ngModel" [(ngModel)]="produs.payload.val().color" name="color" id="color"
                     class="form-control" required>
                     <option value=""></option>
-                    <option *ngFor='let c of colors$ | async' [value]="c.key">
+                    <option *ngFor='let c of culori$ | async' [value]="c.key">
                         {{ c.payload.val().name }}
                     </option>
                 </select>
@@ -71,7 +71,7 @@
             </div>
             <div class="form-group">
                 <label for="imageUrl">Imaginea</label>
-                <input #imageUrl="ngModel" [(ngModel)]="product.payload.val().imageUrl" name="imageUrl" id="imageUrl"
+                <input #imageUrl="ngModel" [(ngModel)]="produs.payload.val().imageUrl" name="imageUrl" id="imageUrl"
                     type="text" class="form-control" required>
                 <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
                     Acest câmp este obligatoriu.
@@ -79,27 +79,27 @@
             </div>
 
             <button class="btn btn-primary" style="margin-right:10px;">Salvează</button>
-            <button type="button" (click)="delete()" class="btn btn-danger" style="margin-right:10px;">Şterge</button>
-            <button type="button" (click)="cancel()" class="btn btn-secondary"
+            <button type="button" (click)="stergeProdus()" class="btn btn-danger" style="margin-right:10px;">Şterge</button>
+            <button type="button" (click)="inapoi()" class="btn btn-secondary"
                 style="margin-right:10px;">Anulează</button>
         </form>
     </div>
     <div class="col-md-6">
-        <div *ngIf="product.payload.val().title" class="card text-center" style="width: 18rem;">
-            <img [src]="product.payload.val().imageUrl" class="card-img-top" *ngIf="product.payload.val().imageUrl">
+        <div *ngIf="produs.payload.val().title" class="card text-center" style="width: 18rem;">
+            <img [src]="produs.payload.val().imageUrl" class="card-img-top" *ngIf="produs.payload.val().imageUrl">
             <div class="card-body">
                 <hr>
-                <h5 class="card-title">{{ product.payload.val().title }}</h5>
+                <h5 class="card-title">{{ produs.payload.val().title }}</h5>
                 <hr>
-                <p class="card-text">{{ product.payload.val().description }}</p>
+                <p class="card-text">{{ produs.payload.val().description }}</p>
                 <hr>
-                <p class="card-text"><b>Categoria:</b> {{ product.payload.val().category }} -
-                    {{ product.payload.val().subcategory }}
+                <p class="card-text"><b>Categoria:</b> {{ produs.payload.val().category }} -
+                    {{ produs.payload.val().subcategory }}
                 </p>
                 <hr>
-                <p class="card-text"><b>Culoarea:</b> {{ product.payload.val().color }}</p>
+                <p class="card-text"><b>Culoarea:</b> {{ produs.payload.val().color }}</p>
                 <hr>
-                <p class="card-text"><b>{{ product.payload.val().price | currency:'RON ':'code' }}</b></p>
+                <p class="card-text"><b>{{ produs.payload.val().price | currency:'RON ':'code' }}</b></p>
             </div>
         </div>
     </div>

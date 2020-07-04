@@ -53,6 +53,6 @@ export class ComenzileMeleDetalii {
   }
 
   inapoi() {
-    this.ruta.navigate(['/my-orders']);
+    this.ruta.navigate(['/comenzile-mele']);
   }
 }

@@ -12,48 +12,44 @@ import { ServiciuSubcategorii } from 'src/app/serviciu-subcategorii.service';
   styleUrls: ['./administrare-produse-modificare.component.css']
 })
 export class AdministrareProduseModificare {
-  categories$;
-  colors$;
-  product;
-  id;
-  subcategories$;
+  categorii$;
+  culori$;
+  produs;
+  idProdus;
+  subcategorii$;
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private categoryService: ServiciuCategorii,
-    private subcategoryService: ServiciuSubcategorii,
-    private colorService: ServiciuCulori,
-    private productService: ServiciuProduse) {
-      
-    this.categories$ = categoryService.toateCategoriile();
-    this.colors$ = colorService.primesteCulorile();
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.subcategories$ = subcategoryService.primesteSubcategoriile();
+    private ruta: Router,
+    private rutaActiva: ActivatedRoute,
+    private serviciuCategorii: ServiciuCategorii,
+    private serviciuSubcategorii: ServiciuSubcategorii,
+    private serviciuCulori: ServiciuCulori,
+    private serviciuProdus: ServiciuProduse) {
 
-    if (this.id)
-      this.productService.toateProdusele2(this.id).pipe(take(1)).subscribe(p => (this.product = p));
+    this.categorii$ = serviciuCategorii.toateCategoriile();
+    this.culori$ = serviciuCulori.primesteCulorile();
+    this.idProdus = this.rutaActiva.snapshot.paramMap.get('id');
+    this.subcategorii$ = serviciuSubcategorii.primesteSubcategoriile();
+
+    if (this.idProdus)
+      this.serviciuProdus.toateProdusele2(this.idProdus).pipe(take(1)).subscribe(produs => (this.produs = produs));
   }
 
-  save(product) {
-    if (this.id)
-      this.productService.actualizareProdus(this.id, product);
+  salvareProdus(produs) {
+    if (this.idProdus)
+      this.serviciuProdus.actualizareProdus(this.idProdus, produs);
 
-    this.router.navigate(['/admin/products']);
+    this.ruta.navigate(['/administrator/produs']);
   }
 
-  delete() {
-    if (!confirm('Are you sure you want to delete this product?')) return;
+  stergeProdus() {
+    if (!confirm('Sunteți sigur că doriți să ștergeți acest produs?')) return;
 
-    this.productService.stergeProdus(this.id);
-    this.router.navigate(['/admin/products']);
+    this.serviciuProdus.stergeProdus(this.idProdus);
+    this.ruta.navigate(['/administrator/produs']);
   }
 
-  cancel() {
-    this.router.navigate(['/admin/products']);
-  }
-
-  filteredSubcategories(param) {
-    return this.subcategories$.filter(x => x.payload.val().parentId == param);
+  inapoi() {
+    this.ruta.navigate(['/administrator/produs']);
   }
 }

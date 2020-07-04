@@ -1,10 +1,10 @@
 <h1 class="text-center" style="margin-bottom: 50px;">ADMINISTRARE RECENZII</h1><br>
-<div class="row" *ngFor="let recenzie of reviews" style="margin-bottom: 30px; border-style: inset;">
+<div class="row" *ngFor="let recenzie of recenzii" style="margin-bottom: 30px; border-style: inset;">
     <div class="col-sm-2">
         <div class="zoom-image h-50" style="margin-top: 20px;">
-            <img src="{{ recenzie.user?.img }}" class="img-thumbnail"
+            <img src="{{ recenzie.utilizator?.img }}" class="img-thumbnail"
                 style="width: 100px; height: 70px; border-radius: 50%;">
-            <p style="margin-left: 10px;">{{ recenzie.user?.username }}</p>
+            <p style="margin-left: 10px;">{{ recenzie.utilizator?.username }}</p>
             <ngb-rating #stea [(rate)]="recenzie.recenzie.stele" [max]="5" readonly=true></ngb-rating>
             <pre>Evaluare: <b>{{recenzie.recenzie.stele}}</b></pre>
         </div>
@@ -15,14 +15,14 @@
             <div style="margin-top: 10px; margin-bottom: 10px;">
                 <img src="{{ recenzie.produs.imageUrl }}" class="img-thumbnail"
                     style="width: 150px; height: 110px; display: inline-block;"
-                    [routerLink]="['/products/', recenzie.produs.key]">
+                    [routerLink]="['/produs/', recenzie.produs.key]">
                 <span style="margin-left: 20px;">-</span>
                 <span style="margin-left: 20px;">{{ recenzie.recenzie.continut }}</span>
             </div>
         </div>
 
     </div>
-    <button class="btn btn-danger" (click)="this.recenziiService.stergeRecenzia(recenzie.produs.key, recenzie.recenzie.key)"
+    <button class="btn btn-danger" (click)="this.serviciuRecenzii.stergeRecenzia(recenzie.produs.key, recenzie.recenzie.key)"
         style="margin-top: 5px; margin-bottom: 5px; margin-left: 5px;">
         <i class="fa fa-trash"></i> Şterge
     </button>

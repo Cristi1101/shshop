@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-    <a class="navbar-brand" routerLink="/homepage">
+    <a class="navbar-brand" routerLink="/pagina-principala">
         Magazin Second
         <i class="far fa-handshake"></i>
         Hand
@@ -17,7 +17,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/shopping-cart">
+                <a class="nav-link" routerLink="/cos-de-cumparaturi">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="badge badge-warning badge-pill">
                         {{ shoppingCartItemCount }}
@@ -29,7 +29,7 @@
         <ul class="navbar-nav">
             <ng-template #anonymousUser>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/login">Login <i class="fas fa-sign-in-alt"></i></a>
+                    <a class="nav-link" routerLink="/autentificare">Login <i class="fas fa-sign-in-alt"></i></a>
                 </li>
             </ng-template>
             <li *ngIf="utilizator; else anonymousUser" class="nav-item dropleft">
@@ -39,15 +39,15 @@
                     {{ utilizator.username }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" routerLink="/my-account">Contul meu <i class="fas fa-user-circle"></i></a>
-                    <a class="dropdown-item" routerLink="/my-orders">Comenziile mele</a>
-                    <a class="dropdown-item" routerLink="/favourites">Favorite</a>
+                    <a class="dropdown-item" routerLink="/contul-meu">Contul meu <i class="fas fa-user-circle"></i></a>
+                    <a class="dropdown-item" routerLink="/comenzile-mele">Comenziile mele</a>
+                    <a class="dropdown-item" routerLink="/favorite">Favorite</a>
                     <a class="dropdown-item" routerLink="/recenzii">Recenziile mele</a>
                     <ng-container *ngIf="utilizator.isAdmin">
-                        <a class="dropdown-item" routerLink="/admin/users">Administrarea utilizatorilor</a>
-                        <a class="dropdown-item" routerLink="/admin/products">Administrarea produselor</a>
-                        <a class="dropdown-item" routerLink="/admin/orders">Administrarea comenzilor</a>
-                        <a class="dropdown-item" routerLink="/admin/reviews">Administrarea recenziilor</a>
+                        <a class="dropdown-item" routerLink="/administrator/utilizatori">Administrarea utilizatorilor</a>
+                        <a class="dropdown-item" routerLink="/administrator/produs">Administrarea produselor</a>
+                        <a class="dropdown-item" routerLink="/administrator/comenzi">Administrarea comenzilor</a>
+                        <a class="dropdown-item" routerLink="/administrator/recenzii">Administrarea recenziilor</a>
                     </ng-container>
                     <a class="dropdown-item" (click)="logout()">Log Out <i class="fas fa-sign-out-alt"></i></a>
                 </div>

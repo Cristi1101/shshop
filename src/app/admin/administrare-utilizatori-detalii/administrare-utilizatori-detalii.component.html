@@ -1,42 +1,42 @@
 <h1 class="text-center" style="margin-bottom: 50px;">DETALII UTILIZATOR</h1>
-<img [src]="users.payload.val().img" class="img-thumbnail">
+<img [src]="utilizator.payload.val().img" class="img-thumbnail">
 <div class="row">
     <table class="table">
         <tr>
             <th>Prenume</th>
-            <td>{{ users.payload.val().firstName }}</td>
+            <td>{{ utilizator.payload.val().firstName }}</td>
         </tr>
         <tr>
             <th>Nume</th>
-            <td>{{ users.payload.val().lastName }}</td>
+            <td>{{ utilizator.payload.val().lastName }}</td>
         </tr>
         <tr>
             <th>Nume de utilizator</th>
-            <td>{{ users.payload.val().username }}</td>
+            <td>{{ utilizator.payload.val().username }}</td>
         </tr>
         <tr>
             <th>Email</th>
-            <td>{{ users.payload.val().email }}</td>
+            <td>{{ utilizator.payload.val().email }}</td>
         </tr>
         <tr>
             <th>Oraș</th>
-            <td>{{ users.payload.val().city }}</td>
+            <td>{{ utilizator.payload.val().city }}</td>
         </tr>
         <tr>
             <th>Adresă</th>
-            <td>{{ users.payload.val().address }}</td>
+            <td>{{ utilizator.payload.val().address }}</td>
         </tr>
         <tr>
             <th>Cod poștal</th>
-            <td>{{ users.payload.val().postalCode }}</td>
+            <td>{{ utilizator.payload.val().postalCode }}</td>
         </tr>
     </table>
 </div>
 
-<form #f="ngForm" (ngSubmit)="save(f.value)" style="margin-top: 60px;">
+<form #f="ngForm" (ngSubmit)="salvareModificari(f.value)" style="margin-top: 60px;">
     <div class="form-group">
         <label for="isAdmin">Rol de administrator</label>
-        <select #isAdmin="ngModel" [(ngModel)]="users.payload.val().isAdmin" name="isAdmin" id="isAdmin" type="number"
+        <select #isAdmin="ngModel" [(ngModel)]="utilizator.payload.val().isAdmin" name="isAdmin" id="isAdmin" type="number"
             class="form-control" required>
             <option [ngValue]="true">True</option>
             <option [ngValue]="false">False</option>
@@ -48,7 +48,7 @@
 
     <div style="margin-top: 60px;">
         <button class="btn btn-primary" style="margin-right:10px;">Salvează</button>
-        <button type="button" (click)="delete()" class="btn btn-danger" style="margin-right:10px;">Şterge</button>
-        <button type="button" (click)="cancel()" class="btn btn-secondary" style="margin-right:10px;">Anulează</button>
+        <button type="button" (click)="stergeUtilizator()" class="btn btn-danger" style="margin-right:10px;">Şterge</button>
+        <button type="button" (click)="inapoi()" class="btn btn-secondary" style="margin-right:10px;">Anulează</button>
     </div>
 </form>

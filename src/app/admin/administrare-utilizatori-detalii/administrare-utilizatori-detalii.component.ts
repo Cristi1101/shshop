@@ -10,31 +10,31 @@ import { take } from 'rxjs/operators';
 })
 
 export class AdministrareUtilizatoriDetalii {
-  users;
-  id;
+  utilizator;
+  idUtilizator;
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    public userService: ServiciuUtilizatori) {
-    this.id = this.route.snapshot.paramMap.get('id');
-    if (this.id)
-      this.userService.primesteUtilizator(this.id).pipe(take(1)).subscribe(p => (this.users = p));
+    private ruta: Router,
+    private rutaActiva: ActivatedRoute,
+    public serviciuUtilizatori: ServiciuUtilizatori) {
+    this.idUtilizator = this.rutaActiva.snapshot.paramMap.get('id');
+    if (this.idUtilizator)
+      this.serviciuUtilizatori.primesteUtilizator(this.idUtilizator).pipe(take(1)).subscribe(utilizator => (this.utilizator = utilizator));
   }
 
-  save(users) {
-    this.userService.actualizareUtilizator(this.id, users);
-    this.router.navigate(['/admin/users']);
+  salvareModificari(utilizator) {
+    this.serviciuUtilizatori.actualizareUtilizator(this.idUtilizator, utilizator);
+    this.ruta.navigate(['/administrator/utilizatori']);
   }
 
-  delete() {
-    if (!confirm('Are you sure you want to delete this user?')) return;
+  stergeUtilizator() {
+    if (!confirm('Sunteți sigur că doriți să ștergeți acest utilizator?')) return;
 
-    this.userService.stergeUtilizator(this.id);
-    this.router.navigate(['/admin/users']);
+    this.serviciuUtilizatori.stergeUtilizator(this.idUtilizator);
+    this.ruta.navigate(['/administrator/utilizatori']);
   }
 
-  cancel() {
-    this.router.navigate(['/admin/users']);
+  inapoi() {
+    this.ruta.navigate(['/administrator/utilizatori']);
   }
 }

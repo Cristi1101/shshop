@@ -20,29 +20,29 @@ export class AdministrareProduse implements OnInit, OnDestroy {
   constructor(private serviciuProduse: ServiciuProduse) {
     this.subscription = this.serviciuProduse.toateProdusele().subscribe(produse => {
       this.produse = produse;
-      this.initializeTable(produse);
+      this.initializareTabel(produse);
     });
   }
 
-  private initializeTable(products: Produs[]) {
-    this.tabel = new DataTableResource(products);
+  private initializareTabel(produse: Produs[]) {
+    this.tabel = new DataTableResource(produse);
     this.tabel.query({ offset: 0 })
       .then(items => this.elemente = items);
     this.tabel.count()
       .then(count => this.evidentaElementelor = count);
   }
 
-  reloadItems(parametrii) {
+  actualizareElemente(parametrii) {
     if (!this.tabel) return;
 
     this.tabel.query(parametrii)
       .then(items => this.elemente = items);
   }
 
-  filter(text: string) {
+  filtrare(text: string) {
     let produseFiltrate = (text) ?
       this.produse.filter(produs => produs.title.toLowerCase().includes(text.toLowerCase())) : this.produse;
-    this.initializeTable(produseFiltrate);
+    this.initializareTabel(produseFiltrate);
   }
 
   ngOnInit(): void {

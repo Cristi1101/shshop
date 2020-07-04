@@ -27,10 +27,10 @@ export class ContulMeuModificari {
 
   salvareModificari(utilizator) {
     this.serviciuUtilizatori.actualizareUtilizator(this.idUtilizator, utilizator);
-    this.ruta.navigate(['/my-account']);
+    this.ruta.navigate(['/contul-meu']);
   }
 
   inapoi() {
-    this.ruta.navigate(['/my-account']);
+    this.ruta.navigate(['/contul-meu']);
   }
 }

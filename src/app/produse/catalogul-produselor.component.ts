@@ -30,7 +30,7 @@ export class CatalogulProduselor implements OnInit, OnDestroy {
     private serviciuProduse: ServiciuProduse,
     private serviciuCosDeCumparaturi: ServiciuCosDeCumparaturi,
     private r: Renderer2) {
-    this.filterProducts();
+    this.filtrareProduse();
 
     this.r.listen('window', 'click', (eveniment: Event) => {
       if (eveniment.target !== this.cadereMeniu.nativeElement && eveniment.target !== this.meniu.nativeElement) {
@@ -42,10 +42,10 @@ export class CatalogulProduselor implements OnInit, OnDestroy {
   primesteFiltru($event) {
     this.pretMinim = $event[0];
     this.pretMaxim = $event[1];
-    this.filterProducts();
+    this.filtrareProduse();
   }
 
-  filterProducts() {
+  filtrareProduse() {
     this.serviciuProduse
       .toateProdusele().pipe(
         switchMap((produse: Produs[]) => {
@@ -53,14 +53,14 @@ export class CatalogulProduselor implements OnInit, OnDestroy {
           return this.ruta.queryParamMap;
         })
       )
-      .subscribe((params) => {
-        this.categorie = params.get('category');
+      .subscribe((parametrii) => {
+        this.categorie = parametrii.get('category');
         this.produseFiltrate = (this.categorie) ?
-          this.produse.filter((p) =>
-            (p.category === this.categorie && p.price >= this.pretMinim && p.price <= this.pretMaxim)
+          this.produse.filter((produs) =>
+            (produs.category === this.categorie && produs.price >= this.pretMinim && produs.price <= this.pretMaxim)
           ) : (this.pretMinim && this.pretMaxim ?
-            this.produse.filter((p) =>
-              (p.price >= this.pretMinim && p.price <= this.pretMaxim)
+            this.produse.filter((produs) =>
+              (produs.price >= this.pretMinim && produs.price <= this.pretMaxim)
             ) : this.produse);
       });
   }

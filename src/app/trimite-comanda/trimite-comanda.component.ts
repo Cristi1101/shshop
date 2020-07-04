@@ -86,11 +86,11 @@ export class TrimiteComanda implements OnInit, OnDestroy {
     let comanda = new Comanda(this.idUtilizator, this.utilizator, this.cosDeCumparaturi);
     let rezultat = await this.serviciuComenzi.plaseazaComanda(comanda);
 
-    this.ruta.navigate(['/order-success/', rezultat.key]);
+    this.ruta.navigate(['/plasare-comanda/comanda-efectuata/', rezultat.key]);
   }
 
   inapoi() {
-    this.ruta.navigate(['/shopping-cart']);
+    this.ruta.navigate(['/cos-de-cumparaturi']);
   }
 
   ngOnDestroy() {

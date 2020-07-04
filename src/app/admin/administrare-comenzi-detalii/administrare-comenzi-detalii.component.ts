@@ -32,11 +32,11 @@ export class AdministrareComenziDetalii {
   }
 
   back(){
-    this.router.navigate(['/admin/orders']);
+    this.router.navigate(['/administrator/comenzi']);
   }
 
   update(order){
     this.orderService.actualizareComanda(this.id, order);
-    this.router.navigate(['/admin/orders']);
+    this.router.navigate(['/administrator/comenzi']);
   }
 }

@@ -14,7 +14,7 @@
             <tr *ngFor="let item of cosDeCumparaturi.items">
                 <td>
                     <div [style.backgroundImage]="'url(' + item.product.imageUrl + ')'" class="thumbnail"
-                        [routerLink]="['/products/', item.product.key]">
+                        [routerLink]="['/produs/', item.product.key]">
                     </div>
                 </td>
                 <td>
@@ -46,7 +46,7 @@
                 <td class="text-center"><b>Total:</b> {{ cosDeCumparaturi.totalPrice | currency:'RON ':'code' }}
                 </td>
                 <td>
-                    <a *ngIf="cosDeCumparaturi.items.length" routerLink="/check-out" class="btn btn-success"
+                    <a *ngIf="cosDeCumparaturi.items.length" routerLink="/plasare-comanda" class="btn btn-success"
                         style="margin-right: 20px;">Comandă <i class="fa fa-angle-right"></i></a>
                     <button *ngIf="cosDeCumparaturi.items.length" (click)="stergeCosulDeCumparaturi()" class="btn btn-danger">
                         <i class="fa fa-trash"></i>

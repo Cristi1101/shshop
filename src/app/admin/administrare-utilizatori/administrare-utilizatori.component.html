@@ -2,7 +2,7 @@
 <p>
     <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Căutare prin email...">
 </p>
-<data-table [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
+<data-table [items]="elemente" [itemCount]="numarElemente" (reload)="actualizareElemente($event)">
     <data-table-column [property]="'username'" [header]="'Nume de utilizator'" [sortable]="true" [resizable]="true">
     </data-table-column>
 
@@ -15,7 +15,7 @@
 
     <data-table-column [property]="'$key'">
         <ng-template #dataTableCell let-item="item">
-            <a [routerLink]="['/admin/users/', item.key]">Mai multe detalii</a>
+            <a [routerLink]="['/administrator/utilizatori/', item.key]">Mai multe detalii</a>
         </ng-template>
     </data-table-column>
 </data-table>

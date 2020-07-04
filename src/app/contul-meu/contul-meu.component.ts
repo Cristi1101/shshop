@@ -22,7 +22,7 @@ export class ContulMeu {
   }
 
   modifica() {
-    this.ruta.navigate(['/edit-account']);
+    this.ruta.navigate(['/contul-meu/modificare']);
   }
 
   inapoi() {

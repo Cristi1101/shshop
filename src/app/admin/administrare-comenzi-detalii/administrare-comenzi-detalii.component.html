@@ -55,7 +55,7 @@
 <h3 style="margin-top: 50;">Produse comandate</h3> <br>
 <div class="card-group">
     <div class="card col-md-3 col-lg-3 d-flex align-items-stretch" style="width: 18rem;" *ngFor="let i of order2">
-        <img [src]="i.product.imageUrl" class="card-img-top" [routerLink]="['/products/', i.product.key]">
+        <img [src]="i.product.imageUrl" class="card-img-top" [routerLink]="['/produs/', i.product.key]">
         <div class="card-body">
             <h5 class="card-title ">{{ i.quantity }} x {{ i.product.title }}</h5>
             <p class="card-text">{{ i.product.price | currency:'RON ':'code'}}</p>

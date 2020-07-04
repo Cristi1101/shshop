@@ -13,7 +13,7 @@ export class ProtectieLinkUtilizator implements CanActivate{
   canActivate(route, stare: RouterStateSnapshot){
     return this.serviciuDeAutentificare.utilizatorObs$.map(utilizator => {
       if(utilizator) return true;
-      this.ruta.navigate(['/login'], { queryParams: {returnUrl: stare.url}});
+      this.ruta.navigate(['/autentificare'], { queryParams: {returnUrl: stare.url}});
       return false;
     });
   }

@@ -35,11 +35,11 @@ export class AdministrareProduseCreare implements OnInit {
   salveazaProdus(produs) {
     this.serviciuProduse.creareProdus(produs);
 
-    this.ruta.navigate(['/admin/products']);
+    this.ruta.navigate(['/administrator/produs']);
   }
 
   inapoi() {
-    this.ruta.navigate(['/admin/products']);
+    this.ruta.navigate(['/administrator/produs']);
   }
 
   ngOnInit(): void {

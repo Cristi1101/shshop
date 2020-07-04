@@ -57,12 +57,12 @@ export class ServiciuUtilizatori {
     }
     referintaUtilizator.update(dateUtilizator);
 
-    this.ruta.navigate(['/admin/users']);
+    this.ruta.navigate(['/administrator/utilizatori']);
   }
 
   stergeUtilizator(idUtilizator) {
     this.bazaDeDate.object('/users/' + idUtilizator).remove();
-    this.ruta.navigate(['/admin/users']);
+    this.ruta.navigate(['/administrator/utilizatori']);
   }
 
   primesteUtilizator2(idUtilizator: string): AngularFireObject<Utilizator> {
