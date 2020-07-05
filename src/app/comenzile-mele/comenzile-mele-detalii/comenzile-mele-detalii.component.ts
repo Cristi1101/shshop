@@ -46,6 +46,8 @@ export class ComenzileMeleDetalii {
       uid: localStorage.getItem("userUID")
     };
     this.serviciuRecenzii.creareRecenzie(modelRecenzie, produs.key);
+    if (!confirm('Sunteți sigur că doriți să adăugați această recenzie?')) return;
+    this.ruta.navigate(['/comenzile-mele']);
   }
 
   afisareRecenzie(produs) {

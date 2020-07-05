@@ -1,15 +1,12 @@
-import { ViewContainerRef, ElementRef } from '@angular/core';
-
 export interface Utilizator{
     key?: string;
-    username?: string;
+    numeUtilizator?: string;
     email: string;
-    //password: string;
-    isAdmin?: boolean;
-    firstName: string;
-    lastName: string;
-    city: string;
-    address: string;
-    postalCode: number;
+    rolAdministrator?: boolean;
+    prenume: string;
+    nume: string;
+    oras: string;
+    adresa: string;
+    codPostal: number;
     img: string;
 }

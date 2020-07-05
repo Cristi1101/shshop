@@ -3,28 +3,28 @@
     <div class="col-md-6">
         <form #f="ngForm" (ngSubmit)="salvareModificari(f.value)">
             <div class="form-group">
-                <label for="firstName">Prenume</label>
-                <input #firstName="ngModel" [(ngModel)]="utilizator.firstName" name="firstName" id="firstName"
+                <label for="prenume">Prenume</label>
+                <input #prenume="ngModel" [(ngModel)]="utilizator.prenume" name="prenume" id="prenume"
                     type="text" class="form-control" required>
-                <div class="alert alert-danger" *ngIf="firstName.touched && firstName.invalid">
+                <div class="alert alert-danger" *ngIf="prenume.touched && prenume.invalid">
                     Acest câmp este obligatoriu.
                 </div>
             </div>
         
             <div class="form-group">
-                <label for="lastName">Nume</label>
-                <input #lastName="ngModel" [(ngModel)]="utilizator.lastName" name="lastName" id="lastName" type="text"
+                <label for="nume">Nume</label>
+                <input #nume="ngModel" [(ngModel)]="utilizator.nume" name="nume" id="nume" type="text"
                     class="form-control" required>
-                <div class="alert alert-danger" *ngIf="lastName.touched && lastName.invalid">
+                <div class="alert alert-danger" *ngIf="nume.touched && nume.invalid">
                     Acest câmp este obligatoriu.
                 </div>
             </div>
         
             <div class="form-group">
-                <label for="username">Nume de utilizator</label>
-                <input #username="ngModel" [(ngModel)]="utilizator.username" name="username" id="username" type="text"
+                <label for="numeUtilizator">Nume de utilizator</label>
+                <input #numeUtilizator="ngModel" [(ngModel)]="utilizator.numeUtilizator" name="numeUtilizator" id="numeUtilizator" type="text"
                     class="form-control" required>
-                <div class="alert alert-danger" *ngIf="username.touched && username.invalid">
+                <div class="alert alert-danger" *ngIf="numeUtilizator.touched && numeUtilizator.invalid">
                     Acest câmp este obligatoriu.
                 </div>
             </div>
@@ -39,28 +39,28 @@
             </div>
         
             <div class="form-group">
-                <label for="city">Oraș</label>
-                <input #city="ngModel" [(ngModel)]="utilizator.city" name="city" id="city" type="text"
+                <label for="oras">Oraș</label>
+                <input #oras="ngModel" [(ngModel)]="utilizator.oras" name="oras" id="oras" type="text"
                     class="form-control" required>
-                <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
+                <div class="alert alert-danger" *ngIf="oras.touched && oras.invalid">
                     Acest câmp este obligatoriu.
                 </div>
             </div>
         
             <div class="form-group">
-                <label for="address">Adresă</label>
-                <input #address="ngModel" [(ngModel)]="utilizator.address" name="address" id="address" type="text"
+                <label for="adresa">Adresă</label>
+                <input #adresa="ngModel" [(ngModel)]="utilizator.adresa" name="adresa" id="adresa" type="text"
                     class="form-control" required>
-                <div class="alert alert-danger" *ngIf="address.touched && address.invalid">
+                <div class="alert alert-danger" *ngIf="adresa.touched && adresa.invalid">
                     Acest câmp este obligatoriu.
                 </div>
             </div>
         
             <div class="form-group">
-                <label for="postalCode">Cod poștal</label>
-                <input #postalCode="ngModel" [(ngModel)]="utilizator.postalCode" name="postalCode" id="postalCode"
+                <label for="codPostal">Cod poștal</label>
+                <input #codPostal="ngModel" [(ngModel)]="utilizator.codPostal" name="codPostal" id="codPostal"
                     type="number" class="form-control" required>
-                <div class="alert alert-danger" *ngIf="postalCode.touched && postalCode.invalid">
+                <div class="alert alert-danger" *ngIf="codPostal.touched && codPostal.invalid">
                     Acest câmp este obligatoriu.
                 </div>
             </div>
@@ -74,11 +74,11 @@
     <div class="card text-center" style="width: 18rem;">
         <img [src]="utilizator.img" class="card-img-top">
         <div class="card-body">
-            <h3 class="card-title">{{  utilizator.firstName }} {{ utilizator.lastName }}</h3>
+            <h3 class="card-title">{{  utilizator.prenume }} {{ utilizator.nume }}</h3>
             <hr>
-            <h5>{{ utilizator.username }}</h5>
+            <h5>{{ utilizator.numeUtilizator }}</h5>
             <hr>
-            <p class="card-text">{{ utilizator.city }}</p>
+            <p class="card-text">{{ utilizator.oras }}</p>
             <p class="card-text">{{ utilizator.email }}</p>
         </div>
     </div>

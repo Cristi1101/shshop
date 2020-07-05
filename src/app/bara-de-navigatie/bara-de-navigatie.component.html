@@ -36,14 +36,14 @@
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     <i class="fas fa-user"></i>
-                    {{ utilizator.username }}
+                    {{ utilizator.numeUtilizator }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                     <a class="dropdown-item" routerLink="/contul-meu">Contul meu <i class="fas fa-user-circle"></i></a>
                     <a class="dropdown-item" routerLink="/comenzile-mele">Comenziile mele</a>
                     <a class="dropdown-item" routerLink="/favorite">Favorite</a>
                     <a class="dropdown-item" routerLink="/recenzii">Recenziile mele</a>
-                    <ng-container *ngIf="utilizator.isAdmin">
+                    <ng-container *ngIf="utilizator.rolAdministrator">
                         <a class="dropdown-item" routerLink="/administrator/utilizatori">Administrarea utilizatorilor</a>
                         <a class="dropdown-item" routerLink="/administrator/produs">Administrarea produselor</a>
                         <a class="dropdown-item" routerLink="/administrator/comenzi">Administrarea comenzilor</a>

@@ -3,10 +3,10 @@
     <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Căutare prin email...">
 </p>
 <data-table [items]="elemente" [itemCount]="numarElemente" (reload)="actualizareElemente($event)">
-    <data-table-column [property]="'username'" [header]="'Nume de utilizator'" [sortable]="true" [resizable]="true">
+    <data-table-column [property]="'numeUtilizator'" [header]="'Nume de utilizator'" [sortable]="true" [resizable]="true">
     </data-table-column>
 
-    <data-table-column [property]="'isAdmin'" [header]="'Rol de administrator'" [sortable]="true" [resizable]="true">
+    <data-table-column [property]="'rolAdministrator'" [header]="'Rol de administrator'" [sortable]="true" [resizable]="true">
 
     </data-table-column>
 

@@ -3,19 +3,19 @@
         <h3>DATELE LIVRĂRII<small>*</small></h3><br>
         <form>
             <div class="form-group">
-                <label for="firstName">Prenume</label>
-                <input #firstName="ngModel" [(ngModel)]="utilizator.firstName" name="firstName" id="firstName" type="text"
+                <label for="prenume">Prenume</label>
+                <input #prenume="ngModel" [(ngModel)]="utilizator.prenume" name="prenume" id="prenume" type="text"
                     class="form-control" required>
-                <div class="alert alert-danger" *ngIf="firstName.touched && firstName.invalid">
+                <div class="alert alert-danger" *ngIf="prenume.touched && prenume.invalid">
                     Acest câmp este obligatoriu.
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="lastName">Nume</label>
-                <input #lastName="ngModel" [(ngModel)]="utilizator.lastName" name="lastName" id="lastName" type="text"
+                <label for="nume">Nume</label>
+                <input #nume="ngModel" [(ngModel)]="utilizator.nume" name="nume" id="nume" type="text"
                     class="form-control" required>
-                <div class="alert alert-danger" *ngIf="lastName.touched && lastName.invalid">
+                <div class="alert alert-danger" *ngIf="nume.touched && nume.invalid">
                     Acest câmp este obligatoriu.
                 </div>
             </div>
@@ -30,28 +30,28 @@
             </div>
 
             <div class="form-group">
-                <label for="city">Oraș</label>
-                <input #city="ngModel" [(ngModel)]="utilizator.city" name="city" id="city" type="text" class="form-control"
+                <label for="oras">Oraș</label>
+                <input #oras="ngModel" [(ngModel)]="utilizator.oras" name="oras" id="oras" type="text" class="form-control"
                     required>
-                <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
+                <div class="alert alert-danger" *ngIf="oras.touched && oras.invalid">
                     Acest câmp este obligatoriu.
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="address">Adresă</label>
-                <input #address="ngModel" [(ngModel)]="utilizator.address" name="address" id="address" type="text"
+                <label for="adresa">Adresă</label>
+                <input #adresa="ngModel" [(ngModel)]="utilizator.adresa" name="adresa" id="adresa" type="text"
                     class="form-control" required>
-                <div class="alert alert-danger" *ngIf="address.touched && address.invalid">
+                <div class="alert alert-danger" *ngIf="adresa.touched && adresa.invalid">
                     Acest câmp este obligatoriu.
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="postalCode">Cod poștal</label>
-                <input #postalCode="ngModel" [(ngModel)]="utilizator.postalCode" name="postalCode" id="postalCode"
+                <label for="codPostal">Cod poștal</label>
+                <input #codPostal="ngModel" [(ngModel)]="utilizator.codPostal" name="codPostal" id="codPostal"
                     type="number" class="form-control" required>
-                <div class="alert alert-danger" *ngIf="postalCode.touched && postalCode.invalid">
+                <div class="alert alert-danger" *ngIf="codPostal.touched && codPostal.invalid">
                     Acest câmp este obligatoriu.
                 </div>
             </div>

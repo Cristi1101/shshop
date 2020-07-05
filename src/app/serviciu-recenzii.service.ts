@@ -35,7 +35,7 @@ export class ServiciuRecenzii {
     );
   }
 
-  modificareRecenzie(idProdus, idRecenzie, recenzie){
+  modificareRecenzie(idProdus, idRecenzie, recenzie) {
     return this.bazaDeDate.object('/produse/' + idProdus + '/recenzii/' + idRecenzie).update(recenzie);
   }
 
@@ -44,10 +44,10 @@ export class ServiciuRecenzii {
   }
 
   actualizareRecenzie(idProdus, produs, idRecenzie) {
-    return this.bazaDeDate.object('/produse/' + idProdus + '/recenzii/' + idRecenzie).update(produs); 
+    return this.bazaDeDate.object('/produse/' + idProdus + '/recenzii/' + idRecenzie).update(produs);
   }
 
-  actualizareDateRecenzie(idProdus, idRecenzie, steleRecenzie, continutRecenzie, idUtilizator){
+  actualizareDateRecenzie(idProdus, idRecenzie, steleRecenzie, continutRecenzie, idUtilizator) {
     const referintaRecenzie = this.bazaDeDate.object('/produse/' + idProdus + '/recenzii/' + idRecenzie);
     const dateRecenzie: Recenzii = {
       stele: steleRecenzie,

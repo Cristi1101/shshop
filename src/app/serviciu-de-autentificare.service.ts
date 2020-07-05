@@ -59,14 +59,14 @@ export class ServiciuDeAutentificare {
   private dateUtilizatorNou(utilizator, numeUtilizator, prenume, nume, oras, adresa, codPostal, imagine) {
     const referintaUtilizator = this.bazaDeDate.object('/users/' + utilizator.uid);
     const dateUtilizator: Utilizator = {
-      username: numeUtilizator,
+      numeUtilizator: numeUtilizator,
       email: utilizator.email,
-      isAdmin: utilizator.isAdmin = false,
-      firstName: prenume,
-      lastName: nume,
-      city: oras,
-      address: adresa,
-      postalCode: codPostal,
+      rolAdministrator: utilizator.rolAdministrator = false,
+      prenume: prenume,
+      nume: nume,
+      oras: oras,
+      adresa: adresa,
+      codPostal: codPostal,
       img: imagine
     }
     referintaUtilizator.set(dateUtilizator);

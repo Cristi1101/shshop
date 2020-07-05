@@ -4,15 +4,15 @@
         <table class="table">
             <tr>
                 <th>Prenume</th>
-                <td>{{ utilizator.firstName }}</td>
+                <td>{{ utilizator.prenume }}</td>
             </tr>
             <tr>
                 <th>Nume</th>
-                <td>{{ utilizator.lastName }}</td>
+                <td>{{ utilizator.nume }}</td>
             </tr>
             <tr>
                 <th>Nume de utilizator</th>
-                <td>{{ utilizator.username }}</td>
+                <td>{{ utilizator.numeUtilizator }}</td>
             </tr>
             <tr>
                 <th>Email</th>
@@ -20,15 +20,15 @@
             </tr>
             <tr>
                 <th>Oraș</th>
-                <td>{{ utilizator.city }}</td>
+                <td>{{ utilizator.oras }}</td>
             </tr>
             <tr>
                 <th>Adresă</th>
-                <td>{{ utilizator.address }}</td>
+                <td>{{ utilizator.adresa }}</td>
             </tr>
             <tr>
                 <th>Cod poștal</th>
-                <td>{{ utilizator.postalCode }}</td>
+                <td>{{ utilizator.codPostal }}</td>
             </tr>
         </table>
         <br>
@@ -44,9 +44,9 @@
         <div class="card" style="width: 18rem;">
             <img [src]="utilizator.img" class="card-img-top">
             <div class="card-body">
-                <h3 class="card-title">{{  utilizator.firstName }} {{ utilizator.lastName }}</h3>
-                <h5>{{ utilizator.username }}</h5>
-                <p class="card-text">{{ utilizator.city }}</p>
+                <h3 class="card-title">{{  utilizator.prenume }} {{ utilizator.nume }}</h3>
+                <h5>{{ utilizator.numeUtilizator }}</h5>
+                <p class="card-text">{{ utilizator.oras }}</p>
                 <p class="card-text">{{ utilizator.email }}</p>
             </div>
         </div>

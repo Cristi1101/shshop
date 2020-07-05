@@ -1,6 +1,6 @@
 <form class="form-group">
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Nume de utilizator" #username required>
+    <input type="text" class="form-control" placeholder="Nume de utilizator" #numeUtilizator required>
   </div>
   <div class="form-group">
     <input type="text" class="form-control" placeholder="Prenume" #userFirstName>
@@ -36,12 +36,12 @@
   <img [src]="urlImage" class="img-thumbnail">
   <div class="form-group">
     <button *ngIf="urlImage; else btnDisabled" type="button" class="btn btn-primary"
-      (click)="serviciuDeAutentificare.inregistrareUtilizatorNou(email.value, password.value, username.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
+      (click)="serviciuDeAutentificare.inregistrareUtilizatorNou(email.value, password.value, numeUtilizator.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
       Înregistrare
     </button>
     <ng-template #btnDisabled>
       <button type="button" disabled=true class="btn btn-primary"
-        (click)="serviciuDeAutentificare.inregistrareUtilizatorNou(email.value, password.value, username.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
+        (click)="serviciuDeAutentificare.inregistrareUtilizatorNou(email.value, password.value, numeUtilizator.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
         Înregistrare
       </button>
     </ng-template>

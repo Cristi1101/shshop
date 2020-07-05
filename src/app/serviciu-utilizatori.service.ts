@@ -46,13 +46,13 @@ export class ServiciuUtilizatori {
   actualizareDateUtilizator(idUtilizator, numeUtilizator, email, prenume, nume, adresa, oras, codPostal, imagine) {
     const referintaUtilizator = this.bazaDeDate.object('/users/' + idUtilizator);
     const dateUtilizator: Utilizator = {
-      username: numeUtilizator,
+      numeUtilizator: numeUtilizator,
       email: email,
-      firstName: prenume,
-      lastName: nume,
-      city: oras,
-      address: adresa,
-      postalCode: codPostal,
+      prenume: prenume,
+      nume: nume,
+      oras: oras,
+      adresa: adresa,
+      codPostal: codPostal,
       img: imagine
     }
     referintaUtilizator.update(dateUtilizator);

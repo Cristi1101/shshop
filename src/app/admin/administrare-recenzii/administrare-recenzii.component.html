@@ -4,7 +4,7 @@
         <div class="zoom-image h-50" style="margin-top: 20px;">
             <img src="{{ recenzie.utilizator?.img }}" class="img-thumbnail"
                 style="width: 100px; height: 70px; border-radius: 50%;">
-            <p style="margin-left: 10px;">{{ recenzie.utilizator?.username }}</p>
+            <p style="margin-left: 10px;">{{ recenzie.utilizator?.numeUtilizator }}</p>
             <ngb-rating #stea [(rate)]="recenzie.recenzie.stele" [max]="5" readonly=true></ngb-rating>
             <pre>Evaluare: <b>{{recenzie.recenzie.stele}}</b></pre>
         </div>

@@ -14,6 +14,6 @@ export class ProtectieLinkAdmin implements CanActivate{
   constructor(private serviciuDeAutentificare: ServiciuDeAutentificare) { }
 
   canActivate(): Observable<boolean> {
-    return this.serviciuDeAutentificare.utilizator$.map(utilizator => utilizator.isAdmin);
+    return this.serviciuDeAutentificare.utilizator$.map(utilizator => utilizator.rolAdministrator);
   }
 }

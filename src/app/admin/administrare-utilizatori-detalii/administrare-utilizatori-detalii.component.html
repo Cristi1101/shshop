@@ -4,15 +4,15 @@
     <table class="table">
         <tr>
             <th>Prenume</th>
-            <td>{{ utilizator.payload.val().firstName }}</td>
+            <td>{{ utilizator.payload.val().prenume }}</td>
         </tr>
         <tr>
             <th>Nume</th>
-            <td>{{ utilizator.payload.val().lastName }}</td>
+            <td>{{ utilizator.payload.val().nume }}</td>
         </tr>
         <tr>
             <th>Nume de utilizator</th>
-            <td>{{ utilizator.payload.val().username }}</td>
+            <td>{{ utilizator.payload.val().numeUtilizator }}</td>
         </tr>
         <tr>
             <th>Email</th>
@@ -20,28 +20,28 @@
         </tr>
         <tr>
             <th>Oraș</th>
-            <td>{{ utilizator.payload.val().city }}</td>
+            <td>{{ utilizator.payload.val().oras }}</td>
         </tr>
         <tr>
             <th>Adresă</th>
-            <td>{{ utilizator.payload.val().address }}</td>
+            <td>{{ utilizator.payload.val().adresa }}</td>
         </tr>
         <tr>
             <th>Cod poștal</th>
-            <td>{{ utilizator.payload.val().postalCode }}</td>
+            <td>{{ utilizator.payload.val().codPostal }}</td>
         </tr>
     </table>
 </div>
 
 <form #f="ngForm" (ngSubmit)="salvareModificari(f.value)" style="margin-top: 60px;">
     <div class="form-group">
-        <label for="isAdmin">Rol de administrator</label>
-        <select #isAdmin="ngModel" [(ngModel)]="utilizator.payload.val().isAdmin" name="isAdmin" id="isAdmin" type="number"
+        <label for="rolAdministrator">Rol de administrator</label>
+        <select #rolAdministrator="ngModel" [(ngModel)]="utilizator.payload.val().rolAdministrator" name="rolAdministrator" id="rolAdministrator" type="number"
             class="form-control" required>
             <option [ngValue]="true">True</option>
             <option [ngValue]="false">False</option>
         </select>
-        <div class="alert alert-danger" *ngIf="isAdmin.touched && isAdmin.invalid">
+        <div class="alert alert-danger" *ngIf="rolAdministrator.touched && rolAdministrator.invalid">
             Acest câmp este obligatoriu.
         </div>
     </div>

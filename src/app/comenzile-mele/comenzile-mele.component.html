@@ -9,7 +9,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let comanda of comenzi$ | async">
-      <td>{{ comanda.dateDeLivrare.username }}</td>
+      <td>{{ comanda.dateDeLivrare.numeUtilizator }}</td>
       <td>{{ comanda.dataPlasarii | date}}</td>
       <td>
         <a [routerLink]="['/comenzile-mele/', comanda.key]">Mai multe detalii</a>

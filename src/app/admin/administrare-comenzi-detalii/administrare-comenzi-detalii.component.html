@@ -3,15 +3,15 @@
     <table class="table">
         <tr>
             <th>Prenume</th>
-            <td>{{ comanda.payload.val().dateDeLivrare.firstName }}</td>
+            <td>{{ comanda.payload.val().dateDeLivrare.prenume }}</td>
         </tr>
         <tr>
             <th>Nume</th>
-            <td>{{ comanda.payload.val().dateDeLivrare.lastName }}</td>
+            <td>{{ comanda.payload.val().dateDeLivrare.nume }}</td>
         </tr>
         <tr>
             <th>Nume de utilizator</th>
-            <td>{{ comanda.payload.val().dateDeLivrare.username }}</td>
+            <td>{{ comanda.payload.val().dateDeLivrare.numeUtilizator }}</td>
         </tr>
         <tr>
             <th>Email</th>
@@ -19,15 +19,15 @@
         </tr>
         <tr>
             <th>Oraș</th>
-            <td>{{ comanda.payload.val().dateDeLivrare.city }}</td>
+            <td>{{ comanda.payload.val().dateDeLivrare.oras }}</td>
         </tr>
         <tr>
             <th>Adresă</th>
-            <td>{{ comanda.payload.val().dateDeLivrare.address }}</td>
+            <td>{{ comanda.payload.val().dateDeLivrare.adresa }}</td>
         </tr>
         <tr>
             <th>Cod poștal</th>
-            <td>{{ comanda.payload.val().dateDeLivrare.postalCode }}</td>
+            <td>{{ comanda.payload.val().dateDeLivrare.codPostal }}</td>
         </tr>
     </table>
 </div>
@@ -55,7 +55,7 @@
 <h3 style="margin-top: 50;">Produse comandate</h3> <br>
 <div class="card-group">
     <div class="card col-md-3 col-lg-3 d-flex align-items-stretch" style="width: 18rem;" *ngFor="let i of comanda2">
-        <img [src]="i.produse.imagine" class="card-img-top" [routerLink]="['/produs/', i.produs.key]">
+        <img [src]="i.produs.imagine" class="card-img-top" [routerLink]="['/produs/', i.produs.key]">
         <div class="card-body">
             <h5 class="card-title ">{{ i.cantitate }} x {{ i.produs.numeProdus }}</h5>
             <p class="card-text">{{ i.produs.pret | currency:'RON ':'code'}}</p>
