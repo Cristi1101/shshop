@@ -9,22 +9,22 @@ import { map } from 'rxjs/operators';
 export class ServiciuProduse {
   constructor(private bazaDeDate: AngularFireDatabase) { }
 
-  creareProdus(product) {
-    return this.bazaDeDate.list('/products').push(product);
+  creareProdus(produs) {
+    return this.bazaDeDate.list('/produse').push(produs);
   }
 
   celeMaiVizitateProduse() {
-    return this.bazaDeDate.list('/products',
-      ref => ref.orderByChild('visits').limitToLast(5)).valueChanges();
+    return this.bazaDeDate.list('/produse',
+      ref => ref.orderByChild('vizite').limitToLast(5)).valueChanges();
   }
 
   ultimeleProduseVizitate() {
-    return this.bazaDeDate.list('/products',
-      ref => ref.orderByChild('time').limitToLast(5)).valueChanges();
+    return this.bazaDeDate.list('/produse',
+      ref => ref.orderByChild('ultimaAccesare').limitToLast(5)).valueChanges();
   }
 
   toateProdusele() {
-    return this.bazaDeDate.list<Produs>('/products')
+    return this.bazaDeDate.list<Produs>('/produse')
       .snapshotChanges()
       .pipe(
         map(changes =>
@@ -37,15 +37,15 @@ export class ServiciuProduse {
       );
   }
 
-  toateProdusele2(productId) {
-    return this.bazaDeDate.object('/products/' + productId).snapshotChanges();
+  toateProdusele2(idProdus) {
+    return this.bazaDeDate.object('/produse/' + idProdus).snapshotChanges();
   }
 
-  actualizareProdus(productId, product) {
-    return this.bazaDeDate.object('/products/' + productId).update(product);
+  actualizareProdus(idProdus, produs) {
+    return this.bazaDeDate.object('/produse/' + idProdus).update(produs);
   }
 
-  stergeProdus(productId) {
-    return this.bazaDeDate.object('/products/' + productId).remove();
+  stergeProdus(idProdus) {
+    return this.bazaDeDate.object('/produse/' + idProdus).remove();
   }
 }

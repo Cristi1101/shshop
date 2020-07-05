@@ -1,21 +1,21 @@
 <div class="card shadow h-100 text-center" style="width: 40rem; margin-left: 220px;">
     <div class="zoom-image h-50" style="margin-top: 5px;">
-        <img src="{{ produs.payload.val().imageUrl }}" class="card-img-top">
+        <img src="{{ produs.payload.val().imagine }}" class="card-img-top">
     </div>
     <div class="card-body h-30">
         <hr>
-        <h3 class="card-title"><b>{{ produs.payload.val().title }}</b></h3>
+        <h3 class="card-title"><b>{{ produs.payload.val().numeProdus }}</b></h3>
         <p class="card-text">
-            {{ produs.payload.val()?.description }}
+            {{ produs.payload.val()?.descriere }}
         </p>
         <hr>
         <p class="card-text"><b>Categoria:</b>
-            {{ produs.payload.val().category }} - {{ produs.payload.val().subcategory }}
+            {{ produs.payload.val().categorie }} - {{ produs.payload.val().subcategorie }}
         </p>
         <hr>
-        <p class="card-text"><b>Culoarea:</b> {{ produs.payload.val().color }}</p>
+        <p class="card-text"><b>Culoarea:</b> {{ produs.payload.val().culoare }}</p>
         <hr>
-        <p class="card-text"><b>{{ produs.payload.val().price | currency:'RON ':'code' }}</b></p>
+        <p class="card-text"><b>{{ produs.payload.val().pret | currency:'RON ':'code' }}</b></p>
     </div>
     <div class="card-footer h-5">
         <button (click)="adaugaInCos()" class="btn btn-primary btn-block">

@@ -16,15 +16,15 @@ export class ServiciuRecenzii {
   produse;
 
   creareRecenzie(recenzie, produs) {
-    return this.bazaDeDate.list('/products/' + produs + '/recenzii').push(recenzie);
+    return this.bazaDeDate.list('/produse/' + produs + '/recenzii').push(recenzie);
   }
 
   primesteRecenziile(produs) {
-    return this.bazaDeDate.list<Recenzii>('/products/' + produs + '/recenzii').valueChanges();
+    return this.bazaDeDate.list<Recenzii>('/produse/' + produs + '/recenzii').valueChanges();
   }
 
   primesteToateRecenziile(produs) {
-    return this.bazaDeDate.list<Recenzii>('/products/' + produs + '/recenzii').snapshotChanges().pipe(
+    return this.bazaDeDate.list<Recenzii>('/produse/' + produs + '/recenzii').snapshotChanges().pipe(
       map(schimbari =>
         schimbari.map(c => {
           const data = c.payload.val() as Recenzii;
@@ -36,19 +36,19 @@ export class ServiciuRecenzii {
   }
 
   modificareRecenzie(idProdus, idRecenzie, recenzie){
-    return this.bazaDeDate.object('/products/' + idProdus + '/recenzii/' + idRecenzie).update(recenzie);
+    return this.bazaDeDate.object('/produse/' + idProdus + '/recenzii/' + idRecenzie).update(recenzie);
   }
 
   primesteRecenziileProdusului(idProdus) {
-    return this.bazaDeDate.object('/products/' + idProdus + '/recenzii').snapshotChanges();
+    return this.bazaDeDate.object('/produse/' + idProdus + '/recenzii').snapshotChanges();
   }
 
   actualizareRecenzie(idProdus, produs, idRecenzie) {
-    return this.bazaDeDate.object('/products/' + idProdus + '/recenzii/' + idRecenzie).update(produs); 
+    return this.bazaDeDate.object('/produse/' + idProdus + '/recenzii/' + idRecenzie).update(produs); 
   }
 
   actualizareDateRecenzie(idProdus, idRecenzie, steleRecenzie, continutRecenzie, idUtilizator){
-    const referintaRecenzie = this.bazaDeDate.object('/products/' + idProdus + '/recenzii/' + idRecenzie);
+    const referintaRecenzie = this.bazaDeDate.object('/produse/' + idProdus + '/recenzii/' + idRecenzie);
     const dateRecenzie: Recenzii = {
       stele: steleRecenzie,
       continut: continutRecenzie,
@@ -59,7 +59,7 @@ export class ServiciuRecenzii {
   }
 
   stergeRecenzia(idProdus, idRecenzie) {
-    this.bazaDeDate.object('/products/' + idProdus + '/recenzii/' + idRecenzie).remove();
+    this.bazaDeDate.object('/produse/' + idProdus + '/recenzii/' + idRecenzie).remove();
     window.location.reload();
   }
 }

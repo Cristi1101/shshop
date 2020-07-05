@@ -1,12 +1,12 @@
 export interface Produs {
     key?: string;
-    title: string;
-    price: number;
-    category: string;
-    subcategory: string;
-    color: string;
-    imageUrl: string;
-    visits?: number;
-    time?: number;
-    description?: string;
+    numeProdus: string;
+    pret: number;
+    categorie: string;
+    subcategorie: string;
+    culoare: string;
+    imagine: string;
+    vizite?: number;
+    ultimaAccesare?: number;
+    descriere?: string;
   }

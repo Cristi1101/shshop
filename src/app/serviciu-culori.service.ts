@@ -9,10 +9,10 @@ export class ServiciuCulori {
   constructor(private bazaDeDate: AngularFireDatabase) { }
 
   primesteCulorile(){
-    return this.bazaDeDate.list('/colors').snapshotChanges();
+    return this.bazaDeDate.list('/culori').snapshotChanges();
   }
 
   primesteToateCulorile() { 
-    return this.bazaDeDate.list('/colors', ref => ref.orderByChild('name')).snapshotChanges();
+    return this.bazaDeDate.list('/culori', ref => ref.orderByChild('nume')).snapshotChanges();
   }
 }

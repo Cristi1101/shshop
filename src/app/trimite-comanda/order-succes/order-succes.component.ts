@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-succes',
@@ -6,6 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./order-succes.component.css']
 })
 export class OrderSuccesComponent{
+  idComanda;
 
-  constructor() { }
+  constructor(
+    private rutaActiva: ActivatedRoute,
+    private ruta: Router) {
+    this.idComanda = this.rutaActiva.snapshot.paramMap.get('id');
+   }
+
+   accesareComanda(){
+    this.ruta.navigate(['/comenzile-mele/', this.idComanda]);
+   }
 }

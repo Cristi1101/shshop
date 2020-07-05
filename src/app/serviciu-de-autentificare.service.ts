@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase';
 import { Observable } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Utilizator } from './models/utilizator';
 import { ServiciuUtilizatori } from './serviciu-utilizatori.service';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -20,7 +19,6 @@ export class ServiciuDeAutentificare {
   constructor(
     private serviciuUtilizatori: ServiciuUtilizatori,
     private angularFireAuth: AngularFireAuth,
-    private rutaActiva: ActivatedRoute,
     private bazaDeDate: AngularFireDatabase,
     private ruta: Router) {
 
@@ -36,12 +34,12 @@ export class ServiciuDeAutentificare {
   logout() {
     this.angularFireAuth.auth.signOut();
     localStorage.removeItem('userUID');
-    this.ruta.navigate(['/']);
+    this.ruta.navigate(['catalog-de-produse']);
   }
 
   autentificareUtilizator(email, parola) {
     if (email && parola)
-      this.ruta.navigate(['/']);
+      this.ruta.navigate(['catalog-de-produse']);
     return this.angularFireAuth.auth.signInWithEmailAndPassword(email, parola)
       .catch((error) => {
         window.alert(error.message)
@@ -49,7 +47,7 @@ export class ServiciuDeAutentificare {
   }
 
   inregistrareUtilizatorNou(email, parola, numeUtilizator, prenume, nume, oras, adresa, codPostal, imagine) {
-    this.ruta.navigate(['/']);
+    this.ruta.navigate(['catalog-de-produse']);
     return this.angularFireAuth.auth.createUserWithEmailAndPassword(email, parola)
       .then((rezultat) => {
         this.dateUtilizatorNou(rezultat.user, numeUtilizator, prenume, nume, oras, adresa, codPostal, imagine);

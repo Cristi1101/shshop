@@ -11,28 +11,28 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of cosDeCumparaturi.items">
+            <tr *ngFor="let item of cosDeCumparaturi.produse">
                 <td>
-                    <div [style.backgroundImage]="'url(' + item.product.imageUrl + ')'" class="thumbnail"
-                        [routerLink]="['/produs/', item.product.key]">
+                    <div [style.backgroundImage]="'url(' + item.produs.imagine + ')'" class="thumbnail"
+                        [routerLink]="['/produs/', item.produs.key]">
                     </div>
                 </td>
                 <td>
-                    <h4>{{ item.product.title }}</h4>
-                    <p>{{ item.product.category }}</p>
+                    <h4>{{ item.produs.numeProdus }}</h4>
+                    <p>{{ item.produs.categorie }}</p>
                 </td>
                 <td>
                     <div class="row no-gutters">
                         <div class="col-2">
-                            <button (click)="stergeDinCos(item.product)" class="btn btn-primary btn-block">-</button>
+                            <button (click)="stergeDinCos(item.produs)" class="btn btn-primary btn-block">-</button>
                         </div>
 
                         <div class="col text-center">
-                            {{ item.quantity }} în coș
+                            {{ item.cantitate }} în coș
                         </div>
 
                         <div class="col-2">
-                            <button (click)="adaugaInCos(item.product)" class="btn btn-primary btn-block">+</button>
+                            <button (click)="adaugaInCos(item.produs)" class="btn btn-primary btn-block">+</button>
                         </div>
                     </div>
                 </td>
@@ -46,9 +46,9 @@
                 <td class="text-center"><b>Total:</b> {{ cosDeCumparaturi.totalPrice | currency:'RON ':'code' }}
                 </td>
                 <td>
-                    <a *ngIf="cosDeCumparaturi.items.length" routerLink="/plasare-comanda" class="btn btn-success"
+                    <a *ngIf="cosDeCumparaturi.produse.length" routerLink="/plasare-comanda" class="btn btn-success"
                         style="margin-right: 20px;">Comandă <i class="fa fa-angle-right"></i></a>
-                    <button *ngIf="cosDeCumparaturi.items.length" (click)="stergeCosulDeCumparaturi()" class="btn btn-danger">
+                    <button *ngIf="cosDeCumparaturi.produse.length" (click)="stergeCosulDeCumparaturi()" class="btn btn-danger">
                         <i class="fa fa-trash"></i>
                     </button>
                 </td>

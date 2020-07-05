@@ -1,0 +1,12 @@
+h1 {
+    margin-bottom: 50px;
+    color: rgb(77, 155, 0);
+}
+
+h4 {
+    margin-bottom: 50px;
+}
+
+h5:hover {
+    color: rgb(73, 73, 212);
+}

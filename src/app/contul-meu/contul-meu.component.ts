@@ -26,6 +26,6 @@ export class ContulMeu {
   }
 
   inapoi() {
-    this.ruta.navigate(['/']);
+    this.ruta.navigate(['catalog-de-produse']);
   }
 }

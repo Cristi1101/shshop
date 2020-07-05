@@ -9,6 +9,6 @@ export class ServiciuSubcategorii {
   constructor(private bazaDeDate: AngularFireDatabase) { }
 
   primesteSubcategoriile() {
-    return this.bazaDeDate.list('/subcategories').snapshotChanges();
+    return this.bazaDeDate.list('/subcategorii').snapshotChanges();
   }
 }

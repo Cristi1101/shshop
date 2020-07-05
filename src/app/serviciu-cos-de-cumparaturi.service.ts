@@ -11,18 +11,18 @@ export class ServiciuCosDeCumparaturi {
   constructor(private bazaDeDate: AngularFireDatabase) { }
 
   private creareCosDeCumparaturi(){
-    return this.bazaDeDate.list('/shopping-carts').push({
+    return this.bazaDeDate.list('/cos-de-cumparaturi').push({
       dataCrearii: new Date().getTime() 
     });
   }
 
   async primesteCosulDeCumparaturi()  {
     let idCosDeCumparaturi = await this.primesteSauCreeazaIdCosDeCumparaturi();
-    return this.bazaDeDate.object('/shopping-carts/' + idCosDeCumparaturi);
+    return this.bazaDeDate.object('/cos-de-cumparaturi/' + idCosDeCumparaturi);
   }
 
   primesteProdusulDinCos(idCosDeCumparaturi: string, idProdus: string){
-    return this.bazaDeDate.object('/shopping-carts/' + idCosDeCumparaturi + '/items/' + idProdus);
+    return this.bazaDeDate.object('/cos-de-cumparaturi/' + idCosDeCumparaturi + '/produse/' + idProdus);
   }
 
   private async primesteSauCreeazaIdCosDeCumparaturi(): Promise<string> {
@@ -44,7 +44,7 @@ export class ServiciuCosDeCumparaturi {
 
   async stergeCosulDeCumparaturi(){
     let idCosDeCumparaturi = await this.primesteSauCreeazaIdCosDeCumparaturi();
-    this.bazaDeDate.object('/shopping-carts/' + idCosDeCumparaturi + '/items').remove();
+    this.bazaDeDate.object('/cos-de-cumparaturi/' + idCosDeCumparaturi + '/produse').remove();
   }
 
   private async actualizareCantitateProduse(produs: Produs, schimbareCantitate: number){
@@ -52,10 +52,10 @@ export class ServiciuCosDeCumparaturi {
     let element = this.primesteProdusulDinCos(idCosDeCumparaturi, produs.key);
 
     element.snapshotChanges().pipe(take(1)).subscribe((data) => {
-      let cantitateAuxiliara = (data.payload.child('/quantity').val() || 0) + schimbareCantitate;
+      let cantitateAuxiliara = (data.payload.child('/cantitate').val() || 0) + schimbareCantitate;
       if(cantitateAuxiliara === 0) element.remove();
       else
-        element.update({ product: produs, quantity: cantitateAuxiliara });
+        element.update({ produs: produs, cantitate: cantitateAuxiliara });
         if(cantitateAuxiliara == 1){
           window.location.reload();
         }

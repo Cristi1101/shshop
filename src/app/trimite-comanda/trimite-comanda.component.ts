@@ -50,7 +50,7 @@ export class TrimiteComanda implements OnInit, OnDestroy {
     this.cosDeCumparaturi2$ = await this.serviciuCosDeCumparaturi.primesteCosulDeCumparaturi();
     this.cosDeCumparaturi2$.valueChanges().subscribe((cos) => {
       let date: any;
-      date = cos.items;
+      date = cos.produse;
       this.cosDeCumparaturi2 = new CosDeCumparaturi(date);
       this.evidentaProduselorDinCos = this.cosDeCumparaturi2.totalItemsCount;
       this.pretulTotal = this.cosDeCumparaturi2.totalPrice;

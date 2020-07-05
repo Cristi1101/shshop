@@ -3,31 +3,31 @@
     <table class="table">
         <tr>
             <th>Prenume</th>
-            <td>{{ order.payload.val().shipping.firstName }}</td>
+            <td>{{ comanda.payload.val().dateDeLivrare.firstName }}</td>
         </tr>
         <tr>
             <th>Nume</th>
-            <td>{{ order.payload.val().shipping.lastName }}</td>
+            <td>{{ comanda.payload.val().dateDeLivrare.lastName }}</td>
         </tr>
         <tr>
             <th>Nume de utilizator</th>
-            <td>{{ order.payload.val().shipping.username }}</td>
+            <td>{{ comanda.payload.val().dateDeLivrare.username }}</td>
         </tr>
         <tr>
             <th>Email</th>
-            <td>{{ order.payload.val().shipping.email }}</td>
+            <td>{{ comanda.payload.val().dateDeLivrare.email }}</td>
         </tr>
         <tr>
             <th>Oraș</th>
-            <td>{{ order.payload.val().shipping.city }}</td>
+            <td>{{ comanda.payload.val().dateDeLivrare.city }}</td>
         </tr>
         <tr>
             <th>Adresă</th>
-            <td>{{ order.payload.val().shipping.address }}</td>
+            <td>{{ comanda.payload.val().dateDeLivrare.address }}</td>
         </tr>
         <tr>
             <th>Cod poștal</th>
-            <td>{{ order.payload.val().shipping.postalCode }}</td>
+            <td>{{ comanda.payload.val().dateDeLivrare.postalCode }}</td>
         </tr>
     </table>
 </div>
@@ -36,17 +36,17 @@
 
 <div style="margin-top: 50; margin-bottom: 50px;">
     <h3>Starea comenzii</h3> <br>
-    <form #f="ngForm" (ngSubmit)="update(f.value)">
+    <form #form="ngForm" (ngSubmit)="actualizareComanda(form.value)">
         <div class="form-group">
-            <label for="orderStatus"><b>Starea comenzii</b> - {{ order.payload.val().orderStatus }}</label>
-            <select #orderStatus="ngModel" ngModel name="orderStatus" id="orderStatus" class="form-control" required>
-                <option *ngFor="let c of orderStatus$ | async" [value]="c.payload.val().description">
-                    {{ c.payload.val().name }} - {{ c.payload.val().description }}
+            <label for="stareaComenzii"><b>Starea comenzii</b> - {{ comanda.payload.val().stareaComenzii }}</label>
+            <select #stareaComenzii="ngModel" ngModel name="stareaComenzii" id="stareaComenzii" class="form-control" required>
+                <option *ngFor="let c of stareaComenzii$ | async" [value]="c.payload.val().descriere">
+                    {{ c.payload.val().nume }} - {{ c.payload.val().descriere }}
                 </option>
             </select>
-            <div class="alert alert-danger" *ngIf="orderStatus.touched && orderStatus.invalid">Acest camp este obligatoriu.</div>
+            <div class="alert alert-danger" *ngIf="stareaComenzii.touched && stareaComenzii.invalid">Acest camp este obligatoriu.</div>
         </div>
-        <button class="btn btn-primary" [disabled]="f.invalid" style="margin-right:10px;">Actualizare</button>
+        <button class="btn btn-primary" [disabled]="form.invalid" style="margin-right:10px;">Actualizare</button>
     </form>
 </div>
 
@@ -54,15 +54,15 @@
 
 <h3 style="margin-top: 50;">Produse comandate</h3> <br>
 <div class="card-group">
-    <div class="card col-md-3 col-lg-3 d-flex align-items-stretch" style="width: 18rem;" *ngFor="let i of order2">
-        <img [src]="i.product.imageUrl" class="card-img-top" [routerLink]="['/produs/', i.product.key]">
+    <div class="card col-md-3 col-lg-3 d-flex align-items-stretch" style="width: 18rem;" *ngFor="let i of comanda2">
+        <img [src]="i.produse.imagine" class="card-img-top" [routerLink]="['/produs/', i.produs.key]">
         <div class="card-body">
-            <h5 class="card-title ">{{ i.quantity }} x {{ i.product.title }}</h5>
-            <p class="card-text">{{ i.product.price | currency:'RON ':'code'}}</p>
-            <p class="card-text font-weight-bold">Total: {{ (i.product.price * i.quantity) | currency:'RON ':'code'}}</p>
+            <h5 class="card-title ">{{ i.cantitate }} x {{ i.produs.numeProdus }}</h5>
+            <p class="card-text">{{ i.produs.pret | currency:'RON ':'code'}}</p>
+            <p class="card-text font-weight-bold">Total: {{ (i.produs.pret * i.cantitate) | currency:'RON ':'code'}}</p>
         </div>
     </div>
 </div>
-<button type="button" (click)="back()" class="btn btn-secondary" style="margin-top:10px;">
+<button type="button" (click)="inapoi()" class="btn btn-secondary" style="margin-top:10px;">
     Înapoi   
 </button>

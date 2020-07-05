@@ -24,10 +24,10 @@ export class Produse implements OnInit {
     private serviciuFavorite: ServiciuFavorite) { }
 
   produseVizitate() {
-    if (this.produs.visits == null) this.produs.visits = 0;
+    if (this.produs.vizite == null) this.produs.vizite = 0;
 
-    this.produs.visits++;
-    this.produs.time = new Date().getTime();
+    this.produs.vizite++;
+    this.produs.ultimaAccesare = new Date().getTime();
     this.serviciuProduse.actualizareProdus(this.produs.key, this.produs);
   }
 
@@ -50,8 +50,8 @@ export class Produse implements OnInit {
   primesteCantitatea() {
     if (!this.cosDeCumparaturi) return 0;
 
-    let item = this.cosDeCumparaturi.items[this.produs.key];
-    return item ? item.quantity : 0;
+    let element = this.cosDeCumparaturi.produse[this.produs.key];
+    return element ? element.cantitate : 0;
   }
 
   ngOnInit() {

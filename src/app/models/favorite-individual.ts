@@ -1,6 +1,6 @@
 import { Produs } from './produs';
 
 export class FavoriteIndividual {
-    constructor(public product: Produs) {
+    constructor(public produs: Produs) {
     }
 }

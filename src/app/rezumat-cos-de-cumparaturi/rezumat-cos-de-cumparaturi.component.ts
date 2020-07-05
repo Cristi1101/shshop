@@ -20,7 +20,7 @@ export class RezumatCosDeCumparaturi {
     this.cosDeCumparaturi$ = await this.serviciuCosDeCumparaturi.primesteCosulDeCumparaturi();
     this.cosDeCumparaturi$.valueChanges().subscribe((cos) => {
       let date: any;
-      date = cos.items;
+      date = cos.produse;
       this.cosDeCumparaturi = new CosDeCumparaturi(date);
       this.evidentaProduselorDinCos = this.cosDeCumparaturi.totalItemsCount;
       this.pretulTotal = this.cosDeCumparaturi.totalPrice;

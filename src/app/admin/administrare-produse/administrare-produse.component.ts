@@ -41,7 +41,7 @@ export class AdministrareProduse implements OnInit, OnDestroy {
 
   filtrare(text: string) {
     let produseFiltrate = (text) ?
-      this.produse.filter(produs => produs.title.toLowerCase().includes(text.toLowerCase())) : this.produse;
+      this.produse.filter(produs => produs.numeProdus.toLowerCase().includes(text.toLowerCase())) : this.produse;
     this.initializareTabel(produseFiltrate);
   }
 

@@ -54,13 +54,13 @@ export class CatalogulProduselor implements OnInit, OnDestroy {
         })
       )
       .subscribe((parametrii) => {
-        this.categorie = parametrii.get('category');
+        this.categorie = parametrii.get('categorii');
         this.produseFiltrate = (this.categorie) ?
           this.produse.filter((produs) =>
-            (produs.category === this.categorie && produs.price >= this.pretMinim && produs.price <= this.pretMaxim)
+            (produs.categorie === this.categorie && produs.pret >= this.pretMinim && produs.pret <= this.pretMaxim)
           ) : (this.pretMinim && this.pretMaxim ?
             this.produse.filter((produs) =>
-              (produs.price >= this.pretMinim && produs.price <= this.pretMaxim)
+              (produs.pret >= this.pretMinim && produs.pret <= this.pretMaxim)
             ) : this.produse);
       });
   }

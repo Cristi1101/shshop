@@ -6,15 +6,15 @@
     <input #query (keyup)="filtrare(query.value)" type="text" class="form-control" placeholder="Căutare...">
 </p>
 <data-table [items]="elemente" [itemCount]="evidentaElementelor" (reload)="actualizareElemente($event)">
-    <data-table-column [property]="'title'" [header]="'Numele produsului'" [sortable]="true" [resizable]="true">
+    <data-table-column [property]="'numeProdus'" [header]="'Numele produsului'" [sortable]="true" [resizable]="true">
     </data-table-column>
 
-    <data-table-column [property]="'category'" [header]="'Categoria'" [sortable]="true" [resizable]="true">
+    <data-table-column [property]="'categorie'" [header]="'Categoria'" [sortable]="true" [resizable]="true">
     </data-table-column>
 
-    <data-table-column [property]="'price'" [header]="'Prețul'" [sortable]="true" [resizable]="true">
+    <data-table-column [property]="'pret'" [header]="'Prețul'" [sortable]="true" [resizable]="true">
         <ng-template #dataTableCell let-item="item">
-            {{ item.price | currency:'RON ':'code' }}
+            {{ item.pret | currency:'RON ':'code' }}
         </ng-template>
     </data-table-column>
 

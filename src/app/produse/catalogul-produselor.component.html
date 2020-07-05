@@ -4,9 +4,9 @@
     <div #meniu style="position: absolute; top: 100%; z-index: 10000; width: 100%;">
         <div *ngFor="let p of produseFiltrate; let i = index">
             <div *ngIf="cautare && ascundeSugestii == false">
-                <div *ngIf="p.title.toLowerCase().includes(cautare.toLowerCase())" class="suggestion">
-                    <a href="#" onclick="return false;" (click)="stabilireCautare(p.title)" class="searchDropdown">
-                        {{ p.title }}</a>
+                <div *ngIf="p.numeProdus.toLowerCase().includes(cautare.toLowerCase())" class="suggestion">
+                    <a href="#" onclick="return false;" (click)="stabilireCautare(p.numeProdus)" class="searchDropdown">
+                        {{ p.numeProdus }}</a>
                 </div>
             </div>
         </div>
@@ -21,7 +21,7 @@
         <div class="row">
             <ng-container *ngFor="let p of produseFiltrate; let i = index">
                 <div *ngIf="cautare; else faraFiltru">
-                    <div *ngIf="p.title.toLowerCase().includes(cautare.toLowerCase())"
+                    <div *ngIf="p.numeProdus.toLowerCase().includes(cautare.toLowerCase())"
                         class="col-lg d-flex align-items-stretch">
                         <produse [produs]="p" [cosDeCumparaturi]="cosDeCumparaturi"></produse>
                     </div>

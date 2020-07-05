@@ -14,17 +14,17 @@ export class ServiciuComenzi {
     private serviciuCosDeCumparaturi: ServiciuCosDeCumparaturi) { }
 
   async plaseazaComanda(comanda) {
-    let rezultat = await this.bazaDeDate.list('/orders').push(comanda);
+    let rezultat = await this.bazaDeDate.list('/comenzi').push(comanda);
     this.serviciuCosDeCumparaturi.stergeCosulDeCumparaturi();
     return rezultat;
   }
 
   primesteComandaSpecifica(idComanda) {
-    return this.bazaDeDate.object('/orders/' + idComanda).snapshotChanges();
+    return this.bazaDeDate.object('/comenzi/' + idComanda).snapshotChanges();
   }
 
   primesteElemente(idComanda) {
-    return this.bazaDeDate.list<Comanda>('/orders/' + idComanda + '/item/').snapshotChanges().pipe(
+    return this.bazaDeDate.list<Comanda>('/comenzi/' + idComanda + '/produse/').snapshotChanges().pipe(
       map(schimbari =>
         schimbari.map(c => {
           const data = c.payload.val() as Comanda;
@@ -36,11 +36,11 @@ export class ServiciuComenzi {
   }
 
   primesteComenzile() {
-    return this.bazaDeDate.list('/orders').snapshotChanges();
+    return this.bazaDeDate.list('/comenzi').snapshotChanges();
   }
 
   primesteToateComenzile() {
-    return this.bazaDeDate.list<Comanda>('/orders')
+    return this.bazaDeDate.list<Comanda>('/comenzi')
       .snapshotChanges()
       .pipe(
         map(schimbari =>
@@ -54,7 +54,7 @@ export class ServiciuComenzi {
   }
 
   primesteComenzileUtilizatorului(idUtilizator: string) {
-    return this.bazaDeDate.list<Comanda>('/orders', ref => ref.orderByChild('userId').equalTo(idUtilizator))
+    return this.bazaDeDate.list<Comanda>('/comenzi', ref => ref.orderByChild('idUtilizator').equalTo(idUtilizator))
       .snapshotChanges()
       .pipe(
         map(schimbari =>
@@ -68,6 +68,6 @@ export class ServiciuComenzi {
   }
 
   actualizareComanda(idComanda, comanda) {
-    return this.bazaDeDate.object('/orders/' + idComanda).update(comanda);
+    return this.bazaDeDate.object('/comenzi/' + idComanda).update(comanda);
   }
 }

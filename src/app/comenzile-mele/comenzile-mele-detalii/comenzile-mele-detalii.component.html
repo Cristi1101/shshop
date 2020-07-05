@@ -3,31 +3,31 @@
   <table class="table">
     <tr>
       <th>Prenume</th>
-      <td>{{ comanda.payload.val().shipping.firstName }}</td>
+      <td>{{ comanda.payload.val().dateDeLivrare.firstName }}</td>
     </tr>
     <tr>
       <th>Nume</th>
-      <td>{{ comanda.payload.val().shipping.lastName }}</td>
+      <td>{{ comanda.payload.val().dateDeLivrare.lastName }}</td>
     </tr>
     <tr>
       <th>Nume de utilizator</th>
-      <td>{{ comanda.payload.val().shipping.username }}</td>
+      <td>{{ comanda.payload.val().dateDeLivrare.username }}</td>
     </tr>
     <tr>
       <th>Email</th>
-      <td>{{ comanda.payload.val().shipping.email }}</td>
+      <td>{{ comanda.payload.val().dateDeLivrare.email }}</td>
     </tr>
     <tr>
       <th>Oraș</th>
-      <td>{{ comanda.payload.val().shipping.city }}</td>
+      <td>{{ comanda.payload.val().dateDeLivrare.city }}</td>
     </tr>
     <tr>
       <th>Adresă</th>
-      <td>{{ comanda.payload.val().shipping.address }}</td>
+      <td>{{ comanda.payload.val().dateDeLivrare.address }}</td>
     </tr>
     <tr>
       <th>Cod poștal</th>
-      <td>{{ comanda.payload.val().shipping.postalCode }}</td>
+      <td>{{ comanda.payload.val().dateDeLivrare.postalCode }}</td>
     </tr>
   </table>
 </div>
@@ -39,7 +39,7 @@
   <table class="table">
     <tr>
       <th>Starea comenzii</th>
-      <td>{{ comanda.payload.val().orderStatus }}</td>
+      <td>{{ comanda.payload.val().stareaComenzii }}</td>
     </tr>
   </table>
   <hr>
@@ -52,11 +52,11 @@
 
   <div class="card col-md-3 col-lg-3 d-flex align-items-stretch" style="width: 18rem; margin-right: 50px;"
     *ngFor="let i of comanda2; let j = index">
-    <img [src]="i.product.imageUrl" class="card-img-top" [routerLink]="['/produs/', i.product.key]">
+    <img [src]="i.produs.imagine" class="card-img-top" [routerLink]="['/produs/', i.produs.key]">
     <div class="card-body">
-      <h5 class="card-title ">{{ i.quantity }} x {{ i.product.title }}</h5>
-      <p class="card-text">{{ i.product.price | currency:'RON ':'code'}}</p>
-      <p class="card-text font-weight-bold">Total: {{ (i.product.price * i.quantity) | currency:'RON ':'code'}}
+      <h5 class="card-title ">{{ i.cantitate }} x {{ i.produs.numeProdus }}</h5>
+      <p class="card-text">{{ i.produs.pret | currency:'RON ':'code'}}</p>
+      <p class="card-text font-weight-bold">Total: {{ (i.produs.pret * i.cantitate) | currency:'RON ':'code'}}
       </p>
       <textarea #recenzie name="recenzie" cols="20" rows="5"></textarea>
       <ngb-rating [(rate)]="evaluari[j]" [max]="5"></ngb-rating>

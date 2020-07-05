@@ -2,21 +2,21 @@ import { CosDeCumparaturiIndividual } from './cos-de-cumparaturi-individual';
 
 export class CosDeCumparaturi {
 
-    items?: CosDeCumparaturiIndividual[] = [];
+    produse?: CosDeCumparaturiIndividual[] = [];
 
-    constructor(public itemsMap: { [productId: string]: CosDeCumparaturiIndividual }) {
-        this.itemsMap = itemsMap || {};
+    constructor(public mapareProduse: { [idProdus: string]: CosDeCumparaturiIndividual }) {
+        this.mapareProduse = mapareProduse || {};
 
-        for (let productId in itemsMap) {
-            const item = itemsMap[productId];
-            this.items.push(new CosDeCumparaturiIndividual(item.product, item.quantity));
+        for (let idProdus in mapareProduse) {
+            const element = mapareProduse[idProdus];
+            this.produse.push(new CosDeCumparaturiIndividual(element.produs, element.cantitate));
         }
     }
 
     get totalItemsCount(): number {
         let count = 0;
-        for (let productId in this.itemsMap) {
-            count += this.itemsMap[productId].quantity;
+        for (let idProdus in this.mapareProduse) {
+            count += this.mapareProduse[idProdus].cantitate;
         }
         if(count == 1) window.location.reload();
         return count;
@@ -24,8 +24,8 @@ export class CosDeCumparaturi {
 
     get totalPrice(): number {
         let sum = 0;
-        for (let productId in this.items) {
-            sum += this.items[productId].totalPrice;
+        for (let idProdus in this.produse) {
+            sum += this.produse[idProdus].totalPrice;
         }
         return sum;
     }

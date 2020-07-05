@@ -1,14 +1,14 @@
 import { CosDeCumparaturi } from './cos-de-cumparaturi';
 
 export class Comanda {
-    datePlaced: number;
-    item: any[];
-    orderStatus: string;
+    dataPlasarii: number;
+    produse: any[];
+    stareaComenzii: string;
 
-    constructor(public userId: string, public shipping: any, shoppingCart: CosDeCumparaturi) {
-        this.datePlaced = new Date().getTime();
-        this.item = shoppingCart.items;
-        this.orderStatus = "Order and payment received.";
+    constructor(public idUtilizator: string, public dateDeLivrare: any, cosDeCumparaturi: CosDeCumparaturi) {
+        this.dataPlasarii = new Date().getTime();
+        this.produse = cosDeCumparaturi.produse;
+        this.stareaComenzii = "Comanda este în curs de procesare.";
     }
 
 }

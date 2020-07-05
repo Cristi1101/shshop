@@ -1,19 +1,19 @@
 <div class="card shadow h-100 text-center" style="width: 23rem; margin-bottom: 20px;">
     <div class="zoom-image h-50" style="margin-top: 5px;">
-        <img src="{{ produs.imageUrl }}" class="card-img-top" [routerLink]="['/produs/', produs.key]"
+        <img src="{{ produs.imagine }}" class="card-img-top" [routerLink]="['/produs/', produs.key]"
             (click)="produseVizitate()">
     </div>
 
     <div class="card-body">
         <hr>
-        <h5 class="card-title">{{ produs.title }}</h5>
+        <h5 class="card-title">{{ produs.numeProdus }}</h5>
         <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">
-            {{ produs?.description }}
+            {{ produs?.descriere }}
         </p>
         <hr>
-        <p class="card-text"><b>Categoria:</b> {{ produs.category }} - {{ produs.subcategory }}</p>
+        <p class="card-text"><b>Categoria:</b> {{ produs.categorie }} - {{ produs.subcategorie }}</p>
         <hr>
-        <p class="card-text"><b>{{ produs.price | currency:'RON ':'code' }}</b></p>
+        <p class="card-text"><b>{{ produs.pret | currency:'RON ':'code' }}</b></p>
         <input type="checkbox" (click)="produseFavorite()" [checked]="verificat">
         <label for="vehicle1" style="font-size: 15px;"><i>&nbsp;Adaugă la favorite</i></label>
         <!-- <a  style="margin-bottom: 10px;">  View More Details</a> -->

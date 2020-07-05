@@ -23,7 +23,7 @@ export class AdministrareProduseCreare implements OnInit {
     private serviciuCulori: ServiciuCulori,
     private serviciuProduse: ServiciuProduse) {
 
-    this.categorii$ = serviciuCategorii.getCategories();
+    this.categorii$ = serviciuCategorii.toateCategoriile();
     this.subcategorii$ = serviciuSubcategorii.primesteSubcategoriile();
     this.culori$ = serviciuCulori.primesteCulorile();
 
@@ -46,6 +46,6 @@ export class AdministrareProduseCreare implements OnInit {
   }
 
   subcategoriiFiltrate(parametrii) {
-    return this.subcategorii.filter(subcategorii => subcategorii.payload.val().parentId == parametrii);
+    return this.subcategorii.filter(subcategorii => subcategorii.payload.val().idParinte == parametrii);
   }
 }

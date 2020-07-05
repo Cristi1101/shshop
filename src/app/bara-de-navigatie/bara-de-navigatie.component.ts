@@ -27,8 +27,8 @@ export class BaraDeNavigatie implements OnInit {
     this.cosulDeCumparaturi$ = await this.shoppingCartService.primesteCosulDeCumparaturi();
     this.cosulDeCumparaturi$.valueChanges().subscribe((cosulDeCumparaturi: CosDeCumparaturi) => {
       this.shoppingCartItemCount = 0;
-      for (let idProdus in cosulDeCumparaturi.items)
-        this.shoppingCartItemCount += cosulDeCumparaturi.items[idProdus].quantity;
+      for (let idProdus in cosulDeCumparaturi.produse)
+        this.shoppingCartItemCount += cosulDeCumparaturi.produse[idProdus].cantitate;
     });
   }
 }

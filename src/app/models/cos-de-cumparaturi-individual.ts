@@ -1,8 +1,8 @@
 import { Produs } from './produs';
 
 export class CosDeCumparaturiIndividual {
-    constructor(public product: Produs, public quantity: number) {
+    constructor(public produs: Produs, public cantitate: number) {
     }
 
-    get totalPrice() { return this.product.price * this.quantity; }
+    get totalPrice() { return this.produs.pret * this.cantitate; }
 }

@@ -11,32 +11,31 @@ import { ServiciuStareaComenzii } from '../../serviciu-starea-comenzii.service';
   styleUrls: ['./administrare-comenzi-detalii.component.css']
 })
 export class AdministrareComenziDetalii {
-  id;
-  order;
-  order2: Comanda[];
-  orderStatus$;
+  idComanda;
+  comanda;
+  comanda2: Comanda[];
+  stareaComenzii$;
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    public orderService: ServiciuComenzi,
-    private orderStatusService: ServiciuStareaComenzii){
-    this.id = this.route.snapshot.paramMap.get('id'); 
+    private ruta: Router,
+    private rutaActiva: ActivatedRoute,
+    public serviciuComenzi: ServiciuComenzi,
+    private serviciuStareaComenzii: ServiciuStareaComenzii){
+    this.idComanda = this.rutaActiva.snapshot.paramMap.get('id'); 
 
-    if (this.id) {
-      this.orderService.primesteComandaSpecifica(this.id).pipe(take(1)).subscribe(o => (this.order = o));
-      this.orderService.primesteElemente(this.id).pipe(take(1)).subscribe(o => (this.order2 = o));
-      console.log("id:", this.order);
+    if (this.idComanda) {
+      this.serviciuComenzi.primesteComandaSpecifica(this.idComanda).pipe(take(1)).subscribe(comanda => (this.comanda = comanda));
+      this.serviciuComenzi.primesteElemente(this.idComanda).pipe(take(1)).subscribe(comanda => (this.comanda2 = comanda));
     }
-    this.orderStatus$ = orderStatusService.primesteStareaComenzii();
+    this.stareaComenzii$ = serviciuStareaComenzii.primesteStareaComenzii();
   }
 
-  back(){
-    this.router.navigate(['/administrator/comenzi']);
+  inapoi(){
+    this.ruta.navigate(['/administrator/comenzi']);
   }
 
-  update(order){
-    this.orderService.actualizareComanda(this.id, order);
-    this.router.navigate(['/administrator/comenzi']);
+  actualizareComanda(comanda){
+    this.serviciuComenzi.actualizareComanda(this.idComanda, comanda);
+    this.ruta.navigate(['/administrator/comenzi']);
   }
 }

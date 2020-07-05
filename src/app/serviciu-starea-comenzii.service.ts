@@ -9,6 +9,6 @@ export class ServiciuStareaComenzii {
   constructor(private bazaDeDate: AngularFireDatabase) { }
 
   primesteStareaComenzii(){
-    return this.bazaDeDate.list('/orderStatus').snapshotChanges();
+    return this.bazaDeDate.list('/stareaComenzii').snapshotChanges();
   }
 }

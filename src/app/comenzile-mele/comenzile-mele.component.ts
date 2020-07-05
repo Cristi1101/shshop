@@ -18,6 +18,6 @@ export class ComenzileMele {
   }
 
   inapoi() {
-    this.ruta.navigate(['/']);
+    this.ruta.navigate(['catalog-de-produse']);
   }
 }

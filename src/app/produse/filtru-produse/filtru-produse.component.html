@@ -1,6 +1,6 @@
 <div class="sticky-top">
     <div class="btn-group" style="margin-bottom: 30px; margin-top: 30px;">
-        <button [class.active]="!categorie" routerLink="/" type="button" class="btn btn-success">
+        <button [class.active]="!categorie" routerLink="/catalog-de-produse/" type="button" class="btn btn-success">
             Categorii
         </button>
         <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
@@ -9,9 +9,9 @@
         </button>
 
         <div class="dropdown-menu">
-            <a *ngFor="let c of categorii$ | async" routerLink="/" [queryParams]="{ category: c.key }"
+            <a *ngFor="let c of categorii$ | async" routerLink="/catalog-de-produse/" [queryParams]="{ categorii: c.key }"
                 class="dropdown-item" [class.active]="categorie === c.key" (click)="trimiteMesaj(p.value, p1.value)" >
-                {{ c.payload.val().name }}
+                {{ c.payload.val().nume }}
             </a>
         </div>
     </div>

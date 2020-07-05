@@ -31,13 +31,13 @@
                     <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
                 </ol>
                 <div class="carousel-inner">
-                    <ng-container *ngFor="let product of celeMaiVizitateProduse; let i = index">
+                    <ng-container *ngFor="let produse of celeMaiVizitateProduse; let i = index">
                         <div class="carousel-item" [ngClass]="{active: i == indexSelectat}">
-                            <img class="d-block w-100" src="{{ product.imageUrl }}" alt="First slide"
+                            <img class="d-block w-100" src="{{ produse.imagine }}" alt="First slide"
                                 style="opacity: 0.8;">
                             <div class="carousel-caption d-none d-md-block">
-                                <h1 style="color:rgb(0, 0, 0);"><b>{{ product.title }}</b></h1>
-                                <h3 style="color:rgb(0, 0, 0);"><b>{{ product.price | currency:'RON ':'code' }}</b></h3>
+                                <h1 style="color:rgb(0, 0, 0);"><b>{{ produse.numeProdus }}</b></h1>
+                                <h3 style="color:rgb(0, 0, 0);"><b>{{ produse.pret | currency:'RON ':'code' }}</b></h3>
                             </div>
                         </div>
                     </ng-container>
@@ -74,13 +74,13 @@
                     <li data-target="#carouselExampleIndicators1" data-slide-to="4"></li>
                 </ol>
                 <div class="carousel-inner">
-                    <ng-container *ngFor="let product of ultimeleProduseVizitate; let i = index">
+                    <ng-container *ngFor="let produse of ultimeleProduseVizitate; let i = index">
                         <div class="carousel-item" [ngClass]="{active: i == indexSelectat1}">
-                            <img class="d-block w-100" src="{{ product.imageUrl }}" alt="First slide"
+                            <img class="d-block w-100" src="{{ produse.imagine }}" alt="First slide"
                                 style="opacity: 0.8;">
                             <div class="carousel-caption d-none d-md-block">
-                                <h1 style="color:black"><b>{{ product.title }}</b></h1>
-                                <h3 style="color:black"><b>{{ product.price | currency:'RON ':'code' }}</b></h3>
+                                <h1 style="color:black"><b>{{ produse.numeProdus }}</b></h1>
+                                <h3 style="color:black"><b>{{ produse.pret | currency:'RON ':'code' }}</b></h3>
                             </div>
                         </div>
                         <!-- 

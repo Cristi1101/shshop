@@ -12,22 +12,22 @@ export class ServiciuFavorite {
   constructor(private bazaDeDate: AngularFireDatabase) { }
 
   private creazaListaProduseFavorite() {
-    return this.bazaDeDate.list('/favorites').push({
+    return this.bazaDeDate.list('/favorite').push({
       dateCreated: new Date().getTime(),
       userId: this.idUtilizator
     });
   }
 
   async primesteListaProduselorFavorite() {
-    return this.bazaDeDate.object('/favorites/' + this.idUtilizator);
+    return this.bazaDeDate.object('/favorite/' + this.idUtilizator);
   }
 
   primesteProduseFavorite() {
-    return this.bazaDeDate.list('/favorites/' + this.idUtilizator + "/items").snapshotChanges();
+    return this.bazaDeDate.list('/favorite/' + this.idUtilizator + "/elemente").snapshotChanges();
   }
 
   primesteProdusFavorit(idListaFavorite: string, idProdus: string) {
-    return this.bazaDeDate.object('/favorites/' + idListaFavorite + '/items/' + idProdus);
+    return this.bazaDeDate.object('/favorite/' + idListaFavorite + '/elemente/' + idProdus);
   }
 
   async adaugaProdusFavorit(produs: Produs) {
@@ -41,22 +41,22 @@ export class ServiciuFavorite {
   }
 
   validareFavorite(idProdus: string): Observable<any> {
-    return this.bazaDeDate.object('/favorites/' + this.idUtilizator + '/items/' + idProdus).valueChanges();
+    return this.bazaDeDate.object('/favorite/' + this.idUtilizator + '/elemente/' + idProdus).valueChanges();
   }
 
   async sterge() {
-    this.bazaDeDate.object('/favorites/' + this.idUtilizator + '/items').remove();
+    this.bazaDeDate.object('/favorite/' + this.idUtilizator + '/elemente').remove();
   }
 
   private async actualizeazaFavorite(produs: Produs, deAdaugat: boolean) {
     if (deAdaugat == true) {
-      let item = this.primesteProdusFavorit(this.idUtilizator, produs.key);
-      item.snapshotChanges().pipe(take(1)).subscribe((data) => {
-        item.update({ product: produs });
+      let element = this.primesteProdusFavorit(this.idUtilizator, produs.key);
+      element.snapshotChanges().pipe(take(1)).subscribe((date) => {
+        element.update({ produs: produs });
       });
     }
     else {
-      this.bazaDeDate.object('/favorites/' + this.idUtilizator + '/items/' + produs.key).remove();
+      this.bazaDeDate.object('/favorite/' + this.idUtilizator + '/elemente/' + produs.key).remove();
     }
   }
 }

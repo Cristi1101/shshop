@@ -8,11 +8,7 @@ export class ServiciuCategorii {
 
   constructor(private bazaDeDate: AngularFireDatabase) { }
 
-  getCategories(){
-    return this.bazaDeDate.list('/categories').snapshotChanges();
-  }
-
   toateCategoriile() { 
-    return this.bazaDeDate.list('/categories', ref => ref.orderByChild('name')).snapshotChanges();
+    return this.bazaDeDate.list('/categorii', ref => ref.orderByChild('nume')).snapshotChanges();
   }
 }

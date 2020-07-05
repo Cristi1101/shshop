@@ -2,26 +2,14 @@ import { CosDeCumparaturiIndividual } from './cos-de-cumparaturi-individual';
 
 export class Favorite {
 
-    items?: CosDeCumparaturiIndividual[] = [];
+    elemente?: CosDeCumparaturiIndividual[] = [];
 
-    constructor(public itemsMap: { [productId: string]: CosDeCumparaturiIndividual }) {
-        this.itemsMap = itemsMap || {};
+    constructor(public mapareElemente: { [idProdus: string]: CosDeCumparaturiIndividual }) {
+        this.mapareElemente = mapareElemente || {};
 
-        // tslint:disable-next-line:forin prefer-const
-        for (let productId in itemsMap) {
-            // tslint:disable-next-line:prefer-const
-            const item = itemsMap[productId];
-            this.items.push(new CosDeCumparaturiIndividual(item.product, item.quantity));
+        for (let idProdus in mapareElemente) {
+            const element = mapareElemente[idProdus];
+            this.elemente.push(new CosDeCumparaturiIndividual(element.produs, element.cantitate));
         }
     }
-
-    get totalItemsCount(): number {
-        let count = 0;
-        // tslint:disable-next-line:forin prefer-const
-        for (let productId in this.itemsMap) {
-            count += this.itemsMap[productId].quantity;
-        }
-        return count;
-    }
-
 }

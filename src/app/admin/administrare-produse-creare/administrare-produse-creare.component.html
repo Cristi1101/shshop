@@ -2,77 +2,75 @@
     <div class="col-md-6">
         <form #f="ngForm" (ngSubmit)="salveazaProdus(f.value)">
             <div class="form-group">
-                <label for="title">Numele produsului</label>
-                <input #title="ngModel" ngModel name="title" id="title" type="text" class="form-control" required>
-                <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+                <label for="numeProdus">Numele produsului</label>
+                <input #numeProdus="ngModel" ngModel name="numeProdus" id="numeProdus" type="text" class="form-control" required>
+                <div class="alert alert-danger" *ngIf="numeProdus.touched && numeProdus.invalid">
                     Acest câmp este obligatoriu.
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="description">Descrierea</label>
-                <textarea #description="ngModel" ngModel name="description" id="description" cols="20" rows="5"
+                <label for="descriere">Descrierea</label>
+                <textarea #descriere="ngModel" ngModel name="descriere" id="descriere" cols="20" rows="5"
                     class="form-control" required></textarea>
-                <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+                <div class="alert alert-danger" *ngIf="descriere.touched && descriere.invalid">
                     Acest câmp este obligatoriu.
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="price">Prețul</label>
+                <label for="pret">Prețul</label>
                 <div class="input-group-prepend">
                     <span class="input-group-text">RON</span>
-                    <input #price="ngModel" ngModel name="price" id="price" type="number" class="form-control" required>
+                    <input #pret="ngModel" ngModel name="pret" id="pret" type="number" class="form-control" required>
                 </div>
-                <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
+                <div class="alert alert-danger" *ngIf="pret.touched && pret.invalid">
                     Acest câmp este obligatoriu.
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="category">Categoria</label>
-                <select #cat #category="ngModel" ngModel name="category" id="category" class="form-control" required>
-                    <option value=""></option>
+                <label for="categorie">Categorie</label>
+                <select #cat #categorie="ngModel" ngModel name="categorie" id="categorie" class="form-control" required>
                     <option *ngFor="let c of categorii$ | async" [value]="c.key">
-                        {{ c.payload.val().name }}
+                        {{ c.payload.val().nume }}
                     </option>
                 </select>
-                <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
+                <div class="alert alert-danger" *ngIf="categorie.touched && categorie.invalid">
                     Acest câmp este obligatoriu.
                 </div>
             </div>
 
-            <div *ngIf="category.valid" class="form-group">
-                <label for="subcategory">Subcategoria</label>
-                <select #subcategory="ngModel" ngModel name="subcategory" id="subcategory" class="form-control"
+            <div *ngIf="categorie.valid" class="form-group">
+                <label for="subcategorie">Subcategorie</label>
+                <select #subcategorie="ngModel" ngModel name="subcategorie" id="subcategorie" class="form-control"
                     required>
-                    <option *ngFor="let s of subcategoriiFiltrate(cat.selectedOptions[0].value)" [value]="s.key">
-                        {{ s.payload.val().name }}
+                    <option *ngFor="let s of subcategoriiFiltrate(cat.selectedOptions[0].value)" [value]="s.payload.val().nume">
+                        {{ s.payload.val().nume }}
                     </option>
                 </select>
-                <div class="alert alert-danger" *ngIf="subcategory.touched && subcategory.invalid">
+                <div class="alert alert-danger" *ngIf="subcategorie.touched && subcategorie.invalid">
                     Acest câmp este obligatoriu.
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="colors">Culoarea</label>
-                <select #colors="ngModel" ngModel name="color" id="colors" class="form-control" required>
-                    <option value=""></option>
-                    <option *ngFor="let c of culori$ | async" [value]="c.key">
-                        {{ c.payload.val().name }}
+                <label for="culoare">Culoare</label>
+                <select #culoare="ngModel" ngModel name="culoare" id="culoare" class="form-control" required>
+                    <option *ngFor="let c of culori$ | async" [value]="c.payload.val().nume">
+                        {{ c.payload.val().nume }}
                     </option>
                 </select>
-                <div class="alert alert-danger" *ngIf="colors.touched && colors.invalid">
+                <div class="alert alert-danger" *ngIf="culoare.touched && culoare.invalid">
                     Acest câmp este obligatoriu.
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="imageUrl">Imaginea</label>
-                <input #imageUrl="ngModel" ngModel name="imageUrl" id="imageUrl" type="text" class="form-control"
+                <label for="imagine">Imaginea</label>
+                <input #imagine="ngModel" ngModel name="imagine" id="imagine" type="text" class="form-control"
                     required>
-                <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+                <div class="alert alert-danger" *ngIf="imagine.touched && imagine.invalid">
                     Acest câmp este obligatoriu.
                 </div>
             </div>
@@ -84,18 +82,18 @@
 
     <div class="col-md-6">
         <div class="card text-center" style="width: 18rem;" *ngIf="f.touched">
-            <img [src]="imageUrl.value" class="card-img-top">
+            <img [src]="imagine.value" class="card-img-top">
             <div class="card-body">
                 <hr>
-                <h3 class="card-title">{{ title.value }}</h3>
+                <h3 class="card-title">{{ numeProdus.value }}</h3>
                 <hr>
-                <p class="card-text">{{ description.value }}</p>
+                <p class="card-text">{{ descriere.value }}</p>
                 <hr>
-                <p *ngIf="category.touched" class="card-text"><b>Categoria:</b> {{ category.value }}</p>
+                <p *ngIf="categorie.touched" class="card-text"><b>Categorie:</b> {{ categorie.value }}</p>
                 <hr>
-                <p *ngIf="colors.touched" class="card-text"><b>Culoarea:</b> {{ colors.value }}</p>
+                <p *ngIf="culoare.touched" class="card-text"><b>Culoare:</b> {{ culoare.value }}</p>
                 <hr>
-                <p class="card-text"><b>{{ price.value | currency:'RON ':'code' }}</b></p>
+                <p class="card-text"><b>{{ pret.value | currency:'RON ':'code' }}</b></p>
             </div>
         </div>
     </div>
