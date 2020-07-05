@@ -32,7 +32,7 @@ export class AdministrareProduseModificare {
     this.subcategorii$ = serviciuSubcategorii.primesteSubcategoriile();
 
     if (this.idProdus)
-      this.serviciuProdus.toateProdusele2(this.idProdus).pipe(take(1)).subscribe(produs => (this.produs = produs));
+      this.serviciuProdus.obtineProdus(this.idProdus).pipe(take(1)).subscribe(produs => (this.produs = produs));
   }
 
   salvareProdus(produs) {

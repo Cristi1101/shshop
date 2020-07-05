@@ -52,8 +52,8 @@ export class TrimiteComanda implements OnInit, OnDestroy {
       let date: any;
       date = cos.produse;
       this.cosDeCumparaturi2 = new CosDeCumparaturi(date);
-      this.evidentaProduselorDinCos = this.cosDeCumparaturi2.totalItemsCount;
-      this.pretulTotal = this.cosDeCumparaturi2.totalPrice;
+      this.evidentaProduselorDinCos = this.cosDeCumparaturi2.evidentaProduselorDinCos;
+      this.pretulTotal = this.cosDeCumparaturi2.pretulTotal;
     });
 
     paypal
@@ -62,9 +62,9 @@ export class TrimiteComanda implements OnInit, OnDestroy {
           return actions.order.create({
             purchase_units: [
               {
-                description: this.cosDeCumparaturi.totalItemsCount,
+                description: this.cosDeCumparaturi.evidentaProduselorDinCos,
                 amount: {
-                  value: parseFloat((this.cosDeCumparaturi2.totalPrice / 4.26).toString()).toFixed(2)
+                  value: parseFloat((this.cosDeCumparaturi2.pretulTotal / 4.26).toString()).toFixed(2)
                 }
               }
             ]

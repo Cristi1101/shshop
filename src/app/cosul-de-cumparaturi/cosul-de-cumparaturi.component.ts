@@ -39,8 +39,8 @@ export class CosulDeCumparaturi implements OnInit {
       let date: any;
       date = cos.produse;
       this.cosDeCumparaturi = new CosDeCumparaturi(date);
-      this.evidentaProduselorDinCos = this.cosDeCumparaturi.totalItemsCount;
-      this.pretulTotal = this.cosDeCumparaturi.totalPrice;
+      this.evidentaProduselorDinCos = this.cosDeCumparaturi.evidentaProduselorDinCos;
+      this.pretulTotal = this.cosDeCumparaturi.pretulTotal;
     });
   }
 }

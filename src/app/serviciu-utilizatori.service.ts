@@ -35,12 +35,12 @@ export class ServiciuUtilizatori {
       );
   }
 
-  primesteUtilizator(userId) {
-    return this.bazaDeDate.object('/users/' + userId).snapshotChanges();
+  primesteUtilizator(idUtilizator) {
+    return this.bazaDeDate.object('/users/' + idUtilizator).snapshotChanges();
   }
 
-  actualizareUtilizator(userId, user) {
-    return this.bazaDeDate.object('/users/' + userId).update(user);
+  actualizareUtilizator(idUtilizator, utilizator) {
+    return this.bazaDeDate.object('/users/' + idUtilizator).update(utilizator);
   }
 
   actualizareDateUtilizator(idUtilizator, numeUtilizator, email, prenume, nume, adresa, oras, codPostal, imagine) {

@@ -13,7 +13,7 @@ export class CosDeCumparaturi {
         }
     }
 
-    get totalItemsCount(): number {
+    get evidentaProduselorDinCos(): number {
         let count = 0;
         for (let idProdus in this.mapareProduse) {
             count += this.mapareProduse[idProdus].cantitate;
@@ -22,10 +22,10 @@ export class CosDeCumparaturi {
         return count;
     }
 
-    get totalPrice(): number {
+    get pretulTotal(): number {
         let sum = 0;
         for (let idProdus in this.produse) {
-            sum += this.produse[idProdus].totalPrice;
+            sum += this.produse[idProdus].pretulTotal;
         }
         return sum;
     }

@@ -36,14 +36,14 @@
                         </div>
                     </div>
                 </td>
-                <td class="text-left">{{ item.totalPrice | currency:'RON ':'code' }}</td>
+                <td class="text-left">{{ item.pretulTotal | currency:'RON ':'code' }}</td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
                 <td class="text-right"></td>
                 <td></td>
-                <td class="text-center"><b>Total:</b> {{ cosDeCumparaturi.totalPrice | currency:'RON ':'code' }}
+                <td class="text-center"><b>Total:</b> {{ cosDeCumparaturi.pretulTotal | currency:'RON ':'code' }}
                 </td>
                 <td>
                     <a *ngIf="cosDeCumparaturi.produse.length" routerLink="/plasare-comanda" class="btn btn-success"

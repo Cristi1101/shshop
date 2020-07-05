@@ -24,7 +24,7 @@ export class DetaliiProduse {
     public serviciuCosDeCumparaturi: ServiciuCosDeCumparaturi) {
     this.idRuta = this.ruta.snapshot.paramMap.get('id');
     if (this.idRuta)
-      this.serviciuProduse.toateProdusele2(this.idRuta).pipe(take(1)).subscribe(p => (this.produs = p));
+      this.serviciuProduse.obtineProdus(this.idRuta).pipe(take(1)).subscribe(p => (this.produs = p));
     this.recenziiProdus();
   }
 

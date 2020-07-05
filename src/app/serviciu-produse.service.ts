@@ -37,7 +37,7 @@ export class ServiciuProduse {
       );
   }
 
-  toateProdusele2(idProdus) {
+  obtineProdus(idProdus) {
     return this.bazaDeDate.object('/produse/' + idProdus).snapshotChanges();
   }
 

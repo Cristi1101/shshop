@@ -11,7 +11,7 @@ import { CosDeCumparaturi } from '../models/cos-de-cumparaturi';
 })
 export class BaraDeNavigatie implements OnInit {
   utilizator: Utilizator;
-  shoppingCartItemCount: number;
+  evidentaProduseDinCos: number;
   cosulDeCumparaturi$;
 
   constructor(
@@ -26,9 +26,9 @@ export class BaraDeNavigatie implements OnInit {
     this.serviciuDeAutentificare.utilizator$.subscribe(utilizator => this.utilizator = utilizator);
     this.cosulDeCumparaturi$ = await this.shoppingCartService.primesteCosulDeCumparaturi();
     this.cosulDeCumparaturi$.valueChanges().subscribe((cosulDeCumparaturi: CosDeCumparaturi) => {
-      this.shoppingCartItemCount = 0;
+      this.evidentaProduseDinCos = 0;
       for (let idProdus in cosulDeCumparaturi.produse)
-        this.shoppingCartItemCount += cosulDeCumparaturi.produse[idProdus].cantitate;
+        this.evidentaProduseDinCos += cosulDeCumparaturi.produse[idProdus].cantitate;
     });
   }
 }

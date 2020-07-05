@@ -6,13 +6,13 @@
             <li *ngFor="let item of cosDeCumparaturi.produse" class="list-group-item text-left">
                 {{item.cantitate }} x {{ item.produs.numeProdus }}
                 <div class="float-right">
-                    {{ item.totalPrice  | currency:'RON ':'code' }}
+                    {{ item.pretulTotal  | currency:'RON ':'code' }}
                 </div>
             </li>
             <li class="list-group-item font-weight-bold text-left">
                 Total
                 <div class="float-right">
-                    {{ cosDeCumparaturi.totalPrice | currency:'RON ':'code' }}
+                    {{ cosDeCumparaturi.pretulTotal | currency:'RON ':'code' }}
                 </div>
             </li>
         </ul>
