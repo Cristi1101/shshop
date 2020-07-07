@@ -1,16 +1,15 @@
-
 <div class="row">
     <div class="col-md-6">
         <form #f="ngForm" (ngSubmit)="salvareModificari(f.value)">
             <div class="form-group">
                 <label for="prenume">Prenume</label>
-                <input #prenume="ngModel" [(ngModel)]="utilizator.prenume" name="prenume" id="prenume"
-                    type="text" class="form-control" required>
+                <input #prenume="ngModel" [(ngModel)]="utilizator.prenume" name="prenume" id="prenume" type="text"
+                    class="form-control" required>
                 <div class="alert alert-danger" *ngIf="prenume.touched && prenume.invalid">
                     Acest câmp este obligatoriu.
                 </div>
             </div>
-        
+
             <div class="form-group">
                 <label for="nume">Nume</label>
                 <input #nume="ngModel" [(ngModel)]="utilizator.nume" name="nume" id="nume" type="text"
@@ -19,16 +18,16 @@
                     Acest câmp este obligatoriu.
                 </div>
             </div>
-        
+
             <div class="form-group">
                 <label for="numeUtilizator">Nume de utilizator</label>
-                <input #numeUtilizator="ngModel" [(ngModel)]="utilizator.numeUtilizator" name="numeUtilizator" id="numeUtilizator" type="text"
-                    class="form-control" required>
+                <input #numeUtilizator="ngModel" [(ngModel)]="utilizator.numeUtilizator" name="numeUtilizator"
+                    id="numeUtilizator" type="text" class="form-control" required>
                 <div class="alert alert-danger" *ngIf="numeUtilizator.touched && numeUtilizator.invalid">
                     Acest câmp este obligatoriu.
                 </div>
             </div>
-        
+
             <div class="form-group">
                 <label for="email">Email</label>
                 <input #email="ngModel" [(ngModel)]="utilizator.email" name="email" id="email" type="email"
@@ -37,7 +36,7 @@
                     Acest câmp este obligatoriu.
                 </div>
             </div>
-        
+
             <div class="form-group">
                 <label for="oras">Oraș</label>
                 <input #oras="ngModel" [(ngModel)]="utilizator.oras" name="oras" id="oras" type="text"
@@ -46,7 +45,7 @@
                     Acest câmp este obligatoriu.
                 </div>
             </div>
-        
+
             <div class="form-group">
                 <label for="adresa">Adresă</label>
                 <input #adresa="ngModel" [(ngModel)]="utilizator.adresa" name="adresa" id="adresa" type="text"
@@ -55,7 +54,7 @@
                     Acest câmp este obligatoriu.
                 </div>
             </div>
-        
+
             <div class="form-group">
                 <label for="codPostal">Cod poștal</label>
                 <input #codPostal="ngModel" [(ngModel)]="utilizator.codPostal" name="codPostal" id="codPostal"
@@ -65,22 +64,34 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <h5>Alege o imagine</h5>
+                <input type="file" accept=".png, .jpg" class="form-control" (change)="incarcareImagine($event)">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                        [style.width]="(uploadPercent | async) + '%'">
+                    </div>
+                </div>
+                <input #img="ngModel" [(ngModel)]="utilizator.img" name="img" id="img" type="hidden">
+            </div>
+
             <button class="btn btn-primary" style="margin-right:10px;">Salvează</button>
-            <button type="button" (click)="inapoi()" class="btn btn-secondary" style="margin-right:10px;">Anulează</button>
-        
+            <button type="button" (click)="inapoi()" class="btn btn-secondary"
+                style="margin-right:10px;">Anulează</button>
+
         </form>
     </div>
-<div class="col-md-6">
-    <div class="card text-center" style="width: 18rem;">
-        <img [src]="utilizator.img" class="card-img-top">
-        <div class="card-body">
-            <h3 class="card-title">{{  utilizator.prenume }} {{ utilizator.nume }}</h3>
-            <hr>
-            <h5>{{ utilizator.numeUtilizator }}</h5>
-            <hr>
-            <p class="card-text">{{ utilizator.oras }}</p>
-            <p class="card-text">{{ utilizator.email }}</p>
+    <div class="col-md-6">
+        <div class="card text-center" style="width: 18rem;">
+            <img [src]="utilizator.img" class="card-img-top">
+            <div class="card-body">
+                <h3 class="card-title">{{  utilizator.prenume }} {{ utilizator.nume }}</h3>
+                <hr>
+                <h5>{{ utilizator.numeUtilizator }}</h5>
+                <hr>
+                <p class="card-text">{{ utilizator.oras }}</p>
+                <p class="card-text">{{ utilizator.email }}</p>
+            </div>
         </div>
     </div>
-</div>
 </div>

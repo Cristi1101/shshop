@@ -67,13 +67,16 @@
                     Acest câmp este obligatoriu.
                 </div>
             </div>
+
             <div class="form-group">
-                <label for="imagine">Imaginea</label>
-                <input #imagine="ngModel" [(ngModel)]="produs.payload.val().imagine" name="imagine" id="imagine"
-                    type="text" class="form-control" required>
-                <div class="alert alert-danger" *ngIf="imagine.touched && imagine.invalid">
-                    Acest câmp este obligatoriu.
+                <h5>Alege o imagine</h5>
+                <input type="file" accept=".png, .jpg" class="form-control" (change)="incarcareImagine($event)">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                        [style.width]="(uploadPercent | async) + '%'">
+                    </div>
                 </div>
+                <input #imagine="ngModel" [(ngModel)]="produs.imagine" name="imagine" id="imagine" type="hidden">
             </div>
 
             <button class="btn btn-primary" style="margin-right:10px;">Salvează</button>

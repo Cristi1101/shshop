@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Produs } from './models/produs';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiciuProduse {
-  constructor(private bazaDeDate: AngularFireDatabase) { }
+  constructor(
+    private ruta: Router,
+    private bazaDeDate: AngularFireDatabase) { }
 
   creareProdus(produs) {
     return this.bazaDeDate.list('/produse').push(produs);
@@ -43,6 +46,21 @@ export class ServiciuProduse {
 
   actualizareProdus(idProdus, produs) {
     return this.bazaDeDate.object('/produse/' + idProdus).update(produs);
+  }
+
+  creareProduse(numeProdus, descriere, pret, categorie, subcategorie, culoare, imagine) {
+    const referintaProdus = this.bazaDeDate.list('/produse');
+    const dateProdus: Produs = {
+      numeProdus: numeProdus,
+      pret: pret,
+      categorie: categorie,
+      subcategorie: subcategorie,
+      culoare: culoare,
+      imagine: imagine,
+      descriere: descriere
+    }
+    referintaProdus.push(dateProdus);
+    this.ruta.navigate(['/administrator/produs']);
   }
 
   stergeProdus(idProdus) {

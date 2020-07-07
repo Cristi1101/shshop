@@ -3,7 +3,8 @@
         <form #f="ngForm" (ngSubmit)="salveazaProdus(f.value)">
             <div class="form-group">
                 <label for="numeProdus">Numele produsului</label>
-                <input #numeProdus="ngModel" ngModel name="numeProdus" id="numeProdus" type="text" class="form-control" required>
+                <input #numeProdus="ngModel" ngModel name="numeProdus" id="numeProdus" type="text" class="form-control"
+                    required>
                 <div class="alert alert-danger" *ngIf="numeProdus.touched && numeProdus.invalid">
                     Acest câmp este obligatoriu.
                 </div>
@@ -41,11 +42,12 @@
                 </div>
             </div>
 
-            <div *ngIf="categorie.valid" class="form-group">
+            <div  class="form-group">
                 <label for="subcategorie">Subcategorie</label>
                 <select #subcategorie="ngModel" ngModel name="subcategorie" id="subcategorie" class="form-control"
                     required>
-                    <option *ngFor="let s of subcategoriiFiltrate(cat.selectedOptions[0].value)" [value]="s.payload.val().nume">
+                    <option *ngFor="let s of subcategoriiFiltrate(cat.selectedOptions[0].value)"
+                        [value]="s.payload.val().nume">
                         {{ s.payload.val().nume }}
                     </option>
                 </select>
@@ -66,23 +68,42 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" style="display: none;">
                 <label for="imagine">Imaginea</label>
-                <input #imagine="ngModel" ngModel name="imagine" id="imagine" type="text" class="form-control"
-                    required>
-                <div class="alert alert-danger" *ngIf="imagine.touched && imagine.invalid">
-                    Acest câmp este obligatoriu.
-                </div>
+                <input #imagine="ngModel" ngModel name="imagine" id="imagine" type="text" class="form-control">
             </div>
 
-            <button class="btn btn-primary" [disabled]="f.invalid" style="margin-right:10px;">Salvează</button>
+            <div class="form-group">
+                <h5>Alege o imagine</h5>
+                <input type="file" accept=".png, .jpg" class="form-control" (change)="incarcareImagine($event)">
+            </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                    [style.width]="(uploadPercent | async) + '%'">
+                </div>
+            </div>
+            <input #imagine="ngModel" ngModel name="imagine" id="imagine" type="hidden" [value]="urlImage | async">
+
+            <div class="form-group">
+                <button *ngIf="categorie.value; else btnDisabled" type="button" class="btn btn-primary"
+                    (click)="serviciuProduse.creareProduse(numeProdus.value, descriere.value, pret.value, categorie.value, subcategorie.value, culoare.value, urlImage)">
+                    Salveaza
+                </button>
+                <ng-template #btnDisabled>
+                    <button type="button" disabled=true class="btn btn-primary"
+                        (click)="serviciuProduse.creareProduse(numeProdus.value, descriere.value, pret.value, categorie.value, subcategorie.value, culoare.value, urlImage)">
+                        Salveaza
+                    </button>
+                </ng-template>
+            </div>
             <button type="button" (click)="inapoi()" class="btn btn-secondary">Anulează</button>
         </form>
     </div>
 
+
     <div class="col-md-6">
         <div class="card text-center" style="width: 18rem;" *ngIf="f.touched">
-            <img [src]="imagine.value" class="card-img-top">
+            <img [src]="urlImage" class="card-img-top">
             <div class="card-body">
                 <hr>
                 <h3 class="card-title">{{ numeProdus.value }}</h3>

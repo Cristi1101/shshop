@@ -12,13 +12,6 @@ export class ServiciuFavorite {
   idUtilizator = localStorage.getItem('userUID');
   constructor(private bazaDeDate: AngularFireDatabase) { }
 
-  private creazaListaProduseFavorite() {
-    return this.bazaDeDate.list('/favorite').push({
-      dateCreated: new Date().getTime(),
-      userId: this.idUtilizator
-    });
-  }
-
   async primesteListaProduselorFavorite() {
     return this.bazaDeDate.object('/favorite/' + this.idUtilizator);
   }
