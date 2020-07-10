@@ -27,7 +27,7 @@ import { DetaliiProduse } from './produse/detalii-produse/detalii-produse.compon
 import { CosulDeCumparaturi } from './cosul-de-cumparaturi/cosul-de-cumparaturi.component';
 import { TrimiteComanda } from './trimite-comanda/trimite-comanda.component';
 import { RezumatCosDeCumparaturi } from './rezumat-cos-de-cumparaturi/rezumat-cos-de-cumparaturi.component';
-import { OrderSuccesComponent } from './trimite-comanda/order-succes/order-succes.component'; //trebuie schimbata
+import { ComandaEfectuata } from './trimite-comanda/comanda-efectuata/comanda-efectuata.component';
 import { ComenzileMele } from './comenzile-mele/comenzile-mele.component';
 import { ComenzileMeleDetalii } from './comenzile-mele/comenzile-mele-detalii/comenzile-mele-detalii.component';
 import { RecenziileMele } from './recenziile-mele/recenziile-mele.component';
@@ -72,7 +72,7 @@ import { ServiciuFavorite } from './serviciu-favorite.service';
     CosulDeCumparaturi,
     RezumatCosDeCumparaturi,
     TrimiteComanda,
-    OrderSuccesComponent, //sa nu uit sa fac order succes component !!!!!!
+    ComandaEfectuata,
     ComenzileMele,
     AdministrareProduse,
     AdministrareComenzi,
@@ -112,7 +112,7 @@ import { ServiciuFavorite } from './serviciu-favorite.service';
       {path: 'contul-meu', component: ContulMeu, canActivate: [ProtectieLinkUtilizator]},
       {path: 'contul-meu/modificare', component: ContulMeuModificari, canActivate: [ProtectieLinkUtilizator]},
       {path: 'plasare-comanda', component: TrimiteComanda, canActivate: [ProtectieLinkUtilizator]},
-      {path: 'plasare-comanda/comanda-efectuata/:id', component: OrderSuccesComponent, canActivate: [ProtectieLinkUtilizator]},
+      {path: 'plasare-comanda/comanda-efectuata/:id', component: ComandaEfectuata, canActivate: [ProtectieLinkUtilizator]},
       {path: 'comenzile-mele', component: ComenzileMele, canActivate: [ProtectieLinkUtilizator]},
       {path: 'comenzile-mele/:id', component: ComenzileMeleDetalii, canActivate: [ProtectieLinkUtilizator]},
       {path: 'recenzii', component: RecenziileMele, canActivate: [ProtectieLinkUtilizator]},

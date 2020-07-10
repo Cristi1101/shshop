@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-6">
-        <form #f="ngForm" (ngSubmit)="salvareModificari(f.value)">
+        <form #form="ngForm" (ngSubmit)="salvareModificari(form.value)">
             <div class="form-group">
                 <label for="prenume">Prenume</label>
                 <input #prenume="ngModel" [(ngModel)]="utilizator.prenume" name="prenume" id="prenume" type="text"

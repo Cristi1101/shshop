@@ -3,10 +3,10 @@
         <h3 class="card-title">REZUMATUL COMENZII</h3>
         <p class="card-text"><i>Aveți {{ evidentaProduselorDinCos }} produse în coșul de cumpărături.</i></p><br>
         <ul class="list-group list-group-flush">
-            <li *ngFor="let item of cosDeCumparaturi.produse" class="list-group-item text-left">
-                {{item.cantitate }} x {{ item.produs.numeProdus }}
+            <li *ngFor="let produs of cosDeCumparaturi.produse" class="list-group-item text-left">
+                {{produs.cantitate }} x {{ produs.produs.numeProdus }}
                 <div class="float-right">
-                    {{ item.pretulTotal  | currency:'RON ':'code' }}
+                    {{ produs.pretulTotal  | currency:'RON ':'code' }}
                 </div>
             </li>
             <li class="list-group-item font-weight-bold text-left">

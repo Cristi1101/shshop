@@ -16,7 +16,6 @@
         <p class="card-text"><b>{{ produs.pret | currency:'RON ':'code' }}</b></p>
         <input type="checkbox" (click)="produseFavorite()" [checked]="verificat">
         <label for="vehicle1" style="font-size: 15px;"><i>&nbsp;Adaugă la favorite</i></label>
-        <!-- <a  style="margin-bottom: 10px;">  View More Details</a> -->
     </div>
     <div *ngIf="showActions" class="card-footer">
         <button *ngIf="primesteCantitatea() === 0; else actualizeazaCantitatea" (click)="adaugaInCosulDeCumparaturi()"

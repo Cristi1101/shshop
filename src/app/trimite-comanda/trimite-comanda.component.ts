@@ -7,7 +7,6 @@ import { ServiciuCosDeCumparaturi } from '../serviciu-cos-de-cumparaturi.service
 import { CosDeCumparaturi } from '../models/cos-de-cumparaturi';
 import { Subscription } from 'rxjs/Subscription';
 import { ServiciuComenzi } from '../serviciu-comenzi.service';
-// import 'rxjs/add/operators/map';
 import { Comanda } from '../models/comanda';
 
 declare var paypal;

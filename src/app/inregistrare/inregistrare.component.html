@@ -3,25 +3,25 @@
     <input type="text" class="form-control" placeholder="Nume de utilizator" #numeUtilizator required>
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Prenume" #userFirstName>
+    <input type="text" class="form-control" placeholder="Prenume" #prenume>
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Nume" #userLastName>
+    <input type="text" class="form-control" placeholder="Nume" #nume>
   </div>
   <div class="form-group">
     <input type="email" class="form-control" placeholder="Adresă de email" #email>
   </div>
   <div class="form-group">
-    <input type="password" class="form-control" placeholder="Parolă" #password>
+    <input type="password" class="form-control" placeholder="Parolă" #parola>
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Oraș" #userCity>
+    <input type="text" class="form-control" placeholder="Oraș" #oras>
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Adresă" #userAddressOne>
+    <input type="text" class="form-control" placeholder="Adresă" #adresa>
   </div>
   <div class="form-group">
-    <input type="number" class="form-control" placeholder="Cod poștal" #userPostalCode>
+    <input type="number" class="form-control" placeholder="Cod poștal" #codPostal>
   </div>
   <div class="form-group">
     <h5>Alege o imagine</h5>
@@ -32,16 +32,16 @@
       [style.width]="(uploadPercent | async) + '%'">
     </div>
   </div>
-  <input #imageUser type="hidden" [value]="urlImage | async">
-  <img [src]="urlImage" class="img-thumbnail">
+  <input #imagineUtilizator type="hidden" [value]="urlImagine | async">
+  <img [src]="urlImagine" class="img-thumbnail">
   <div class="form-group">
-    <button *ngIf="urlImage; else btnDisabled" type="button" class="btn btn-primary"
-      (click)="serviciuDeAutentificare.inregistrareUtilizatorNou(email.value, password.value, numeUtilizator.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
+    <button *ngIf="urlImagine; else btnDisabled" type="button" class="btn btn-primary"
+      (click)="serviciuDeAutentificare.inregistrareUtilizatorNou(email.value, parola.value, numeUtilizator.value, prenume.value, nume.value, oras.value, adresa.value, codPostal.value, urlImagine)">
       Înregistrare
     </button>
     <ng-template #btnDisabled>
       <button type="button" disabled=true class="btn btn-primary"
-        (click)="serviciuDeAutentificare.inregistrareUtilizatorNou(email.value, password.value, numeUtilizator.value, userFirstName.value, userLastName.value, userCity.value, userAddressOne.value, userPostalCode.value, urlImage)">
+        (click)="serviciuDeAutentificare.inregistrareUtilizatorNou(email.value, parola.value, numeUtilizator.value, prenume.value, nume.value, oras.value, adresa.value, codPostal.value, urlImagine)">
         Înregistrare
       </button>
     </ng-template>

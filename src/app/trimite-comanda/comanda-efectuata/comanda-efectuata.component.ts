@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-order-succes',
-  templateUrl: './order-succes.component.html',
-  styleUrls: ['./order-succes.component.css']
+  selector: 'comanda-efectuata',
+  templateUrl: './comanda-efectuata.component.html',
+  styleUrls: ['./comanda-efectuata.component.css']
 })
-export class OrderSuccesComponent{
+export class ComandaEfectuata{
   idComanda;
 
   constructor(

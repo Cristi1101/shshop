@@ -12,7 +12,6 @@ import { ServiciuStareaComenzii } from '../../serviciu-starea-comenzii.service';
   styleUrls: ['./comenzile-mele-detalii.component.css']
 })
 export class ComenzileMeleDetalii {
-
   idComanda;
   comanda;
   comanda2: Comanda[];

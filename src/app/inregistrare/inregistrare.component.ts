@@ -16,7 +16,7 @@ export class Inregistrare {
     private stocare: AngularFireStorage) { }
 
   uploadPercent: Observable<number>;
-  urlImage: Observable<string>;
+  urlImagine: Observable<string>;
 
   incarcareImagine(eveniment) {
     const idImagine = Math.random().toString(36).substring(2);
@@ -28,7 +28,7 @@ export class Inregistrare {
     imagine.snapshotChanges().pipe(
       finalize(() => {
         referinta.getDownloadURL().subscribe((urlImagine) => {
-          this.urlImage = urlImagine;
+          this.urlImagine = urlImagine;
         })
       })
     ).subscribe();

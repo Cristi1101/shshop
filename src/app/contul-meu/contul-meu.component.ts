@@ -13,8 +13,8 @@ export class ContulMeu {
 
   constructor(
     private ruta: Router,
-    public authService: ServiciuDeAutentificare) {
-    this.authService.utilizator$.subscribe(utilizator => {
+    public serviciuDeAutentificare: ServiciuDeAutentificare) {
+    this.serviciuDeAutentificare.utilizator$.subscribe(utilizator => {
       if (utilizator) {
         this.utilizator = utilizator;
       }

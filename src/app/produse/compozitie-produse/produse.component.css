@@ -15,13 +15,11 @@
 }
 
 label {
-    /* Presentation */
     font-size: 48px
   }
+
   
-  /* Required Styling */
-  
-  label input[type="checkbox"] {
+label input[type="checkbox"] {
     display: none;
   }
   

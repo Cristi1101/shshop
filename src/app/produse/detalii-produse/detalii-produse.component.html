@@ -30,9 +30,9 @@
 <div class="row" *ngFor="let recenzie of recenzii" style="margin-bottom: 30px; border-style: inset;">
     <div class="col-sm-2">
         <div class="zoom-image h-50" style="margin-top: 20px;">
-            <img src="{{ recenzie.user?.img }}" class="img-thumbnail"
+            <img src="{{ recenzie.utilizator?.img }}" class="img-thumbnail"
                 style="width: 100px; height: 70px; border-radius: 50%;">
-            <p style="margin-left: 10px; margin-top: 5px;">{{ recenzie.user?.numeUtilizator }}</p>
+            <p style="margin-left: 10px; margin-top: 5px;">{{ recenzie.utilizator?.numeUtilizator }}</p>
         </div>
     </div>
     <div class="col-sm-10">

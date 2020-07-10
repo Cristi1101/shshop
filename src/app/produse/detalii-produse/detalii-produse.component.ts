@@ -34,7 +34,7 @@ export class DetaliiProduse {
         this.serviciuUtilizatori.primesteUtilizator(element1.uid).subscribe(data => {
           this.recenzii.push({
             recenzie: element1,
-            user: data.payload.val()
+            utilizator: data.payload.val()
           });
         });
       })

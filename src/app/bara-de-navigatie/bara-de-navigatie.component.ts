@@ -16,7 +16,7 @@ export class BaraDeNavigatie implements OnInit {
 
   constructor(
     private serviciuDeAutentificare: ServiciuDeAutentificare,
-    private shoppingCartService: ServiciuCosDeCumparaturi) { }
+    private serviciuCosDeCumparaturi: ServiciuCosDeCumparaturi) { }
 
   logout() {
     this.serviciuDeAutentificare.logout();
@@ -24,7 +24,7 @@ export class BaraDeNavigatie implements OnInit {
 
   async ngOnInit() {
     this.serviciuDeAutentificare.utilizator$.subscribe(utilizator => this.utilizator = utilizator);
-    this.cosulDeCumparaturi$ = await this.shoppingCartService.primesteCosulDeCumparaturi();
+    this.cosulDeCumparaturi$ = await this.serviciuCosDeCumparaturi.primesteCosulDeCumparaturi();
     this.cosulDeCumparaturi$.valueChanges().subscribe((cosulDeCumparaturi: CosDeCumparaturi) => {
       this.evidentaProduseDinCos = 0;
       for (let idProdus in cosulDeCumparaturi.produse)
