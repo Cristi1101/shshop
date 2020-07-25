@@ -1,7 +1,10 @@
 <div class="card text-center">
     <div class="card-body">
         <h3 class="card-title">REZUMATUL COMENZII</h3>
-        <p class="card-text">Aveți <b>{{ evidentaProduselorDinCos }}</b> produse în coșul de cumpărături.</p><br>
+        <p class="card-text" *ngIf="evidentaProduselorDinCos > 1 else unProdus">Aveți <b>{{ evidentaProduselorDinCos }}</b> produse în coșul de cumpărături.</p><br>
+        <ng-template #unProdus>
+            <p class="card-text">Aveți un produs în coșul de cumpărături.</p><br>
+        </ng-template>
         <ul class="list-group list-group-flush">
             <li *ngFor="let produs of cosDeCumparaturi.produse" class="list-group-item text-left">
                 {{produs.cantitate }} x <i>{{ produs.produs.numeProdus }}</i>
