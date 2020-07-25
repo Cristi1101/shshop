@@ -2,7 +2,7 @@
 <div *ngFor="let fav of produseFavorite" style="margin-left: 390px;">
   <div class="card shadow h-100 text-center" style="width: 23rem;">
     <div class="card-body">
-      <h5 class="card-title">{{ fav.produs.numeProdus }}</h5>
+      <h5 class="card-title" style="font-size:22px;"><b>{{ fav.produs.numeProdus }}</b></h5>
       <hr>
       <div class="zoom-image h-50" style="margin-top: 5px;">
         <img src="{{ fav.produs.imagine }}" class="card-img-top" [routerLink]="['/produs/', fav.produs.key]">
@@ -13,11 +13,11 @@
       </p>
       <hr>
       <p class="card-text"><b>Categoria: </b>{{ fav.produs.categorie }} - {{ fav.produs.subcategorie }}</p>
-      <p class="card-text"><b>{{ fav.produs.pret | currency:'RON ':'code' }}</b></p>
+      <p class="card-text" style="font-size:20px;"><b>{{ fav.produs.pret | currency:'RON ':'code' }}</b></p>
       <hr>
       <button class="btn btn-success" style="margin-right: 50px;"
         (click)="this.serviciuCosDeCumparaturi.adaugaInCosulDeCumparaturi(fav.produs)">
-        Adaugă în <i class="fas fa-shopping-cart"></i>
+        Adaugă în <i class="fa fa-shopping-basket"></i>
       </button>
       <button class="btn btn-danger" (click)="this.serviciuFavorite.stergeProdusFavorit(fav.produs)">
         <i class="fa fa-trash"></i>

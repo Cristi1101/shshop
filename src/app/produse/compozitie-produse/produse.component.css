@@ -53,3 +53,8 @@ label input[type="checkbox"] {
   .custom-checkbox input[type="checkbox"]:checked ~ .glyphicon-star {
     opacity: 1;
   }
+
+  p {
+    font-size: 18px;
+}
+

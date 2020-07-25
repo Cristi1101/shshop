@@ -1,6 +1,6 @@
-<div style="width: 100%; margin-bottom: 20px; position: relative;">
+<div  style="width: 100%; margin-bottom: 20px; position: relative;">
     <input #cadereMeniu [(ngModel)]="cautare" type="text" placeholder="Căutare..." style="width: 100%;"
-        (click)="ascundeSugestii = false">
+        (click)="ascundeSugestii = false"> <button disabled><i class="fa fa-search"></i></button>
     <div #meniu style="position: absolute; top: 100%; z-index: 10000; width: 100%;">
         <div *ngFor="let p of produseFiltrate; let i = index">
             <div *ngIf="cautare && ascundeSugestii == false">
@@ -25,14 +25,14 @@
                         class="col-lg d-flex align-items-stretch">
                         <produse [produs]="p" [cosDeCumparaturi]="cosDeCumparaturi"></produse>
                     </div>
-                    <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
+                    <div *ngIf="(i + 1) % 6 === 0" class="w-100"></div>
                 </div>
                 <ng-template #faraFiltru>
                     <div class="col-lg d-flex align-items-stretch">
                         <produse [produs]="p" [cosDeCumparaturi]="cosDeCumparaturi"></produse>
                     </div>
                 </ng-template>
-                <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
+                <div *ngIf="(i + 1) % 6 === 0" class="w-100"></div>
             </ng-container>
         </div>
     </div>

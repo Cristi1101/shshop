@@ -18,7 +18,7 @@ export class FiltruProduse {
    }
 
   value: number = 0;
-  highValue: number = 999;
+  highValue: number = 3500;
 
   functieMin(value){
     this.value = value;

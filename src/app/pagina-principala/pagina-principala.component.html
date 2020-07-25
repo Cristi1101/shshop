@@ -1,11 +1,10 @@
 <div class="position-relative overflow-hidden text-center bg-light">
     <div class="col-md-5 p-lg-5 mx-auto my-5">
-        <h1 class="display-2 font-weight">S <i class="far fa-handshake"></i> H</h1><br>
-        <p class="lead font-weight-normal">
-            Marfă de cea mai bună calitate. De la haine la dispozitive electronice, 
-            nimic nu ne împiedică să aducem cele mai bune lucruri doar pentru tine și la un preț foarte bun. Ce mai aștepți?
+        <h1 class="display-2 font-weight" style="font-size: 30px;">S <i class="far fa-handshake"></i> H</h1><br>
+        <p class="lead font-weight-normal" style="font-size: 22px;">
+            Produse noi, resigilate sau <br> second-hand la preț redus.
         </p>
-        <a class="btn btn-outline-secondary" routerLink="/">Vezi si tu!</a>
+        <a class="btn btn-outline-secondary" routerLink="/catalog-de-produse">Vezi si tu!</a>
     </div>
     <div class="product-device shadow-sm d-none d-md-block"></div>
     <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
@@ -15,10 +14,14 @@
     <hr class="featurette-divider">
     <div class="row featurette">
         <div class="col-md-7">
-            <h2 class="featurette-heading">Cele mai vizitate produse. <span class="text-muted">Pe placul tuturor.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis
-                euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
-                tellus ac cursus commodo.</p>
+            <h2 class="featurette-heading" style="font-size: 50px;">Cele mai vizitate produse. <span class="text-muted" style="font-size: 40px;">
+                Pe placul tuturor.</span></h2><br>
+            <p class="lead" style="font-size: 30px; text-align: justify;">Cele mai vizitate produse de catre clienții noștri, iar dacă
+                vezi ceva care te interesează ești doar la un click distanță.
+                Marfă de cea mai bună calitate. De la haine la dispozitive electronice,
+                nimic nu ne împiedică să aducem cele mai bune lucruri doar pentru tine și 
+                la un preț foarte bun. <a routerLink="/catalog-de-produse">Ce mai aștepți?</a>
+            </p>
         </div>
         <div class="col-md-5">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"
@@ -34,7 +37,7 @@
                     <ng-container *ngFor="let produse of celeMaiVizitateProduse; let i = index">
                         <div class="carousel-item" [ngClass]="{active: i == indexSelectat}">
                             <img class="d-block w-100" src="{{ produse.imagine }}" alt="First slide"
-                                style="opacity: 0.8;">
+                                style="opacity: 0.8;" [routerLink]="['/produs/', produse.key]">
                             <div class="carousel-caption d-none d-md-block">
                                 <h1 style="color:rgb(0, 0, 0);"><b>{{ produse.numeProdus }}</b></h1>
                                 <h3 style="color:rgb(0, 0, 0);"><b>{{ produse.pret | currency:'RON ':'code' }}</b></h3>
@@ -58,9 +61,11 @@
     <hr class="featurette-divider">
     <div class="row featurette">
         <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">Ultimele produse vizitate. <span class="text-muted">La un click distanță!</span></h2>
-            <p class="lead">
-                Cele mai bune produse pentru clienții noștri. Cel mai bun magazin second-hand din oraș, dacă nu ne crezi, vezi și tu!
+            <h2 class="featurette-heading" style="font-size: 50px;">Ultimele produse vizitate. <br>
+                <span class="text-muted" style="font-size: 40px;">La un click distanță!</span></h2> <br>
+            <p class="lead" style="font-size: 30px; text-align: justify;">
+                Cele mai bune produse pentru clienții noștri. Cel mai bun magazin din oraș, dacă nu ne
+                crezi, <a routerLink="/catalog-de-produse">vezi și tu!</a>
             </p>
         </div>
         <div class="col-md-5 order-md-1">
@@ -77,7 +82,7 @@
                     <ng-container *ngFor="let produse of ultimeleProduseVizitate; let i = index">
                         <div class="carousel-item" [ngClass]="{active: i == indexSelectat1}">
                             <img class="d-block w-100" src="{{ produse.imagine }}" alt="First slide"
-                                style="opacity: 0.8;">
+                                style="opacity: 0.8;" [routerLink]="['/produs/', produse.key]">
                             <div class="carousel-caption d-none d-md-block">
                                 <h1 style="color:black"><b>{{ produse.numeProdus }}</b></h1>
                                 <h3 style="color:black"><b>{{ produse.pret | currency:'RON ':'code' }}</b></h3>
@@ -96,18 +101,6 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-        </div>
-    </div>
-    <hr class="featurette-divider">
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h2 class="featurette-heading">Recenzii.</h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis
-                euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
-                tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5">
-
         </div>
     </div>
     <hr class="featurette-divider">

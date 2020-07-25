@@ -6,32 +6,32 @@
 
     <div class="card-body">
         <hr>
-        <h5 class="card-title">{{ produs.numeProdus }}</h5>
+        <h5 class="card-title" style="font-size:22px;"><b>{{ produs.numeProdus }}</b></h5>
         <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">
             {{ produs?.descriere }}
         </p>
         <hr>
         <p class="card-text"><b>Categoria:</b> {{ produs.categorie }} - {{ produs.subcategorie }}</p>
         <hr>
-        <p class="card-text"><b>{{ produs.pret | currency:'RON ':'code' }}</b></p>
+        <p class="card-text" style="font-size:20px"><b>{{ produs.pret | currency:'RON ':'code' }}</b></p>
         <input type="checkbox" (click)="produseFavorite()" [checked]="verificat">
         <label for="vehicle1" style="font-size: 15px;"><i>&nbsp;Adaugă la favorite</i></label>
     </div>
     <div *ngIf="showActions" class="card-footer">
         <button *ngIf="primesteCantitatea() === 0; else actualizeazaCantitatea" (click)="adaugaInCosulDeCumparaturi()"
-            class="btn btn-primary btn-block">Adaugă în coș</button>
+            class="btn btn-success btn-block">Adaugă în coș</button>
         <ng-template #actualizeazaCantitatea>
             <div class="row no-gutters">
                 <div class="col-2">
-                    <button (click)="scoateDinCosulDeCumparaturi()" class="btn btn-primary btn-block">-</button>
+                    <button (click)="scoateDinCosulDeCumparaturi()" class="btn btn-success btn-block">-</button>
                 </div>
 
-                <div class="col text-center">
-                    {{ primesteCantitatea() }} în coș
+                <div class="col text-center"><b></b>
+                    <b style="font-size:22px;">{{ primesteCantitatea() }}</b>
                 </div>
 
                 <div class="col-2">
-                    <button (click)="adaugaInCosulDeCumparaturi()" class="btn btn-primary btn-block">+</button>
+                    <button (click)="adaugaInCosulDeCumparaturi()" class="btn btn-success btn-block">+</button>
                 </div>
             </div>
         </ng-template>

@@ -27,7 +27,7 @@ export class ServiciuProduse {
   }
 
   toateProdusele() {
-    return this.bazaDeDate.list<Produs>('/produse')
+    return this.bazaDeDate.list<Produs>('/produse', ref => ref.orderByChild('pret'))
       .snapshotChanges()
       .pipe(
         map(changes =>

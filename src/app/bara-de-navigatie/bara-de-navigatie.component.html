@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-    <a class="navbar-brand" routerLink="/">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" routerLink="/" style="font-size: 25px;">
         Magazin Second
         <i class="far fa-handshake"></i>
         Hand
@@ -11,37 +11,46 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" routerLink="catalog-de-produse">
-                    <i class="fas fa-store"></i>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/cos-de-cumparaturi">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="badge badge-warning badge-pill">
-                        {{ evidentaProduseDinCos }}
-                    </span>
-                </a>
-            </li>
+            
         </ul>
 
         <ul class="navbar-nav">
+            <li class="nav-item" style="margin-right: 5px">
+                <a class="nav-link" routerLink="catalog-de-produse" style="color: rgb(204, 204, 204);">
+                    <i class="fas fa-store" style="color: rgb(204, 204, 204);"></i>
+                    Produse
+                </a>
+            </li>
+
+            <li class="nav-item" style="margin-right: 5px">
+                <a class="nav-link" routerLink="/favorite" style="color: rgb(204, 204, 204);"><i class="fa fa-star" aria-hidden="true" style="color: rgb(204, 204, 204);"></i> Favorite</a>
+            </li>
+
+            <li class="nav-item" style="margin-right: 10px">
+                <a class="nav-link" routerLink="/cos-de-cumparaturi"  style="color: rgb(204, 204, 204);">
+                    <i class="fa fa-shopping-basket" aria-hidden="true" style="color: rgb(204, 204, 204);"></i>
+                    <span class="badge badge-success badge-pill">
+                        {{ evidentaProduseDinCos }}
+                    </span>
+                    Coșul meu
+                </a>
+            </li>
+
             <ng-template #anonim>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/autentificare">Login <i class="fas fa-sign-in-alt"></i></a>
+                    <a class="nav-link" routerLink="/autentificare" style="color: rgb(204, 204, 204);">Login <i class="fas fa-sign-in-alt" style="color: rgb(204, 204, 204);"></i></a>
                 </li>
             </ng-template>
             <li *ngIf="utilizator; else anonim" class="nav-item dropleft">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" style="color: rgb(204, 204, 204);"
                     aria-expanded="false">
-                    <i class="fas fa-user"></i>
+                    <img [src]="utilizator.img" class="rounded-circle z-depth-0"
+                        alt="avatar image" height="35">
                     {{ utilizator.numeUtilizator }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                     <a class="dropdown-item" routerLink="/contul-meu">Contul meu <i class="fas fa-user-circle"></i></a>
                     <a class="dropdown-item" routerLink="/comenzile-mele">Comenziile mele</a>
-                    <a class="dropdown-item" routerLink="/favorite">Favorite</a>
                     <a class="dropdown-item" routerLink="/recenzii">Recenziile mele</a>
                     <ng-container *ngIf="utilizator.rolAdministrator">
                         <a class="dropdown-item" routerLink="/administrator/utilizatori">Administrarea utilizatorilor</a>

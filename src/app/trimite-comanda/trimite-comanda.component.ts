@@ -73,6 +73,7 @@ export class TrimiteComanda implements OnInit, OnDestroy {
           const ord = await actions.order.capture();
           this.platit = true;
           console.log(ord);
+          this.plaseazaComanda();
         },
         onError: err => {
           console.log(err);

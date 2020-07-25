@@ -18,7 +18,7 @@ export class CosDeCumparaturi {
         for (let idProdus in this.mapareProduse) {
             count += this.mapareProduse[idProdus].cantitate;
         }
-        if(count == 1) window.location.reload();
+        // if(count == 1) window.location.reload();
         return count;
     }
 

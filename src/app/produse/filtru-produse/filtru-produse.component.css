@@ -1,7 +1,28 @@
 .sticky-top {
     top: 80px;
 }
-.resize-inputs {
+
+.resize-inputs{
     width: 75%;
 }
 
+.priceDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+text-align: center;
+    background-color: rgb(230, 230, 230);
+    border-radius: 7px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-pret-min {
+    margin-top: 10px;
+}

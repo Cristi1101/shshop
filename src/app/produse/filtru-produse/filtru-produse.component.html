@@ -1,11 +1,12 @@
 <div class="sticky-top">
-    <div class="btn-group" style="margin-bottom: 30px; margin-top: 30px;">
-        <button [class.active]="!categorie" routerLink="/catalog-de-produse/" type="button" class="btn btn-success">
+    <div class="btn-group" style="margin-bottom: 30px; margin-top: 30px; width: 100%;">
+        <button [class.active]="!categorie" routerLink="/catalog-de-produse/" type="button" class="btn btn-success" >
             Categorii
         </button>
         <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             <span class="sr-only">Toggle Dropdown</span>
+            <i class="fa fa-list"></i>&nbsp;
         </button>
 
         <div class="dropdown-menu">
@@ -15,9 +16,11 @@
             </a>
         </div>
     </div>
-    <div>
-        <div class="form-group">
-            <label for="price1"><b>Preț minim:</b></label>
+    <div class="priceDiv">
+        <h5 style="margin-top: 10px"><b>Interval preț</b></h5>
+        
+        <div class="form-group form-pret-min">
+            <label for="price1" ><b>Preț minim:</b></label>
             <div class="input-group-prepend resize-inputs">
                 <span class="input-group-text">RON</span>
                 <input #p type="number" name="price1" id="price1" class="form-control" [(value)]="value" [(ngModel)]="value" (ngModelChange)="functieMin($event)">
@@ -32,7 +35,7 @@
         </div>
         <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"
             style="margin-bottom: 30px; margin-top: 30px;"></ng5-slider>
-        <button (click)="trimiteMesaj(p.value, p1.value)" class="btn btn-primary"
+        <button (click)="trimiteMesaj(p.value, p1.value)" class="btn btn-success"
             style="margin-bottom: 20px; margin-top: 20px;">Filtrare</button>
     </div>
 </div>

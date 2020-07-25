@@ -1,17 +1,17 @@
 <div class="card text-center">
     <div class="card-body">
         <h3 class="card-title">REZUMATUL COMENZII</h3>
-        <p class="card-text"><i>Aveți {{ evidentaProduselorDinCos }} produse în coșul de cumpărături.</i></p><br>
+        <p class="card-text">Aveți <b>{{ evidentaProduselorDinCos }}</b> produse în coșul de cumpărături.</p><br>
         <ul class="list-group list-group-flush">
             <li *ngFor="let produs of cosDeCumparaturi.produse" class="list-group-item text-left">
-                {{produs.cantitate }} x {{ produs.produs.numeProdus }}
-                <div class="float-right">
-                    {{ produs.pretulTotal  | currency:'RON ':'code' }}
+                {{produs.cantitate }} x <i>{{ produs.produs.numeProdus }}</i>
+                <div class="float-right" style="font-size: 15px;">
+                    <b>{{ produs.pretulTotal  | currency:'RON ':'code' }}</b>
                 </div>
             </li>
-            <li class="list-group-item font-weight-bold text-left">
-                Total
-                <div class="float-right">
+            <li class="list-group-item font-weight-bold text-left" style="font-size: 18px;">
+                Total: 
+                <div class="float-right" >
                     {{ cosDeCumparaturi.pretulTotal | currency:'RON ':'code' }}
                 </div>
             </li>

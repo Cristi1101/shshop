@@ -74,7 +74,7 @@
             </div>
 
             <div class="form-group">
-                <h5>Alege o imagine</h5>
+                <label>Alege o imagine</label>
                 <input type="file" accept=".png, .jpg" class="form-control" (change)="incarcareImagine($event)">
             </div>
             <div class="progress">
@@ -106,7 +106,7 @@
             <img [src]="urlImage" class="card-img-top">
             <div class="card-body">
                 <hr>
-                <h3 class="card-title">{{ numeProdus.value }}</h3>
+                <h3 class="card-title" style="font-size: 22px;"><b>{{ numeProdus.value }}</b></h3>
                 <hr>
                 <p class="card-text">{{ descriere.value }}</p>
                 <hr>
@@ -114,7 +114,7 @@
                 <hr>
                 <p *ngIf="culoare.touched" class="card-text"><b>Culoare:</b> {{ culoare.value }}</p>
                 <hr>
-                <p class="card-text"><b>{{ pret.value | currency:'RON ':'code' }}</b></p>
+                <p class="card-text" style="font-size: 20px;"><b>{{ pret.value | currency:'RON ':'code' }}</b></p>
             </div>
         </div>
     </div>

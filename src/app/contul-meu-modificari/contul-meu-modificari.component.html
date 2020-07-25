@@ -75,9 +75,8 @@
                 <input #img="ngModel" [(ngModel)]="utilizator.img" name="img" id="img" type="hidden">
             </div>
 
-            <button class="btn btn-primary" style="margin-right:10px;">Salvează</button>
-            <button type="button" (click)="inapoi()" class="btn btn-secondary"
-                style="margin-right:10px;">Anulează</button>
+            <button class="btn btn-primary" >Salvează</button>
+            <button type="button" (click)="inapoi()" class="btn btn-secondary">Anulează</button>
 
         </form>
     </div>
@@ -85,12 +84,10 @@
         <div class="card text-center" style="width: 18rem;">
             <img [src]="utilizator.img" class="card-img-top">
             <div class="card-body">
-                <h3 class="card-title">{{  utilizator.prenume }} {{ utilizator.nume }}</h3>
-                <hr>
-                <h5>{{ utilizator.numeUtilizator }}</h5>
+                <h3 class="card-title">{{ utilizator.prenume }} {{ utilizator.nume }}<br><small>({{ utilizator.numeUtilizator }})</small></h3>
                 <hr>
                 <p class="card-text">{{ utilizator.oras }}</p>
-                <p class="card-text">{{ utilizator.email }}</p>
+                <p class="card-text" style="font-size: 18px;"><i>{{ utilizator.email }}</i></p>
             </div>
         </div>
     </div>

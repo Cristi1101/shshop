@@ -1,58 +1,56 @@
-<h1 class="text-center" style="margin-bottom: 50px;">COŞUL DE CUMPĂRĂTURI</h1>
-<div class="row col-10">
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Produs</th>
-                <th class="text-center" style="width: 230px">Cantitate</th>
-                <th class="text-left" style="width: 230px">Subtotal</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of cosDeCumparaturi.produse">
-                <td>
-                    <div [style.backgroundImage]="'url(' + item.produs.imagine + ')'" class="thumbnail"
-                        [routerLink]="['/produs/', item.produs.key]">
+<div class="card" *ngIf="cosDeCumparaturi.produse.length else cosDeCumparaturiGol">
+    <div class="row">
+        <div class="col-md-8 cart">
+            <div class="title">
+                <div class="row">
+                    <div class="col">
+                        <h1><b>COŞUL DE CUMPĂRĂTURI</b></h1>
                     </div>
-                </td>
-                <td>
-                    <h4>{{ item.produs.numeProdus }}</h4>
-                    <p>{{ item.produs.categorie }}</p>
-                </td>
-                <td>
-                    <div class="row no-gutters">
-                        <div class="col-2">
-                            <button (click)="stergeDinCos(item.produs)" class="btn btn-primary btn-block">-</button>
-                        </div>
+                </div>
+            </div>
+            <div class="row border-top border-bottom" *ngFor="let item of cosDeCumparaturi.produse">
+                <div class="row main align-items-center">
+                    <div class="col-2"><img class="img-fluid" [src]="item.produs.imagine"
+                            [routerLink]="['/produs/', item.produs.key]"></div>
+                    <div class="col">
+                        <div class="row text-muted">{{ item.produs.categorie }}</div>
+                        <div class="row" style="font-size: 18px;">{{ item.produs.numeProdus }}</div>
+                    </div>
+                    <div class="col">
+                        <div class="row no-gutters" style="margin-bottom: 30px;">
+                            <div class="col-2">
+                                <button (click)="stergeDinCos(item.produs)" class="btn btn-dark btn-block"
+                                    style="width: 35px; height: 35px; font-weight: bold;">-</button>
+                            </div>
 
-                        <div class="col text-center">
-                            {{ item.cantitate }} în coș
-                        </div>
+                            <div class="col"
+                                style="display: flex; justify-content: center; margin-left: 25px; font-size: 18px;">
+                                {{ item.cantitate }}
+                            </div>
 
-                        <div class="col-2">
-                            <button (click)="adaugaInCos(item.produs)" class="btn btn-primary btn-block">+</button>
+                            <div class="col-2" style="max-width: 50%;">
+                                <button (click)="adaugaInCos(item.produs)" class="btn btn-dark btn-block"
+                                    style="width: 35px; height: 35px; font-weight: bold;">+</button>
+                            </div>
                         </div>
                     </div>
-                </td>
-                <td class="text-left">{{ item.pretulTotal | currency:'RON ':'code' }}</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td class="text-right"></td>
-                <td></td>
-                <td class="text-center"><b>Total:</b> {{ cosDeCumparaturi.pretulTotal | currency:'RON ':'code' }}
-                </td>
-                <td>
-                    <a *ngIf="cosDeCumparaturi.produse.length" routerLink="/plasare-comanda" class="btn btn-success"
-                        style="margin-right: 20px;">Comandă <i class="fa fa-angle-right"></i></a>
-                    <button *ngIf="cosDeCumparaturi.produse.length" (click)="stergeCosulDeCumparaturi()" class="btn btn-danger">
-                        <i class="fa fa-trash"></i>
-                    </button>
-                </td>
-            </tr>
-        </tfoot>
-    </table>
+                    <div class="col" style="font-size: 18px;">{{ item.pretulTotal | currency:'RON ':'code' }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 summary">
+            <rezumat-cos-de-cumparaturi></rezumat-cos-de-cumparaturi>
+
+            <a *ngIf="cosDeCumparaturi.produse.length" routerLink="/plasare-comanda" class="btn btn-success"
+                style="margin-right: 130px; margin-top: 15px;">Comandă <i class="fa fa-angle-right"></i></a>
+            <button *ngIf="cosDeCumparaturi.produse.length" (click)="stergeCosulDeCumparaturi()" class="btn btn-danger"
+                style="margin-top: 15px;">
+                <i class="fa fa-trash"></i>
+            </button>
+        </div>
+    </div>
 </div>
+
+<ng-template #cosDeCumparaturiGol>
+    <h1 style="text-align: center; margin-top: 50px;">Coșul de cumpărături este gol</h1>
+</ng-template>

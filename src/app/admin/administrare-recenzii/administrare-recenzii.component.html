@@ -3,7 +3,7 @@
     <div class="col-sm-2">
         <div class="zoom-image h-50" style="margin-top: 20px;">
             <img src="{{ recenzie.utilizator?.img }}" class="img-thumbnail"
-                style="width: 100px; height: 70px; border-radius: 50%;">
+                style="width: 100px; height: 100px; border-radius: 50%;">
             <p style="margin-left: 10px;">{{ recenzie.utilizator?.numeUtilizator }}</p>
             <ngb-rating #stea [(rate)]="recenzie.recenzie.stele" [max]="5" readonly=true></ngb-rating>
             <pre>Evaluare: <b>{{recenzie.recenzie.stele}}</b></pre>
@@ -11,13 +11,13 @@
     </div>
     <div class="col-sm-10">
         <div>
-            <h5 style="margin-top: 30px; margin-bottom: 10px;">{{ recenzie.produs.numeProdus }}</h5>
+            <h5 style="margin-top: 30px; margin-bottom: 10px; font-size: 22px;"><b>{{ recenzie.produs.numeProdus }}</b></h5>
             <div style="margin-top: 10px; margin-bottom: 10px;">
                 <img src="{{ recenzie.produs.imagine }}" class="img-thumbnail"
-                    style="width: 150px; height: 110px; display: inline-block;"
+                    style="width: 150px; height: 150px; display: inline-block;"
                     [routerLink]="['/produs/', recenzie.produs.key]">
                 <span style="margin-left: 20px;">-</span>
-                <span style="margin-left: 20px;">{{ recenzie.recenzie.continut }}</span>
+                <span style="margin-left: 20px; font-size: 18px;">{{ recenzie.recenzie.continut }}</span>
             </div>
         </div>
 

@@ -1,53 +1,55 @@
-<h1 class="text-center" style="margin-bottom: 50px;">CONTUL MEU</h1>
-<div class="row">
-    <div class="col-md-6">
-        <table class="table">
-            <tr>
-                <th>Prenume</th>
-                <td>{{ utilizator.prenume }}</td>
-            </tr>
-            <tr>
-                <th>Nume</th>
-                <td>{{ utilizator.nume }}</td>
-            </tr>
-            <tr>
-                <th>Nume de utilizator</th>
-                <td>{{ utilizator.numeUtilizator }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ utilizator.email }}</td>
-            </tr>
-            <tr>
-                <th>Oraș</th>
-                <td>{{ utilizator.oras }}</td>
-            </tr>
-            <tr>
-                <th>Adresă</th>
-                <td>{{ utilizator.adresa }}</td>
-            </tr>
-            <tr>
-                <th>Cod poștal</th>
-                <td>{{ utilizator.codPostal }}</td>
-            </tr>
-        </table>
-        <br>
-        <button type="button" (click)="modifica()" class="btn btn-primary" style="margin-right:10px;">
-            Modificare informații personale
-        </button>
-        <button type="button" (click)="inapoi()" class="btn btn-secondary" style="margin-right:10px;">
-            Înapoi la catalogul de produse
-        </button>
-    </div>
+<div>
+    <h1 class="text-center" style="margin-bottom: 50px;">CONTUL MEU</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <tr>
+                    <th>Prenume</th>
+                    <td>{{ utilizator.prenume }}</td>
+                </tr>
+                <tr>
+                    <th>Nume</th>
+                    <td>{{ utilizator.nume }}</td>
+                </tr>
+                <tr>
+                    <th>Nume de utilizator</th>
+                    <td>{{ utilizator.numeUtilizator }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ utilizator.email }}</td>
+                </tr>
+                <tr>
+                    <th>Oraș</th>
+                    <td>{{ utilizator.oras }}</td>
+                </tr>
+                <tr>
+                    <th>Adresă</th>
+                    <td>{{ utilizator.adresa }}</td>
+                </tr>
+                <tr>
+                    <th>Cod poștal</th>
+                    <td>{{ utilizator.codPostal }}</td>
+                </tr>
+            </table>
+            <br>
+            <button type="button" (click)="modifica()" class="btn btn-primary" style="margin-right:10px;">
+                Modificare informații personale
+            </button>
+            <button type="button" (click)="inapoi()" class="btn btn-secondary" style="margin-right:10px;">
+                Înapoi la catalogul de produse
+            </button>
+        </div>
 
-    <div class="col-md-6">
-        <div class="card" style="width: 18rem;">
-            <img [src]="utilizator.img" class="card-img-top">
-            <div class="card-body">
-                <h3 class="card-title">{{  utilizator.prenume }} {{ utilizator.nume }}</h3>
-                <h5>{{ utilizator.numeUtilizator }}</h5>
-                <p class="card-text">{{ utilizator.oras }}</p>
-                <p class="card-text">{{ utilizator.email }}</p>
+        <div class="col-md-6">
+            <div class="card" style="width: 18rem;">
+                <img [src]="utilizator.img" class="card-img-top">
+                <div class="card-body">
+                    <h3 class="card-title">{{  utilizator.prenume }} {{ utilizator.nume }}</h3>
+                    <h5>{{ utilizator.numeUtilizator }}</h5>
+                    <p class="card-text">{{ utilizator.oras }}</p>
+                    <p class="card-text">{{ utilizator.email }}</p>
+                </div>
             </div>
         </div>
     </div>
